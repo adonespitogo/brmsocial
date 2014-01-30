@@ -14,7 +14,7 @@ class SessionController extends BaseController{
 			'password' => Input::get('password')
 		);
 		if(Auth::attempt($user, Input::has('remember'))){
-			return Redirect::intended('/home');
+			return Redirect::to('home');
 		}
 		else
 			return View::make('session.login')->with('error', true);

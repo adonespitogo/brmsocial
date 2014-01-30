@@ -17,7 +17,12 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		return 'Welcome '.Auth::user()->email. ' '.HTML::link('session/logout', 'p2');
+		if (Auth::user()->is_vendor){
+			return View::make('home.vendor');
+		}
+		else{
+			return View::make('home.customer');
+		}
 	}
 
 }
