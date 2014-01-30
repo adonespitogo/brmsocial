@@ -15,9 +15,9 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function getIndex()
 	{
-		return View::make('hello');
+		return 'Welcome '.Auth::user()->email. ' '.HTML::link('session/logout', 'p2');
 	}
 
 }
