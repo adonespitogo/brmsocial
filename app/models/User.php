@@ -2,8 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use LaravelBook\Ardent\Ardent;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Ardent implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
@@ -11,6 +12,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+    protected $softDelete = true;
+
+    protected $rawPassword;
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -24,6 +28,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @return mixed
 	 */
+
+    public static $rules = array(
+        'email'                 => 'required|email|unique:users',
+        'password'              => 'required'
+    );
+
 	public function getAuthIdentifier()
 	{
 		return $this->getKey();
@@ -48,5 +58,23 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+
+    // START RELATIONSHIPS======================================
+        
+    public function orders()
+    {
+        return $this->hasMany('Order');
+    }
+    
+    public function products() {
+        return $this->hasMany('Product');
+    }
+
+    public function vendorinfo() {
+        return $this->hasOne('User');
+    }
+
+
+    // END RELATIONSHIPS
 
 }
