@@ -1,16 +1,26 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
 
-class FeaturedProduct extends Ardent implements UserInterface, RemindableInterface {
+class FeaturedProduct extends Ardent{
 
 	protected $table = 'featured_products';
 	protected $softDelete = true;
 
-	public function product() {
-		return $this->belongsTo('Product');
+	public static $relationsData = array(
+		'product' => array(self::BELONGS_TO, 'Product')
+	);
+
+	// start custom functions
+	public static function getFeaturedProducts()
+	{
+		$datenow = date("Y-m-d H:i:s");
+		$products = self::where('featured_start_date', '<=', $datenow)
+						->where('featured_end_date', '>=', $datenow)
+						->with('product')
+						->get();
+
+		return $products;
 	}
 
 }

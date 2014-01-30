@@ -1,33 +1,20 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
 
-class Product extends Ardent implements UserInterface, RemindableInterface {
+class Product extends Ardent{
 
 	protected $table = 'products';
 	protected $softDelete = true;
 
-	public function category() {
-		return $this->belongsTo('Category');
-	}
+	public static $relationsData = array(
+		'category' => array(self::BELONGS_TO, 'Category'),
+		'user' => array(self::BELONGS_TO, 'User'),
+		'orders' => array(self::HAS_MANY, 'Order'),
+		'Terms' => array(self::HAS_MANY, 'Term'),
+	);
 
-	public function user() {
-		return $this->belongsTo('User');
-	}
-
-	public function orders() {
-		return $this->hasMany('Order');
-	}
-
-	public function terms() {
-		return $this->hasMany('Term');
-	}
-
-	public function featuredproducts() {
-		return $this->hasMany('FeaturedProduct');
-	}
+	// start custom functions
 
 }
 
