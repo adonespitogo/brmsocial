@@ -8,7 +8,7 @@
     <div ng-app="VendorApp">
     	<div ng-controller="MainCtrl">
 
-    		<h1>Welcome @{{currentUser.email}}</h1>
+    		<h1>Welcome @{{currentUser.fullname}}</h1>
     		<h4>Nav</h4>
     		<ul>
     			<li>

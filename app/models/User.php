@@ -65,10 +65,19 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public static $relationsData = array(
     	'orders' => array(self::HAS_MANY, 'Order'),
     	'products' => array(self::HAS_MANY, 'Product'),
-    	'user' => array(self::HAS_MANY, 'User'),
+    	'vendorInfo' => array(self::HAS_ONE, 'VendorInfo'),
     );
     
 
     // END RELATIONSHIPS
+
+    // start overrides
+    public function toArray()
+    {
+    	if((bool)$this->is_vendor)
+    		$this->load('vendorInfo');
+
+    	return parent::toArray();
+    }
 
 }
