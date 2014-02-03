@@ -31,6 +31,11 @@ module.config [
 			template: JST[ templatePath + "vendor/products"],
 			controller : 'ProductListCtrl'
 		})
+		.state('user', {
+			url: "/user",
+			template: JST[ templatePath + "vendor/user"],
+			controller : 'ProductListCtrl'
+		})
 ]
     
 

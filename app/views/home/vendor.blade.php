@@ -10,6 +10,9 @@
 
     		<h1>Welcome @{{currentUser.fullname}}</h1>
     		<h4>Nav</h4>
+            <ul>
+                <li><a ui-sref="user">My Account</a></li>
+            </ul>
     		<ul>
     			<li>
     				<a ui-sref="vendor">Dashboard</a>
