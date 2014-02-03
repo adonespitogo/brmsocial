@@ -1,4 +1,18 @@
 <h1>These are products</h1>
 
-<div ui-if="products.length>0" ng-grid="productGrid" ng-style="getTableStyle()">
-</div>
+<table>
+	<thead>
+		<tr>
+			<th>Product Name</th>
+			<th>Tagline</th>
+			<th>Date Created</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="p in products">
+			<td ng-bind="p.product_name"></td>
+			<td ng-bind="p.tagline"></td>
+			<td ng-bind="p.created_at"></td>
+		</tr>
+	</tbody>
+</table>

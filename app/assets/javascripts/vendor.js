@@ -15,7 +15,6 @@
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
-//= require lib/angular-1.2.9/ng-grid
 //= require app/modules/vendor_app
 //= require app/controllers/main_controller
 //= require app/controllers/home_controllers
