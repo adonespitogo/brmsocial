@@ -74,10 +74,16 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     // start overrides
     public function toArray()
     {
+    	$this->fullname = $this->getFullname();
     	if((bool)$this->is_vendor)
     		$this->load('vendorInfo');
 
     	return parent::toArray();
+    }
+    // start custom functions
+    public function getFullname()
+    {
+    	return $this->firstname . ' '. $this->lastname;
     }
 
 }
