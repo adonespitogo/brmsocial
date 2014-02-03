@@ -2,13 +2,14 @@
 
 	class ProductController extends BaseController {
 
-		public function index()
+		public function myProducts()
 		{
-			return Product::all();
+			return Auth::user()->products;
 		}
 
-		public function getFeaturedProduct() {
-			$datenow = date("Y-m-d H:i:s");
+		public function featuredProducts()
+		{
+
 			$featuredproduct = FeaturedProduct::getFeaturedProducts();
 			return $featuredproduct;
 

@@ -11,9 +11,15 @@ class Product extends Ardent{
 		'category' => array(self::BELONGS_TO, 'Category'),
 		'user' => array(self::BELONGS_TO, 'User'),
 		'orders' => array(self::HAS_MANY, 'Order'),
-		'Terms' => array(self::HAS_MANY, 'Term'),
+		'terms' => array(self::HAS_MANY, 'Term'),
 	);
-
+	//start overrides
+	public function toArray()
+	{
+		$this->load('category');
+		$this->load('terms');
+		return parent::toArray();
+	}
 	// start custom functions
 
 }

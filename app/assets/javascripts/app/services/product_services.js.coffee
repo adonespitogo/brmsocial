@@ -3,4 +3,7 @@ p = angular.module 'ProductServices', [
 ]
 
 p.factory 'Products', ($resource) ->
-	$resource "products/:id", {id: '@id'}, {update: {method: 'PUT', id:'@id'}}
+	$resource "products/:id", {id: '@id'}, {
+		update: {method: 'PUT', id:'@id'}
+		myProducts : {method: 'GET', params: {id: 'my-products'}, isArray: true}
+	}

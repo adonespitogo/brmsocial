@@ -22,6 +22,7 @@
     		<div ui-view>
     			
     		</div>
+    		
     	</div>
     </div>
 @stop

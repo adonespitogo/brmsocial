@@ -1,3 +1,4 @@
+
 c = angular.module 'ProductControllers', [
 	'ProductServices',
 	'ngGrid'
@@ -7,16 +8,15 @@ c.controller 'ProductListCtrl', [
 	'$scope', 'Products'
 	($scope, Products) ->
 
-		$scope.products = Products.query()
+		$scope.products = Products.myProducts()
 
 		$scope.productGrid =
 			data : 'products'
-			pagingOptions: {
-            pageSizes: [250, 500, 1000], 
-            pageSize: 250,
-            totalServerItems: 0,
-            currentPage: 1
-        }
+			columnDefs : [
+				{field: 'product_name', displayName: 'Product Name', sortable: true},
+				{field: 'product_name', displayName: 'Product Name', sortable: true}
+			]
+        
 
 		$scope.getTableStyle= ->
 
