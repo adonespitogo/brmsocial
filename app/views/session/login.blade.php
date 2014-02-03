@@ -14,6 +14,12 @@
 			</label>
 			<input type="password" name="password">
 		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label for="" class="form-label">Remember me</label>
+				<input type="checkbox" name="remember">
+			</div>
+		</div>
 		<button type="submit">Login</button>
 	</form>
 @stop
