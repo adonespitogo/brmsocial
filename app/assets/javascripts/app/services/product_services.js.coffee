@@ -7,3 +7,5 @@ p.factory 'Products', ($resource) ->
 		update: {method: 'PUT', id:'@id'}
 		myProducts : {method: 'GET', params: {id: 'my-products'}, isArray: true}
 	}
+
+			

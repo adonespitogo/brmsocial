@@ -14,7 +14,8 @@ c.controller 'ProductListCtrl', [
 			data : 'products'
 			columnDefs : [
 				{field: 'product_name', displayName: 'Product Name', sortable: true},
-				{field: 'product_name', displayName: 'Product Name', sortable: true}
+				{field: 'tagline', displayName: 'Tagline', sortable: false}
+				{field: 'created_at', displayName: 'Date Created', sortable: true}
 			]
         
 

@@ -4,7 +4,7 @@ module = angular.module 'VendorApp', [
 	'ui.router',
 	'MainController',
 	'HomeControllers',
-	'ProductControllers'
+	'ProductControllers',
 ]
 
 module.config [
