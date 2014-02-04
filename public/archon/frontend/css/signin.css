@@ -1,0 +1,13 @@
+html { 
+  background: url(../images/signinbg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.vj {
+	color:#2c3e50;
+	background:url('../../../../../www.bmwblog.com/wp-content/uploads/blur5.jpg') no-repeat center  center fixed;
+}
