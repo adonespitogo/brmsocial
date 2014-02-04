@@ -7,7 +7,7 @@ c.controller 'ProductListCtrl', [
 	'$scope', 'Products'
 	($scope, Products) ->
 
-		$scope.products = Products.myProducts()
+		$scope.products = Products.query()
         
 
 		$scope.getTableStyle= ->

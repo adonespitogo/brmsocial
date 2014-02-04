@@ -6,9 +6,13 @@
 @stop
 
 @section('body')
-	
+	<div ng-app="AdminApp">
+		<div ng-controller="MainAdminCtrl">
+			@include('home.admin.header')
+			<div class="container" ui-view ></div>
+		</div>
+	</div>
 @stop
 @section('scripts')
 	{{ javascript_include_tag('admin') }}
-    @parent
 @stop
