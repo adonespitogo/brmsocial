@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('head')
-	{{stylesheet_link_tag('vendor')}}
+	{{stylesheet_link_tag('admin')}}
 @stop
 
 @section('body')
@@ -15,7 +15,7 @@
             </ul>
     		<ul>
     			<li>
-    				<a ui-sref="vendor">Dashboard</a>
+    				<a ui-sref="home">Dashboard</a>
     			</li>
     			<li>
     				<a ui-sref="products">Products</a>
@@ -30,5 +30,5 @@
     </div>
 @stop
 @section('scripts')
-	{{ javascript_include_tag('vendor') }}
+	{{ javascript_include_tag('admin') }}
 @stop
