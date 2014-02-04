@@ -17,7 +17,10 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		if (Auth::user()->is_vendor){
+		if (Auth::user()->is_admin){
+			return View::make('home.admin');
+		}
+		elseif (Auth::user()->is_vendor){
 			return View::make('home.vendor');
 		}
 		else{
