@@ -17,6 +17,8 @@ class CreateTableOrders extends Migration {
 			$table->integer('product_id');
 			$table->string('product_name');
 			$table->decimal('price', 10, 2);
+			$table->decimal('amount_commission', 10, 2);
+			$table->integer('percentage_commission');
 			$table->softDeletes();
 			$table->timestamps();
 		});

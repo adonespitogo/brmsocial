@@ -1,5 +1,3 @@
-
-
 module = angular.module 'VendorApp', [
 	'ui.router',
 	'MainController',
