@@ -2,7 +2,7 @@ con = angular.module "HomeControllers", [
 	'ngResource'
 ]
 
-con.controller 'HomeCtrl', [
+con.controller 'HomeAdminCtrl', [
 	'$scope',
 	($scope) ->
 		

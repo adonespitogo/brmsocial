@@ -24,17 +24,7 @@ module.config [
 		.state('home', {
 			url: "/",
 			template: JST[ templatePath + "admin/home"]
-			controller: 'HomeCtrl'
-		})
-		.state('products', {
-			url: "/products",
-			template: JST[ templatePath + "admin/products/products_list"],
-			controller : 'ProductListCtrl'
-		})
-		.state('user', {
-			url: "/user",
-			template: JST[ templatePath + "admin/user"],
-			controller : 'ProductListCtrl'
+			controller: 'HomeAdminCtrl'
 		})
 ]
     
