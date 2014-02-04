@@ -19,6 +19,17 @@
 			return $featuredproduct;
 
 		}
+
+		public function myActiveProducts() {
+			return Auth::user()->getMyActiveProducts();
+		}
+
+		public function myActiveProductsCount() {
+			$count = Auth::user()->getMyActiveProductsCount();
+			return Response::json(array('count' => $count));
+		}
+
+
 	}
 
 ?>

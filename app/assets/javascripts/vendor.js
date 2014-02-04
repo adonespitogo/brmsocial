@@ -10,7 +10,7 @@
 //
 // The available directives right now are require, require_directory, and require_tree
 //
-
+//
 //= require lib/underscore/underscore
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
@@ -21,4 +21,5 @@
 //= require app/controllers/product_controllers
 //= require app/services/product_services
 //= require app/services/user_services
+//= require app/services/order_services
 //= require_tree app/partials/vendor

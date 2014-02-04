@@ -14,15 +14,15 @@ module.config [
 	($stateProvider, $urlRouterProvider) ->
 	  
 		# For any unmatched url, redirect to /state1
-		$urlRouterProvider.otherwise("/")
+		$urlRouterProvider.otherwise("/admin")
 		#template base path
 		templatePath = 'app/partials/'
 
 
 		# // Now set up the states
 		$stateProvider
-		.state('home', {
-			url: "/",
+		.state('admin', {
+			url: "/admin",
 			template: JST[ templatePath + "admin/home"]
 			controller: 'HomeAdminCtrl'
 		})
