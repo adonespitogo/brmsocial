@@ -1,6 +1,6 @@
 
 
-module = angular.module 'VendorApp', [
+module = angular.module 'AdminApp', [
 	'ui.router',
 	'MainController',
 	'HomeControllers',
