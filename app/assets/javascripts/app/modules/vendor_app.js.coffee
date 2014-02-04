@@ -2,7 +2,6 @@ module = angular.module 'VendorApp', [
 	'ui.router',
 	'MainController',
 	'HomeControllers',
-	'ProductControllers',
 ]
 
 module.config [
@@ -23,16 +22,6 @@ module.config [
 			url: "/",
 			template: JST[ templatePath + "vendor/home"]
 			controller: 'HomeCtrl'
-		})
-		.state('products', {
-			url: "/products",
-			template: JST[ templatePath + "vendor/products"],
-			controller : 'ProductListCtrl'
-		})
-		.state('user', {
-			url: "/user",
-			template: JST[ templatePath + "vendor/user"],
-			controller : 'ProductListCtrl'
 		})
 ]
     
