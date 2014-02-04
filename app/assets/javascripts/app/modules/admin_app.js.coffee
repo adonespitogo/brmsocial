@@ -28,7 +28,7 @@ module.config [
 		})
 		.state('products', {
 			url: "/products",
-			template: JST[ templatePath + "admin/products"],
+			template: JST[ templatePath + "admin/products/products_list"],
 			controller : 'ProductListCtrl'
 		})
 		.state('user', {

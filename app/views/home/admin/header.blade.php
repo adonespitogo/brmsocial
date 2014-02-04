@@ -21,13 +21,20 @@
         </li>
       </ul>
       <ul class="nav navbar navbar-right">
-        <li>
-          <a href="#">
+  
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-user"></span>
-            <strong ng-bind="currentUser.fullname"></strong>
+            @{{currentUser.fullname}}
+            <span class="caret"></span>
           </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
         </li>
-      </ul>
+  
+    </ul>
     </nav>
     <!-- end nav -->
   </div>
