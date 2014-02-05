@@ -30,4 +30,12 @@ module.config [
 		})
 ]
 
+module.config [
+	'$alertProvider',
+	($alertProvider)->
+		angular.extend($alertProvider.defaults, {
+			container : '#alerts-container'
+		})
+]
+
 
