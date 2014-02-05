@@ -17,7 +17,10 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a ui-sref="products">Products</a>
+          <a ui-sref="products">Products</a>          
+        </li>
+        <li>
+          <a ui-sref="categories">Categories</a>
         </li>
       </ul>
       <ul class="nav navbar navbar-right">

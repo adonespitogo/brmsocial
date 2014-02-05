@@ -22,4 +22,5 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
 
 	Route::resource('products', 'ProductController');
+	Route::controller('categories', 'CategoryController');
 });
