@@ -1,1 +1,23 @@
-<h1>Category List</h1>
+<strong>Category List</strong>
+
+<table class="table table-hover responsive">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Category Name</th>
+			<th>Date Created</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="c in categories">
+			<td ng-bind="c.id"></td>
+			<td ng-bind="c.category"></td>
+			<td ng-bind="c.created_at"></td> 
+			<td>
+				<a class="btn btn-success" ui-sref="categories.edit()">Edit</a>
+				<a class="btn btn-danger">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

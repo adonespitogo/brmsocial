@@ -5,6 +5,7 @@ module = angular.module 'AdminApp', [
 	'MainController',
 	'HomeControllers',
 	'ProductControllers',
+	'CategoryControllers'
 ]
 
 module.config [

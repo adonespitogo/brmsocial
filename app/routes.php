@@ -25,4 +25,5 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('commissions/my-receivable-commissions', array('uses' => 'CommissionController@myReceivableCommission'));
 
 	Route::resource('products', 'ProductController');
+	Route::controller('categories', 'CategoryController');
 });
