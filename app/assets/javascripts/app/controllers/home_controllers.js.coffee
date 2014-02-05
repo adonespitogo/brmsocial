@@ -1,9 +1,12 @@
 con = angular.module "HomeControllers", [
-	'ngResource'
+	'ProductServices',
+	'OrderServices'
 ]
 
 con.controller 'HomeCtrl', [
-	'$scope',
-	($scope) ->
-		
+	'$scope', 'Products', 'Orders',
+	($scope, Products, Orders) ->
+		$scope.productCount = Products.myActiveProductsCount()
+		$scope.ordersSoldToday = Orders.myOrdersSoldTodayCount()
+
 ]

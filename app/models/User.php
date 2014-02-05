@@ -86,4 +86,27 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     	return $this->firstname . ' '. $this->lastname;
     }
 
+    //vendor
+    public function getMyActiveProducts() {
+    	$datenow = date("Y-m-d H:i:s");
+		return $this->products()->where('sale_start_date', '<=', $datenow)
+						->where('sale_end_date', '>=', $datenow)
+						->get();	
+	}
+
+	//vendor
+	public function getMyActiveProductsCount() {
+    	$datenow = date("Y-m-d H:i:s");
+		return $this->products()->where('sale_start_date', '<=', $datenow)
+						->where('sale_end_date', '>=', $datenow)
+						->count();	
+	}
+
+	//vendor
+	public function getMyOrdersSoldTodayCount() {
+		$id = $this->id;
+		$orders = DB::select(DB::raw("SELECT COUNT(id) AS orders_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND user_id=".$id));
+		return $orders[0]->orders_today;
+	}
+
 }
