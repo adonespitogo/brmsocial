@@ -7,6 +7,11 @@
 			return Response::json(array('orderstoday' => $orders_today));
 		}
 
+		public function mySalesToday() {
+			$sales_today = Auth::user()->getMySalesToday();
+			return Response::json(array('salestoday' => $sales_today));
+		}
+
 	}
 
 ?>

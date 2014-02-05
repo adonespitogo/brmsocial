@@ -5,5 +5,6 @@ o = angular.module 'OrderServices', [
 o.factory 'Orders', ($resource) ->
 	$resource "orders/:id", { id: '@id' }, {
 		update: { method: 'PUT', id: '@id' },
-		myOrdersSoldTodayCount: { method: 'GET', params: { id: 'myordersoldtodaycount' }, isArray:false }
+		myOrdersSoldTodayCount: { method: 'GET', params: { id: 'myordersoldtodaycount' }, isArray:false },
+		mysalesToday: { method: 'GET', params: { id: 'mysalestoday' }, isArray:false }
 	}
