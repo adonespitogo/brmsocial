@@ -14,27 +14,17 @@ module.config [
 	($stateProvider, $urlRouterProvider) ->
 	  
 		# For any unmatched url, redirect to /state1
-		$urlRouterProvider.otherwise("/")
+		$urlRouterProvider.otherwise("/admin")
 		#template base path
 		templatePath = 'app/partials/'
 
 
 		# // Now set up the states
 		$stateProvider
-		.state('home', {
-			url: "/",
+		.state('admin', {
+			url: "/admin",
 			template: JST[ templatePath + "admin/home"]
-			controller: 'HomeCtrl'
-		})
-		.state('products', {
-			url: "/products",
-			template: JST[ templatePath + "admin/products/products_list"],
-			controller : 'ProductListCtrl'
-		})
-		.state('user', {
-			url: "/user",
-			template: JST[ templatePath + "admin/user"],
-			controller : 'ProductListCtrl'
+			controller: 'HomeAdminCtrl'
 		})
 ]
     
