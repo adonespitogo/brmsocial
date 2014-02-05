@@ -22,7 +22,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"> Settings <span class="glyphicon glyphicon-cog"></span></b></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">My Account</a></li>
                 <li><a href="#">Logout</a></li>
