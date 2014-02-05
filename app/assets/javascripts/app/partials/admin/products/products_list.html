@@ -1,18 +1,29 @@
-<strong>Products ni</strong>
+<h3>Product List</h3>
 
-<table>
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th>Product Name</th>
 			<th>Tagline</th>
+			<th>Category</th>
 			<th>Date Created</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="p in products">
 			<td ng-bind="p.product_name"></td>
 			<td ng-bind="p.tagline"></td>
+			<td ng-bind="p.category.category"></td>
 			<td ng-bind="p.created_at"></td>
+			<td>
+				<a ui-sref="editProduct({id:p.id})" class="btn btn-success btn-small">
+					Edit
+				</a>
+				<a ng-click="window.alert('asdf')" class="btn btn-danger btn-small">
+					Delete
+				</a>
+			</td>
 		</tr>
 	</tbody>
 </table>

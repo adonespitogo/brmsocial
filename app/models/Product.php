@@ -1,11 +1,11 @@
 <?php
 
-use LaravelBook\Ardent\Ardent;
-
-class Product extends Ardent{
+class Product extends BaseModel{
 
 	protected $table = 'products';
 	protected $softDelete = true;
+
+	protected $jsdatefields = array('sale_start_date');
 
 	public static $relationsData = array(
 		'category' => array(self::BELONGS_TO, 'Category'),

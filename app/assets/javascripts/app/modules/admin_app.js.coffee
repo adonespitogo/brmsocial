@@ -5,7 +5,8 @@ module = angular.module 'AdminApp', [
 	'MainController',
 	'HomeControllers',
 	'ProductControllers',
-	'CategoryControllers'
+	'CategoryControllers',
+	'mgcrea.ngStrap', #angular-strap
 ]
 
 module.config [
@@ -28,5 +29,5 @@ module.config [
 			controller: 'HomeAdminCtrl'
 		})
 ]
-    
+
 

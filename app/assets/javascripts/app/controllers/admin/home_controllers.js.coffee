@@ -7,4 +7,5 @@ con = angular.module "HomeControllers", [
 con.controller 'HomeAdminCtrl', [
 	'$scope',
 	($scope) ->
+		
 ]

@@ -1,0 +1,56 @@
+<h3>
+	Edit Product
+</h3>
+<form novalidate name="productForm" class="form-horizontal">
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Product Name</label>
+			<input name="product_name" type="text" class="form-control" ng-model="product.product_name">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Tagline</label>
+			<input name="tagline" type="text" class="form-control" ng-model="product.tagline">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Regular Price</label>
+			<input type="text" name="price" class="form-control" ng-model="product.regular_price">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Discounted Price (<i>actual price during purchase</i>)</label>
+			<input type="text" name="price" class="form-control" ng-model="product.discounted_price">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Overview</label>
+			<textarea name="overview" cols="30" rows="10" class="form-control" ng-model="product.overview"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Category</label>
+			<select 
+				name="category"
+				class="form-control"
+				ng-model="product.category_id"
+				ng-options="c.id as c.category for c in categories" >
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="form-label">Product Image</label>
+		<input type="text" ng-model="product.product_image" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="form-label">Sale Start Date ({{product.sale_start_date}})</label>
+		<input ng-model="product.sale_start_date" bs-datepicker class="form-control" type="text">
+	</div>
+	<button type="submit" ng-click="logProduct(product)">Log</button>
+	<button type="submit" ng-click="updateProduct(product)">Update</button>
+</form>
