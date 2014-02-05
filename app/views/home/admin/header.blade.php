@@ -9,7 +9,7 @@
       <span class="icon-bar"></span>
       </button>
       <!-- end toggle -->
-      <a ui-sref="home" class="navbar-brand">
+      <a ui-sref="admin" class="navbar-brand">
         <span class="glyphicon glyphicon-home"></span> Dashboard
       </a>
     </div>
