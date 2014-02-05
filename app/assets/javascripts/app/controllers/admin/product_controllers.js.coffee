@@ -26,7 +26,7 @@ c.config [
 			controller : 'NewProductCtrl'
 		})
 		.state('editProduct', {
-			url: "/products/:id",
+			url: "/products/:id/edit",
 			template: JST[ templatePath + "admin/products/edit_product"],
 			controller : 'EditProductCtrl'
 		})
