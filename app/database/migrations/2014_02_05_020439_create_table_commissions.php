@@ -16,7 +16,7 @@ class CreateTableCommissions extends Migration {
 			$table->increments('id');
 			$table->integer('order_id');
 			$table->integer('user_id');
-			$table->decimal('commision', 10, 2);
+			$table->decimal('commission', 10, 2);
 			$table->boolean('is_paid');
 			$table->timestamps();
 		});
