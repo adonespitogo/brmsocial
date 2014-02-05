@@ -1,5 +1,5 @@
 <strong>Category List</strong>
-
+<a class="btn btn-success pull-right" ui-sref="addCategories">Add new</a>
 <table class="table table-hover responsive">
 	<thead>
 		<tr>
@@ -15,8 +15,8 @@
 			<td ng-bind="c.category"></td>
 			<td ng-bind="c.created_at"></td> 
 			<td>
-				<a class="btn btn-success" ui-sref="categories.edit()">Edit</a>
-				<a class="btn btn-danger">Delete</a>
+				<a class="btn btn-success" ui-sref="editCategory({id: c.id})">Edit</a>
+				<a class="btn btn-danger" ng-click="delete(c.id)">Delete</a>
 			</td>
 		</tr>
 	</tbody>

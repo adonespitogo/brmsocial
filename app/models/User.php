@@ -66,6 +66,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     	'orders' => array(self::HAS_MANY, 'Order'),
     	'products' => array(self::HAS_MANY, 'Product'),
     	'vendorInfo' => array(self::HAS_ONE, 'VendorInfo'),
+    	'commissions' => array(self::HAS_MANY, 'Commission')
     );
     
 
@@ -107,6 +108,18 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 		$id = $this->id;
 		$orders = DB::select(DB::raw("SELECT COUNT(id) AS orders_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND user_id=".$id));
 		return $orders[0]->orders_today;
+	}
+
+	//vendor
+	public function getMySalesToday() {
+		$id = $this->id;
+		$sales = DB::select(DB::raw("SELECT SUM(price) AS sales_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND user_id=".$id));
+		return $sales[0]->sales_today;
+	}
+
+	//vendor
+	public function getMyReceivableCommission() {
+		return $this->commissions()->where('is_paid', 0)->sum('commission');
 	}
 
 }
