@@ -16,10 +16,6 @@
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
 //= require app/modules/vendor_app
-//= require app/controllers/main_controller
-//= require app/controllers/home_controllers
-//= require app/controllers/product_controllers
-//= require app/services/product_services
-//= require app/services/user_services
-//= require app/services/order_services
+//= require_tree app/controllers/vendor
+//= require_tree app/services
 //= require_tree app/partials/vendor
