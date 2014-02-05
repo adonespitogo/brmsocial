@@ -1,6 +1,6 @@
 
 
-module = angular.module 'VendorApp', [
+module = angular.module 'AdminApp', [
 	'ui.router',
 	'MainController',
 	'HomeControllers',
@@ -28,7 +28,7 @@ module.config [
 		})
 		.state('products', {
 			url: "/products",
-			template: JST[ templatePath + "admin/products"],
+			template: JST[ templatePath + "admin/products/products_list"],
 			controller : 'ProductListCtrl'
 		})
 		.state('user', {

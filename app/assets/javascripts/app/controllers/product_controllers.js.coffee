@@ -7,15 +7,7 @@ c.controller 'ProductListCtrl', [
 	'$scope', 'Products'
 	($scope, Products) ->
 
-		$scope.products = Products.myProducts()
-        
-
-		$scope.getTableStyle= ->
-
-			rowHeight=30;
-			headerHeight=45;
-			
-			height: ($scope.products.length * rowHeight + headerHeight) + "px"
+		$scope.products = Products.query()
 		
 		
 ]
