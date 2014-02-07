@@ -43,8 +43,8 @@ class Product extends BaseModel{
 		$this->load('terms');
 		return parent::toArray();
 	}
+	
 	// start custom functions
-
 }
 
 ?>
