@@ -21,8 +21,8 @@
 			$p->tagline = Input::get('tagline');
 			$p->regular_price = Input::get('regular_price');
 			$p->discounted_price = Input::get('discounted_price');
-			$p->sale_start_date = Input::get('sale_start_date');
-			$p->sale_end_date = Input::get('sale_end_date');
+			$p->sale_start_date = Input::get('sale_start_date_iso_date');
+			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->save();
@@ -42,8 +42,8 @@
 			$p->tagline = Input::get('tagline');
 			$p->regular_price = Input::get('regular_price');
 			$p->discounted_price = Input::get('discounted_price');
-			$p->sale_start_date = Input::get('sale_start_date');
-			$p->sale_end_date = Input::get('sale_end_date');
+			$p->sale_start_date = Input::get('sale_start_date_iso_date');
+			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->save();

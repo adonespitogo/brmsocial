@@ -23,7 +23,7 @@
 			<td ng-bind="p.product_name"></td>
 			<td ng-bind="p.tagline"></td>
 			<td ng-bind="p.category.category"></td>
-			<td ng-bind="p.created_at"></td>
+			<td ng-bind="p.created_at_iso_date | date:'fullDate'"></td>
 			<td style ="width:15%">
 				<a ui-sref="editProduct({id:p.id})" class="btn btn-success btn-small">
 					Edit

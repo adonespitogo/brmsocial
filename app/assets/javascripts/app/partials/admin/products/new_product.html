@@ -52,11 +52,11 @@
 	<div class="form-group">
 		<div class="col-md-6">
 			<label class="form-label">Sale Start Date</label>
-			<input ng-model="product.sale_start_date" bs-datepicker class="form-control" type="text" data-date-format="fullDate">
+			<input ng-model="product.sale_start_date_iso_date" bs-datepicker class="form-control" type="text" data-date-format="fullDate">
 		</div>
 		<div class="col-md-6">
 			<label class="form-label">Sale End Date</label>
-			<input data-date-format="fullDate" ng-model="product.sale_end_date" bs-datepicker class="form-control" type="text">
+			<input data-date-format="fullDate" ng-model="product.sale_end_date_iso_date" bs-datepicker class="form-control" type="text">
 		</div>
 	</div>
 	<button type="submit" ng-click="createProduct(product)" class="btn btn-success">Create</button>

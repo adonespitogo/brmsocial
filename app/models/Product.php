@@ -18,7 +18,7 @@ class Product extends BaseModel{
 		'sale_end_date',
 	);
 
-	protected $jsdatefields = array('sale_start_date', 'sale_end_date'); //js Date fields to format to datetime on save
+	protected $isodates = array('sale_start_date', 'sale_end_date', 'created_at'); //js Date fields to format to datetime on save
 
 	public static $relationsData = array(
 		'category' => array(self::BELONGS_TO, 'Category'),
