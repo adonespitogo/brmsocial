@@ -9,3 +9,4 @@ p.factory 'Products', ($resource) ->
 		myActiveProducts : {method: 'GET', params: {id: 'my-active-products'}, isArray: true},
 		myActiveProductsCount : {method: 'GET', params: {id: 'my-active-products-count'}, isArray: false}
 	}
+

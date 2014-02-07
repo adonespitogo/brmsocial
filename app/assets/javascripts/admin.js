@@ -13,10 +13,13 @@
 //= require jquery
 //= require lib/bootstrap/bootstrap
 //
-//= require lib/underscore/underscore
+//= require lib/underscore
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
+//= require lib/angular-strap/angular-strap
+//= require lib/angular-strap/angular-strap.tpl
+//
 //= require app/modules/admin_app
 //= require_tree app/controllers/admin
 //= require_tree app/services

@@ -5,7 +5,8 @@ module = angular.module 'AdminApp', [
 	'MainController',
 	'HomeControllers',
 	'ProductControllers',
-	'CategoryControllers'
+	'CategoryControllers',
+	'mgcrea.ngStrap', #angular-strap
 ]
 
 module.config [
@@ -28,5 +29,13 @@ module.config [
 			controller: 'HomeAdminCtrl'
 		})
 ]
-    
+
+module.config [
+	'$alertProvider',
+	($alertProvider)->
+		angular.extend($alertProvider.defaults, {
+			container : '#alerts-container'
+		})
+]
+
 

@@ -9,9 +9,13 @@
 	<div ng-app="AdminApp">
 		<div ng-controller="MainAdminCtrl">
 			@include('home.admin.header')
-			<div class="container" ui-view ></div>
+			<div class="container" ui-view autoscroll='false' ></div>
 		</div>
 	</div>
+	<hr>
+	<footer style=" text-align: center; padding-bottom: 10px">
+		BRM Deals &copy; 2014
+	</footer>
 @stop
 @section('scripts')
 	{{ javascript_include_tag('admin') }}
