@@ -3,7 +3,7 @@
         <!--logo start-->
         <div class="brand">
 
-            <a href="index-2.html" class="logo">
+            <a href="#/vendor" class="logo">
                 <img src="bucketadmin/images/logo.png" alt="">
             </a>
             <div class="sidebar-toggle-box">
