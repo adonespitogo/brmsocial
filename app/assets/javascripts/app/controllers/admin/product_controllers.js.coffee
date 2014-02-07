@@ -44,6 +44,25 @@ c.controller 'ProductListCtrl', [
 					$alert
 						title : "Product has been deleted successfully."
 						type: 'success'
+
+					$scope.products = _.reject $scope.products, (product)-> product.id == p.id 
+]
+
+c.controller 'NewProductCtrl', [
+	'$scope', 'Products', 'Category', '$alert'
+	($scope, Products, Category, $alert) ->
+		Category.query().$promise.then (categories) ->
+				console.log categories
+				$scope.categories = categories
+				$scope.product = Products.get id:"create"
+
+		$scope.createProduct = (p)->
+			p.$save ->
+				console.log $scope.product
+				$alert
+					title : "Product has been created successfully."
+					type: 'success'
+		
 ]
 
 c.controller 'EditProductCtrl', [
@@ -54,22 +73,9 @@ c.controller 'EditProductCtrl', [
 				$scope.product = Products.get id: $stateParams.id
 
 		$scope.updateProduct = (p)->
-			p.$update()
-
-		
-		
-]
-
-c.controller 'NewProductCtrl', [
-	'$scope', 'Products', 'Category', '$alert'
-	($scope, Products, Category, $alert) ->
-		Category.query().$promise.then (categories) ->
-				$scope.categories = categories
-				$scope.product = Products.get id: $stateParams.id
-
-		$scope.createProduct = (p)->
-			p.$save()
-
-		
+			p.$update ->
+				$alert
+					title : "Product has been updated successfully."
+					type: 'success'
 		
 ]

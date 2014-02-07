@@ -1,4 +1,5 @@
 <?php
+
 use LaravelBook\Ardent\Ardent;
 use Carbon\Carbon;
 

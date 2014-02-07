@@ -18,12 +18,12 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
 	Route::get('products/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
+	Route::resource('products', 'ProductController');
 	
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));
 
 	Route::get('commissions/my-receivable-commissions', array('uses' => 'CommissionController@myReceivableCommission'));
 
-	Route::resource('products', 'ProductController');
 	Route::controller('categories', 'CategoryController');
 });
