@@ -77,6 +77,19 @@
 			return Response::json(array('count' => $count));
 		}
 
+		public function productTraffic($id) {
+
+			$product = Product::find($id);
+
+			$traffic = $product->getProductTraffic($product->id);
+
+
+			$product_name = new stdClass();
+			$product_name->name = $product->product_name;
+
+			return Response::json(array('traffic' => $traffic, 'product_name' => $product_name));
+		}
+
 
 	}
 

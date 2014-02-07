@@ -1,7 +1,12 @@
+##The App that collects/gathers all the modules
+
 module = angular.module 'VendorApp', [
 	'ui.router',
 	'MainController',
 	'HomeControllers',
+	'ProductControllers',
+	'TrafficControllers',
+	'OrderControllers'
 ]
 
 module.config [

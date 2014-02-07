@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-sm-12">
+        <section class="panel">
+            <header class="panel-heading">
+                MY SALES LISTINGS
+                <span class="tools pull-right">
+                    <a href="javascript:;" class="fa fa-chevron-down"></a>
+                    <a href="javascript:;" class="fa fa-cog"></a>
+                    <a href="javascript:;" class="fa fa-times"></a>
+                 </span>
+            </header>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+	                    <tr>
+	                        <th>#</th>
+	                        <th>Product</th>
+	                        <th>Price</th>
+	                        <th>Comission Amount</th>
+	                        <th>Date</th>
+	                    </tr>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="order in orders">
+                    		<td>{{ order.id }}</td>
+                    		<td>{{ order.product_name }}</td>
+                    		<td>${{ order.price }}</td>
+                    		<td>${{ order.amount_commission }}</td>
+                    		<td>{{ order.created_at }}</td>
+                    	</tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

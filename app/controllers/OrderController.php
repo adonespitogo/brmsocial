@@ -12,6 +12,13 @@
 			return Response::json(array('salestoday' => $sales_today));
 		}
 
+		public function myOrdersList() {
+			
+			$orders = Auth::user()->orders;
+			return $orders;
+			//return Response::json(array('orders' => $orders));
+		}
+
 	}
 
 ?>

@@ -113,7 +113,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	//vendor
 	public function getMySalesToday() {
 		$id = $this->id;
-		$sales = DB::select(DB::raw("SELECT SUM(price) AS sales_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND user_id=".$id));
+		$sales = DB::select(DB::raw("SELECT CASE WHEN SUM(price) IS NOT NULL THEN SUM(price) ELSE 0 END AS sales_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND user_id=".$id));
 		return $sales[0]->sales_today;
 	}
 

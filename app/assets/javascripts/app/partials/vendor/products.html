@@ -1,18 +1,61 @@
-<h1>These are products</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <section class="panel">
+            <header class="panel-heading">
+                MY PRODUCT LISTINGS
+                <span class="tools pull-right">
+                    <a href="javascript:;" class="fa fa-chevron-down"></a>
+                    <a href="javascript:;" class="fa fa-cog"></a>
+                    <a href="javascript:;" class="fa fa-times"></a>
+                 </span>
+            </header>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+	                    <tr>
+	                        <th>#</th>
+	                        <th>Category</th>
+	                        <th>Name</th>
+	                        <th>Overview</th>
+	                        <th>Tagline</th>
+	                        <th>Regular Price</th>
+	                        <th>Discounted Price</th>
+	                        <th>Sale Start</th>
+	                        <th>Sale End</th>
+	                        <th>Terms</th>
+	                        <th>Date Added</th>
+	                        <th>Visits Today</th>
+	                        <th>Traffic</th>
+	                    </tr>
+                    </thead>
+                    <tbody>
+	                    <tr ng-repeat="product in products">
+	                        <td>{{ product.id }}</td>
+	                        <td>{{ product.category.category }}</td>
+	                        <td>{{ product.product_name }}</td>
+	                        <td>{{ product.overview }}</td>
+	                        <td>{{ product.tagline }}</td>
+	                        <td>{{ product.regular_price }}</td>
+	                        <td>{{ product.discounted_price }}</td>
+	                        <td>{{ product.sale_start_date }}</td>
+	                        <td>{{ product.sale_end_date }}</td>
 
-<table>
-	<thead>
-		<tr>
-			<th>Product Name</th>
-			<th>Tagline</th>
-			<th>Date Created</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="p in products">
-			<td ng-bind="p.product_name"></td>
-			<td ng-bind="p.tagline"></td>
-			<td ng-bind="p.created_at"></td>
-		</tr>
-	</tbody>
-</table>
+	                        <td>
+	                        	<ul>
+	                        		<li ng-repeat="term in product.terms">
+	                        			<i class="fa fa-check"></i> &nbsp;
+	                        			{{ term.term }}
+	                        		</li>
+	                        	</ul>
+	                        </td>
+
+	                        <td>{{ product.created_at }}</td>
+	                        <td>{{ product.traffic_today }}</td>
+	                        <td><a href="#/product/{{ product.id }}/traffic"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
+	                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
