@@ -1,1 +1,63 @@
-new product
+<h3>
+	New Product
+	<a ui-sref="products" class="btn btn-default btn-sm pull-right">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+		Back
+	</a>
+</h3>
+<hr>
+<div id="alerts-container"></div>
+<form novalidate name="productForm" class="form-horizontal">
+	<div class="form-group">
+		<div class="col-md-6">
+			<label class="form-label">Product Title</label>
+			<input name="product_name" type="text" class="form-control" ng-model="product.product_name">
+		</div>
+		<div class="col-md-6">
+			<label class="form-label">Tagline</label>
+			<input name="tagline" type="text" class="form-control" ng-model="product.tagline">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-6">
+			<label class="form-label">Regular Price</label>
+			<input type="text" name="price" class="form-control" ng-model="product.regular_price">
+		</div>
+		<div class="col-md-6">
+			<label class="form-label">Discounted Price (<i>actual price during purchase</i>)</label>
+			<input type="text" name="price" class="form-control" ng-model="product.discounted_price">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="form-label">Overview</label>
+			<textarea name="overview" cols="30" rows="10" class="form-control" ng-model="product.overview"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-6">
+			<label class="form-label">Category</label>
+			<select 
+				name="category"
+				class="form-control"
+				ng-model="product.category_id"
+				ng-options="c.id as c.category for c in categories" >
+			</select>
+		</div>
+		<div class="col-md-6">
+			<label class="form-label">Product Image</label>
+			<input type="text" ng-model="product.product_image" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-6">
+			<label class="form-label">Sale Start Date</label>
+			<input ng-model="product.sale_start_date_iso_date" bs-datepicker class="form-control" type="text" data-date-format="fullDate">
+		</div>
+		<div class="col-md-6">
+			<label class="form-label">Sale End Date</label>
+			<input data-date-format="fullDate" ng-model="product.sale_end_date_iso_date" bs-datepicker class="form-control" type="text">
+		</div>
+	</div>
+	<button type="submit" ng-click="createProduct(product)" class="btn btn-success">Create</button>
+</form>

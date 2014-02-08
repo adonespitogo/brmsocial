@@ -7,6 +7,28 @@
 			return Product::all();
 		}
 
+		public function create()
+		{
+			return new Product();
+		}
+
+		public function store()
+		{
+
+			$p = new Product();
+			$p->category_id = Input::get('category_id');
+			$p->product_name = Input::get('product_name');
+			$p->tagline = Input::get('tagline');
+			$p->regular_price = Input::get('regular_price');
+			$p->discounted_price = Input::get('discounted_price');
+			$p->sale_start_date = Input::get('sale_start_date_iso_date');
+			$p->sale_end_date = Input::get('sale_end_date_iso_date');
+			$p->product_image = Input::get('product_image');
+			$p->overview = Input::get('overview');
+			$p->save();
+			return $p;
+		}
+
 		public function show($id)
 		{
 			return Product::find($id);
@@ -20,8 +42,8 @@
 			$p->tagline = Input::get('tagline');
 			$p->regular_price = Input::get('regular_price');
 			$p->discounted_price = Input::get('discounted_price');
-			$p->sale_start_date = Input::get('sale_start_date');
-			$p->sale_end_date = Input::get('sale_end_date');
+			$p->sale_start_date = Input::get('sale_start_date_iso_date');
+			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->save();

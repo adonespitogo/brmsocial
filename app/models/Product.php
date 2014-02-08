@@ -18,10 +18,7 @@ class Product extends BaseModel{
 		'sale_end_date',
 	);
 
-	public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
-  	public $autoPurgeRedundantAttributes = true;
-
-	protected $jsdatefields = array('sale_start_date', 'sale_end_date'); //js Date fields to format to datetime on save
+	protected $isodates = array('sale_start_date', 'sale_end_date', 'created_at'); //js Date fields to format to datetime on save
 
 	public static $relationsData = array(
 		'category' => array(self::BELONGS_TO, 'Category'),
@@ -36,6 +33,8 @@ class Product extends BaseModel{
 		parent::__construct();
 		$this->sale_start_date = date('Y:m:d H:i:s');
 		$this->sale_end_date = date('Y:m:d H:i:s');
+		$this->product_image = 'default.png';
+		$this->category_id = Category::first()->id;
 	}
 	
 	public function toArray()
