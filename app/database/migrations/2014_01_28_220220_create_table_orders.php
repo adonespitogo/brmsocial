@@ -15,6 +15,7 @@ class CreateTableOrders extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('product_id');
+			$table->integer('vendor_id');
 			$table->string('product_name');
 			$table->decimal('price', 10, 2);
 			$table->decimal('amount_commission', 10, 2);

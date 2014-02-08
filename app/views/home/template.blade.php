@@ -48,7 +48,7 @@
     <script src="bucketadmin/assets/jquery.scrollTo/jquery.scrollTo.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="bucketadmin/assets/calendar/clndr.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <!--script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script-->
     <script src="bucketadmin/assets/calendar/moment-2.2.1.js"></script>
     <script src="bucketadmin/js/calendar/evnt.calendar.init.js"></script>
     <script src="bucketadmin/assets/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>

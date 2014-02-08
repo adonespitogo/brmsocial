@@ -29,5 +29,3 @@ module.config [
 			controller: 'HomeCtrl'
 		})
 ]
-    
-

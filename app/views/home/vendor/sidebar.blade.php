@@ -25,19 +25,27 @@
                         <i class="fa fa-book"></i>
                         <span>Products</span>
                     </a>
-                </li>
+                </li>  
+                <li>
+                    <a href="#/sales">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Sales </span>
+                    </a>
+                </li> 
                 <li>
                     <a href="javascript:void(0)">
                         <i class="fa fa-bullhorn"></i>
                         <span>Traffic </span>
                     </a>
-                </li>
+                </li>             
                 <li>
                     <a href="#/orders">
                         <i class="fa fa-th"></i>
-                        <span>Sales/Orders </span>
+                        <span>My Purchases </span>
                     </a>
                 </li>
+                
+                
                 <li>
                     <a href="mail.html">
                         <i class="fa fa-envelope"></i>

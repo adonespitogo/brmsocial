@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                MY ORDERS
+                MY SALES
                 <span class="tools pull-right">
                     <a href="javascript:;" class="fa fa-chevron-down"></a>
                     <a href="javascript:;" class="fa fa-cog"></a>
@@ -20,11 +20,11 @@
 	                    </tr>
                     </thead>
                     <tbody>
-                    	<tr ng-repeat="order in orders">
-                    		<td>{{ order.id }}</td>
-                    		<td>{{ order.product_name }}</td>
-                    		<td>${{ order.price }}</td>
-                    		<td>{{ order.created_at }}</td>
+                    	<tr ng-repeat="sale in sales">
+                    		<td>{{ sale.id }}</td>
+                    		<td>{{ sale.product_name }}</td>
+                    		<td>${{ sale.price }}</td>
+                    		<td>{{ sale.created_at }}</td>
                     	</tr>
                     </tbody>
                 </table>

@@ -22,6 +22,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
+	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
 
 	Route::get('commissions/my-receivable-commissions', array('uses' => 'CommissionController@myReceivableCommission'));
 	Route::get('product/{id}/traffic', array('uses' => 'ProductController@productTraffic'));
