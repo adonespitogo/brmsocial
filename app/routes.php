@@ -18,6 +18,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
 	Route::get('products/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
+	Route::get('product/{id}/traffic', array('uses' => 'ProductController@productTraffic'));
 	Route::resource('products', 'ProductController');
 	
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
