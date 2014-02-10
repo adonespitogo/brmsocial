@@ -1,6 +1,7 @@
 
 o = angular.module "OrderControllers", [
-	'OrderServices'
+	'OrderServices',
+	'SaleServices'
 ]
 
 o.config [
@@ -14,11 +15,22 @@ o.config [
 			template: JST[ templatePath + 'vendor/orders' ],
 			controller: 'VendorOrderListCtrl'
 		})
+		.state('sales', {
+			url: "/sales",
+			template: JST[ templatePath + 'vendor/sales' ],
+			controller: 'VendorSalesListCtrl'
+		})
 ]
 
 o.controller 'VendorOrderListCtrl', [
 	'$scope', 'Orders',
-	($scope, Orders) ->
-		console.log 'aw'
+	($scope, Orders) ->		
 		$scope.orders = Orders.myOrderList()
+]
+
+o.controller 'VendorSalesListCtrl', [
+	'$scope', 'Sales',
+	($scope, Sales) ->
+		$scope.sales = Sales.query()
+
 ]

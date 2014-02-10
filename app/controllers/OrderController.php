@@ -19,6 +19,10 @@
 			//return Response::json(array('orders' => $orders));
 		}
 
+		public function mySalesList() {
+			return Auth::user()->sales;
+		}
+
 	}
 
 ?>
