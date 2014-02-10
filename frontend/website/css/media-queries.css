@@ -1,0 +1,36 @@
+@import url("font-awesome.min.css");
+@import url("fonts.css");
+@import url("style.css");
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+/*font-family: 'Open Sans', sans-serif;*/
+
+/*@media sizes*/
+@media (min-width: 1200px) { 
+	/*body { border:10px solid red; }*/
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	/*body { border:10px solid blue; }*/
+
+	
+}
+
+@media (min-width: 768px) and (max-width: 991px) { 
+	/*body { border:10px solid green; }*/
+	
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	/*body { border:10px solid yellow; }*/
+
+	
+}
+
+@media screen and (max-width: 600px) {
+	/*body { border:10px solid pink; }*/
+	
+}
