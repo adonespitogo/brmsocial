@@ -11,7 +11,7 @@ main.controller "MainVendorCtrl", [
 			# {state: 'vendor', text: 'Dashboard', active: true}
 			{state: 'products', text: 'Products', active: true}
 			{state: 'sales', text: 'Sales', active: false}
-			{state: 'orders', text: 'Orders', active: false}
+			# {state: 'orders', text: 'Orders', active: false}
 		]
 
 		$scope.copyCurrentUser = ->
