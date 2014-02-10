@@ -50,7 +50,9 @@ class Product extends BaseModel{
 
 	// start custom functions
 
-	public function getProductTraffic($id) {
+	public function getProductTraffic() {
+
+		$id = $this->id;
 
 		$traffic = DB::select(DB::raw("SELECT date_format(created_at, '%d') AS elapsed, COUNT(id) AS value
 											FROM product_traffic 
