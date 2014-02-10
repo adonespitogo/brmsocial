@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" ui-sref="admin">
+          <a class="navbar-brand" ui-sref="vendor">
             <span class="glyphicon glyphicon-home"></span>
             Dashboard
           </a>
@@ -17,7 +17,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a ui-sref="vendor">Dashboard</a></li>
             <li><a ui-sref="products">Products</a></li>
             <li><a ui-sref="sales">Sales</a></li>
             <li><a ui-sref="traffics">Traffics</a></li>
