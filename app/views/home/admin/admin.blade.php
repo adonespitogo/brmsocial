@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('head')
+	<title>BRM Deals - Admin</title>
     <link rel="stylesheet" href="bootstrap-3.1/css/bootstrap.min.css">
     {{stylesheet_link_tag('admin')}}
 @stop
