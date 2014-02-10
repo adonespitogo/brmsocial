@@ -17,6 +17,7 @@
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
+//
 //= require app/modules/vendor_app
 //= require_tree app/controllers/vendor
 //= require_tree app/services
