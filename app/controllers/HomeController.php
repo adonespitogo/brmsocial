@@ -17,14 +17,20 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		if (Auth::user()->is_admin){
+		switch (Auth::user()->type) {
+			case 'admin':
 			return View::make('home.admin.admin');
-		}
-		elseif (Auth::user()->is_vendor){
-			return View::make('home.vendor.vendor');
-		}
-		else{
+				break;
+			case 'vendor':
+			return View::make('home.vendor.index');
+				break;
+			case 'customer':
 			return View::make('home.customer');
+				break;
+			
+			default:
+				return View::make('home.customer');
+				break;
 		}
 	}
 
