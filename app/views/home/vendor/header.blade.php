@@ -1,54 +1,38 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ui-sref="admin">
+            <span class="glyphicon glyphicon-home"></span>
+            Dashboard
+          </a>
+        </div>
 
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a class="active" href="#/vendor">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-laptop"></i>
-                        <span>Categories</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="boxed_page.html">Boxed Page</a></li>
-                        <li><a href="horizontal_menu.html">Horizontal Menu</a></li>
-                        <li><a href="language_switch.html">Language Switch Bar</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#/products">
-                        <i class="fa fa-book"></i>
-                        <span>Products</span>
-                    </a>
-                </li>  
-                <li>
-                    <a href="#/sales">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>Sales </span>
-                    </a>
-                </li> 
-                <li>
-                    <a href="javascript:void(0)">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>Traffic </span>
-                    </a>
-                </li>             
-                <li>
-                    <a href="#/orders">
-                        <i class="fa fa-th"></i>
-                        <span>My Purchases </span>
-                    </a>
-                </li>
-                
-                
-                <li>
-                    <a href="mail.html">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                    </a>
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="vendor">Dashboard</a></li>
+            <li><a ui-sref="products">Products</a></li>
+            <li><a ui-sref="sales">Sales</a></li>
+            <li><a ui-sref="traffics">Traffics</a></li>
+            <li><a ui-sref="orders">orders</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown"> Settings <span class="glyphicon glyphicon-cog"></span></b></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div style="height: 60px"></div>
