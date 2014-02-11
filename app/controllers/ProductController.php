@@ -89,7 +89,7 @@
 
 			$product = Product::find($id);
 
-			$traffic = $product->getProductTraffic($product->id);
+			$traffic = $product->getProductTraffic();
 
 
 			$product_name = new stdClass();

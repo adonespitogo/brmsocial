@@ -11,9 +11,21 @@ main.controller "MainVendorCtrl", [
 			# {state: 'vendor', text: 'Dashboard', active: true}
 			{state: 'products', text: 'Products', active: true}
 			{state: 'sales', text: 'Sales', active: false}
-			{state: 'traffic', text: 'Traffic', active: false}
-			{state: 'orders', text: 'Orders', active: false}
+			# {state: 'orders', text: 'Orders', active: false}
 		]
+
+		$scope.copyCurrentUser = ->
+			$scope.tmpUser = angular.copy $scope.currentUser
+
+		$scope.updateCurrentUser = ->
+			$scope.tmpUser.$update({id:'me'},
+				->
+					alert 'Account has been updated successfully.'
+					$("#account-settings").modal 'hide'
+				, 
+				(res)->
+					alert 'Invalid password.'
+				)
 
 		$scope.activateNav = (nav) ->
 			$scope.navs = _.map $scope.navs, (n)->

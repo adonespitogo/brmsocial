@@ -10,4 +10,5 @@
  * but before any files alphabetically greater than 'application.css' 
  *
  *= require_tree ./lib/angular/ng-grid
+ *= require_tree ./vendor
  */

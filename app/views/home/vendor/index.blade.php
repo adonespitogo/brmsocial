@@ -3,14 +3,15 @@
 @section('head')
 	<title>BRM Deals - Vendor</title>
     <link rel="stylesheet" href="bootstrap-3.1/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     {{stylesheet_link_tag('vendor')}}
 @stop
 
 @section('body')
-	<div ng-app="VendorApp">
+	<div ng-app="VendorApp" style="width: 99%;">
 		<div ng-controller="MainVendorCtrl">
 			@include('home.vendor.header')
-			<div class="container" autoscroll='false' ui-view >
+			<div style="padding: 10px;" autoscroll='false' ui-view >
 				
 			</div>
 		</div>
