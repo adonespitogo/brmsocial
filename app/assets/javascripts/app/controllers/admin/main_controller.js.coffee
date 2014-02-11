@@ -3,8 +3,18 @@ main = angular.module "MainController", [
 ]
 
 main.controller "MainAdminCtrl", [
-	'$scope', 'Users'
-	($scope, Users) ->
+	'$scope', 'Users','$state',
+	($scope, Users, $state) ->
+
+		$scope.state = $state;
+
+		$scope.navs = [
+					   {state:'products', label: 'Products'},
+					   {state: 'categories' ,label: 'Categories'},
+					   {state: 'users', label:'Users'}	
+					  ]
+						
+
 		$scope.currentUser = Users.get(id: 'me')
 
 		$scope.alert = {

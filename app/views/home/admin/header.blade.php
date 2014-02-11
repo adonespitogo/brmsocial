@@ -17,12 +17,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a ui-sref="products">Products</a></li>
-            <li><a ui-sref="categories">Categories</a></li>
+            <li ng-repeat="nav in navs" ng-class="{'active': state.current.name==nav.state}">
+              <a ui-sref="@{{nav.state}}" ng-bind="nav.label"></a>
+            </li>  
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"> Settings <span class="glyphicon glyphicon-cog"></span></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"><b>Settings <span class="glyphicon glyphicon-cog"></span></b></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">My Account</a></li>
                 <li><a href="#">Logout</a></li>

@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
     	"codesleeve/asset-pipeline": "dev-master",
-    	"laravelbook/ardent": "dev-master"
+    	"laravelbook/ardent": "dev-master",
+    	"codesleeve/stapler": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
