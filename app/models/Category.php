@@ -1,15 +1,17 @@
 <?php
 
-use LaravelBook\Ardent\Ardent;
+// use LaravelBook\Ardent\Ardent;
 
-class Category extends Ardent{
+class Category extends BaseModel{
 
 	protected $table = 'categories';
 	protected $softDelete = true;
 
-	public static $relationsData = array(
-		'products' => array(self::HAS_MANY, 'Product'),
-	);
+	protected $isodates = array('created_at');
+
+	public function products(){
+		return $this->hasMany('Product');
+	}
 }
 
 ?>

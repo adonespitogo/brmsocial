@@ -1,0 +1,39 @@
+<h3>
+	User List 
+	<a ui-sref="newUser" class="btn btn-sm btn-info pull-right">
+		<span class="glyphicon glyphicon-plus"></span> 
+		Add User 
+	</a>
+</h3>
+
+<div id="alerts-container" ></div>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>email</th>
+			<th>type</th> 
+			<th>Date Created</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="u in users">
+			<td ng-bind="u.firstname"></td>
+			<td ng-bind="u.lastname"></td>
+			<td ng-bind="u.email"></td> 
+			<td ng-bind="u.type"></td> 
+			<td ng-bind="u.created_at_iso_date | date:'fullDate'"></td>
+			<td style ="width:15%">
+				<a ui-sref="editUser({id:u.id})" class="btn btn-success btn-small">
+					Edit
+				</a>
+				<a ng-click="deleteUser(u)" class="btn btn-danger btn-small">
+					Delete
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
