@@ -38,7 +38,7 @@
 							</label>
 						</div>
 					</div>
-					<button class="btn btn-primary" type="submit" style="width: 100%;">Login</button>
+					<button class="btn btn-primary btn-block" type="submit">Login</button>
 				</form>
 			</div>
 		</div>
