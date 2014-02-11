@@ -3,7 +3,7 @@
 @section('head')
 	<link rel="stylesheet" href="{{ URL::to('bootstrap-3.1/css/bootstrap.cosmo.min.css')}}">
 	<style type="text/css">
-		.logo-img { width: 80px; }
+		.logo-img { width: 80px; display: block; margin: 0px auto;}
 		.align-center { text-align: center; }
 	</style>
 @stop
@@ -12,10 +12,17 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4 col-lg-offset-4" style="padding-top: 50px;">
+			<div class="col-xs-12 col-lg-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-lg-offset-4" style="padding-top: 50px;">
 
 				<p class="align-center">
-					{{ image_tag('brmsocial-icon.png', array('class' => 'logo-img')) }}
+					{{ 
+						image_tag(
+							'brmsocial-icon.png', 
+							array(
+								'class' => 'logo-img img-responsive'
+							)
+						) 
+					}}
 				</p>
 
 				<form action="{{URL::to('session/login')}}" method="POST">
