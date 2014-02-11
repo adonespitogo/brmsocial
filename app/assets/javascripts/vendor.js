@@ -13,9 +13,6 @@
 //= require jquery
 //= require lib/bootstrap/bootstrap
 //
-//= require_tree lib/morris
-//= require lib/underscore
-//= require lib/momentjs/moment
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
@@ -24,4 +21,8 @@
 //= require_tree app/controllers/vendor
 //= require_tree app/services
 //= require_tree app/partials/vendor
+//
+//= require lib/underscore/underscore
+//= require lib/momentjs/moment
+//= require_tree lib/morris
 //
