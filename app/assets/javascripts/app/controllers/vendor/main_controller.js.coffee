@@ -9,7 +9,7 @@ main.controller "MainVendorCtrl", [
 
 		$scope.navs = [
 			# {state: 'vendor', text: 'Dashboard', active: true}
-			{state: 'products', text: 'Products', active: true}
+			{state: 'products', text: 'Products', active: false}
 			{state: 'sales', text: 'Sales', active: false}
 			# {state: 'orders', text: 'Orders', active: false}
 		]
@@ -31,6 +31,11 @@ main.controller "MainVendorCtrl", [
 			$scope.navs = _.map $scope.navs, (n)->
 				if n.state == nav.state then n.active = true else n.active = false
 				n
+
+		$scope.navsOff = ->
+			$scope.navs = _.map $scope.navs, (n)->
+							n.active = false
+							n
 ]
 
 

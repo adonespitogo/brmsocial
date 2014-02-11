@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" ui-sref="vendor" ng-click="activateNav(navs[0])">
+          <a class="navbar-brand" ui-sref="vendor" ng-click="navsOff()">
             <span class="glyphicon glyphicon-home"></span>
             Dashboard
           </a>

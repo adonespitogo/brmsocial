@@ -4,11 +4,30 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.16",
+		"laravel/framework": "4.1.*",
     	"codesleeve/asset-pipeline": "dev-master",
     	"laravelbook/ardent": "dev-master",
     	"codesleeve/stapler": "dev-master"
 	},
+	"repositories": [
+	        {
+	                "type": "package",
+	                "package": {
+	                        "name": "laravelbook/ardent",
+	                        "version": "dev-master",
+	                        "source": {
+	                                "type": "git",
+	                                "url": "https://github.com/bexarcreativeinc/ardent.git",
+	                                "reference": "master"
+	                        },
+	                        "autoload": {
+	                                "psr-0": {
+	                                        "LaravelBook\\Ardent": "src/"
+	                                }
+	                        }
+	                }
+	        }
+	],
 	"autoload": {
 		"classmap": [
 			"app/commands",
