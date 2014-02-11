@@ -2,7 +2,8 @@
 
 @section('head')
 	<title>BRM Deals - Vendor</title>
-    <link rel="stylesheet" href="bootstrap-3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.1/css/bootstrap.cosmo.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     {{stylesheet_link_tag('vendor')}}
 @stop
 
@@ -10,7 +11,7 @@
 	<div ng-app="VendorApp">
 		<div ng-controller="MainVendorCtrl">
 			@include('home.vendor.header')
-			<div class="container" autoscroll='false' ui-view >
+			<div style="padding: 10px 15px;" autoscroll='false' ui-view >
 				
 			</div>
 		</div>

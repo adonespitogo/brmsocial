@@ -2,8 +2,8 @@
 
 // use LaravelBook\Ardent\Ardent;
 
-class Product extends BaseModel{
-
+class Product extends BaseModel{ 
+		
 	protected $table = 'products';
 	protected $softDelete = true;
 
@@ -27,9 +27,10 @@ class Product extends BaseModel{
 		'terms' => array(self::HAS_MANY, 'Term'),
 		'traffic' => array(self::HAS_MANY, 'Traffic')
 	);
+
 	//start overrides
 	public function __construct()
-	{
+	{	 
 		parent::__construct();
 		$this->sale_start_date = date('Y:m:d H:i:s');
 		$this->sale_end_date = date('Y:m:d H:i:s');
@@ -41,25 +42,38 @@ class Product extends BaseModel{
 	{
 		$this->load('category');
 		$this->load('terms');
-
-		$this->traffic_today = $this->traffic()->whereRaw("created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59')")->groupBy('ip')->count();
-		$this->traffic_today = is_null($this->traffic_today) ? 0 : $this->traffic_today;
+		$this->traffic_today_count = $this->getTrafficTodayCount();
 
 		return parent::toArray();
 	}
 
 	// start custom functions
 
-	public function getProductTraffic($id) {
+	public function loadProductTraffic()
+	{
+		$this->load(array('traffic' => function($query){
+			$days = 30;  //days of traffic to load
+			$today = Carbon\Carbon::now();
+			$last_num_days_date = $today->subDays($days);
+			$query->where('created_at', '>=', $last_num_days_date);
+		}));
 
-		$traffic = DB::select(DB::raw("SELECT date_format(created_at, '%d') AS elapsed, COUNT(id) AS value
-											FROM product_traffic 
-												WHERE product_id=".$id."
-													GROUP BY date_format(created_at, '%d')
-														LIMIT 30"));
-
-		return $traffic;
 	}
+
+	public function pictures(){
+		return $this->hasMany('ProductPicture');
+	}
+
+	public function getTrafficTodayCount()
+	{
+		$today = Carbon\Carbon::now()->startOfDay();
+		$count = $this->traffic()->where('created_at', '>=', $today)->count();
+		if(is_null($count)){
+			return 0;
+		}
+		return $count;
+	}
+
 }
 
 ?>

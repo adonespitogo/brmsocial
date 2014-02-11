@@ -35,36 +35,29 @@ c.config [
 ]
 
 c.controller 'CategoryListCtrl', [
-	'$scope', '$location', 'Category',
-	($scope, $location, Category) ->
+	'$scope', '$location', 'Category','$alert',
+	($scope, $location, Category, $alert) ->
 
 		$scope.categories = Category.query()	
 
-		$scope.editSubmit = (id) ->
-			category = $('[name="category"]').val()
-
-			Category.update(
-				{id: id},
-				{category: category},
-				()->
-					alert('category successfully updated')
-					$location.path('/categories')
-				)
 		$scope.delete = (id)->
 
 			Category.delete(
 				{},
 				{id: id},
 				()->
-					alert('successfully deleted')
+					$alert
+						title : "Category has been deleted successfully."
+						type: 'success'
+
 					$scope.categories = Category.query()
 				)
 ]
 
 
 c.controller 'EditCategoryCtrl', [
-	'$scope', '$location', '$stateParams', 'Category',
-	($scope, $location, $stateParams, Category) ->
+	'$scope', '$location', '$stateParams', 'Category','$alert',
+	($scope, $location, $stateParams, Category, $alert) ->
 
 		id = $stateParams.id;
 
@@ -77,14 +70,16 @@ c.controller 'EditCategoryCtrl', [
 				{id: id},
 				{category: category},
 				()->
-					alert('category successfully updated')
+					$alert
+						title : "Category has been updated successfully."
+						type: 'success'
 					$location.path('/categories')
 				)
 ]
 		
 c.controller 'AddCategoryCtrl',[
-	'$scope', '$location', '$stateParams', 'Category',
-	($scope, $location, $stateParams, Category)->
+	'$scope', '$location', '$stateParams', 'Category','$alert',
+	($scope, $location, $stateParams, Category, $alert)->
 
 		$scope.submitted = false;
 
@@ -94,7 +89,9 @@ c.controller 'AddCategoryCtrl',[
 			Category.save({},
 				{category: cat_name},
 				()->
-					alert('category successfully added')
+					$alert
+						title : "Category has been added successfully."
+						type: 'success'
 					$location.path('/categories')
 			)
 ]

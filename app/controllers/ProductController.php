@@ -26,6 +26,14 @@
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->save();
+			
+			if(Input::hasFile('pictures')){
+				foreach (Input::file('pictures') as $key => $picture) {
+					$p->pictures()->save($picture);
+				}
+
+			}
+
 			return $p;
 		}
 
@@ -80,14 +88,9 @@
 		public function productTraffic($id) {
 
 			$product = Product::find($id);
+			$product->loadProductTraffic();
+			return $product;
 
-			$traffic = $product->getProductTraffic($product->id);
-
-
-			$product_name = new stdClass();
-			$product_name->name = $product->product_name;
-
-			return Response::json(array('traffic' => $traffic, 'product_name' => $product_name));
 		}
 
 

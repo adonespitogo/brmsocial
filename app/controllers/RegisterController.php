@@ -2,68 +2,27 @@
 
 class RegisterController extends BaseController{
 
-	// public function getIndex(){
-	// 	return View::make('public.register')->with('err');
-	// }
-
-	// public function postSignup(){
-		
-
-	// 	$user = new  User();
-	// 	$user->firstname = Input::get('first_name');
-	// 	$user->lastname = Input::get('last_name');
-	// 	$user->email = Input::get('email');
-	// 	$user->password = Input::get('password');
-	// 	$user->customer_type = 'ordinary';
-
-	// 	if($user->save())
-	// 	{
-	// 		if(Input::get('newsletter-subscribe'))
-	// 		{
-	// 			$subs = new Subscriber;
-	// 			$subs->user_id = $user->id;
-	// 			$subs->save();
-	// 		}
-	// 		Auth::login($user);
-	// 		return Redirect::to('services');
-	// 	}
-	// 	else
-	// 	{
-	// 		return View::make('public.register')->with('err', $user->validationErrors);
-	// 	}
-		
-	// }
-
-	public function passwordReset()
+	public function updateAccount()
 	{
-		return View::make('public.forgot_password');
-	}
+		$creds = array(
+			'email' => Input::get('email'),
+			'password' => Input::get('current_password'),
+		);
 
-	public function passwordDoReset()
-	{
-		
+		$id = Input::get('id');
 		$email = Input::get('email');
-		$user = User::where('email', $email)->first();
+		$new_password = Input::get('new_password');
 
-		if(!is_null($user)) {
-			
-			$password = BRMHelper::genRandomPassword();
-			$user->password = $password;
-			$user->updateUniques();
-			//send new password to user
-			MailHelper::forgotPasswordMessage($user->email, $password);
-
-			Session::flash('notice', 'Success! New password coming your way. Please check your email. <a href="'
-				.URL::to('/').'">Login now.</a>');
-			return View::make('public.forgot_password');
-
+		if(Auth::validate($creds)){
+			$user = User::find($id);
+			$user->email = $email;
+			$user->password = $new_password;
+			$user->save();
+			return $user;
 		}
-		else{
-			Session::flash('alert', 'Sorry, <strong>'.$email.'</strong> has no associated account yet.');
-			return View::make('public.forgot_password');
-		}
-
+		return Response::make(json_encode(array(
+			'error_message' => 'Invalid password', 
+		)), 500);
 	}
-
 	
 }
