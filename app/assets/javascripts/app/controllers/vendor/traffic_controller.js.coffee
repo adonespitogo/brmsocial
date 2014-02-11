@@ -26,7 +26,7 @@ traffic.controller 'VendorTrafficCtrl', [
 	($scope, ProductTraffic, $stateParams) ->
 
 		ProductTraffic.fetch $stateParams.id, (traffics)->
-			console.log traffics
+			
 			$scope.traffics = traffics.traffic
 			$scope.product_name = traffics.product_name.name
 
@@ -35,18 +35,6 @@ traffic.controller 'VendorTrafficCtrl', [
 
 			if not $scope.traffics instanceof Array
 				$scope.traffics.length = [ {"elapsed": 0, "value": 0} ]
-
-		# $scope.traffics = ProductTraffic.productTraffic id: $stateParams.id, (traffics) ->
-
-		# 	traffic_info = for elapsed, value of traffics
-				
-
-
-		# console.log($scope.traffics)
-
-
-		# traffic_info = {}
-		
 
 		# day_data = [
 		#     {"elapsed": "I", "value": 34},
@@ -63,7 +51,7 @@ traffic.controller 'VendorTrafficCtrl', [
 
 		# #console.log day_data
 
-			Morris.Line {
+			new Morris.Line {
 			    element: 'graph-line',
 			    data: $scope.traffics,
 			    xkey: 'elapsed',

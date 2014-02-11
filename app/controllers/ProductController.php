@@ -83,6 +83,7 @@
 
 			$traffic = $product->getProductTraffic($product->id);
 
+			
 
 			$product_name = new stdClass();
 			$product_name->name = $product->product_name;

@@ -11,7 +11,7 @@ main.controller "MainVendorCtrl", [
 			# {state: 'vendor', text: 'Dashboard', active: true}
 			{state: 'products', text: 'Products', active: true}
 			{state: 'sales', text: 'Sales', active: false}
-			{state: 'traffic', text: 'Traffic', active: false}
+			# {state: 'traffic', text: 'Traffic', active: false}
 			# {state: 'orders', text: 'Orders', active: false}
 		]
 
@@ -20,5 +20,3 @@ main.controller "MainVendorCtrl", [
 				if n.state == nav.state then n.active = true else n.active = false
 				n
 ]
-
-
