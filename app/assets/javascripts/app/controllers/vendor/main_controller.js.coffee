@@ -31,9 +31,7 @@ main.controller "MainVendorCtrl", [
 			$scope.navs = _.map $scope.navs, (n)->
 				if n.state == nav.state then n.active = true else n.active = false
 				n
-<<<<<<< HEAD
-]
-=======
+
 
 		$scope.navsOff = ->
 			$scope.navs = _.map $scope.navs, (n)->
@@ -41,5 +39,3 @@ main.controller "MainVendorCtrl", [
 							n
 ]
 
-
->>>>>>> a71a64d4f7c8de9a8e8e69198136adb2ef3a50fc
