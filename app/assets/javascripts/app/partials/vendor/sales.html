@@ -15,7 +15,9 @@
 	                    <tr>
 	                        <th>#</th>
 	                        <th>Product</th>
-	                        <th>Price</th>
+                            <th>Price</th>
+                            <th>Commission Percentage</th>
+	                        <th>Receivable Commision</th>
 	                        <th>Date</th>
 	                    </tr>
                     </thead>
@@ -23,8 +25,10 @@
                     	<tr ng-repeat="sale in sales">
                     		<td>{{ sale.id }}</td>
                     		<td>{{ sale.product_name }}</td>
-                    		<td>${{ sale.price }}</td>
-                    		<td>{{ sale.created_at }}</td>
+                            <td>${{ sale.price }}</td>
+                            <td>{{ sale.percentage_commission }} %</td>
+                    		<td>${{ sale.amount_commission }}</td>
+                    		<td>{{ sale.created_at_iso_date | date: 'fullDate' }}</td>
                     	</tr>
                     </tbody>
                 </table>
