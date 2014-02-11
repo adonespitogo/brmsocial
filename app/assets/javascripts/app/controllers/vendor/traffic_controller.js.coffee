@@ -26,8 +26,9 @@ traffic.controller 'VendorTrafficCtrl', [
 	($scope, ProductTraffic, $stateParams) ->
 
 		ProductTraffic.fetch $stateParams.id, (traffics)->
+			console.log traffics
 			$scope.traffics = traffics.traffic
-			$scope.product = traffics.product_name
+			$scope.product_name = traffics.product_name.name
 
 			# console.log($scope.traffics)
 			# console.log($scope.traffics.length)

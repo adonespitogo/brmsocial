@@ -1,0 +1,21 @@
+.row-item { background-color: #fff; margin: 10px; padding: 20px; border-radius: 3px; }
+.mini-stat-icon {
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	line-height: 60px;
+	text-align: center;
+	font-size: 30px;
+	background: #eee;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	border-radius: 100%;
+	float: left;
+	margin-right: 10px;
+	color: #fff;
+}
+.mini-stat-info span {
+	display: block;
+	font-size: 24px;
+	font-weight: 600;
+}

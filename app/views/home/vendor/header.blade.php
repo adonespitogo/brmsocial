@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
+<nav class="navbar navbar-default navbar-fixed-top padd-right-10" role="navigation">
+      <div>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -29,10 +29,10 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"> Settings <span class="glyphicon glyphicon-cog"></span></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"> @{{currentUser.firstname}} @{{currentUser.lastname}} <span class="glyphicon glyphicon-cog"></span></b></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">My Account</a></li>
-                <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
+                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                <li><a href="{{URL::to('session/logout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
             </li>
           </ul>

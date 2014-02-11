@@ -12,7 +12,7 @@ main.controller "MainVendorCtrl", [
 			{state: 'products', text: 'Products', active: true}
 			{state: 'sales', text: 'Sales', active: false}
 			{state: 'traffic', text: 'Traffic', active: false}
-			{state: 'orders', text: 'Orders', active: false}
+			# {state: 'orders', text: 'Orders', active: false}
 		]
 
 		$scope.activateNav = (nav) ->
