@@ -88,15 +88,9 @@
 		public function productTraffic($id) {
 
 			$product = Product::find($id);
+			$product->loadProductTraffic();
+			return $product;
 
-			$traffic = $product->getProductTraffic();
-
-			
-
-			$product_name = new stdClass();
-			$product_name->name = $product->product_name;
-
-			return Response::json(array('traffic' => $traffic, 'product_name' => $product_name));
 		}
 
 

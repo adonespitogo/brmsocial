@@ -27,6 +27,7 @@ class Product extends BaseModel{
 		'terms' => array(self::HAS_MANY, 'Term'),
 		'traffic' => array(self::HAS_MANY, 'Traffic')
 	);
+
 	//start overrides
 	public function __construct()
 	{	 
@@ -41,38 +42,38 @@ class Product extends BaseModel{
 	{
 		$this->load('category');
 		$this->load('terms');
-
-		$this->traffic_today = $this->traffic()->whereRaw("created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59')")->groupBy('ip')->count();
-		$this->traffic_today = is_null($this->traffic_today) ? 0 : $this->traffic_today;
+		$this->traffic_today_count = $this->getTrafficTodayCount();
 
 		return parent::toArray();
 	}
 
 	// start custom functions
 
-	public function getProductTraffic() {
+	public function loadProductTraffic()
+	{
+		$this->load(array('traffic' => function($query){
+			$days = 30;  //days of traffic to load
+			$today = Carbon\Carbon::now();
+			$last_num_days_date = $today->subDays($days);
+			$query->where('created_at', '>=', $last_num_days_date);
+		}));
 
-		$id = $this->id;
-
-
-		$d = array();
-		for($i = 0; $i < 15; $i++) {
-    		$d[] = date("d", strtotime('-'. $i .' days'));
-		}
-
-
-		$traffic = DB::select(DB::raw("SELECT date_format(created_at, '%d') AS elapsed, CASE WHEN COUNT(id) > 0 THEN COUNT(id) ELSE 0 END AS value
-											FROM product_traffic 
-												WHERE product_id=".$id."
-													GROUP BY date_format(created_at, '%d')
-														LIMIT 30"));
-
-		return $traffic;
 	}
 
 	public function pictures(){
 		return $this->hasMany('ProductPicture');
 	}
+
+	public function getTrafficTodayCount()
+	{
+		$today = Carbon\Carbon::now()->startOfDay();
+		$count = $this->traffic()->where('created_at', '>=', $today)->count();
+		if(is_null($count)){
+			return 0;
+		}
+		return $count;
+	}
+
 }
 
 ?>
