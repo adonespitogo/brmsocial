@@ -2,8 +2,8 @@
 
 // use LaravelBook\Ardent\Ardent;
 
-class Product extends BaseModel{
-
+class Product extends BaseModel{ 
+		
 	protected $table = 'products';
 	protected $softDelete = true;
 
@@ -29,7 +29,7 @@ class Product extends BaseModel{
 	);
 	//start overrides
 	public function __construct()
-	{
+	{	 
 		parent::__construct();
 		$this->sale_start_date = date('Y:m:d H:i:s');
 		$this->sale_end_date = date('Y:m:d H:i:s');
@@ -50,7 +50,9 @@ class Product extends BaseModel{
 
 	// start custom functions
 
-	public function getProductTraffic($id) {
+	public function getProductTraffic() {
+
+		$id = $this->id;
 
 
 		$d = array();
@@ -66,6 +68,10 @@ class Product extends BaseModel{
 														LIMIT 30"));
 
 		return $traffic;
+	}
+
+	public function pictures(){
+		return $this->hasMany('ProductPicture');
 	}
 }
 

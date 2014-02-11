@@ -26,6 +26,14 @@
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->save();
+			
+			if(Input::hasFile('pictures')){
+				foreach (Input::file('pictures') as $key => $picture) {
+					$p->pictures()->save($picture);
+				}
+
+			}
+
 			return $p;
 		}
 
@@ -81,7 +89,7 @@
 
 			$product = Product::find($id);
 
-			$traffic = $product->getProductTraffic($product->id);
+			$traffic = $product->getProductTraffic();
 
 			
 

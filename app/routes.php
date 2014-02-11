@@ -13,6 +13,9 @@ Route::controller('session', 'SessionController');
 // start protected routes
 Route::group(array('before' => 'auth'), function(){
 	Route::get('users/me', array('uses' => 'UserController@currentUser'));
+	Route::put('users/me', array('uses' => 'RegisterController@updateAccount'));
+	Route::get('users/all', array('uses'=>'UserController@getAll'));
+	Route::resource('users', 'UserController');
 	Route::controller('home', 'HomeController');
 
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));

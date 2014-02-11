@@ -122,4 +122,17 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	public function getMyReceivableCommission() {
 		return $this->commissions()->where('is_paid', 0)->sum('commission');
 	}
+
+	//new user
+	public function beforeSave()
+    {
+        $this->rawPassword = $this->password;
+        // if there's a new password, hash it
+        if($this->isDirty('password')) {
+            $this->password = Hash::make($this->password);
+        }
+
+        return true;
+        //or don't return nothing, since only a boolean false will halt the operation
+    }
 }
