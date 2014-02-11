@@ -6,6 +6,7 @@ module = angular.module 'VendorApp', [
 	'HomeControllers',
 	'ProductControllers',
 	'TrafficControllers',
+	'CommisionControllers',
 	'OrderControllers'
 ]
 

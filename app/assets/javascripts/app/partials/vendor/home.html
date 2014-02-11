@@ -1,40 +1,58 @@
-<!--mini statistics start-->
-<div class="row">
-    <div class="col-md-2 row-item">
-        <div class="mini-stat clearfix">
-            <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
-            <div class="mini-stat-info">
-                <span>{{ productCount.count }}</span>
-                Active Products
-            </div>
+<h3 class="text-center">Welcome <strong>{{currentUser.fullname}}</strong></h3>
+<hr>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            Your Product Listing Statistics
         </div>
     </div>
-    <div class="col-md-2 row-item">
-        <div class="mini-stat clearfix">
-            <span class="mini-stat-icon tar"><i class="fa fa-tag"></i></span>
-            <div class="mini-stat-info">
-                <span>{{ ordersSoldToday.orderstoday }}</span>
-                Orders Sold Today
+    <div class="panel-body">
+        <!--mini statistics start-->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row-item">
+                    <div class="mini-stat clearfix">
+                        <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
+                        <div class="mini-stat-info">
+                            <span>{{ productCount.count }}</span>
+                            Active Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row-item">
+                    <div class="mini-stat clearfix">
+                        <span class="mini-stat-icon tar"><i class="fa fa-tag"></i></span>
+                        <div class="mini-stat-info">
+                            <span>{{ ordersSoldToday.orderstoday }}</span>
+                            Orders Sold Today
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row-item">
+                    <div class="mini-stat clearfix">
+                        <span class="mini-stat-icon purple"><i class="fa fa-money"></i></span>
+                        <div class="mini-stat-info">
+                            <span>${{salesToday.salestoday}}</span>
+                            Sales Today
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row-item">
+                    <div class="mini-stat clearfix">
+                        <span class="mini-stat-icon purple"><i class="fa fa-money"></i></span>
+                        <div class="mini-stat-info">
+                            <span>${{ receivablecommision.commission }}</span>
+                            Receivable Comission
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-2 row-item">
-        <div class="mini-stat clearfix">
-            <span class="mini-stat-icon purple"><i class="fa fa-money"></i></span>
-            <div class="mini-stat-info">
-                <span>${{salesToday.salestoday}}</span>
-                Sales Today
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2 row-item">
-        <div class="mini-stat clearfix">
-            <span class="mini-stat-icon purple"><i class="fa fa-money"></i></span>
-            <div class="mini-stat-info">
-                <span>${{ receivablecommision.commission }}</span>
-                Receivable Comission
-            </div>
-        </div>
-    </div>
+        <!--mini statistics end--></div>
 </div>
-<!--mini statistics end-->

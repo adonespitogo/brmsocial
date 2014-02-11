@@ -120,7 +120,27 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
 	//vendor
 	public function getMyReceivableCommission() {
-		return $this->commissions()->where('is_paid', 0)->sum('commission');
+		$sum = $this->commissions()->where('is_paid', 0)->sum('commission');
+		if(!is_numeric($sum)) return 0;
+		return $sum;
+	}
+
+	//vendor
+	public function getMyReceivedCommission() {
+		$sum = $this->commissions()->where('is_paid', 1)->sum('commission');
+		if(!is_numeric($sum)) return 0;
+		return $sum;
+	}
+
+	//vendor
+	public function unpaidCommissions()
+	{
+		return $this->commissions()->where('is_paid', 0)->get();
+	}
+	//vendor
+	public function paidCommissions()
+	{
+		return $this->commissions()->where('is_paid', 1)->get();
 	}
 
 	//new user
