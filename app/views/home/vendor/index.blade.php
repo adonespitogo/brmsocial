@@ -8,10 +8,10 @@
 @stop
 
 @section('body')
-	<div ng-app="VendorApp" style="width: 99%;">
+	<div ng-app="VendorApp">
 		<div ng-controller="MainVendorCtrl">
 			@include('home.vendor.header')
-			<div style="padding: 10px;" autoscroll='false' ui-view >
+			<div style="padding: 10px 15px;" autoscroll='false' ui-view >
 				
 			</div>
 		</div>
