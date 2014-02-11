@@ -1,5 +1,4 @@
 @import url("font-awesome.min.css");
-@import url("fonts.css");
 @import url("style.css");
 
 
@@ -20,7 +19,12 @@
 
 @media (min-width: 768px) and (max-width: 991px) { 
 	/*body { border:10px solid green; }*/
-	
+
+	/*Course Page*/
+	.sp2-ordinary-page.course input {width: 380px !important;}
+	.sp2-ordinary-page.course .btn-green {font-size: 14px !important; padding: 10px 20px !important; width: 150px !important; }
+	.sp2-ordinary-page.course span { margin-left: -260px !important; }
+
 }
 
 /* Landscape phone to portrait tablet */
@@ -32,5 +36,24 @@
 
 @media screen and (max-width: 600px) {
 	/*body { border:10px solid pink; }*/
+
+	/*Product Page*/
+	.product-right-col .question-box p:nth-child(1){font-size: 13px !important;}
 	
+	/*Course Page*/
+	.sp2-ordinary-page-title {padding: 30px 0 !important;}
+	.sp2-ordinary-page-title h1{font-size: 20px !important;}
+	.sp2-ordinary-page.course p {font-size: 16px !important;}
+	.sp2-ordinary-page.course span {margin: 0 auto !important;display: block;padding-top: 10px;}
+	.sp2-ordinary-page.course .form-inline>.form-group {display: -webkit-inline-box !important; display: -moz-inline-box !important;}
+	.sp2-ordinary-page.course input {width: 220px !important;}
+	.sp2-ordinary-page.course .btn-green {font-size: 14px !important; padding: 10px 18px !important; width: 140px !important;}
+	.sp2-ordinary-page .container {padding: 20px 20px !important;}
+	.header {text-align: center;}
+	.footer {text-align: center;}
+	.ta-cert {text-align: center;}
+	.header ul {list-style-type: none;}
+	.header button {margin-top: 5px;}
+	.footer {text-align: center;}
+	.ta-cert {text-align: center;}
 }
