@@ -32,10 +32,10 @@ main.controller "MainVendorCtrl", [
 				if n.state == nav.state then n.active = true else n.active = false
 				n
 
+
 		$scope.navsOff = ->
 			$scope.navs = _.map $scope.navs, (n)->
 							n.active = false
 							n
 ]
-
 

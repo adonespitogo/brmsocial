@@ -22,3 +22,5 @@
 //= require_tree app/controllers/vendor
 //= require_tree app/services
 //= require_tree app/partials/vendor
+//= require_tree lib/morris
+//

@@ -54,7 +54,14 @@ class Product extends BaseModel{
 
 		$id = $this->id;
 
-		$traffic = DB::select(DB::raw("SELECT date_format(created_at, '%d') AS elapsed, COUNT(id) AS value
+
+		$d = array();
+		for($i = 0; $i < 15; $i++) {
+    		$d[] = date("d", strtotime('-'. $i .' days'));
+		}
+
+
+		$traffic = DB::select(DB::raw("SELECT date_format(created_at, '%d') AS elapsed, CASE WHEN COUNT(id) > 0 THEN COUNT(id) ELSE 0 END AS value
 											FROM product_traffic 
 												WHERE product_id=".$id."
 													GROUP BY date_format(created_at, '%d')
