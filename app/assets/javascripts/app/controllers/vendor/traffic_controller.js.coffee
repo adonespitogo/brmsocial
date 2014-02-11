@@ -33,16 +33,13 @@ traffic.controller 'VendorTrafficCtrl', [
 
 			getDates = ->
 				last_date = moment(new Date()).subtract('days', 30)
-
 				dates = []
-
 				date = moment(new Date()).endOf 'day'
 
 				while last_date <= date
 					dates.push last_date.format 'YYYY-MM-DD'
 					last_date = last_date.add 'days', 1
 				
-
 				dates
 
 			formatTrafficCreatedAt = ->
@@ -55,16 +52,12 @@ traffic.controller 'VendorTrafficCtrl', [
 				dates = getDates()
 				formatTrafficCreatedAt()
 
-				i = 0
-
 				for d in dates
 					datum = {}
 					datum.date = moment(d).format 'MMM-D'
 					datum.traffic = (_.where $scope.product.traffic, ({created_at_date : d})).length
-					data[i] = datum
-					i++
+					data.push datum
 
-				console.log data
 				data
 
 			data = getMorrisData()
