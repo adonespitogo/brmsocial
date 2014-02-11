@@ -49,6 +49,9 @@
                         <td>{{ product.traffic_today_count }}</td>
                         <td><a href="#/product/{{ product.id }}/traffic"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
                     </tr>
+                    <tr ng-show="products.length == 0">
+                    	<td colspan="9">No products yet.</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
