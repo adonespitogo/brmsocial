@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		@yield('head')
 		<style>a:hover{cursor: pointer;}</style>
+		<link rel="shortcut icon" href="{{URL::to('favicon.ico')}}" type="image/x-icon" >
 	</head>
 	<body>
 		@yield('body')
