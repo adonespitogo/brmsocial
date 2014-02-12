@@ -1,10 +1,6 @@
 <?php
 
-Route::get('/', function()
-{
-	return View::make('public.index');
-
-});
+Route::get('/', array('uses' => 'PublicController@index'));
 
 
 // start public routes
