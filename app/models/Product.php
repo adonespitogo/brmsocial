@@ -75,6 +75,36 @@ class Product extends BaseModel{
 		return $count;
 	}
 
+	public function getDiscountPercentage()
+	{
+		$rp = $this->regular_price;
+		$dp = $this->discounted_price;
+		$return = ($rp - $dp) / $rp * 100;
+		$return = number_format($return, 0);
+		return $return;
+	}
+
+	public function getLeftSaleDays()
+	{
+		$end_date = Carbon\Carbon::parse($this->sale_end_date);
+		$now = Carbon\Carbon::now();
+		return $now->diffInDays($end_date);
+	}
+
+	public function getEndDatePercentage()
+	{
+		$sale_start_date = Carbon\Carbon::parse($this->sale_start_date);
+		$sale_end_date = Carbon\Carbon::parse($this->sale_end_date);
+
+		$lengthMins = $sale_start_date->diffInMinutes($sale_end_date);
+		$min_now = Carbon\Carbon::now();
+		$leftMins = $min_now->diffInMinutes($sale_end_date);
+
+		$return = number_format($leftMins/$lengthMins * 100, 2);
+		if($return > 100) return 100;
+		return $return;
+	}
+
 	public static function getUpcomingSales()
 	{
 		return self::where('sale_start_date', '>', Carbon\Carbon::now())->get();

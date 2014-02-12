@@ -4,7 +4,7 @@
 	    	<div class="row">
 	   			<div class="col-md-12">
 				    <div class="nav-style">
-				    	<a><img src='website/images/brmsocial-logo.png' alt="BRM Social" class="logo"></a>
+				    	<a><img src='{{URL::to("website/images/brmsocial-logo.png")}}' alt="BRM Social" class="logo"></a>
 					    <ul class="nav nav-pills">
 					      <li class="dropdown shop">
 					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>

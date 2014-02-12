@@ -10,8 +10,8 @@
 		// $('#myTab a[href="#overview"]').tab('show')
 		</script-->
 		<section class="sp2-ordinary-page-title two-lines text-center">
-		  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
-		  <h2 class="fs-24">Save up to 75% on online marketing services, apps and courses.</h2>
+		  <h1 class="fs-36">{{$product->product_name}}</h1>
+		  <h2 class="fs-24">{{$product->tagline}}</h2>
 		</section>
 
 		<section class="deal-page bg-image-white">
@@ -21,7 +21,7 @@
 						<div class="left-col">
 							<!-- Start Featured Deal -->
 							<div class="banner-deal-page">
-								<img src='website/images/products/large/socialmediamgt.jpg' alt="featured deal" title="featured deal">
+								<img src='{{URL::to("website/images/products/large/socialmediamgt.jpg")}}' alt="featured deal" title="featured deal">
 							</div>
 							<!-- End Featured Deal -->
 						</div>
@@ -40,7 +40,10 @@
 								<p class="pt-30">You will want to take this course if you need tons of free traffic, need to grow a business, want to make extra money or if you just want to learn to master the basics of Pinterest.</p>
 
 								<div class="category-wrapper">
-									<p class="pt-60"><span>Category:</span> Business</p>
+									<p class="pt-60">
+										<span>Category:</span> 
+										{{$product->category->category}}
+									</p>
 
 									<h4 class="pt-30">What are the requirements?</h4>
 									<ul>
@@ -91,7 +94,7 @@
 							<!-- Start Customers also bought -->
 							<div class="row deal-popular">
 								<div class="col-md-4 col-sm-4">
-									<img src='images/products/medium/img-cloudseekr.jpg' alt="customers also bought this" title="customers also bought this">
+									<img src='{{URL::to("website/images/products/medium/img-cloudseekr.jpg")}}' alt="customers also bought this" title="customers also bought this">
 									<h4><a href="#">Facebook Training for Business <span>$9.99</span></a></h4>
 									<ul>
 										<li>4 days</li>
@@ -124,25 +127,32 @@
 								<div class="featured-price">
 									<ul>
 										<li>now only</li>
-										<li>$25<span>.00</span></li>
+										<li>${{(int)$product->discounted_price}}<span>.00</span></li>
 									</ul>
 								</div>
 								<div class="reg-price text-right">
-									<span>$130</span><br />
+									<span>${{(int)$product->regular_price}}</span><br />
 									regular price
+									<h2></h2>
 								</div>
-								<div class="clearfix"><span class="save pull-right">save 23%</span></div>
+								<div class="clearfix"><span class="save pull-right">save {{$product->getDiscountPercentage()}}%</span></div>
 								<h4 class="clearfix">By Blue Anatomy, Ltd.</h4>
 								<div class="progress">
-								  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-								    <span class="sr-only">50% Complete (success)</span>
+								  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$product->getEndDatePercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$product->getEndDatePercentage()}}%">
+								    <span class="sr-only">
+								    {{$product->getEndDatePercentage()}}% Complete (success) 
+								    </span>
 								  </div>
 								</div>
 								<ul class="clearfix">
-									<li class="pull-left fs-10">Started Jan 03</li>
-									<li class="pull-right fs-10">Ends Feb 02</li>
+									<li class="pull-left fs-10">Started
+									{{date("M d", strtotime($product->sale_start_date))}}
+									</li>
+									<li class="pull-right fs-10">Ends
+									{{date("M d", strtotime($product->sale_end_date))}}
+									</li>
 								</ul>
-								<h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>5 days</span></h3>
+								<h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>{{$product->getLeftSaleDays()}} days</span></h3>
 								<button class="btn-green">BUY NOW</button>
 								<div class="img-or"><img src="images/img-or.jpg" alt="or" title="or"></div>
 								<div class="gift-style"><h3 class="text-center second-h3"><i class="fa fa-gift fa fa-large"></i>    Gift this</h3></div>
@@ -162,118 +172,10 @@
 								</div>
 							</div>
 							<!-- Start Realated Sales -->
-							<div class="related-deals">
-								<h4>Related Deals</h4>
-								<ul>
-									<li>
-										<img src='images/products/small/img-cloudseekr.jpg' alt="related deals" title="related deals">
-										<div><a href="#">Use Instagram for Business</a></div>
-										<div class="price">$89</div>
-										<ul>
-											<li>4 days</li>
-											<li><a href="#">Productivity</a></li>
-										</ul>
-									</li>
-									<li>
-										<img src='images/products/small/img-instagram.jpg' alt="related deals" title="related deals">
-										<div><a href="#">Use Instagram for Business</a></div>
-										<div class="price">$89</div>
-										<ul>
-											<li>4 days</li>
-											<li><a href="#">Productivity</a></li>
-										</ul>
-									</li>
-									<li>
-										<img src='images/products/small/img-pinterest.jpg' alt="related deals" title="related deals">
-										<div><a href="#">Use Instagram for Business</a></div>
-										<div class="price">$89</div>
-										<ul>
-											<li>4 days</li>
-											<li><a href="#">Productivity</a></li>
-										</ul>
-									</li>
-									<li>
-										<img src='images/products/small/img-socialmediamgt.jpg' alt="related deals" title="related deals">
-										<div><a href="#">Use Instagram for Business</a></div>
-										<div class="price">$89</div>
-										<ul>
-											<li>4 days</li>
-											<li><a href="#">Productivity</a></li>
-										</ul>
-									</li>
-									<li>
-										<img src='images/products/small/img-wespin.jpg' alt="related deals" title="related deals">
-										<div><a href="#">Use Instagram for Business</a></div>
-										<div class="price">$89</div>
-										<ul>
-											<li>4 days</li>
-											<li><a href="#">Productivity</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
+							@include('public.shared.related_sales')
 							<!-- End Realated Sales -->
 							<!-- Start Upcoming Sales -->
-							<div class="upcoming-sales">
-								<h4>Upcoming Sales</h4>
-								<ul>
-									<li>
-										<dl>
-											<dt class="date">
-												<div>08</div>Jan
-											</dt>
-											<dd>
-												<a href="#">Introduction to QuickBooks Pro 2014</a>
-												<p>Learn the basics of this popular small business accounting software.</p>
-											</dd>
-										<dl>
-									</li>
-									<li class="clearfix">
-										<dl>
-											<dt class="date">
-												<div>08</div>Jan
-											</dt>
-											<dd>
-												<a href="#">Introduction to QuickBooks Pro 2014</a>
-												<p>Learn the basics of this popular small business accounting software.</p>
-											</dd>
-										<dl>
-									</li>
-									<li class="clearfix">
-										<dl>
-											<dt class="date">
-												<div>08</div>Jan
-											</dt>
-											<dd>
-												<a href="#">Introduction to QuickBooks Pro 2014</a>
-												<p>Learn the basics of this popular small business accounting software.</p>
-											</dd>
-										<dl>
-									</li>
-									<li class="clearfix">
-										<dl>
-											<dt class="date">
-												<div>08</div>Jan
-											</dt>
-											<dd>
-												<a href="#">Introduction to QuickBooks Pro 2014</a>
-												<p>Learn the basics of this popular small business accounting software.</p>
-											</dd>
-										<dl>
-									</li>
-									<li class="clearfix">
-										<dl>
-											<dt class="date">
-												<div>08</div>Jan
-											</dt>
-											<dd>
-												<a href="#">Introduction to QuickBooks Pro 2014</a>
-												<p>Learn the basics of this popular small business accounting software.</p>
-											</dd>
-										<dl>
-									</li>
-								</ul>
-							</div>
+							@include('public.shared.upcoming_sales')
 							<!-- End Upcoming Sales -->
 						</div>
 					</div>	
