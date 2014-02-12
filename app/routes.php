@@ -2,7 +2,8 @@
 
 Route::get('/', function()
 {
-	return View::make('session.login');
+	return View::make('public.index');
+
 });
 
 
