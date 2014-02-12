@@ -58,7 +58,7 @@
 		</div>
 		<div class="col-md-6">
 			<label class="control-label">Product Image</label>
-			<input type="text" ng-model="product.product_image" class="form-control">
+			<input type="file" multiple files-model="product.product_image" onchange="angular.element(this).scope().addFile(this)" name="product_image[]" class="form-control" required>
 		</div>
 	</div>
 	<div class="form-group">
