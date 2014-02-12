@@ -6,8 +6,8 @@ class PublicController extends BaseController{
 		return View::make('public.index');
 	}
 
-	public function products()
+	public function product()
 	{
-		return View::make('public.products');
+		return View::make('public.product');
 	}
 }
