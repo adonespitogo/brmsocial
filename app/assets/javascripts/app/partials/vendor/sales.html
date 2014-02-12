@@ -25,6 +25,9 @@
                     		<td>${{ sale.amount_commission }}</td>
                     		<td>{{ sale.created_at_iso_date | date: 'fullDate' }}</td>
                     	</tr>
+                        <tr ng-show="sales.length == 0">
+                            <td colspan="6">No sales yet.</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
