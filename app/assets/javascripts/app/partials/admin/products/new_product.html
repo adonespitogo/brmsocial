@@ -46,6 +46,17 @@
 			<textarea name="overview" cols="30" rows="10" class="form-control" ng-model="product.overview"></textarea>
 		</div>
 	</div>
+
+	<div class="form-group terms-con">
+		<div class="col-md-12">
+			<label class="control-label">TERMS & CONDITIONS</label>
+		</div>	
+		<div class="col-md-12">
+			<span class="text-danger" ng-show="productForm.price.$error.required">Required *</span>
+			<input add-terms type="text" name="terms[]" cols="30" rows="10" class="form-control term" placeholder="" ng-model="product.terms[0]" />
+		</div> 
+	</div>
+
 	<div class="form-group">
 		<div class="col-md-6">
 			<label class="control-label">Category</label>
@@ -58,7 +69,7 @@
 		</div>
 		<div class="col-md-6">
 			<label class="control-label">Product Image</label>
-			<input type="text" ng-model="product.product_image" class="form-control">
+			<input type="file" multiple files-model="product.product_image" onchange="angular.element(this).scope().addFile(this)" name="product_image[]" class="form-control" required>
 		</div>
 	</div>
 	<div class="form-group">

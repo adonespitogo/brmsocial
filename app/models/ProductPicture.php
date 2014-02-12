@@ -1,5 +1,7 @@
 <?php
-class ProductPicture extends Ardent(){
+use LaravelBook\Ardent\Ardent;
+class ProductPicture extends Ardent{
+
 	use Codesleeve\Stapler\Stapler;
 
 	public function __construct(array $attributes =  array()){
@@ -7,7 +9,9 @@ class ProductPicture extends Ardent(){
 			'styles' => [
 				'medium' => '300x300',
 				'small' =>'100x100'
-			]
+			],
+			'url' => '/system/:attachment/:id_partition/:style/:filename',
+        	'default_url' => '/:attachment/:style/missing.jpg'
 		]);
 	}
 

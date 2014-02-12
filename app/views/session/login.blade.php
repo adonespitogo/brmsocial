@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('head')
+	<title>BRM Social - Login</title>
 	<link rel="stylesheet" href="{{ URL::to('bootstrap-3.1/css/bootstrap.cosmo.min.css')}}">
 	<style type="text/css">
 		.logo-img { width: 80px; display: block; margin: 0px auto;}

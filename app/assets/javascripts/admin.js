@@ -24,4 +24,5 @@
 //= require_tree app/controllers/admin
 //= require_tree app/services
 //= require app/directives/form_validation
+//= require app/directives/event_listeners
 //= require_tree app/partials/admin

@@ -2,14 +2,38 @@
 c = angular.module 'ProductControllers', [
 	'ui.router',
 	'ProductServices',
-	'CategoryServices'
+	'CategoryServices',
+	'EvenListeners'
 ]
 
 c.config [
 
-	'$stateProvider', '$urlRouterProvider',
+	'$stateProvider', '$urlRouterProvider', '$httpProvider',
 
-	($stateProvider, $urlRouterProvider) ->
+	($stateProvider, $urlRouterProvider, $httpProvider) ->
+
+		#for file upload
+		$httpProvider.defaults.transformRequest = (data) ->
+		  return data  if data is `undefined`
+		  fd = new FormData()
+		  angular.forEach data, (value, key) ->
+		    if value instanceof FileList
+		      if value.length is 1
+		        fd.append key, value[0]
+		      else
+		        angular.forEach value, (file, index) ->
+		          fd.append key + "_" + index, file
+		          return
+
+		    else
+		      fd.append key, value
+		    return
+
+		  fd
+
+		$httpProvider.defaults.headers.post["Content-Type"] = `undefined`
+		$httpProvider.defaults.headers.put["Content-Type"] = `undefined`
+
 		#template base path
 		templatePath = 'app/partials/'
 
@@ -49,19 +73,25 @@ c.controller 'ProductListCtrl', [
 ]
 
 c.controller 'NewProductCtrl', [
-	'$scope', 'Products', 'Category', '$alert'
-	($scope, Products, Category, $alert) ->
+	'$scope', 'Products', 'Category', '$alert', '$location',
+	($scope, Products, Category, $alert, $location) ->
 		Category.query().$promise.then (categories) ->
 				console.log categories
 				$scope.categories = categories
 				$scope.product = Products.get id:"create"
 
+		$scope.addFile = (e)-> 
+			$scope.product.product_image = e.files 
+
 		$scope.createProduct = (p)->
+			console.log(p)
+			return true
 			p.$save ->
 				console.log $scope.product
 				$alert
 					title : "Product has been created successfully."
 					type: 'success'
+				$location.path '/products'
 		
 ]
 
@@ -72,6 +102,9 @@ c.controller 'EditProductCtrl', [
 				$scope.categories = categories
 				$scope.product = Products.get id: $stateParams.id
 
+		$scope.addFile = (e)-> 
+			$scope.product.product_image = e.files 
+
 		$scope.updateProduct = (p)->
 			p.$update ->
 				$alert
@@ -79,3 +112,5 @@ c.controller 'EditProductCtrl', [
 					type: 'success'
 		
 ]
+
+ 

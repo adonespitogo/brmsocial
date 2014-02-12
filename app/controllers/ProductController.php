@@ -23,16 +23,24 @@
 			$p->discounted_price = Input::get('discounted_price');
 			$p->sale_start_date = Input::get('sale_start_date_iso_date');
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
-			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->save();
-			
-			if(Input::hasFile('pictures')){
-				foreach (Input::file('pictures') as $key => $picture) {
-					$p->pictures()->save($picture);
+			 
+			if(Input::has('terms')){
+				foreach (Input::get('terms') as $key => $term) {
+					$term = new Term();
+					$term->product_id = $p->id;
+					$term->term = $term;
+					$term->save();
 				}
-
 			}
+
+			foreach (Input::file() as $key => $picture) {
+				$pPicture = new ProductPicture();             
+   				$pPicture->picture = $picture; 
+				$p->pictures()->save($pPicture);
+			}
+		 
 
 			return $p;
 		}
@@ -43,7 +51,7 @@
 		}
 
 		public function update($id)
-		{
+		{	
 			$p = Product::find($id);
 			$p->category_id = Input::get('category_id');
 			$p->product_name = Input::get('product_name');
@@ -51,10 +59,31 @@
 			$p->regular_price = Input::get('regular_price');
 			$p->discounted_price = Input::get('discounted_price');
 			$p->sale_start_date = Input::get('sale_start_date_iso_date');
-			$p->sale_end_date = Input::get('sale_end_date_iso_date');
-			$p->product_image = Input::get('product_image');
+			$p->sale_end_date = Input::get('sale_end_date_iso_date'); 
 			$p->overview = Input::get('overview');
 			$p->save();
+
+			if(Input::has('terms')){
+				foreach (Input::get('terms') as $key => $term) {
+					$term = new Term();
+					$term->product_id = $p->id;
+					$term->term = $term;
+					$term->save();
+				}
+			}
+			
+			if(Input::hasFile('product_image_0')){
+				foreach ($p->pictures as $key => $p) {
+					$p->picture->destroy();
+					$p->delete();
+				}
+			}
+			foreach (Input::file() as $key => $picture) {
+				$pPicture = new ProductPicture();             
+   				$pPicture->picture = $picture; 
+				$p->pictures()->save($pPicture);
+			}
+
 			return $p;
 		}
 
