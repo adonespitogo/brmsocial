@@ -25,7 +25,8 @@ class Product extends BaseModel{
 		'user' => array(self::BELONGS_TO, 'User'),
 		'orders' => array(self::HAS_MANY, 'Order'),
 		'terms' => array(self::HAS_MANY, 'Term'),
-		'traffic' => array(self::HAS_MANY, 'Traffic')
+		'traffic' => array(self::HAS_MANY, 'Traffic'),
+		'pictures' => array(self::HAS_MANY, 'ProductPicture'),
 	);
 
 	//start overrides
@@ -60,10 +61,6 @@ class Product extends BaseModel{
 
 	}
 
-	public function pictures(){
-		return $this->hasMany('ProductPicture');
-	}
-
 	public function getTrafficTodayCount()
 	{
 		$today = Carbon\Carbon::now()->startOfDay();
@@ -72,6 +69,11 @@ class Product extends BaseModel{
 			return 0;
 		}
 		return $count;
+	}
+
+	public static function getUpcomingSales()
+	{
+		return self::where('sale_start_date', '>', Carbon\Carbon::now())->get();
 	}
 
 }

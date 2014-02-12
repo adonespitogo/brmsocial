@@ -2,7 +2,7 @@
 
 @section('head')
 	@parent
-	
+
 	<title>Deals</title>
 @stop
 
@@ -96,51 +96,17 @@
 						<div class="related-deals">
 							<h4>Related Deals</h4>
 							<ul>
-								<li>
-									<img src='website/images/products/small/img-cloudseekr.jpg' alt="related deals" title="related deals">
-									<div><a href="#">Use Instagram for Business</a></div>
-									<div class="price">$89</div>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</li>
-								<li>
-									<img src='website/images/products/small/img-instagram.jpg' alt="related deals" title="related deals">
-									<div><a href="#">Use Instagram for Business</a></div>
-									<div class="price">$89</div>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</li>
-								<li>
-									<img src='website/images/products/small/img-pinterest.jpg' alt="related deals" title="related deals">
-									<div><a href="#">Use Instagram for Business</a></div>
-									<div class="price">$89</div>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</li>
-								<li>
-									<img src='website/images/products/small/img-socialmediamgt.jpg' alt="related deals" title="related deals">
-									<div><a href="#">Use Instagram for Business</a></div>
-									<div class="price">$89</div>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</li>
-								<li>
-									<img src='website/images/products/small/img-wespin.jpg' alt="related deals" title="related deals">
-									<div><a href="#">Use Instagram for Business</a></div>
-									<div class="price">$89</div>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</li>
+								@foreach(Product::getUpcomingSales() as $product)
+									<li>
+										<img src='website/images/products/small/img-cloudseekr.jpg' alt="related deals" title="related deals">
+										<div><a href="#">{{$product->product_name}}</a></div>
+										<div class="price">${{$product->discounted_price}}</div>
+										<ul>
+											<li>4 days</li>
+											<li><a href="#">{{$product->category->category}}</a></li>
+										</ul>
+									</li>
+								@endforeach
 							</ul>
 						</div>
 						<!-- End Realated Sales -->
@@ -148,61 +114,22 @@
 						<div class="upcoming-sales">
 							<h4>Upcoming Sales</h4>
 							<ul>
-								<li>
-									<dl>
-										<dt class="date">
-											<div>08</div>Jan
-										</dt>
-										<dd>
-											<a href="#">Introduction to QuickBooks Pro 2014</a>
-											<p>Learn the basics of this popular small business accounting software.</p>
-										</dd>
-									<dl>
-								</li>
-								<li class="clearfix">
-									<dl>
-										<dt class="date">
-											<div>08</div>Jan
-										</dt>
-										<dd>
-											<a href="#">Introduction to QuickBooks Pro 2014</a>
-											<p>Learn the basics of this popular small business accounting software.</p>
-										</dd>
-									<dl>
-								</li>
-								<li class="clearfix">
-									<dl>
-										<dt class="date">
-											<div>08</div>Jan
-										</dt>
-										<dd>
-											<a href="#">Introduction to QuickBooks Pro 2014</a>
-											<p>Learn the basics of this popular small business accounting software.</p>
-										</dd>
-									<dl>
-								</li>
-								<li class="clearfix">
-									<dl>
-										<dt class="date">
-											<div>08</div>Jan
-										</dt>
-										<dd>
-											<a href="#">Introduction to QuickBooks Pro 2014</a>
-											<p>Learn the basics of this popular small business accounting software.</p>
-										</dd>
-									<dl>
-								</li>
-								<li class="clearfix">
-									<dl>
-										<dt class="date">
-											<div>08</div>Jan
-										</dt>
-										<dd>
-											<a href="#">Introduction to QuickBooks Pro 2014</a>
-											<p>Learn the basics of this popular small business accounting software.</p>
-										</dd>
-									<dl>
-								</li>
+								@foreach(Product::getUpcomingSales() as $product)
+									<li>
+										<dl>
+											<dt class="date">
+												<div>
+												{{date('d', strtotime($product->sale_start_date))}}
+												</div>
+												{{date('M', strtotime($product->sale_start_date))}}
+											</dt>
+											<dd>
+												<a href="#">{{$product->product_name}}</a>
+												<p>{{$product->tagline}}</p>
+											</dd>
+										<dl>
+									</li>
+								@endforeach
 							</ul>
 						</div>
 						<!-- End Upcoming Sales -->

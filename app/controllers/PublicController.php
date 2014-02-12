@@ -3,9 +3,11 @@
 class PublicController extends BaseController{
 	public function index()
 	{
-		$categories = Category::all();
-		return View::make('public.index', array(
-			'categories' => $categories
-		));
+		return View::make('public.index');
+	}
+
+	public function products()
+	{
+		return View::make('public.products');
 	}
 }

@@ -9,7 +9,7 @@
 					      <li class="dropdown shop">
 					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>
 					        <ul class="dropdown-menu">
-					        	@foreach ($categories as $category)
+					        	@foreach (Category::all() as $category)
 									<li>
 										<a href="#">
 											<i class="fa fa-star"></i>
