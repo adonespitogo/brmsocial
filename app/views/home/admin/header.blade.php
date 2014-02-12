@@ -26,7 +26,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown"><b>Settings <span class="glyphicon glyphicon-cog"></span></b></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">My Account</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
               </ul>
             </li>
           </ul>
