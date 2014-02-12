@@ -15,4 +15,9 @@ class BaseController extends Controller {
 		}
 	}
 
+	protected function show404()
+	{
+		return Response::view('errors.404', array(), '404');
+	}
+
 }

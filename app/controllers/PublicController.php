@@ -6,8 +6,12 @@ class PublicController extends BaseController{
 		return View::make('public.index');
 	}
 
-	public function product()
+	public function product($slug)
 	{
-		return View::make('public.product');
+		$product = Product::where('slug', $slug)->first();
+		if(is_object($product))
+			return View::make('public.product')->with('product', $product);
+		else
+			return $this->show404();
 	}
 }
