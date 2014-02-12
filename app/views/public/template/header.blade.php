@@ -17,12 +17,6 @@
 										</a>
 									</li>
 					        	@endforeach
-					          <li><a href=""><i class="fa fa-star"></i>Apple /Mac</a></li>
-					          <li><a href=""><i class="fa fa-star"></i>Designer</a></li>
-					          <li><a href=""><i class="fa fa-star"></i>Developer</a></li>
-					          <li><a href=""><i class="fa fa-star"></i>Entrepreneur</a></li>
-					          <li><a href=""><i class="fa fa-star"></i>Gamer</a></li>
-					          <li><a href=""><i class="fa fa-star"></i>Productivity</a></li>
 					        </ul>
 					      </li>
 					      <li class="dropdown"><a href="#">Free Stuff</a></li>
