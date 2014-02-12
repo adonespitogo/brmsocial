@@ -2,20 +2,27 @@
 
 	class ProductController extends BaseController {
 
-		public function index()
-		{
-			return Product::all();
+		public function getIndex($id=null)
+		{		
+			if($id)
+				return Product::find($id);
+			else
+				return Product::all();
 		}
 
-		public function create()
+		public function getCreate()
 		{
 			return new Product();
 		}
 
-		public function store()
+		public function postIndex($id=null)
 		{
+			$id = ($id) ? $id : Input::get('id');
 
-			$p = new Product();
+			if($id)
+				$p = Product::find($id);
+			else
+				$p = new Product();
 			$p->category_id = Input::get('category_id');
 			$p->product_name = Input::get('product_name');
 			$p->tagline = Input::get('tagline');
@@ -44,50 +51,8 @@
 
 			return $p;
 		}
-
-		public function show($id)
-		{
-			return Product::find($id);
-		}
-
-		public function update($id)
-		{	
-			$p = Product::find($id);
-			$p->category_id = Input::get('category_id');
-			$p->product_name = Input::get('product_name');
-			$p->tagline = Input::get('tagline');
-			$p->regular_price = Input::get('regular_price');
-			$p->discounted_price = Input::get('discounted_price');
-			$p->sale_start_date = Input::get('sale_start_date_iso_date');
-			$p->sale_end_date = Input::get('sale_end_date_iso_date'); 
-			$p->overview = Input::get('overview');
-			$p->save();
-
-			if(Input::has('terms')){
-				foreach (Input::get('terms') as $key => $term) {
-					$term = new Term();
-					$term->product_id = $p->id;
-					$term->term = $term;
-					$term->save();
-				}
-			}
-			
-			if(Input::hasFile('product_image_0')){
-				foreach ($p->pictures as $key => $p) {
-					$p->picture->destroy();
-					$p->delete();
-				}
-			}
-			foreach (Input::file() as $key => $picture) {
-				$pPicture = new ProductPicture();             
-   				$pPicture->picture = $picture; 
-				$p->pictures()->save($pPicture);
-			}
-
-			return $p;
-		}
-
-		public function destroy($id)
+				
+		public function deleteIndex($id)
 		{
 			Product::where('id', $id)->delete();
 		}

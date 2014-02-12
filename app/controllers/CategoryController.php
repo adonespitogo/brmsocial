@@ -9,18 +9,19 @@
 			else
 				return Category::all();
 		}	
-		public function postIndex(){
-			$cat = new Category();
+		public function getCreate(){
+			return new Category();
+		}
+		
+		public function postIndex($id=null){
+			$id = ($id) ? $id : Input::get('id');
+			if($id)
+				$cat = Category::find($id); 
+			else
+				$cat = new Category();
+
 			$cat->category = Input::get('category');
 			$cat->save();
-			return 1;
-		} 
-		public function putIndex($id=null){
-
-			$id = ($id) ? $id : Input::get('id');
-			$cat = Category::find($id); 
-			$cat->category = Input::get('category');
-			$cat->update();
 			return 1;
 		}
 		public function deleteIndex($id=null){

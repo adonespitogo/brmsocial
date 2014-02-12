@@ -1,6 +1,7 @@
 
 c = angular.module 'ProductControllers', [
 	'ui.router',
+	'CategoryServices',
 	'ProductServices',
 	'CategoryServices',
 	'EvenListeners'
@@ -16,7 +17,8 @@ c.config [
 		$httpProvider.defaults.transformRequest = (data) ->
 		  return data  if data is `undefined`
 		  fd = new FormData()
-		  angular.forEach data, (value, key) ->
+		  angular.forEach data, (value, key) -> 
+		    console.log(value)
 		    if value instanceof FileList
 		      if value.length is 1
 		        fd.append key, value[0]
@@ -31,8 +33,7 @@ c.config [
 
 		  fd
 
-		$httpProvider.defaults.headers.post["Content-Type"] = `undefined`
-		$httpProvider.defaults.headers.put["Content-Type"] = `undefined`
+		$httpProvider.defaults.headers.post["Content-Type"] = `undefined` 
 
 		#template base path
 		templatePath = 'app/partials/'
@@ -96,8 +97,8 @@ c.controller 'NewProductCtrl', [
 ]
 
 c.controller 'EditProductCtrl', [
-	'$scope', 'Products', '$stateParams', 'Category', '$alert'
-	($scope, Products, $stateParams, Category, $alert) ->
+	'$scope', 'Products', '$stateParams', 'Category', '$alert', '$location'
+	($scope, Products, $stateParams, Category, $alert, $location) ->
 		Category.query().$promise.then (categories) ->
 				$scope.categories = categories
 				$scope.product = Products.get id: $stateParams.id
@@ -106,10 +107,11 @@ c.controller 'EditProductCtrl', [
 			$scope.product.product_image = e.files 
 
 		$scope.updateProduct = (p)->
-			p.$update ->
+			p.$save ->
 				$alert
 					title : "Product has been updated successfully."
 					type: 'success'
+					$location.path '/products'
 		
 ]
 
