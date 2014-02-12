@@ -8,6 +8,7 @@ Route::get('/', function()
 
 
 // start public routes
+Route::get('session/login', array('uses' => 'SessionController@getLogin', 'as' => 'login'));
 Route::controller('session', 'SessionController');
 
 

@@ -33,7 +33,7 @@
 	<script src="website/js/jquery.mmenu.min.js"></script>
 	<script type="text/javascript">
 	  jQuery(document).ready(function ($) {
-	    $('nav#menu').menu();
+	    $('nav#menu').mmenu();
 	  });
 	</script>
 
