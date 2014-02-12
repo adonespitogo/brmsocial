@@ -25,7 +25,16 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->overview = Input::get('overview');
 			$p->save();
-			  
+			 
+			if(Input::has('terms')){
+				foreach (Input::get('terms') as $key => $term) {
+					$term = new Term();
+					$term->product_id = $p->id;
+					$term->term = $term;
+					$term->save();
+				}
+			}
+
 			foreach (Input::file() as $key => $picture) {
 				$pPicture = new ProductPicture();             
    				$pPicture->picture = $picture; 
@@ -54,6 +63,15 @@
 			$p->overview = Input::get('overview');
 			$p->save();
 
+			if(Input::has('terms')){
+				foreach (Input::get('terms') as $key => $term) {
+					$term = new Term();
+					$term->product_id = $p->id;
+					$term->term = $term;
+					$term->save();
+				}
+			}
+			
 			if(Input::hasFile('product_image_0')){
 				foreach ($p->pictures as $key => $p) {
 					$p->picture->destroy();

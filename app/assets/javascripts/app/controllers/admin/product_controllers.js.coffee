@@ -2,7 +2,8 @@
 c = angular.module 'ProductControllers', [
 	'ui.router',
 	'ProductServices',
-	'CategoryServices'
+	'CategoryServices',
+	'EvenListeners'
 ]
 
 c.config [
@@ -83,6 +84,8 @@ c.controller 'NewProductCtrl', [
 			$scope.product.product_image = e.files 
 
 		$scope.createProduct = (p)->
+			console.log(p)
+			return true
 			p.$save ->
 				console.log $scope.product
 				$alert
@@ -109,3 +112,5 @@ c.controller 'EditProductCtrl', [
 					type: 'success'
 		
 ]
+
+ 
