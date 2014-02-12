@@ -1,0 +1,82 @@
+<div class="row">
+	<div class="col-md-10">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<div class="panel-title">UNPAID COMMISSIONS</div>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Commission Percentage</th>
+						<th>Receivable Commission</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="upc in unpaidCommissions">
+						<td>{{upc.product.product_name}}</td>
+						<td>{{upc.order.price}}</td>
+						<td>{{upc.order.percentage_commission}} %</td>
+						<td>{{upc.commission}}</td>
+					</tr>
+					<tr>
+						<td colspan="4" ng-show="unpaidCommissions.length == 0">No unpaid Commissions.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<div class="panel-title">PAID COMMISSIONS</div>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Commission Percentage</th>
+						<th>Receivable Commission</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="upc in paidCommissions">
+						<td>{{upc.product.product_name}}</td>
+						<td>{{upc.order.price}}</td>
+						<td>{{upc.order.percentage_commission}} %</td>
+						<td>{{upc.commission}}</td>
+					</tr>
+					<tr>
+						<td colspan="4" ng-show="paidCommissions.length == 0">No Paid Commissions yet.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title text-center">Total Receivable Commission</h3>
+			</div>
+			<div class="panel-body">
+				<h1 class="text-center">
+					$ <strong ng-bind="myReceivableCommission.commission"></strong>
+				</h1>
+			</div>
+			<div class="panel-body"></div>
+		</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title text-center">Total Received Commission</h3>
+			</div>
+			<div class="panel-body">
+				<h1 class="text-center">
+					$ <strong ng-bind="myReceivedCommission.commission"></strong>
+				</h1>
+			</div>
+			<div class="panel-body"></div>
+		</div>
+	</div>
+</div>

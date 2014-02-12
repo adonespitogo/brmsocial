@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top padd-right-10" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top padd-right-10" role="navigation">
       <div>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -25,7 +25,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"> @{{currentUser.firstname}} @{{currentUser.lastname}} <span class="glyphicon glyphicon-cog"></span></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"> @{{currentUser.firstname}} @{{currentUser.lastname}} <span class="glyphicon glyphicon-cog"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a ng-click="copyCurrentUser()" href="#account-settings" data-toggle="modal">My Account</a></li>
                 <li><a href="{{URL::to('session/logout')}}">Logout</a></li>

@@ -25,37 +25,49 @@ traffic.controller 'VendorTrafficCtrl', [
 	'$scope', 'ProductTraffic', '$stateParams'
 	($scope, ProductTraffic, $stateParams) ->
 
-		ProductTraffic.fetch $stateParams.id, (traffics)->
+		$scope.product = {}
+
+		ProductTraffic.get id: $stateParams.id, (productWithTraffic)->
 			
-			$scope.traffics = traffics.traffic
-			$scope.product_name = traffics.product_name.name
+			$scope.product = productWithTraffic
 
-			# console.log($scope.traffics)
-			# console.log($scope.traffics.length)
+			getDates = ->
+				last_date = moment(new Date()).subtract('days', 30)
+				dates = []
+				date = moment(new Date()).endOf 'day'
 
-			if not $scope.traffics instanceof Array
-				$scope.traffics.length = [ {"elapsed": 0, "value": 0} ]
+				while last_date <= date
+					dates.push last_date.format 'YYYY-MM-DD'
+					last_date = last_date.add 'days', 1
+				
+				dates
 
-		# day_data = [
-		#     {"elapsed": "I", "value": 34},
-		#     {"elapsed": "II", "value": 24},
-		#     {"elapsed": "III", "value": 3},
-		#     {"elapsed": "IV", "value": 12},
-		#     {"elapsed": "V", "value": 13},
-		#     {"elapsed": "VI", "value": 22},
-		#     {"elapsed": "VII", "value": 5},
-		#     {"elapsed": "VIII", "value": 26},
-		#     {"elapsed": "IX", "value": 12},
-		#     {"elapsed": "X", "value": 19}
-		# ]
+			formatTrafficCreatedAt = ->
+				$scope.product.traffic = _.map $scope.product.traffic, (traffic)->
+												traffic.created_at_date = moment(traffic.created_at).format 'YYYY-MM-DD'
+												traffic
 
-		# #console.log day_data
+			getMorrisData = ->
+				data = []
+				dates = getDates()
+				formatTrafficCreatedAt()
+
+				for d in dates
+					datum = {}
+					datum.date = moment(d).format 'MMM-D'
+					datum.traffic = (_.where $scope.product.traffic, ({created_at_date : d})).length
+					data.push datum
+
+				data
+
+			data = getMorrisData()
+				
 
 			new Morris.Line {
 			    element: 'graph-line',
-			    data: $scope.traffics,
-			    xkey: 'elapsed',
-			    ykeys: ['value'],
+			    data: data,
+			    xkey: 'date',
+			    ykeys: ['traffic'],
 			    labels: ['Visits'],
 			    lineColors:['#1FB5AD'],
 			    parseTime: false
