@@ -15,23 +15,24 @@ c.config [
 
 		#for file upload
 		$httpProvider.defaults.transformRequest = (data) ->
-		  return data  if data is `undefined`
-		  fd = new FormData()
-		  angular.forEach data, (value, key) -> 
-		    console.log(value)
-		    if value instanceof FileList
-		      if value.length is 1
-		        fd.append key, value[0]
-		      else
-		        angular.forEach value, (file, index) ->
-		          fd.append key + "_" + index, file
-		          return
+			return data  if data is `undefined`
+			fd = new FormData()
+			angular.forEach data, (value, key) -> 
 
-		    else
-		      fd.append key, value
-		    return
+				if value instanceof FileList
+					if value.length is 1
+						fd.append key, value[0]
+					else
+						angular.forEach value, (file, index) ->
+							console.log(file)
+							fd.append key + "_" + index, file
+							return
 
-		  fd
+				else
+					fd.append key, value
+				return
+
+			fd
 
 		$httpProvider.defaults.headers.post["Content-Type"] = `undefined` 
 
@@ -85,14 +86,15 @@ c.controller 'NewProductCtrl', [
 			$scope.product.product_image = e.files 
 
 		$scope.createProduct = (p)->
-			console.log(p)
-			return true
-			p.$save ->
-				console.log $scope.product
+
+			$.each $('input[name="terms[]"]'), (i, d)->
+				p.terms[i] = $(d).val()
+				
+			p.$save -> 
 				$alert
 					title : "Product has been created successfully."
 					type: 'success'
-				$location.path '/products'
+				# $location.path '/products'
 		
 ]
 
@@ -106,12 +108,12 @@ c.controller 'EditProductCtrl', [
 		$scope.addFile = (e)-> 
 			$scope.product.product_image = e.files 
 
-		$scope.updateProduct = (p)->
+		$scope.updateProduct = (p)-> 
 			p.$save ->
 				$alert
 					title : "Product has been updated successfully."
 					type: 'success'
-					$location.path '/products'
+					# $location.path '/products'
 		
 ]
 

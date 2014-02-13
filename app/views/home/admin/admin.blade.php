@@ -2,7 +2,8 @@
 
 @section('head')
 	<title>BRM Deals - Admin</title>
-    <link rel="stylesheet" href="bootstrap-3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.1/css/bootstrap.cosmo.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     {{stylesheet_link_tag('admin')}}
 @stop
 

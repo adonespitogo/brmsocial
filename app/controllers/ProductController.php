@@ -5,14 +5,19 @@
 		public function getIndex($id=null)
 		{		
 			if($id)
-				return Product::find($id);
+				if($id == 'create')
+					return new Product();
+				else{
+					// return Product::find($id);
+					$product = Product::find($id);
+					$images = $product->pictures;
+
+					foreach ($images as $key => $img) {
+						echo $img->picture->url('medium');
+					}
+				}
 			else
 				return Product::all();
-		}
-
-		public function getCreate()
-		{
-			return new Product();
 		}
 
 		public function postIndex($id=null)
@@ -22,7 +27,8 @@
 			if($id)
 				$p = Product::find($id);
 			else
-				$p = new Product();
+				$p = new Product(); 
+
 			$p->category_id = Input::get('category_id');
 			$p->product_name = Input::get('product_name');
 			$p->tagline = Input::get('tagline');
@@ -34,15 +40,18 @@
 			$p->save();
 			 
 			if(Input::has('terms')){
-				foreach (Input::get('terms') as $key => $term) {
+				$terms = Input::get('terms');
+				$terms = explode(',', $terms);
+				 
+				foreach ($terms as $key => $t) {
 					$term = new Term();
 					$term->product_id = $p->id;
-					$term->term = $term;
+					$term->term = $t;
 					$term->save();
 				}
 			}
-
-			foreach (Input::file() as $key => $picture) {
+ 		
+			foreach (Input::file() as $key => $picture){
 				$pPicture = new ProductPicture();             
    				$pPicture->picture = $picture; 
 				$p->pictures()->save($pPicture);
@@ -54,7 +63,7 @@
 				
 		public function deleteIndex($id)
 		{
-			Product::where('id', $id)->delete();
+			Product::find($id)->delete();
 		}
 
 		public function myProducts()
