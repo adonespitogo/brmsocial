@@ -25,24 +25,24 @@
 						<h3>Featured Deal</h3>
 						<!-- Start Featured Deal -->
 						<div class="banner-deal-page">
-							<img src='website/images/products/large/socialmediamgt.jpg' alt="featured deal" title="featured deal">
+							<img src='{{URL::to($featured->product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<div class="featured-title">Making Profits with Pinterest</div>
+								<div class="featured-title">{{$featured->product->product_name}}</div>
 								<div class="featured-price">
 									<ul>
 										<li>now only</li>
-										<li>$25<span>.00</span></li>
+										<li>${{number_format($featured->product->discounted_price, 0)}}<span>.00</span></li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-6 text-right">
 								<div class="reg-price">
-									<span>$130</span><br />
+									<span>${{number_format($featured->product->regular_price, 0)}}</span><br />
 									regular price
 								</div>
-								<span class="save">save 23%</span>
+								<span class="save">save {{$featured->product->getDiscountPercentage()}}%</span>
 							</div>
 						</div>
 						<!-- End Featured Deal -->
