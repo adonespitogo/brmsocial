@@ -50,32 +50,7 @@
 					<div class="left-col">
 						<h3>Most Popular Services</h3>
 						<!-- Start Most Popular Services -->
-						<div class="row deal-popular">
-							<div class="col-md-4 col-sm-4">
-								<img src='website/images/products/medium/img-cloudseekr.jpg' alt="most popular service" title="most popular service">
-								<h4><a href="#">Design Your Dream Home With Live Interior 3D <span>$9.99</span></a></h4>
-								<ul>
-									<li>4 days</li>
-									<li><a href="#">Productivity</a></li>
-								</ul>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<img src='website/images/products/medium/img-instagram.jpg' alt="most popular service" title="most popular service">
-								<h4><a href="#">Design Your Dream Home With Live Interior 3D <span>$9.99</span></a></h4>
-								<ul>
-									<li>4 days</li>
-									<li><a href="#">Productivity</a></li>
-								</ul>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<img src='website/images/products/medium/img-pinterest.jpg' alt="most popular service" title="most popular service">
-								<h4><a href="#">Design Your Dream Home With Live Interior 3D <span>$9.99</span></a></h4>
-								<ul>
-									<li>4 days</li>
-									<li><a href="#">Productivity</a></li>
-								</ul>
-							</div>
-						</div>
+						@include('public.shared.most_popular')
 						<!-- End Most Popular Services -->
 					</div>
 				</div>

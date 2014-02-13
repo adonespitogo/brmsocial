@@ -118,6 +118,11 @@ class Product extends BaseModel{
 					->where('sale_end_date', '>=', $now)
 					->get();
 	}
+	
+	public static function getMostPopular()
+	{
+		return self::orderBy('created_at')->limit(3)->get();
+	}
 
 }
 
