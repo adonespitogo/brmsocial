@@ -1,6 +1,6 @@
 c = angular.module 'UserControllers',[
 	'ui.router',
-
+	'FormValidation'
 ]
 
 c.config [
@@ -15,6 +15,11 @@ c.config [
 			url: '/users',
 			template: JST[templatePath+'admin/users/user_list'],
 			controller: 'UserListCtrl'
+		})
+		.state('editUser',{
+			url: '/user/:id/edit',
+			template: JST[templatePath+'admin/users/user_edit'],
+			controller: 'EditUserCtrl'
 		})
 		.state('newUser', {
 			url: '/user/new',
@@ -41,8 +46,8 @@ c.controller 'UserListCtrl', [
 ]
 
 c.controller 'NewUserCtrl',[
-	'$scope', '$alert', '$stateParams', 'Users',
-	($scope, $alert, $stateParams, Users)->
+	'$scope', '$alert', '$stateParams', 'Users','$location',
+	($scope, $alert, $stateParams, Users, $location)->
 		id = $stateParams.id
 		$scope.user = Users.get {id: 'create'}
 
@@ -51,8 +56,23 @@ c.controller 'NewUserCtrl',[
 		$scope.createuser = (u)->
 							u.$save ->
 								$alert
-										title : "User has been created successfully."
-										type: 'success'
-								
-							 
+									title : "User has been added successfully."
+									type: 'success'	
+								$location.path('/users')
 ]
+c.controller 'EditUserCtrl',[
+	'$scope', '$alert', '$stateParams', 'Users', '$location',
+	($scope, $alert, $stateParams, Users, $location)->
+		id = $stateParams.id
+		$scope.user = Users.get {id: id}, (data)->
+							$scope.oldEmail = data.email 								 
+		
+		$scope.userTypes = ['admin', 'vendor', 'customer']
+
+		$scope.updateUser = (u)->
+							u.$save ->
+								$alert
+									title : "User has been updated successfully."
+									type: 'success'		
+							$location.path('/users')			 
+]				

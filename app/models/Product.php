@@ -40,7 +40,7 @@ class Product extends BaseModel{
 		$this->sale_start_date = date('Y:m:d H:i:s');
 		$this->sale_end_date = date('Y:m:d H:i:s');
 		$this->product_image = 'default.png';
-		$this->category_id = Category::first()->id;
+		//$this->category_id = Category::first()->id;
 	}
 	
 	public function toArray()

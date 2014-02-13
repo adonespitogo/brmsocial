@@ -13,6 +13,7 @@
 //= require jquery
 //= require lib/bootstrap/bootstrap
 //
+//= require lib/underscore/underscore
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
