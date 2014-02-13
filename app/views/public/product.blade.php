@@ -21,7 +21,7 @@
 						<div class="left-col">
 							<!-- Start Featured Deal -->
 							<div class="banner-deal-page">
-								<img src='{{URL::to("website/images/products/large/socialmediamgt.jpg")}}' alt="featured deal" title="featured deal">
+								<img src='{{URL::to($product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
 							</div>
 							<!-- End Featured Deal -->
 						</div>
