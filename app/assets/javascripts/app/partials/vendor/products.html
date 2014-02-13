@@ -22,6 +22,7 @@
                         <th>Date Added</th>
                         <th>Visits Today</th>
                         <th>Traffic</th>
+                        <th>Product Link</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,10 +49,12 @@
                         <td>{{ product.created_at }}</td>
                         <td>{{ product.traffic_today_count }}</td>
                         <td><a href="#/product/{{ product.id }}/traffic"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
+                        <td>Copy Product Link</td>                        
                     </tr>
                     <tr ng-show="products.length == 0">
                     	<td colspan="9">No products yet.</td>
                     </tr>
+
                 </tbody>
             </table>
         </div>
