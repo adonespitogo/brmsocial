@@ -93,30 +93,7 @@
 							<h3>Customers also bought</h3>
 							<!-- Start Customers also bought -->
 							<div class="row deal-popular">
-								<div class="col-md-4 col-sm-4">
-									<img src='{{URL::to("website/images/products/medium/img-cloudseekr.jpg")}}' alt="customers also bought this" title="customers also bought this">
-									<h4><a href="#">Facebook Training for Business <span>$9.99</span></a></h4>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</div>
-								<div class="col-md-4 col-sm-4">
-									<img src='images/products/medium/img-instagram.jpg' alt="customers also bought this" title="customers also bought this">
-									<h4><a href="#">Twitter for Business <br /><span>$9.99</span></a></h4>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</div>
-								<div class="col-md-4 col-sm-4">
-									<img src='images/products/medium/img-pinterest.jpg' alt="customers also bought this" title="customers also bought this">
-									<h4><a href="#">Awesome Videos That Thrive on Social Media <span>$9.99</span></a></h4>
-									<ul>
-										<li>4 days</li>
-										<li><a href="#">Productivity</a></li>
-									</ul>
-								</div>
+								@include('public.shared.most_popular')
 							</div>
 							<!-- End Customers also bought -->
 						</div>
