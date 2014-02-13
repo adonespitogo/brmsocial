@@ -7,7 +7,7 @@
 				<div><a href="#">{{$product->product_name}}</a></div>
 				<div class="price">${{$product->discounted_price}}</div>
 				<ul>
-					<li>4 days</li>
+					<li>{{$product->getLeftSaleDays()}} days</li>
 					<li><a href="#">{{$product->category->category}}</a></li>
 				</ul>
 			</li>
