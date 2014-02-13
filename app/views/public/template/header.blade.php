@@ -4,14 +4,16 @@
 	    	<div class="row">
 	   			<div class="col-md-12">
 				    <div class="nav-style">
-				    	<a><img src='{{URL::to("website/images/brmsocial-logo.png")}}' alt="BRM Social" class="logo"></a>
+				    	<a href="{{URL::to('/')}}">
+				    		<img src='{{URL::to("website/images/brmsocial-logo.png")}}' alt="BRM Social" class="logo">
+				    	</a>
 					    <ul class="nav nav-pills">
 					      <li class="dropdown shop">
 					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>
 					        <ul class="dropdown-menu">
 					        	@foreach (Category::all() as $category)
 									<li>
-										<a href="#">
+										<a href="{{URL::to('category/'.$category->slug)}}">
 											<i class="fa fa-star"></i>
 											{{$category->category}}
 										</a>

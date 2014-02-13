@@ -109,6 +109,15 @@ class Product extends BaseModel{
 	{
 		return self::where('sale_start_date', '>', Carbon\Carbon::now())->get();
 	}
+	
+	public static function getByCategory($category)
+	{
+		$now = Carbon\Carbon::now();
+		return self::where('category_id', $category->id)
+					->where('sale_start_date', '<=', $now)
+					->where('sale_end_date', '>=', $now)
+					->get();
+	}
 
 }
 

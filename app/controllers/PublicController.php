@@ -14,4 +14,13 @@ class PublicController extends BaseController{
 		else
 			return $this->show404();
 	}
+	
+	public function categoryProducts($slug)
+	{
+		$c = Category::where('slug', $slug)->first();
+		if(is_object($c))
+			return Product::getByCategory($c);
+		else
+			$this->show404();
+	}
 }
