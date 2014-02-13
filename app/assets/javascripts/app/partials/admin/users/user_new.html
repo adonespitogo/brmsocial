@@ -25,11 +25,12 @@
 	</div>
 	<div class="form-group">
 		<div class="col-md-6"
-			ng-class="{'has-error' : userForm.email.$error.required || userForm.email.$error.email}">
+			ng-class="{'has-error' : userForm.email.$error.required || userForm.email.$error.email || userForm.email.$error.unique}">
 			<label class="control-label">Email</label>
-			<input required type="email" name="email" class="form-control" ng-model="user.email">
+			<input required type="email" name="email" class="form-control" ng-model="user.email" ensure-unique="email">
 			<span class="text-danger" ng-show="userForm.email.$error.required">Required *</span>
 			<span class="text-danger" ng-show="userForm.email.$error.email">Must be a valid email *</span>
+			<span class="text-danger" ng-show="userForm.email.$error.unique">Email is already used *</span>
 		</div> 
 		<div class="col-md-6"
 			ng-class="{'has-error' : userForm.email.$error.required || userForm.email.$error.email}">

@@ -13,7 +13,7 @@
 //= require jquery
 //= require lib/bootstrap/bootstrap
 //
-//= require lib/underscore
+//= require lib/underscore/underscore
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
@@ -26,3 +26,6 @@
 //= require app/directives/form_validation
 //= require app/directives/event_listeners
 //= require_tree app/partials/admin
+//
+//= require lib/underscore/underscore
+//

@@ -34,6 +34,17 @@
 			<textarea name="overview" cols="30" rows="10" class="form-control" ng-model="product.overview"></textarea>
 		</div>
 	</div>
+
+	<div class="form-group terms-con">
+		<div class="col-md-12">
+			<label class="control-label">TERMS & CONDITIONS</label><!-- <span class="btn btn-success glyphicon glyphicon-plus">Add</span> -->
+		</div>	
+		<div class="col-md-12" ng-repeat="(key, t) in product.terms">
+			<span class="text-danger" ng-show="productForm.terms.$error.required">Required *</span>
+			<input add-terms type="text" name="terms[]" cols="30" rows="10" class="form-control term" ng-model="t.term" placeholder="" />
+		</div> 
+	</div>
+
 	<div class="form-group">
 		<div class="col-md-6">
 			<label class="form-label">Category</label>
