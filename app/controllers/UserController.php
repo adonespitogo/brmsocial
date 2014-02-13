@@ -15,7 +15,7 @@
 				else if($id == 'me')
 					return Auth::user();
 				else if($id=='all')
-					return User::all();
+					return User::where('id', '<>', Auth::user()->id)->get();
 				else	
 					return User::find($id);
 			}
