@@ -1,12 +1,11 @@
 <?php
 
-Route::get('/', function()
-{
-	return View::make('session.login');
-});
 
 
 // start public routes
+Route::get('/', array('uses' => 'PublicController@index'));
+Route::get('product/{slug}', array('uses' => 'PublicController@product'));
+Route::get('session/login', array('uses' => 'SessionController@getLogin', 'as' => 'login'));
 Route::controller('session', 'SessionController');
 
 
@@ -19,11 +18,20 @@ Route::group(array('before' => 'auth'), function(){
  
 	Route::controller('products', 'ProductController');
 
+<<<<<<< HEAD
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
 	Route::get('products/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
 	Route::get('product/{id}/traffic', array('uses' => 'ProductController@productTraffic'));
 
+=======
+	Route::get('products-resource/my-products', array('uses' => 'ProductController@myProducts'));
+	Route::get('products-resource/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
+	Route::get('products-resource/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
+	Route::get('product-resource/{id}/traffic', array('uses' => 'ProductController@productTraffic'));
+	Route::resource('products-resource', 'ProductController');
+	
+>>>>>>> 2f66a9255115f9a7705d1f86f6b46d157a0c0132
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));

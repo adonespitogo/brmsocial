@@ -8,6 +8,10 @@ class Category extends BaseModel{
 	protected $softDelete = true;
 
 	protected $isodates = array('created_at');
+	protected $hasSlug = array(
+		'slugColumn' => 'slug',
+		'slugFromColumn' => 'category'
+	);
 
 	public function products(){
 		return $this->hasMany('Product');

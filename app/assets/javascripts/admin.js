@@ -26,3 +26,6 @@
 //= require app/directives/form_validation
 //= require app/directives/event_listeners
 //= require_tree app/partials/admin
+//
+//= require lib/underscore/underscore
+//
