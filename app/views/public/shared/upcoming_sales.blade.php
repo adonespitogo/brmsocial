@@ -13,7 +13,7 @@
 						{{date('M', strtotime($product->sale_start_date))}}
 					</dt>
 					<dd>
-						<a href="#">{{$product->product_name}}</a>
+						<a href="{{URL::to('product/'.$product->slug)}}">{{$product->product_name}}</a>
 						<p>{{$product->tagline}}</p>
 					</dd>
 				<dl>

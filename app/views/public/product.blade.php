@@ -154,7 +154,7 @@
 								</ul>
 								<h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>{{$product->getLeftSaleDays()}} days</span></h3>
 								<button class="btn-green">BUY NOW</button>
-								<div class="img-or"><img src="images/img-or.jpg" alt="or" title="or"></div>
+								<div class="img-or">{{image_tag('img-or.jpg', array('alt' => 'or'))}}</div>
 								<div class="gift-style"><h3 class="text-center second-h3"><i class="fa fa-gift fa fa-large"></i>    Gift this</h3></div>
 								<div class="terms-of-sale">
 									<h4>Terms of Sale</h4>
