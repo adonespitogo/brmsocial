@@ -3,7 +3,10 @@
 class PublicController extends BaseController{
 	public function index()
 	{
-		return View::make('public.index');
+		$featured = FeaturedProduct::getFeaturedProductToday();
+		return View::make('public.index', array(
+			'featured' => $featured
+		));
 	}
 
 	public function product($slug)

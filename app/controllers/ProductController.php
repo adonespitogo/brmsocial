@@ -10,11 +10,12 @@
 				else{
 					// return Product::find($id);
 					$product = Product::find($id);
-					$images = $product->pictures;
+					return $product;// $images = $product->pictures;
 
-					foreach ($images as $key => $img) {
-						echo $img->picture->url('medium');
-					}
+					// foreach ($images as $key => $img) {
+					// 	echo $img->picture->url('medium');
+					// }
+					
 				}
 			else
 				return Product::all();
@@ -53,7 +54,8 @@
  		
 			foreach (Input::file() as $key => $picture){
 				$pPicture = new ProductPicture();             
-   				$pPicture->picture = $picture; 
+   				$pPicture->picture = $picture;
+   				$p->pictures()->delete();
 				$p->pictures()->save($pPicture);
 			}
 		 

@@ -1,7 +1,7 @@
 <div class="related-deals">
 	<h4>Related Deals</h4>
 	<ul>
-		@foreach(Product::getUpcomingSales() as $product)
+		@foreach(Product::all() as $product)
 			<li>
 				<img src='{{URL::to("website/images/products/small/img-cloudseekr.jpg")}}' alt="related deals" title="related deals">
 				<div><a href="#">{{$product->product_name}}</a></div>
