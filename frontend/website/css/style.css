@@ -62,7 +62,8 @@ img { max-width: 100%; } ul { list-style:none; margin:0; padding:0; }
 .sp2-ordinary-page.course ul li i {color: #71be18;}
 
 /*Deal Page*/
-.deal-page { font-family:'Open Sans', sans-serif !important; margin-top:20px; }
+.bg-image-white {background: url("../images/bg-white.jpg") repeat;}
+.deal-page { font-family:'Open Sans', sans-serif !important; padding-top:20px; }
 .deal-page h3 { font-size:18px; margin:0; padding:0 0 10px 0; }
 .deal-page .left-col, .deal-page .right-col { background-color:#FFF; margin-bottom:30px; padding:14px 16px; }
 .deal-page .left-col .banner-deal-page { margin-bottom:14px; }
@@ -124,8 +125,8 @@ img { max-width: 100%; } ul { list-style:none; margin:0; padding:0; }
 .product-tabs ul li:nth-child(1)>a {cursor:default;}
 .product-tabs ul li:nth-child(1)>a:hover {cursor:default; background: #fff; border: 0 !important;}
 .product-tabs ul li:nth-child(2) {font-weight: normal;font-family:'Open Sans', sans-serif !important;}
-.product-tabs ul li:nth-child(2)>a {font-weight: normal;font-family:'Open Sans', sans-serif !important;}
-.product-tabs ul li:nth-child(2)>a:hover {background: #f9f9f9 !important;font-weight: normal;font-family:'Open Sans', sans-serif !important;}
+.product-tabs ul li:nth-child(2)>a {font-weight: normal;font-family:'Open Sans', sans-serif !important; background: #f9f9f9 !important;}
+.product-tabs ul li:nth-child(2)>a:hover {background: #f9f9f9 !important;font-weight: normal;font-family:'Open Sans', sans-serif !important; }
 .product-tabs .nav-tabs>li {background-color: #f9f9f9;padding: 5px 0px 0px 0px!important; }
 .product-tabs .nav-tabs>li>a:active{background-color: #fff;border-bottom: 0; }
 .product-tabs .nav-tabs>li>a:hover{border-bottom: 0;}
@@ -164,19 +165,19 @@ img { max-width: 100%; } ul { list-style:none; margin:0; padding:0; }
 /*Start Navigation*/
 .navigation {width:100% !important; background-color: #24272e; color: #fff}
 .nav-con .shop ul li a i { padding: 0 5px 0 15px;}
-.nav-con .shop ul li a{padding: 10px 0;}
+.nav-con .shop ul li a{padding: 15px 0;}
 .nav-style {float: left; width: 60%;}
-.nav-style .logo {padding-right: 10px; margin-top: 10px; float: left;}
+.nav-style .logo {padding-right: 10px; margin-top: 8px; float: left;}
 .nav-style .nav {margin-bottom: 0;}
 .nav-style .nav > li {border-left: 1px solid #2f3239;}
-.nav-style .nav > li > a {font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 15px; color: #fff; padding: 20px 20px;}
+.nav-style .nav > li > a {font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 15px; color: #fff; padding: 17px 20px;}
 .nav-style .nav > li > a:hover, .nav > li > a:focus, .nav > li > a:active, .nav-pills .open .dropdown-toggle:hover, .nav-pills .open .dropdown-toggle:active, .nav-pills .open .dropdown-toggle:focus {background-color: #24272e;}
 .nav-style .nav-pills>li>a {-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; margin:0;}
 
 .nav-style .nav-pills .dropdown-menu {-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;}
 .nav-style ul.nav li.dropdown:hover > ul.dropdown-menu { display: block; z-index:999999; }/*Auto dropdown the menu*/
-.nav-style .dropdown-toggle i {font-size: 14px; margin-right: 5px; vertical-align: middle;}
-.nav-style .dropdown-menu {border-top: 0px none transparent !important; min-width: 189px;}
+.nav-style .dropdown-toggle i {font-size: 14px; margin-right: 8px; vertical-align: middle;}
+.nav-style .dropdown-menu {border-top: 0px none transparent !important; min-width: 189px; padding: 0; margin: 0;}
 .nav-style .dropdown-menu > li {border-top: 1px solid #f0f0f0;}
 .nav-style .dropdown-menu > li:nth-child(1) {border-top: 0px solid #f0f0f0;}
 .nav-style .dropdown-menu > li > a {color: #000; font-size: 15px;}
@@ -196,7 +197,7 @@ img { max-width: 100%; } ul { list-style:none; margin:0; padding:0; }
 .login-con > ul {list-style-type: none; margin-bottom:  }
 .login-con > ul > li {display: inline-block; }
 .login-con > ul > li > a {font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 15px; color: #fff;}
-.login-con > ul > li > a:hover {color: #2AB2EA;}
+.login-con > ul > li > a:hover {color: #2AB2EA;text-decoration: none;}
 .bg-cart {background: #88c42b; /* Old browsers */ background: -moz-linear-gradient(top,  #88c42b 0%, #67ae25 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#88c42b), color-stop(100%,#67ae25)); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top,  #88c42b 0%,#67ae25 100%); /* Chrome10+,Safari5.1+ */

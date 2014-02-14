@@ -88,14 +88,4 @@
 		</nav>
     </div>
 
-	<script src='//code.jquery.com/jquery-1.10.2.min.js'></script>
-	<script src='//code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
-	<script src="js/jquery.mmenu.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-	  jQuery(document).ready(function ($) {
-	    $('nav#menu').mmenu();
-	  });
-	</script>
-</body>
-</html>
+	<div id="wrap">

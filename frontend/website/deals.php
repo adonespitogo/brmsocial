@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="shortcut icon" href="images/favicon.png">
-<title>Deals</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/media-queries.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<![endif]-->
-</head>
-  <body>
-  	<?php include 'top-header.php'; ?>
-    <div id="wrap">
+
+  	<?php include 'header.php'; ?>
+  
       	<section class="sp2-ordinary-page-title two-lines text-center">
 		  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
 		  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>
@@ -58,6 +39,32 @@
 						<div class="left-col">
 							<h3>Most Popular Services</h3>
 							<!-- Start Most Popular Services -->
+							<div class="row deal-popular">
+								<div class="col-md-4 col-sm-4">
+									<img src='images/products/medium/img-cloudseekr.jpg' alt="most popular service" title="most popular service">
+									<h4><a href="#">Design Your Dream Home With Live Interior 3D <span>$9.99</span></a></h4>
+									<ul>
+										<li>4 days</li>
+										<li><a href="#">Productivity</a></li>
+									</ul>
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<img src='images/products/medium/img-instagram.jpg' alt="most popular service" title="most popular service">
+									<h4><a href="#">Design Your Dream Home With Live Interior 3D <span>$9.99</span></a></h4>
+									<ul>
+										<li>4 days</li>
+										<li><a href="#">Productivity</a></li>
+									</ul>
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<img src='images/products/medium/img-pinterest.jpg' alt="most popular service" title="most popular service">
+									<h4><a href="#">Design Your Dream Home With Live Interior 3D <span>$9.99</span></a></h4>
+									<ul>
+										<li>4 days</li>
+										<li><a href="#">Productivity</a></li>
+									</ul>
+								</div>
+							</div>
 							<div class="row deal-popular">
 								<div class="col-md-4 col-sm-4">
 									<img src='images/products/medium/img-cloudseekr.jpg' alt="most popular service" title="most popular service">
@@ -221,10 +228,4 @@
 		</section>
     </div>
 
-    <div id="footer">
-    </div>
-    
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+    <?php include 'footer.php'; ?>

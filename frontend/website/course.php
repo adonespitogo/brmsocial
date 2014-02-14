@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Course</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="shortcut icon" href="images/favicon.png">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/media-queries.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-	<?php include 'top-header.php'; ?>
-	<div id="wrap">
+
+<?php include 'header.php'; ?>
+
+	
 		<section class="sp2-ordinary-page-title text-center">
 		  <h1>The Social Media Marketers Guide to Driving Traffic in 2014</h1>
 		</section>
@@ -63,10 +45,6 @@
 		    </div>
 		  </div>
 		</section>
-	</div>
 
-	<div id="footer">
-		
-	</div>
-</body>
-</html>
+
+<?php include 'footer.php'; ?>
