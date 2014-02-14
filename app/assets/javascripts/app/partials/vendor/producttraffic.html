@@ -1,15 +1,12 @@
 <div class="row">
     <div class="col-sm-12">
-        <section class="panel">
-            <header class="panel-heading">
-                Traffic for the last 30 days <br />
-                Product name: {{ product.name }}
-            <span class="tools pull-right">
-                <a href="javascript:;" class="fa fa-chevron-down"></a>
-                <a href="javascript:;" class="fa fa-cog"></a>
-                <a href="javascript:;" class="fa fa-times"></a>
-             </span>
-            </header>
+        <section class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    {{product.product_name}} -
+                    <small>Traffic for the last 30 days</small>
+                </div>
+            </div>
             <div class="panel-body">
                 <div id="graph-line"></div>
             </div>

@@ -22,6 +22,17 @@ class FeaturedProduct extends Ardent{
 
 		return $products;
 	}
+	public static function getFeaturedProductToday()
+	{
+		$now = Carbon\Carbon::now()->endOfDay();
+		$featured = self::where('featured_start_date', '<=', $now)
+						->where('featured_end_date', '>=', $now )
+						->orderBy('created_at', 'DESC')
+						->first();
+						
+		$featured->load('product');
+		return $featured;
+	}
 
 }
 

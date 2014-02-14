@@ -5,7 +5,7 @@
 		Add Category
 	</a>
 </h3>
-
+<div id="alerts-container" ></div>
 <table class="table table-hover responsive">
 	<thead>
 		<tr>
@@ -19,7 +19,7 @@
 		<tr ng-repeat="c in categories">
 			<td ng-bind="c.id"></td>
 			<td ng-bind="c.category"></td>
-			<td ng-bind="c.created_at"></td> 
+			<td ng-bind="c.created_at_iso_date | date:'fullDate'"></td> 
 			<td style="width: 15%">
 				<a class="btn btn-success" ui-sref="editCategory({id: c.id})">Edit</a>
 				<a class="btn btn-danger" ng-click="delete(c.id)">Delete</a>

@@ -35,66 +35,54 @@ c.config [
 ]
 
 c.controller 'CategoryListCtrl', [
-	'$scope', '$location', 'Category',
-	($scope, $location, Category) ->
+	'$scope', '$location', 'Category','$alert',
+	($scope, $location, Category, $alert) ->
 
 		$scope.categories = Category.query()	
 
-		$scope.editSubmit = (id) ->
-			category = $('[name="category"]').val()
-
-			Category.update(
-				{id: id},
-				{category: category},
-				()->
-					alert('category successfully updated')
-					$location.path('/categories')
-				)
 		$scope.delete = (id)->
 
 			Category.delete(
 				{},
 				{id: id},
 				()->
-					alert('successfully deleted')
+					$alert
+						title : "Category has been deleted successfully."
+						type: 'success'
+
 					$scope.categories = Category.query()
 				)
 ]
 
 
 c.controller 'EditCategoryCtrl', [
-	'$scope', '$location', '$stateParams', 'Category',
-	($scope, $location, $stateParams, Category) ->
+	'$scope', '$location', '$stateParams', 'Category','$alert',
+	($scope, $location, $stateParams, Category, $alert) ->
 
 		id = $stateParams.id;
 
 		$scope.category = Category.get({id: id});
 
-		$scope.editSubmit = (id) ->
-			category = $scope.category.category
+		$scope.editSubmit = (c) ->
+			c.$save ->
+				$alert
+					title : "Category has been updated successfully."
+					type: 'success'
 
-			Category.update(
-				{id: id},
-				{category: category},
-				()->
-					alert('category successfully updated')
-					$location.path('/categories')
-				)
+					$location.path('/categories') 
 ]
 		
 c.controller 'AddCategoryCtrl',[
-	'$scope', '$location', '$stateParams', 'Category',
-	($scope, $location, $stateParams, Category)->
+	'$scope', '$location', '$stateParams', 'Category','$alert',
+	($scope, $location, $stateParams, Category, $alert)->
 
 		$scope.submitted = false;
+		$scope.category = Category.get({id: 'create'});
 
-		$scope.addSubmit = ()->
-			cat_name = $scope.category_name;
-
-			Category.save({},
-				{category: cat_name},
-				()->
-					alert('category successfully added')
-					$location.path('/categories')
-			)
+		$scope.addSubmit = (c)->
+			c.$save ->
+					$alert
+						title : "Category has been added successfully."
+						type: 'success'
+						$location.path('/categories') 
 ]

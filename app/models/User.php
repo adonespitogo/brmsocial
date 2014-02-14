@@ -77,7 +77,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public function toArray()
     {
     	$this->fullname = $this->getFullname();
-    	if((bool)$this->is_vendor)
+    	if($this->type == 'vendor')
     		$this->load('vendorInfo');
 
     	return parent::toArray();
@@ -120,6 +120,39 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
 	//vendor
 	public function getMyReceivableCommission() {
-		return $this->commissions()->where('is_paid', 0)->sum('commission');
+		$sum = $this->commissions()->where('is_paid', 0)->sum('commission');
+		if(!is_numeric($sum)) return 0.00;
+		return $sum;
 	}
+
+	//vendor
+	public function getMyReceivedCommission() {
+		$sum = $this->commissions()->where('is_paid', 1)->sum('commission');
+		if(!is_numeric($sum)) return 0.00;
+		return $sum;
+	}
+
+	//vendor
+	public function unpaidCommissions()
+	{
+		return $this->commissions()->where('is_paid', 0)->get();
+	}
+	//vendor
+	public function paidCommissions()
+	{
+		return $this->commissions()->where('is_paid', 1)->get();
+	}
+
+	//new user
+	public function beforeSave()
+    {
+        $this->rawPassword = $this->password;
+        // if there's a new password, hash it
+        if($this->isDirty('password')) {
+            $this->password = Hash::make($this->password);
+        }
+
+        return true;
+        //or don't return nothing, since only a boolean false will halt the operation
+    }
 }

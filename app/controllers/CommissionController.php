@@ -2,10 +2,24 @@
 
 	class CommissionController extends BaseController {
 
+		public function unpaidCommissions()
+		{
+			return Auth::user()->unpaidCommissions();
+		}
+
+		public function paidCommissions()
+		{
+			return Auth::user()->paidCommissions();
+		}
+
 		public function myReceivableCommission() {
 			$commission = Auth::user()->getMyReceivableCommission();
 
-			$commission = is_numeric($commission) ? $commission : 0;
+			return Response::json(array('commission' => $commission));
+		}
+
+		public function myReceivedCommission() {
+			$commission = Auth::user()->getMyReceivedCommission();
 
 			return Response::json(array('commission' => $commission));
 		}
