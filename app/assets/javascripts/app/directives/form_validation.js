@@ -19,3 +19,29 @@ app.directive('integer', function() {
     }
   };
 });
+
+app.directive('ensureUnique', ['$http', function($http) {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, c) {
+      scope.$watch(attrs.ngModel, function() {
+        $http({
+          method: 'POST',
+          url: '/users/check',
+          data: {'field': attrs.ensureUnique, value: $(ele).val()}
+        }).success(function(data, status, headers, cfg) {
+           check2 = scope.oldEmail==$(ele).val().trim(); 
+           
+           if(check2)
+             ds = true;
+           else
+            ds = data.isUnique;
+
+          c.$setValidity('unique', ds);
+        }).error(function(data, status, headers, cfg) {
+          c.$setValidity('unique', false);
+        });
+      });
+    }
+  }
+}]);

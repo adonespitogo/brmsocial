@@ -25,7 +25,7 @@ class HomeController extends BaseController {
 			return View::make('home.vendor.index');
 				break;
 			case 'customer':
-			return View::make('home.customer');
+			return View::make('home.customer.index');
 				break;
 			
 			default:

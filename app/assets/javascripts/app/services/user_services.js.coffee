@@ -3,6 +3,6 @@ u = angular.module 'UserServices', [
 ]
 
 u.factory 'Users', ($resource)->
-	$resource "users/:id", {id: '@id'}, {
+	$resource "users/index/:id", {id: '@id'}, {
 		update: {method: 'PUT', id:'@id', isArray:false}
 	}

@@ -6,10 +6,10 @@
 	</a>
 </h3>
 <div class="form edit-category">
-	<form novalidate name="addCatForm" ng-submit="addSubmit()">
+	<form novalidate name="addCatForm" ng-submit="addSubmit(category)">
 		<div class="form-group" ng-class="{'has-error': addCatForm.category.$error.invalid && addCatForm.category.$dirty}">
 			<label>Category Name</label>
-			<input type="text" name="category" ng-model="category_name" required class="form-control"/>
+			<input type="text" name="category" ng-model="category.category" required class="form-control"/>
 			<small class="text-error" ng-show="addCatForm.category.$error.required">
 				Category name should not be empty
 			</small>
