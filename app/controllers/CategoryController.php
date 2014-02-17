@@ -2,34 +2,35 @@
 
 	class CategoryController extends BaseController {
 
-		public function getIndex($id=null)
+		public function Index()
 		{	
-			if($id)
-				return Category::find($id);
-			else
-				return Category::all();
+			$category = Category::all();
+			return $category;
 		}	
-		public function getCreate(){
-			return new Category();
-		}
-		
-		public function postIndex($id=null){
-			$id = ($id) ? $id : Input::get('id');
-			if($id)
-				$cat = Category::find($id); 
-			else
-				$cat = new Category();
 
+		public function show($id){
+			$category = Category::find($id);
+			return $category;
+		}
+
+		public function save(){
+			$cat = new Category();
 			$cat->category = Input::get('category');
 			$cat->save();
-			return 1;
+			return $cat;
 		}
-		public function deleteIndex($id=null){
+		public function update($id){
+			$cat = Category::find($id);
+			$cat->category = Input::get('category');
+			$cat->update();
+			return 1;
+		} 
+		public function destroy($id){
 			$cat = Category::find($id);
 			$cat->delete();
-			return 1;
-		}
 
+			return 1;
+		} 
 	}
 
 ?>

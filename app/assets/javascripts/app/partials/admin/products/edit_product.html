@@ -28,6 +28,42 @@
 			<input type="text" name="price" class="form-control" ng-model="product.discounted_price">
 		</div>
 	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="control-label">Feature this product?</label> 
+			<br/>
+			<input is-featured type="checkbox" ng-model="product.is_featured" name="is_featured" ng-model="" is-featured ng-true-value="product" 
+				ng-checked="product.is_featured"
+			/>
+		</div>
+	</div>
+
+	<div class="form-group" id="feature_dates" ng-show="product.is_featured">
+		<div class="col-md-6">
+			<label class="control-label">Feature Start Date</label>
+			<input ng-model="product.featured.featured_start_date_iso_date" bs-datepicker class="form-control" type="text" data-date-format="fullDate">
+		</div>
+		<div class="col-md-6">
+			<label class="control-label">Feature End Date</label>
+			<input data-date-format="fullDate" ng-model="product.featured.featured_end_date_iso_date" bs-datepicker class="form-control" type="text">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-6" ng-class="{'has-error': productForm.user.$error.required}">
+			<label class="control-label">Vendor</label>
+			<select 
+				name="user"
+				class="form-control"
+				ng-model="product.user.id"
+				ng-options="v.id as v.fullname for v in vendors" required>
+			</select>
+
+			<span class="text-danger" ng-show="productForm.user.$error.required">Required *</span>
+		</div>
+	</div>
+	
 	<div class="form-group">
 		<div class="col-md-12">
 			<label class="form-label">Overview</label>
@@ -51,7 +87,7 @@
 			<select 
 				name="category"
 				class="form-control"
-				ng-model="product.category_id"
+				ng-model="product.category.id"
 				ng-options="c.id as c.category for c in categories" >
 			</select>
 		</div>

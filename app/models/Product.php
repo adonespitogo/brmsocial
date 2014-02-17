@@ -16,6 +16,7 @@ class Product extends BaseModel{
 		'overview',
 		'sale_start_date',
 		'sale_end_date',
+		'user_id',
 	);
 
 	protected $isodates = array('sale_start_date', 'sale_end_date', 'created_at'); //js Date fields to format to datetime on save
@@ -24,6 +25,7 @@ class Product extends BaseModel{
 		'slugFromColumn' => 'product_name'
 	);
 
+	protected $appends = array('is_featured');
 	public static $relationsData = array(
 		'category' => array(self::BELONGS_TO, 'Category'),
 		'user' => array(self::BELONGS_TO, 'User'),
@@ -31,6 +33,7 @@ class Product extends BaseModel{
 		'terms' => array(self::HAS_MANY, 'Term'),
 		'traffic' => array(self::HAS_MANY, 'Traffic'),
 		'pictures' => array(self::HAS_MANY, 'ProductPicture'),
+		'featured'=>array(self::HAS_ONE,'FeaturedProduct'),
 	);
 
 	//start overrides
@@ -47,6 +50,8 @@ class Product extends BaseModel{
 	{
 		$this->load('category');
 		$this->load('terms');
+		$this->load('featured');
+		$this->load('user');
 		$this->traffic_today_count = $this->getTrafficTodayCount();
 
 		return parent::toArray();
@@ -122,6 +127,12 @@ class Product extends BaseModel{
 	public static function getMostPopular()
 	{
 		return self::orderBy('created_at')->limit(3)->get();
+	}
+	public function getIsFeaturedAttribute(){
+		if(isset($this->featured->id))
+			return true;
+		else
+			return false;
 	}
 
 }
