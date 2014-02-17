@@ -33,5 +33,16 @@
 			$user->delete();
 			return 1;
 		}
+
+		public function postIsUnique(){
+			$val = Input::get('value');
+			$field = Input::get('field');
+			$user = User::where($field, '=', $val)->limit(1)->get();
+
+			if(!isset($user[0]))
+				return array('isUnique' => true);
+			else
+				return array('isUnique'=> false);
+		}
 	}
 ?>

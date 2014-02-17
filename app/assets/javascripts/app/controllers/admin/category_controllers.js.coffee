@@ -63,12 +63,9 @@ c.controller 'EditCategoryCtrl', [
 
 		$scope.category = Category.get({id: id});
 
-		$scope.editSubmit = (id) ->
-			category = $scope.category.category
-
-			Category.update(
-				{id: id},
-				{category: category},
+		$scope.editSubmit = (category) ->
+			
+			Category.update(category,
 				()->
 					$alert
 						title : "Category has been updated successfully."

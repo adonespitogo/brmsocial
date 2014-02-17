@@ -14,6 +14,7 @@ Route::controller('session', 'SessionController');
 Route::group(array('before' => 'auth'), function(){
 	Route::get('users/me', array('uses' => 'UserController@currentUser'));
 	Route::put('users/me', array('uses' => 'RegisterController@updateAccount'));
+	Route::post('users/is-unique', array('uses'=>'UserController@postIsUnique'));
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
 	Route::resource('users', 'UserController');
 	Route::controller('home', 'HomeController');
@@ -33,5 +34,5 @@ Route::group(array('before' => 'auth'), function(){
 
 	Route::resource('traffic', 'TrafficController');
 
-	Route::controller('categories', 'CategoryController');
+	Route::resource('categories', 'CategoryController');
 });
