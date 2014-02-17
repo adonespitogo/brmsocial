@@ -63,13 +63,18 @@ c.controller 'EditCategoryCtrl', [
 
 		$scope.category = Category.get({id: id});
 
-		$scope.editSubmit = (c) ->
-			c.$save ->
-				$alert
-					title : "Category has been updated successfully."
-					type: 'success'
+		$scope.editSubmit = (id) ->
+			category = $scope.category.category
 
-					$location.path('/categories') 
+			Category.update(
+				{id: id},
+				{category: category},
+				()->
+					$alert
+						title : "Category has been updated successfully."
+						type: 'success'
+					$location.path('/categories')
+				)
 ]
 		
 c.controller 'AddCategoryCtrl',[
@@ -77,12 +82,16 @@ c.controller 'AddCategoryCtrl',[
 	($scope, $location, $stateParams, Category, $alert)->
 
 		$scope.submitted = false;
-		$scope.category = Category.get({id: 'create'});
 
-		$scope.addSubmit = (c)->
-			c.$save ->
+		$scope.addSubmit = ()->
+			cat_name = $scope.category_name;
+
+			Category.save({},
+				{category: cat_name},
+				()->
 					$alert
 						title : "Category has been added successfully."
 						type: 'success'
-						$location.path('/categories') 
+					$location.path('/categories')
+			)
 ]

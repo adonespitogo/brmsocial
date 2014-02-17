@@ -3,7 +3,7 @@ p = angular.module 'CategoryServices', [
 ]
 
 p.factory 'Category', ($resource) ->
-	$resource "categories/index/:id", {id: '@id'}, {
+	$resource "categories/:id", {id: '@id'}, {
 		update: {method: 'PUT', id:'@id'} 
 	}
 
