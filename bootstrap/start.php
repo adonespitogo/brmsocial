@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('naif-cl-ubuntu', 'Romnick-PC', 'adones-S551LB','alenteria-PC','SEO-PC', 'Gamzy-PC' ),
+	'local' => array('naif-cl-ubuntu', 'Romnick-PC', 'adones-S551LB','devf-ubuntu','SEO-PC', 'Gamzy-PC' ),
 
 ));
 
