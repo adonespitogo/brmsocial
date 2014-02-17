@@ -9,6 +9,7 @@ module = angular.module 'AdminApp', [
 	'UserControllers',
 	'mgcrea.ngStrap', #angular-strapFormValidation
 	'FormValidation', #custom form validations
+	'EvenListeners',#custom event listeners directive
 ]
 
 module.config [

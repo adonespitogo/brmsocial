@@ -14,7 +14,9 @@
 		public function getAll(){
 			return User::all();
 		}
-
+		public function getUsers($type){
+			return User::where('type','=', $type)->get();
+		}
 		public function create(){
 			return new User();
 		}

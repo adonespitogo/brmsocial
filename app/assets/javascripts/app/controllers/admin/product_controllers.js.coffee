@@ -2,7 +2,8 @@
 c = angular.module 'ProductControllers', [
 	'ui.router',
 	'ProductServices',
-	'CategoryServices'
+	'CategoryServices',
+	'UserServices',
 ]
 
 c.config [
@@ -49,33 +50,39 @@ c.controller 'ProductListCtrl', [
 ]
 
 c.controller 'NewProductCtrl', [
-	'$scope', 'Products', 'Category', '$alert'
-	($scope, Products, Category, $alert) ->
-		Category.query().$promise.then (categories) ->
-				console.log categories
+	'$scope', 'Products', 'Category', '$alert', '$location','Users',
+	($scope, Products, Category, $alert, $location, Users) ->
+		Category.query().$promise.then (categories) -> 
 				$scope.categories = categories
 				$scope.product = Products.get id:"create"
 
+		$scope.vendors = Users.query id:'vendor'
+
 		$scope.createProduct = (p)->
+			console.log(p)
 			p.$save ->
 				console.log $scope.product
 				$alert
 					title : "Product has been created successfully."
 					type: 'success'
-		
+				
+				$location.path('/products')
 ]
 
 c.controller 'EditProductCtrl', [
-	'$scope', 'Products', '$stateParams', 'Category', '$alert'
-	($scope, Products, $stateParams, Category, $alert) ->
+	'$scope', 'Products', '$stateParams', 'Category', '$alert', 'Users','$location',
+	($scope, Products, $stateParams, Category, $alert, Users, $location) ->
 		Category.query().$promise.then (categories) ->
 				$scope.categories = categories
 				$scope.product = Products.get id: $stateParams.id
+
+		$scope.vendors = Users.query id:'vendor'
 
 		$scope.updateProduct = (p)->
 			p.$update ->
 				$alert
 					title : "Product has been updated successfully."
 					type: 'success'
+				$location.path('/products')
 		
 ]

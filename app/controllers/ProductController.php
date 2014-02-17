@@ -9,14 +9,19 @@
 
 		public function create()
 		{
-			return new Product();
+			$p = new Product();
+			$p->featured_start_date_iso_date = "2014-02-17T07:46:16+0000";
+			$p->featured_end_date_iso_date = "2014-02-17T07:46:16+0000";
+			$p->featured_start_date = '2014:02:17 07:19:23';
+			$p->featured_end_date = '2014:02:17 07:19:23'; 
+			return $p;
 		}
 
 		public function store()
 		{
 
 			$p = new Product();
-			$p->category_id = Input::get('category_id');
+			$p->category_id = Input::get('category');
 			$p->product_name = Input::get('product_name');
 			$p->tagline = Input::get('tagline');
 			$p->regular_price = Input::get('regular_price');
@@ -25,7 +30,16 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
+			$p->user_id = Input::get('user');
 			$p->save();
+
+			if(Input::has('is_featured') && Input::get('is_featured')){
+				$fp = new FeaturedProduct();
+				$fp->product_id = $p->id;
+				$fp->featured_start_date = Input::get('featured_start_date_iso_date');
+				$fp->featured_end_date = Input::get('featured_end_date_iso_date');
+				$fp->save();
+			}
 			
 			if(Input::hasFile('pictures')){
 				foreach (Input::file('pictures') as $key => $picture) {
@@ -38,14 +52,15 @@
 		}
 
 		public function show($id)
-		{
+		{	
 			return Product::find($id);
 		}
 
 		public function update($id)
 		{
 			$p = Product::find($id);
-			$p->category_id = Input::get('category_id');
+			$c = Input::get('category');
+			$p->category_id = $c['id'];
 			$p->product_name = Input::get('product_name');
 			$p->tagline = Input::get('tagline');
 			$p->regular_price = Input::get('regular_price');
@@ -54,7 +69,28 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
+			$user= Input::get('user');
+			$p->user_id  = $user['id'];
 			$p->save();
+
+			if(Input::has('featured') && Input::get('is_featured')){
+				$f = Input::get('featured');
+				
+				if(isset($f['id']))
+					$fp = FeaturedProduct::find($f['id']);
+				
+				if(!isset($fp->id))
+					$fp = new FeaturedProduct();
+	
+				$fp->product_id = $p->id;				
+				$fp->featured_start_date = $f['featured_start_date_iso_date'];
+				$fp->featured_end_date = $f['featured_end_date_iso_date'];
+				$fp->save();
+			}else{
+				$fp = FeaturedProduct::where('product_id','=',$p->id);
+				$fp->delete();
+			}
+			
 			return $p;
 		}
 

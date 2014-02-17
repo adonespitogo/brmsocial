@@ -1,8 +1,8 @@
 <?php
 
-use LaravelBook\Ardent\Ardent;
+//use LaravelBook\Ardent\Ardent;
 
-class FeaturedProduct extends Ardent{
+class FeaturedProduct extends BaseModel{
 
 	protected $table = 'featured_products';
 	protected $softDelete = true;
@@ -10,6 +10,14 @@ class FeaturedProduct extends Ardent{
 	public static $relationsData = array(
 		'product' => array(self::BELONGS_TO, 'Product')
 	);
+
+	protected $fillable = array(
+		 'featured_start_date',
+		'featured_end_date',
+		'product_id',
+	);
+
+	protected $isodates = array('featured_start_date', 'featured_end_date', 'created_at'); 
 
 	// start custom functions
 	public static function getFeaturedProducts()
