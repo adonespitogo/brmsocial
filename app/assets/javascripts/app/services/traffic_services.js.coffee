@@ -3,6 +3,6 @@ t = angular.module 'TrafficServices', [
 ]
 
 t.factory 'ProductTraffic', ($resource) ->
-	$resource "product-resource/:id/traffic", {id: '@id'}, {
+	$resource "product/:id/traffic", {id: '@id'}, {
 		productTraffic: { method: 'GET', params: {}, isArray: false }
 	}

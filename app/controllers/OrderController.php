@@ -14,6 +14,10 @@
 
 		public function myOrdersList() {
 			
+			// echo '<pre>';
+			// print_r(Auth::user());
+			// echo '</pre>';
+
 			$orders = Auth::user()->orders;
 			return $orders;
 			//return Response::json(array('orders' => $orders));

@@ -1,1 +1,35 @@
-home
+<div class="content">
+	  <h3 class="mb-30">Featured Deal of the week</h3> 
+	  <div class="banner-home">
+	    <img src="" alt="Featured Deal of the week" title="Featured Deal of the week">
+	  </div>
+	  <div class="form-sort form-inline pull-right">
+	    <div class="form-group">
+	      <label>Sort by:</label>
+	      <select class="form-control w180">
+	        <option>Categories</option>
+	        <option>Date</option>
+	        <option>Price</option>
+	      </select>
+	    </div>
+	  </div>
+
+	  <h3 class="mb-30">Recent Purchases</h3>
+
+	  <!-- Start Recent Purchases -->
+	  <div class="row recent-purchases" ng-repeat="purchase in latest_purchases">
+	    <div class="col-md-3">
+	      <img src="">
+	    </div>
+	    <div class="col-md-7">
+	      <h4>{{ purchase.product_name }}</h4>
+	      <p><a href="#"><em>By : KnowHow</em></a></p>
+	      <a href="#" class="btn-download">Download</a>
+	    </div>
+	    <div class="col-md-2">
+	      <span class="date"><em>January 20, 2014</em></span>
+	    </div>
+	  </div>
+	  <!-- End Recent Purchases -->
+
+	</div>

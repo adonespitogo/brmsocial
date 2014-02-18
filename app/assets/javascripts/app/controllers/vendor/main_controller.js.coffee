@@ -20,12 +20,17 @@ main.controller "MainVendorCtrl", [
 
 		$scope.updateCurrentUser = ->
 			$scope.tmpUser.$update({id:'me'},
-				->
+				(user)->
+					$scope.currentUser = angular.copy $scope.tmpUser
 					alert 'Account has been updated successfully.'
 					$("#account-settings").modal 'hide'
 				, 
 				(res)->
-					alert 'Invalid password.'
+					errors = ""
+					for e in res.data
+						errors += e
+						
+					alert errors
 				)
 
 		$scope.activateNav = (nav) ->

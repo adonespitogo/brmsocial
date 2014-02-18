@@ -12,7 +12,7 @@
 		<div ng-controller="MainVendorCtrl">
 			@include('home.vendor.header')
 			<div style="padding: 10px 15px;" autoscroll='false' ui-view >
-				
+			
 			</div>
 		</div>
 	</div>
