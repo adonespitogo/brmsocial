@@ -4,6 +4,7 @@ c = angular.module 'ProductControllers', [
 	'ProductServices',
 	'CategoryServices',
 	'UserServices',
+	'angularFileUpload',
 ]
 
 c.config [
@@ -50,44 +51,92 @@ c.controller 'ProductListCtrl', [
 ]
 
 c.controller 'NewProductCtrl', [
-	'$scope', 'Products', 'Category', '$alert', '$location','Users',
-	($scope, Products, Category, $alert, $location, Users) ->
+	'$scope', 'Products', 'Category', '$alert', '$location','Users','$upload',
+	($scope, Products, Category, $alert, $location, Users, $upload) ->
 				
 		Category.query().$promise.then (categories) -> 
 				$scope.categories = categories
 				Products.get({ id:"create" }).$promise.then (d)->
 					$scope.product = d
-					$scope.product.terms.push('hello')
-					$scope.product.terms.push('world')
+					$scope.product.terms.push('') 
 
 
 		$scope.vendors = Users.query id:'vendor'
 
+		$scope.files = []
+
+		$scope.onFileSelect = ($files)->
+			 $scope.files = $files	 	
+		
 		$scope.createProduct = (p)->
-			console.log(p)
-			p.$save ->
-				console.log $scope.product
+			
+			p.product_image = true if $scope.files.length> 0
+
+			p.$save (res)->
+				$.each($scope.files, (i,file)->
+						$scope.upload = $upload.upload(
+							url: "product/add-image"
+							data:
+								id: res.id
+							file: file
+						).progress((evt) ->
+							console.log "percent: " + parseInt(100.0 * evt.loaded / evt.total)
+							return
+						).success((data, status, headers, config) ->
+							console.log data
+							return
+						)
+					)
+
 				$alert
 					title : "Product has been created successfully."
 					type: 'success'
-				
-				$location.path('/products')
+					
+					$location.path('/products')
+					  
 ]
 
 c.controller 'EditProductCtrl', [
-	'$scope', 'Products', '$stateParams', 'Category', '$alert', 'Users','$location',
-	($scope, Products, $stateParams, Category, $alert, Users, $location) ->
+	'$scope', 'Products', '$stateParams', 'Category', '$alert', 'Users','$location','$upload',
+	($scope, Products, $stateParams, Category, $alert, Users, $location,$upload) ->
 		Category.query().$promise.then (categories) ->
 				$scope.categories = categories
-				$scope.product = Products.get id: $stateParams.id
+				Products.get({id: $stateParams.id}).$promise.then (d)->
+					$scope.product = d
+					$scope.product.terms.push('') 
 
 		$scope.vendors = Users.query id:'vendor'
 
+		$scope.files = []
+
+		$scope.onFileSelect = ($files)->
+			 $scope.files = $files	
+
 		$scope.updateProduct = (p)->
-			p.$update ->
+
+			p.product_image = if $scope.files.length> 0 then true else false  
+			 
+			p.$update (res)->
+				$.each($scope.files, (i,file)->
+					$scope.upload = $upload.upload(
+						url: "product/add-image"
+						data:
+							id: res.id
+						file: file
+					).progress((evt) ->
+						console.log "percent: " + parseInt(100.0 * evt.loaded / evt.total)
+						return
+					).success((data, status, headers, config) ->
+						console.log data
+						return
+					)
+				)
+
 				$alert
 					title : "Product has been updated successfully."
 					type: 'success'
+
 				$location.path('/products')
 		
 ]
+
