@@ -40,23 +40,21 @@
 				$fp->featured_end_date = Input::get('featured_end_date_iso_date');
 				$fp->save();
 			}
-			
+			 
 			$terms = Input::get('terms');
-			if(count($terms)>0){
-				foreach($terms as $i=>$t){
-					$t = new Term();
-					$t->product_id = $p->id;
-					$t->term = $t;
-					$t->save();
+			if(!empty($terms)){
+				$terms = explode(',', $terms);
+				if(count($terms)>0){
+					foreach($terms as $i=>$tx){
+						if(trim($tx)=='')
+							continue;
+						$t = new Term();
+						$t->product_id = $p->id;
+						$t->term = $tx;
+						$t->save();
+					}
 				}
-			}
-
-			if(Input::hasFile('pictures')){
-				foreach (Input::file('pictures') as $key => $picture) {
-					$p->pictures()->save($picture);
-				}
-
-			}
+			}			
 
 			return $p;
 		}
@@ -101,21 +99,41 @@
 				$fp->delete();
 			}
 
-			$dTerms = Term::where('product_id','=', $p->id);
-			foreach($dTerms as $di => $dt)
-				$dt->delete();
-			
 			$terms = Input::get('terms');
-			if(count($terms)>0){
-				foreach($terms as $i=>$t){
-					$t = new Term();
-					$t->product_id = $p->id;
-					$t->term = $t;
-					$t->save();
+
+			if(!is_array($terms)){
+				$dTerms = Term::where('product_id','=', $p->id)->get();
+				foreach($dTerms as $di => $dt)
+					$dt->delete();
+				
+				if(!empty($terms)){
+					$terms = explode(',', $terms);
+					if(count($terms)>0){
+						foreach($terms as $i=>$tx){
+							if(trim($tx)=='')
+								continue;
+							$t = new Term();
+							$t->product_id = $p->id;
+							$t->term = $tx;
+							$t->save();
+						}
+					}
 				}
 			}
-			
+
+			if(Input::has('product_image') && Input::get('product_image')){ 
+				ProductPicture::where('product_id','=', $p->id)->delete();
+			}
 			return $p;
+		}
+
+		public function postAddImage(){
+			$id = Input::get('id');
+			$pi = new ProductPicture();
+			$pi->picture = Input::file('file');
+			$pi->product_id = $id;
+			$pi->save();
+			return 1;
 		}
 
 		public function destroy($id)

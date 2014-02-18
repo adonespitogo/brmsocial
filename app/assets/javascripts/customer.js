@@ -10,8 +10,6 @@
 //
 // The available directives right now are require, require_directory, and require_tree
 //
-//= require jquery
-//= require lib/bootstrap/bootstrap
 //
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
@@ -25,5 +23,7 @@
 //= require_tree app/partials/customer
 //= require app/directives/form_validation
 //
+//= require jquery
+//= require lib/bootstrap/bootstrap
 //= require lib/underscore/underscore
 //

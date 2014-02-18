@@ -42,7 +42,7 @@ class Product extends BaseModel{
 		parent::__construct();
 		$this->sale_start_date = date('Y:m:d H:i:s');
 		$this->sale_end_date = date('Y:m:d H:i:s');
-		$this->product_image = 'default.png';
+		$this->product_image = false;
 		//$this->category_id = Category::first()->id;
 	}
 	

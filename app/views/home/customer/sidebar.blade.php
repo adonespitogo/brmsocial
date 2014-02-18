@@ -15,12 +15,12 @@
   </div>
   <div class="menu">
     <ul>
-      <li><a href="#"><i class="fa fa-home"></i>Dashboard</a></li>
-      <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
-      <li><a href="#"><i class="fa fa-gear"></i>Account</a></li>
-      <li><a href="#"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-      <li><a href="#"><i class="fa fa-envelope"></i>Email Preferences</a></li>
-      <li><a href="#"><i class="fa fa-money"></i>Earn Credits</a></li>
+      <li ng-repeat="nav in navs" ng-class="{'active': nav.active}">
+        <a ui-sref="@{{nav.state}}">
+          <i class="fa @{{nav.icon}}"></i>
+          @{{nav.text}}
+        </a>
+      </li>
     </ul>
   </div>
   <div class="connect">

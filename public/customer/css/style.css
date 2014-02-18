@@ -105,6 +105,7 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .sidebar .menu { font-size:15px; }
 .sidebar .menu ul li a { border-bottom:1px solid #E1E4E5; color:#747070; padding:12px 20px; display:block; text-decoration:none; }
 .sidebar .menu ul li a:hover { background-color:#f6f9fa; color:#5381ec; }
+.sidebar .menu ul li.active a { background-color:#f6f9fa; color:#5381ec; }
 .sidebar .menu ul li a i { margin-right:6px; }
 .sidebar .connect { padding:16px 20px; }
 .sidebar .connect .heading { margin-bottom:10px; }
