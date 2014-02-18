@@ -1,9 +1,6 @@
 <?php
 
-Route::get('/', function()
-{
-	return View::make('session.login');
-});
+Route::get('/', array('uses' => 'PublicController@index'));
 
 
 // start public routes
