@@ -52,9 +52,14 @@ c.controller 'ProductListCtrl', [
 c.controller 'NewProductCtrl', [
 	'$scope', 'Products', 'Category', '$alert', '$location','Users',
 	($scope, Products, Category, $alert, $location, Users) ->
+				
 		Category.query().$promise.then (categories) -> 
 				$scope.categories = categories
-				$scope.product = Products.get id:"create"
+				Products.get({ id:"create" }).$promise.then (d)->
+					$scope.product = d
+					$scope.product.terms.push('hello')
+					$scope.product.terms.push('world')
+
 
 		$scope.vendors = Users.query id:'vendor'
 

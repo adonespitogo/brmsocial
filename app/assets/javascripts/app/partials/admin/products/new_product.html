@@ -85,9 +85,9 @@
 		<div class="col-md-12">
 			<label class="control-label">TERMS & CONDITIONS</label>
 		</div>	
-		<div class="col-md-12">
+		<div class="col-md-12" ng-repeat="(key, t) in product.terms">
 			<span class="text-danger" ng-show="productForm.terms.$error.required">Required *</span>
-			<input add-terms type="text" name="terms[]" cols="30" rows="10" class="form-control term" placeholder="" />
+			<input add-terms type="text" name="terms[]" ng-model="t" cols="30" rows="10" class="form-control term" placeholder="" />
 		</div> 
 	</div>
 

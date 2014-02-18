@@ -41,6 +41,16 @@
 				$fp->save();
 			}
 			
+			$terms = Input::get('terms');
+			if(count($terms)>0){
+				foreach($terms as $i=>$t){
+					$t = new Term();
+					$t->product_id = $p->id;
+					$t->term = $t;
+					$t->save();
+				}
+			}
+
 			if(Input::hasFile('pictures')){
 				foreach (Input::file('pictures') as $key => $picture) {
 					$p->pictures()->save($picture);
@@ -89,6 +99,20 @@
 			}else{
 				$fp = FeaturedProduct::where('product_id','=',$p->id);
 				$fp->delete();
+			}
+
+			$dTerms = Term::where('product_id','=', $p->id);
+			foreach($dTerms as $di => $dt)
+				$dt->delete();
+			
+			$terms = Input::get('terms');
+			if(count($terms)>0){
+				foreach($terms as $i=>$t){
+					$t = new Term();
+					$t->product_id = $p->id;
+					$t->term = $t;
+					$t->save();
+				}
 			}
 			
 			return $p;
