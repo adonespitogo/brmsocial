@@ -3,7 +3,7 @@
     <img src="{{ URL::to('customer/images/user-avatar.png') }}">
     <ul>
       <li>Credits: $150</li>
-      <li>Jonheineken</li>
+      <li>@{{ currentUser.email }}</li>
       <li>
         <i class="fa fa-star active"></i>
         <i class="fa fa-star active"></i>
