@@ -18,6 +18,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
 	Route::get('users/{type}', array('uses'=>'UserController@getUsers'));
 	Route::resource('users', 'UserController');
+	
 	Route::controller('home', 'HomeController');
 
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));

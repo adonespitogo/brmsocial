@@ -9,25 +9,6 @@
     	"laravelbook/ardent": "dev-master",
     	"codesleeve/stapler": "dev-master"
 	},
-	"repositories": [
-	        {
-	                "type": "package",
-	                "package": {
-	                        "name": "laravelbook/ardent",
-	                        "version": "dev-master",
-	                        "source": {
-	                                "type": "git",
-	                                "url": "https://github.com/bexarcreativeinc/ardent.git",
-	                                "reference": "master"
-	                        },
-	                        "autoload": {
-	                                "psr-0": {
-	                                        "LaravelBook\\Ardent": "src/"
-	                                }
-	                        }
-	                }
-	        }
-	],
 	"autoload": {
 		"classmap": [
 			"app/commands",
