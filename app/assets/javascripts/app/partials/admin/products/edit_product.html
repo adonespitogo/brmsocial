@@ -77,7 +77,7 @@
 		</div>	
 		<div class="col-md-12" ng-repeat="(key, t) in product.terms">
 			<span class="text-danger" ng-show="productForm.terms.$error.required">Required *</span>
-			<input add-terms type="text" name="terms[]" cols="30" rows="10" class="form-control term" ng-model="t.term" placeholder="" />
+			<input add-terms type="text" name="terms[]" cols="30" ng-value="t.term" rows="10" class="form-control term" placeholder="" />
 		</div> 
 	</div>
 
@@ -93,7 +93,7 @@
 		</div>
 		<div class="col-md-6">
 			<label class="control-label">Product Image</label>
-			<input type="file" multiple files-model="product.product_image" onchange="angular.element(this).scope().addFile(this)" name="product_image[]" class="form-control" required>
+			<input type="file" multiple ng-file-select="onFileSelect($files)" multiple>
 		</div>
 	</div>
 	<div class="form-group">
