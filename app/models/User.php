@@ -152,10 +152,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	public function getCreatedAtIsoDateAttribute(){
 		if(is_object($this->created_at) && get_class($this->created_at) == "Carbon\Carbon"){
 			return $this->created_at->toISO8601String();
-		}
-		else{
-			return Carbon::parse($this->{$field})->toISO8601String();
-		}
+		} 
 	}
 
 	//new user
