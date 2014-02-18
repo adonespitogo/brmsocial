@@ -13,7 +13,7 @@
                   </div>
                   <div class="col-lg-9 col-md-8">
                     <!-- Start Credentials Form -->
-                    <form role="form" name="userForm" ng-class="{'dn':tab != 0}">
+                    <form role="form" name="userForm" ng-class="{'dn':tab != 0}" ng-submit="updateUser(tmpUser)">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input ng-model="tmpUser.email" type="email" class="form-control" placeholder="jonathan@clickinglabs.com" required name="email">
@@ -21,8 +21,8 @@
                         <span class="text-danger" ng-show="userForm.email.$error.email">Enter a valid email.</span>
                       </div>
                       <div class="form-group">
-                        <input ng-model="current_password" type="password" class="form-control" placeholder="Current Password" name="currentPassword" required>
-                        <span class="text-danger" ng-show="userForm.currentPassword.$error.required">Required.</span>
+                        <input ng-model="tmpUser.current_password" type="password" class="form-control" placeholder="Current Password" name="currentPassword" required>
+                        <span class="text-danger" ng-show="userForm.currentPassword.$error.required">Required for security purposes.</span>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Change Password</label>
@@ -37,29 +37,24 @@
                     <!-- End Credentials Form -->
 
                     <!-- Start Notifications Form -->
-                    <form role="form" ng-class="{'dn':tab != 1}">
+                    <form role="form" ng-class="{'dn':tab != 1}" ng-submit="updateSubscriptions()">
                       <div class="form-group">
                         <label>Receive weekly newsletter</label>
-                        <select class="form-control">
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
+                        <select class="form-control" ng-model="subscriptions.news_letter" ng-options="s.v as s.k for s in valueKey">
                         </select>
                       </div>
                       <div class="form-group">
                         <label>Receive promos and freebies updates</label>
-                        <select class="form-control">
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
+                        <select class="form-control" ng-model="subscriptions.promos_and_freebies" ng-options="s.v as s.k for s in valueKey">
                         </select>
                       </div>  
                       <div class="form-group">
                         <label>Receive updates on products I purchased</label>
-                        <select class="form-control">
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
+                        <select class="form-control" ng-model="subscriptions.purchased_products"  ng-options="s.v as s.k for s in valueKey">
                         </select>
                       </div>
-                      <button type="submit" class="btn btn-blue btn-default">Save Changes</button>                     
+                      <button type="submit" class="btn btn-blue btn-default">Save Changes
+                      </button>                     
                     </form>
                     <!-- End Notifications Form -->
 

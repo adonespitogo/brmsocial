@@ -14,7 +14,7 @@ c.controller('MainCustomerCtrl', [
 				{state: "account", text: "My Account", icon: "fa-gear", active: false},
 				{state: "profile", text: "My Profile", icon: "fa-user", active: false},
 				{state: "purchases", text: "Purchases", icon: "fa-shopping-cart", active: false},
-				{state: "email", text: "Email Preferences", icon: "fa-envelope", active: false},
+				{state: "preferences", text: "Email Preferences", icon: "fa-envelope", active: false},
 				{state: "credits", text: "Earn Credits", icon: "fa-money", active: false}
 			];
 			
