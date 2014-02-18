@@ -11,7 +11,7 @@
 	<div ng-app="AdminApp">
 		<div ng-controller="MainAdminCtrl">
 			@include('home.admin.header')
-			<div class="container" ui-view autoscroll='false' ></div>
+			<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
 		</div>
 	</div>
 	<hr>
