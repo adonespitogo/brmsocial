@@ -33,7 +33,9 @@ c.controller 'UserListCtrl', [
 	'$scope','$alert', 'Users',
 	($scope, $alert, Users)->
 
-		$scope.users =  Users.query {id: 'all'}
+		Users.query({id: 'all'},{},(users)->
+			$scope.users = _.reject users, (user)-> user.id == $scope.currentUser.id || user.type=='admin'
+		) 
 
 		$scope.deleteUser = (u)->
 							if confirm "Are you sure you want to delete this user?"
@@ -41,8 +43,9 @@ c.controller 'UserListCtrl', [
 									$alert
 										title : "User has been deleted successfully."
 										type: 'success'
-
-									$scope.users = _.reject $scope.users, (user)-> user.id == u.id 
+		
+		$scope.updateCurrentUser = (tmpUser)->
+			alert 'fox is here'
 ]
 
 c.controller 'NewUserCtrl',[
