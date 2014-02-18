@@ -24,6 +24,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
 	Route::get('products/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
+	Route::get('products/featured-product', array('uses' => 'ProductController@featuredProduct'));
 	Route::get('product/{id}/traffic', array('uses' => 'ProductController@productTraffic'));
 	Route::post('product/add-image', array('uses'=>'ProductController@postAddImage'));
 	Route::resource('products', 'ProductController');

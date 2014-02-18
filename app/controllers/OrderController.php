@@ -15,7 +15,7 @@
 		public function myOrdersList() {
 			
 			// echo '<pre>';
-			// print_r(Auth::user());
+			// print_r(Auth::user()->toArray());
 			// echo '</pre>';
 
 			$orders = Auth::user()->orders;
