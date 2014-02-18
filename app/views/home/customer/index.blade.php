@@ -10,7 +10,6 @@
 
 @section('body')
    <div id="wrap" ng-app="CustomerApp">
-
        <div ng-controller="MainCustomerCtrl">
          @include('home.customer.header')
          <div class="container-fluid"><!-- Start Container -->
@@ -26,7 +25,7 @@
          
                 <div class="col-lg-3 col-md-3">
                 <!-- Start Right Column -->
-                @include('home.customer.right_sidebar')
+                  @include('home.customer.right_sidebar')
                 </div>
               </div>
          </div>
@@ -35,17 +34,9 @@
          @include('home.customer.testimonials')
          </div>
          @include('home.customer.footer')
-          <?php
-              // echo '<pre>';
-              // print_r(Auth::user());
-              // echo '</pre>';
-         
-          ?>
-            </div>
+          </div>
        </div>
 @stop
 @section('scripts')
     {{javascript_include_tag('customer')}}
-    <script type="text/javascript" src="customer/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 @stop
