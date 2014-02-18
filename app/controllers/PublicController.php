@@ -4,6 +4,7 @@ class PublicController extends BaseController{
 	public function index()
 	{
 		$featured = FeaturedProduct::getFeaturedProductToday();
+
 		return View::make('public.index', array(
 			'featured' => $featured
 		));

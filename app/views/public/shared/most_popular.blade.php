@@ -1,4 +1,6 @@
 <div class="row deal-popular">
+
+
 	@foreach(Product::getMostPopular() as $p)
 		<div class="col-md-4 col-sm-4">
 			<img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
@@ -12,4 +14,5 @@
 			</ul>
 		</div>
 	@endforeach
+
 </div>
