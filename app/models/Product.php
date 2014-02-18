@@ -52,6 +52,7 @@ class Product extends BaseModel{
 		$this->load('terms');
 		$this->load('featured');
 		$this->load('user');
+		$this->load('pictures');
 		$this->traffic_today_count = $this->getTrafficTodayCount();
 
 		return parent::toArray();

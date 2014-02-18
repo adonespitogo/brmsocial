@@ -30,6 +30,19 @@ class FeaturedProduct extends BaseModel{
 
 		return $products;
 	}
+
+	public static function getFeaturedProduct() {
+		$datenow = date("Y-m-d H:i:s");
+		$products = self::where('featured_start_date', '<=', $datenow)
+						->where('featured_end_date', '>=', $datenow)
+						->orderBy('created_at', 'DESC')
+						->limit(1)
+						->with('product')
+						->get();
+
+		return $products;
+	}
+
 	public static function getFeaturedProductToday()
 	{
 		$now = Carbon\Carbon::now()->endOfDay();

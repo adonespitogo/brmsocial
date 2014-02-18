@@ -13,8 +13,16 @@ class Order extends BaseModel{
 
 	public static $relationsData = array(
 		'user' => array(self::BELONGS_TO, 'User'),
-		'product' => array(self::BELONGS_TO, 'Product'),
+		'product' => array(self::BELONGS_TO, 'Product')
 	);
+
+	public function toArray() {
+
+		$this->load('product');
+
+		return parent::toArray();
+
+	}
 
 }
 

@@ -10,12 +10,11 @@
                     <li class="dropdown shop">
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>
                       <ul class="dropdown-menu">
-                        <li><a href=""><i class="fa fa-star"></i>Apple /Mac</a></li>
-                        <li><a href=""><i class="fa fa-star"></i>Designer</a></li>
-                        <li><a href=""><i class="fa fa-star"></i>Developer</a></li>
-                        <li><a href=""><i class="fa fa-star"></i>Entrepreneur</a></li>
-                        <li><a href=""><i class="fa fa-star"></i>Gamer</a></li>
-                        <li><a href=""><i class="fa fa-star"></i>Productivity</a></li>
+
+                        <li ng-repeat="category in categories">
+                          <a href="{{ URL::to('products/category') }}/@{{ category.slug }}"><i class="fa fa-star"></i>@{{ category.category }}</a>
+                        </li>
+
                       </ul>
                     </li>
                     <li class="dropdown"><a href="#">Free Stuff</a></li>

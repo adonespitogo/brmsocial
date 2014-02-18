@@ -136,6 +136,11 @@
 
 		}
 
+		public function featuredProduct() {
+			$featuredproduct = FeaturedProduct::getFeaturedProduct();
+			return $featuredproduct;
+		}
+
 		public function myActiveProducts() {
 			return Auth::user()->getMyActiveProducts();
 		}
