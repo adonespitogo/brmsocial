@@ -40,18 +40,14 @@ c.controller 'CategoryListCtrl', [
 
 		$scope.categories = Category.query()	
 
-		$scope.delete = (id)->
-
-			Category.delete(
-				{},
-				{id: id},
-				()->
+		$scope.delete = (c)->
+			if confirm "Are you sure you want to delete this product?"
+				c.$delete ->
 					$alert
 						title : "Category has been deleted successfully."
 						type: 'success'
-
 					$scope.categories = Category.query()
-				)
+				
 ]
 
 
@@ -65,30 +61,25 @@ c.controller 'EditCategoryCtrl', [
 
 		$scope.editSubmit = (category) ->
 			
-			Category.update(category,
-				()->
+			category.$update ()->
 					$alert
 						title : "Category has been updated successfully."
 						type: 'success'
 					$location.path('/categories')
-				)
 ]
 		
 c.controller 'AddCategoryCtrl',[
 	'$scope', '$location', '$stateParams', 'Category','$alert',
 	($scope, $location, $stateParams, Category, $alert)->
 
+		$scope.category = Category.get id:'create'
+
 		$scope.submitted = false;
 
-		$scope.addSubmit = ()->
-			cat_name = $scope.category_name;
-
-			Category.save({},
-				{category: cat_name},
-				()->
+		$scope.addSubmit = (category)->
+			category.$save ()->
 					$alert
 						title : "Category has been added successfully."
 						type: 'success'
-					$location.path('/categories')
-			)
+					$location.path '/categories'
 ]

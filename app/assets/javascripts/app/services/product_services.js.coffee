@@ -7,6 +7,7 @@ p.factory 'Products', ($resource) ->
 		update: {method: 'PUT', id:'@id'},
 		myProducts : {method: 'GET', params: {id: 'my-products'}, isArray: true},
 		myActiveProducts : {method: 'GET', params: {id: 'my-active-products'}, isArray: true},
-		myActiveProductsCount : {method: 'GET', params: {id: 'my-active-products-count'}, isArray: false}
+		myActiveProductsCount : {method: 'GET', params: {id: 'my-active-products-count'}, isArray: false},
+		featuredProduct : { method: 'GET', params: { id: 'featured-product' }, isArray: true }
 	}
 

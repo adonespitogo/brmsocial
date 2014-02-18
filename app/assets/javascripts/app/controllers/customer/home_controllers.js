@@ -1,6 +1,7 @@
 
 var c = angular.module('HomeControllers', [
-		'OrderServices'
+		'OrderServices',
+		'ProductServices'
 	]);
 
 c.config([
@@ -22,7 +23,8 @@ c.config([
 
 c.controller('HomeCtrl', [
 
-		'$scope', 'Orders', function($scope, Orders) {
+		'$scope', 'Orders', 'Products', function($scope, Orders, Products) {
 			$scope.latest_purchases = Orders.myOrderList();
+			$scope.featured_product = Products.featuredProduct();
 		}
 ]);

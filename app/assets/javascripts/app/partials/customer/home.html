@@ -1,7 +1,7 @@
 <div class="content">
 	  <h3 class="mb-30">Featured Deal of the week</h3> 
 	  <div class="banner-home">
-	    <img src="" alt="Featured Deal of the week" title="Featured Deal of the week">
+	    <img src="system/ProductPicture/pictures/000/000/004/original/{{ featured_product.0.product.product_image }}" alt="Featured Deal of the week" title="Featured Deal of the week">
 	  </div>
 	  <div class="form-sort form-inline pull-right">
 	    <div class="form-group">
@@ -19,15 +19,15 @@
 	  <!-- Start Recent Purchases -->
 	  <div class="row recent-purchases" ng-repeat="purchase in latest_purchases">
 	    <div class="col-md-3">
-	      <img src="">
+	      <img src="system/ProductPicture/pictures/000/000/004/original/{{ purchase.product.product_image }}">
 	    </div>
 	    <div class="col-md-7">
 	      <h4>{{ purchase.product_name }}</h4>
-	      <p><a href="#"><em>By : KnowHow</em></a></p>
+	      <p><a href="#"><em>By : {{ purchase.product.user.firstname }}</em></a></p>
 	      <a href="#" class="btn-download">Download</a>
 	    </div>
 	    <div class="col-md-2">
-	      <span class="date"><em>January 20, 2014</em></span>
+	      <span class="date"><em>{{ purchase.created_at }}</em></span>
 	    </div>
 	  </div>
 	  <!-- End Recent Purchases -->

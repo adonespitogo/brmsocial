@@ -1,11 +1,13 @@
 
 var c = angular.module('MainController', [
-		'UserServices'
+		'UserServices',
+		'CategoryServices',
+		'ProductServices'
 	]);
 
 c.controller('MainCustomerCtrl', [
 
-		'$scope', 'Users', function($scope, Users) {
+		'$scope', 'Users', 'Category', 'Products', function($scope, Users, Category, Products) {
 
 			$scope.navs = [
 				{state: "home", text: "Dashboard", icon: "fa-home", active: false},
@@ -26,6 +28,7 @@ c.controller('MainCustomerCtrl', [
 			}
 			
 			$scope.currentUser = Users.get( { id: 'me'} );
-			
+			$scope.categories = Category.query();
+			$scope.best_seller_products = Products.query();
 		}
 	]);

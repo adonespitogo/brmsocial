@@ -36,7 +36,7 @@ c.controller 'UserListCtrl', [
 		$scope.users =  Users.query {id: 'all'}
 
 		$scope.deleteUser = (u)->
-							if confirm "Are you sure you want to delete this product?"
+							if confirm "Are you sure you want to delete this user?"
 								u.$delete ->
 									$alert
 										title : "User has been deleted successfully."
@@ -70,9 +70,10 @@ c.controller 'EditUserCtrl',[
 		$scope.userTypes = ['admin', 'vendor', 'customer']
 
 		$scope.updateUser = (u)->
-							u.$save ->
+							u.$update ->
 								$alert
 									title : "User has been updated successfully."
 									type: 'success'		
-							$location.path('/users')			 
+							$location.path '/users'
+							$scope.users =  Users.query id: 'all'
 ]				
