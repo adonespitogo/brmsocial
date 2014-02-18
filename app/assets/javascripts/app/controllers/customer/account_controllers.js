@@ -33,10 +33,11 @@ c = angular.module("AccountControllers", [
 		
 		$scope.changeTab = function(n){$scope.tab = n}
 		
-		$scope.updateCurrentUser = function(tmpUser){
+		$scope.updateUser = function(tmpUser){
 			tmpUser.$update({id:'me'}, 
 				function(){
 					$scope.$parent.currentUser = angular.copy(tmpUser);
+					alert("Account has been updated successfully.");
 				},
 				function(res){
 					var errors = "";
