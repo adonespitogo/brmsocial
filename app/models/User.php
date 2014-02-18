@@ -72,7 +72,8 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     	'products' => array(self::HAS_MANY, 'Product'),
     	'vendorInfo' => array(self::HAS_ONE, 'VendorInfo'),
     	'commissions' => array(self::HAS_MANY, 'Commission'),
-    	'sales' => array(self::HAS_MANY, 'Order', 'foreignKey' => 'vendor_id')
+    	'sales' => array(self::HAS_MANY, 'Order', 'foreignKey' => 'vendor_id'),
+    	'subscriptions' => array(self::HAS_ONE, 'Subscription')
     );
     
 
