@@ -15,6 +15,9 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     protected $softDelete = true;
 
     protected $rawPassword;
+    
+	public static $passwordAttributes  = array('password');
+	public $autoHashPasswordAttributes = true;
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -144,15 +147,17 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	}
 
 	//new user
-	public function beforeSave()
-    {
-        $this->rawPassword = $this->password;
-        // if there's a new password, hash it
-        if($this->isDirty('password')) {
-            $this->password = Hash::make($this->password);
-        }
+	// public function beforeSave()
+ //    {
+ //    	dd('before save');
+ //        $this->rawPassword = $this->password;
+ //        // if there's a new password, hash it
+ //        if($this->isDirty('password')) {
+        	
+ //            $this->password = Hash::make($this->password);
+ //        }
 
-        return true;
-        //or don't return nothing, since only a boolean false will halt the operation
-    }
+ //        return true;
+ //        //or don't return nothing, since only a boolean false will halt the operation
+ //    }
 }

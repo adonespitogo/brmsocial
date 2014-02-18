@@ -71,14 +71,13 @@
               <label class="control-label pull-right">New Password:</label>
             </div>
             <div class="col-md-8">
-              <input required ng-minlength="6" type="password" ng-model="tmpUser.new_password" class="form-control" name="new_password">
-              <span class="text-danger" ng-show="accountForm.new_password.$error.required">Required.</span>
+              <input type="password" ng-model="tmpUser.new_password" class="form-control" name="new_password">
               <span class="text-danger" ng-show="accountForm.new_password.$error.minlength">Minimum of 6 characters.</span>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-4">
-              <label required min="6" class="control-label pull-right">Confirm New Password:</label>
+              <label class="control-label pull-right">Confirm New Password:</label>
             </div>
             <div class="col-md-8">
               <input required type="password" ng-model="tmpUser.confirm_password" class="form-control">
@@ -88,7 +87,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" ng-class="{'disabled':accountForm.$invalid}">Save changes</button>
+        <button ng-disabled="accountForm.$invalid || tmpUser.new_password != tmpUser.confirm_password" type="submit" class="btn btn-primary" ng-class="{'disabled':accountForm.$invalid}">Save changes</button>
         <a class="btn btn-default" data-dismiss="modal">Close</a>
       </div>
     </form>

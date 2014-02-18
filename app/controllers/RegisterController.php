@@ -5,7 +5,7 @@ class RegisterController extends BaseController{
 	public function updateAccount()
 	{
 		$creds = array(
-			'email' => Input::get('email'),
+			'email' => Auth::user()->email,
 			'password' => Input::get('current_password'),
 		);
 
@@ -14,15 +14,22 @@ class RegisterController extends BaseController{
 		$new_password = Input::get('new_password');
 
 		if(Auth::validate($creds)){
+			
 			$user = User::find($id);
 			$user->email = $email;
-			$user->password = $new_password;
-			$user->save();
-			return $user;
+			if(Input::has('new_password'))
+				$user->password = $new_password;
+			if($user->updateUniques()){
+				return $user;
+			}
+			else{
+				return Response::json($user->errors()->all(), 422);
+			}
 		}
+		
 		return Response::make(json_encode(array(
-			'error_message' => 'Invalid password', 
-		)), 500);
+			'Invalid password', 
+		)), 422);
 	}
 	
 }

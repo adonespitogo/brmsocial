@@ -18,6 +18,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
 	Route::get('users/{type}', array('uses'=>'UserController@getUsers'));
 	Route::resource('users', 'UserController');
+	
 	Route::controller('home', 'HomeController');
 
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
@@ -32,6 +33,9 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
 
 	Route::get('commissions/my-receivable-commissions', array('uses' => 'CommissionController@myReceivableCommission'));
+	Route::get('commissions/my-received-commissions', array('uses' => 'CommissionController@myReceivedCommission'));
+	Route::get('commissions/my-paid-commissions', array('uses' => 'CommissionController@paidCommissions'));
+	Route::get('commissions/my-unpaid-commissions', array('uses' => 'CommissionController@unpaidCommissions'));
 
 	Route::resource('traffic', 'TrafficController');
 
