@@ -16,7 +16,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::put('users/me', array('uses' => 'RegisterController@updateAccount'));
 	Route::post('users/is-unique', array('uses'=>'UserController@postIsUnique'));
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
-	Route::get('users/{type}', array('uses'=>'UserController@getUsers'));
+	Route::get('users/vendor', array('uses'=>'UserController@getUsers'));
 	Route::resource('users', 'UserController');
 	
 	Route::controller('home', 'HomeController');
