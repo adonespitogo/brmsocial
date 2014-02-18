@@ -1,0 +1,79 @@
+<div class="content">
+              <h3 class="mb-30">Account</h3> 
+              <div class="row">
+                <div class="account">
+                  <div class="col-lg-3 col-md-4">
+                    <div class="menu-steps">
+                      <ul>
+                        <li><a href="#" class="active">Credentials</a></li>
+                        <li><a href="#">Notifications</a></li>
+                        <li class="dn"><a href="#">Payments</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-8">
+                    <!-- Start Credentials Form -->
+                    <form role="form" name="userForm">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input ng-model="tmpUser.email" type="email" class="form-control" placeholder="jonathan@clickinglabs.com" required name="email">
+                        <span class="text-danger" ng-show="userForm.email.$error.required">Required.</span>
+                        <span class="text-danger" ng-show="userForm.email.$error.email">Enter a valid email.</span>
+                      </div>
+                      <div class="form-group">
+                        <input ng-model="current_password" type="password" class="form-control" placeholder="Current Password" name="currentPassword" required>
+                        <span class="text-danger" ng-show="userForm.currentPassword.$error.required">Required.</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Change Password</label>
+                        <input type="password" class="form-control" placeholder="New Password" ng-model="tmpUser.new_password" name="new_password">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Confirm New Password" ng-model="tmpUser.password_confirm" name="password_confirm">
+                        <span class="text-danger" ng-show="tmpUser.new_password != tmpUser.password_confirm">Passwords did not match.</span>
+                      </div>
+                      <button ng-disabled="userForm.$invalid || tmpUser.new_password != tmpUser.password_confirm" type="submit" class="btn btn-blue btn-default">Save Changes</button>
+                    </form>
+                    <!-- End Credentials Form -->
+
+                    <!-- Start Notifications Form -->
+                    <form role="form" class="dn">
+                      <div class="form-group">
+                        <label>Receive weekly newsletter</label>
+                        <select class="form-control">
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Receive promos and freebies updates</label>
+                        <select class="form-control">
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>  
+                      <div class="form-group">
+                        <label>Receive updates on products I purchased</label>
+                        <select class="form-control">
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+                      <button type="submit" class="btn btn-blue btn-default">Save Changes</button>                     
+                    </form>
+                    <!-- End Notifications Form -->
+
+                    <!-- Start Payments -->
+                    <div class="payments dn">
+                      <label>Cards / Paypal accounts saved</label>
+                      <ul>
+                        <li><a href="">Union Bank (Philippines) <span>x-7822</span></a> <span class="close"></span></li>
+                        <li><a href="">Union Bank (Philippines) <span>x-7822</span></a> <class="close"></class="close"></li>
+                        <li><a href="">Union Bank (Philippines) <span>x-7822</span></a> <class="close"></class="close"></li>
+                      </ul>
+                      <!-- End Payments -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>

@@ -16,7 +16,7 @@
   <div class="menu">
     <ul>
       <li ng-repeat="nav in navs" ng-class="{'active': nav.active}">
-        <a ui-sref="@{{nav.state}}">
+        <a ui-sref="@{{nav.state}}" ng-click="activateNav(nav)">
           <i class="fa @{{nav.icon}}"></i>
           @{{nav.text}}
         </a>
