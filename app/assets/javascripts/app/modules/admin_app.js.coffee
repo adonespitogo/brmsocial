@@ -14,9 +14,9 @@ module = angular.module 'AdminApp', [
 
 module.config [
 
-	'$stateProvider', '$urlRouterProvider',
+	'$stateProvider', '$urlRouterProvider','$locationProvider',
 
-	($stateProvider, $urlRouterProvider) ->
+	($stateProvider, $urlRouterProvider, $locationProvider) ->
 	  
 		# For any unmatched url, redirect to /state1
 		$urlRouterProvider.otherwise("/admin")
@@ -31,6 +31,8 @@ module.config [
 			template: JST[ templatePath + "admin/home"]
 			controller: 'HomeAdminCtrl'
 		})
+
+		$locationProvider.html5Mode false
 ]
 
 module.config [
