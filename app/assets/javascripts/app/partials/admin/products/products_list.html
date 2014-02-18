@@ -14,8 +14,10 @@
 			<th>Product Name</th>
 			<th>Tagline</th>
 			<th>Category</th>
-			<th>Sale From</th>
-			<th>Sale To</th>
+			<th>Sale Start</th>
+			<th>Sale End</th>
+			<th>Vendor</th>
+			<th>Featured</th>
 			<th>Date Created</th>
 			<th></th>
 		</tr>
@@ -27,6 +29,8 @@
 			<td ng-bind="p.category.category"></td>
 			<td ng-bind="p.sale_start_date_iso_date | date:'fullDate'"></td>
 			<td ng-bind="p.sale_end_date_iso_date | date:'fullDate'"></td>
+			<td ng-bind="p.user.fullname"></td>
+			<td>{{p.is_featured?'Yes':'No'}}</td>
 			<td ng-bind="p.created_at_iso_date | date:'fullDate'"></td>
 			<td style ="width:15%">
 				<a ui-sref="editProduct({id:p.id})" class="btn btn-success btn-small">

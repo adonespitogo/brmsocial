@@ -2,70 +2,125 @@
 
 	class ProductController extends BaseController {
 
-		public function getIndex($id=null)
-		{		
-			if($id)
-				if($id == 'create')
-					return new Product();
-				else{
-					// return Product::find($id);
-					$product = Product::find($id);
-					return $product;// $images = $product->pictures;
-
-					// foreach ($images as $key => $img) {
-					// 	echo $img->picture->url('medium');
-					// }
-					
-				}
-			else
-				return Product::all();
+		public function index()
+		{
+			return Product::all();
 		}
 
-		public function postIndex($id=null)
+		public function create()
 		{
-			$id = ($id) ? $id : Input::get('id');
+			$p = new Product();
+			$p->featured_start_date_iso_date = "2014-02-17T07:46:16+0000";
+			$p->featured_end_date_iso_date = "2014-02-17T07:46:16+0000";
+			$p->featured_start_date = '2014:02:17 07:19:23';
+			$p->featured_end_date = '2014:02:17 07:19:23'; 
+			return $p;
+		}
 
-			if($id)
-				$p = Product::find($id);
-			else
-				$p = new Product(); 
+		public function store()
+		{
 
-			$p->category_id = Input::get('category_id');
+			$p = new Product();
+			$p->category_id = Input::get('category');
 			$p->product_name = Input::get('product_name');
 			$p->tagline = Input::get('tagline');
 			$p->regular_price = Input::get('regular_price');
 			$p->discounted_price = Input::get('discounted_price');
 			$p->sale_start_date = Input::get('sale_start_date_iso_date');
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
+			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
+			$p->user_id = Input::get('user');
 			$p->save();
-			 
-			if(Input::has('terms')){
-				$terms = Input::get('terms');
-				$terms = explode(',', $terms);
-				 
-				foreach ($terms as $key => $t) {
-					$term = new Term();
-					$term->product_id = $p->id;
-					$term->term = $t;
-					$term->save();
+
+			if(Input::has('is_featured') && Input::get('is_featured')){
+				$fp = new FeaturedProduct();
+				$fp->product_id = $p->id;
+				$fp->featured_start_date = Input::get('featured_start_date_iso_date');
+				$fp->featured_end_date = Input::get('featured_end_date_iso_date');
+				$fp->save();
+			}
+			
+			$terms = Input::get('terms');
+			if(count($terms)>0){
+				foreach($terms as $i=>$t){
+					$t = new Term();
+					$t->product_id = $p->id;
+					$t->term = $t;
+					$t->save();
 				}
 			}
- 		
-			foreach (Input::file() as $key => $picture){
-				$pPicture = new ProductPicture();             
-   				$pPicture->picture = $picture;
-   				$p->pictures()->delete();
-				$p->pictures()->save($pPicture);
+
+			if(Input::hasFile('pictures')){
+				foreach (Input::file('pictures') as $key => $picture) {
+					$p->pictures()->save($picture);
+				}
+
 			}
-		 
 
 			return $p;
 		}
-				
-		public function deleteIndex($id)
+
+		public function show($id)
+		{	
+			return Product::find($id);
+		}
+
+		public function update($id)
 		{
-			Product::find($id)->delete();
+			$p = Product::find($id);
+			$c = Input::get('category');
+			$p->category_id = $c['id'];
+			$p->product_name = Input::get('product_name');
+			$p->tagline = Input::get('tagline');
+			$p->regular_price = Input::get('regular_price');
+			$p->discounted_price = Input::get('discounted_price');
+			$p->sale_start_date = Input::get('sale_start_date_iso_date');
+			$p->sale_end_date = Input::get('sale_end_date_iso_date');
+			$p->product_image = Input::get('product_image');
+			$p->overview = Input::get('overview');
+			$user= Input::get('user');
+			$p->user_id  = $user['id'];
+			$p->save();
+
+			if(Input::has('featured') && Input::get('is_featured')){
+				$f = Input::get('featured');
+				
+				if(isset($f['id']))
+					$fp = FeaturedProduct::find($f['id']);
+				
+				if(!isset($fp->id))
+					$fp = new FeaturedProduct();
+	
+				$fp->product_id = $p->id;				
+				$fp->featured_start_date = $f['featured_start_date_iso_date'];
+				$fp->featured_end_date = $f['featured_end_date_iso_date'];
+				$fp->save();
+			}else{
+				$fp = FeaturedProduct::where('product_id','=',$p->id);
+				$fp->delete();
+			}
+
+			$dTerms = Term::where('product_id','=', $p->id);
+			foreach($dTerms as $di => $dt)
+				$dt->delete();
+			
+			$terms = Input::get('terms');
+			if(count($terms)>0){
+				foreach($terms as $i=>$t){
+					$t = new Term();
+					$t->product_id = $p->id;
+					$t->term = $t;
+					$t->save();
+				}
+			}
+			
+			return $p;
+		}
+
+		public function destroy($id)
+		{
+			Product::where('id', $id)->delete();
 		}
 
 		public function myProducts()
@@ -93,9 +148,10 @@
 		public function productTraffic($id) {
 
 			$product = Product::find($id);
-			$product->loadProductTraffic();
-			return $product;
 
+			$product->loadProductTraffic();
+			
+			return $product;
 		}
 
 

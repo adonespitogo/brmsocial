@@ -7,58 +7,44 @@
 			return Auth::user();
 		}
 
-		public function getIndex($id=null)
-		{	
-			if($id){
-				if($id=='create')
-					return new User();
-				else if($id == 'me')
-					return Auth::user();
-				else if($id=='all')
-					return User::where('id', '<>', Auth::user()->id)->get();
-				else	
-					return User::find($id);
-			}
+		public function show($id)
+		{
+			return User::find($id);
 		}
-
-		public function postIndex($id=null){ 
-
-			if($id)
-				$user = User::find($id);
-			else
-				$user = new User();
-			
+		public function getAll(){
+			return User::all();
+		}
+		public function getUsers($type){
+			return User::where('type','=', $type)->get();
+		}
+		public function create(){
+			return new User();
+		}
+		public function store(){
+			$user = new User();
 			$user->firstname = Input::get('firstname');
 			$user->lastname = Input::get('lastname');
 			$user->email = Input::get('email');
 			$user->type = Input::get('type');
 			$user->password = Input::get('password');
-
-			if($id)
-				$user->updateuniques();
-			else
-				$user->save(); 
-
-			if(!empty($user->validationErrors))
-				foreach ($user->validationErrors->all() as $key => $error) {
-					echo $error;
-				}
-			else
-				echo '1';
+			$user->save();
+			return 1;
 		}
-		public function deleteIndex($id){
+		public function destroy($id){
 			$user = User::find($id);
 			$user->delete();
 			return 1;
 		}
-		public function postCheck(){
+
+		public function postIsUnique(){
+			$val = Input::get('value');
 			$field = Input::get('field');
-			$val = Input::get('value'); 
-			$user = User::where($field, $val)->first(); 
-			if(isset( $user->id))
-				return Response::json(array('isUnique'=>false));
+			$user = User::where($field, '=', $val)->limit(1)->get();
+
+			if(!isset($user[0]))
+				return array('isUnique' => true);
 			else
-				return Response::json(array('isUnique'=>true,'user'=>$user));
+				return array('isUnique'=> false);
 		}
 	}
 ?>

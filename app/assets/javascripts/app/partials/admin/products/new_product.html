@@ -39,6 +39,40 @@
 			<span class="text-danger" ng-show="productForm.dc_price.$error.integer">Must be a number *</span>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<label class="control-label">Feature this product?</label> 
+			<br/>
+			<input type="checkbox" ng-model="product.is_featured" is-featured />
+		</div>
+	</div>
+
+	<div class="form-group" id="feature_dates" style="display: none">
+		<div class="col-md-6">
+			<label class="control-label">Feature Start Date</label>
+			<input ng-model="product.featured_start_date_iso_date" bs-datepicker class="form-control" type="text" data-date-format="fullDate">
+		</div>
+		<div class="col-md-6">
+			<label class="control-label">Feature End Date</label>
+			<input data-date-format="fullDate" ng-model="product.featured_end_date_iso_date" bs-datepicker class="form-control" type="text">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-6" ng-class="{'has-error': productForm.user.$error.required}">
+			<label class="control-label">Vendor</label>
+			<select 
+				name="user"
+				ng-init="product.user='0'"
+				class="form-control"
+				ng-model="product.user"
+				ng-options="v.id as v.fullname for v in vendors" required>
+			</select>
+
+			<span class="text-danger" ng-show="productForm.user.$error.required">Required *</span>
+		</div>
+	</div>
 	<div class="form-group">
 		<div class="col-md-12">
 			<label class="control-label">Overview</label>
@@ -51,9 +85,9 @@
 		<div class="col-md-12">
 			<label class="control-label">TERMS & CONDITIONS</label>
 		</div>	
-		<div class="col-md-12">
+		<div class="col-md-12" ng-repeat="(key, t) in product.terms">
 			<span class="text-danger" ng-show="productForm.terms.$error.required">Required *</span>
-			<input add-terms type="text" name="terms[]" cols="30" rows="10" class="form-control term" placeholder="" />
+			<input add-terms type="text" name="terms[]" ng-model="t" cols="30" rows="10" class="form-control term" placeholder="" />
 		</div> 
 	</div>
 
@@ -63,7 +97,7 @@
 			<select 
 				name="category"
 				class="form-control"
-				ng-model="product.category_id"
+				ng-model="product.category"
 				ng-options="c.id as c.category for c in categories" >
 			</select>
 		</div>
