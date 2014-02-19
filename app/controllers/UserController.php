@@ -26,7 +26,10 @@
 			$user->lastname = Input::get('lastname');
 			$user->email = Input::get('email');
 			$user->type = Input::get('type');
-			$user->password = Input::get('password');
+			$user->city = Input::get('city');
+			$user->gender = Input::get('gender');
+			$user->country = Input::get('country');
+			if(Input::has('password')) $user->password = Input::get('password');
 			$user->save();
 			return $user;
 		}
@@ -36,7 +39,10 @@
 			$user->lastname = Input::get('lastname');
 			$user->email = Input::get('email');
 			$user->type = Input::get('type');
-			$user->password = Input::get('password');
+			$user->city = Input::get('city');
+			$user->gender = Input::get('gender');
+			$user->country = Input::get('country');
+			if(Input::has('password')) $user->password = Input::get('password');
 			$user->updateuniques();
 			return $user;
 		}
@@ -55,6 +61,13 @@
 				return array('isUnique' => true);
 			else
 				return array('isUnique'=> false);
+		}
+		public function addImage()
+		{
+			$user = User::find(Input::get('id'));
+			if(Input::hasFile('file')) $user->avatar = Input::file('file');
+			$user->updateUniques();
+			return $user->getProfilePic();
 		}
 	}
 ?>

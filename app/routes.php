@@ -14,6 +14,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('users/is-unique', array('uses'=>'UserController@postIsUnique'));
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
 	Route::get('users/vendor', array('uses'=>'UserController@getUsers'));
+	Route::post('users/add-image', array('uses' => 'UserController@addImage'));
 	Route::resource('users', 'UserController');
 	
 	Route::controller('home', 'HomeController');

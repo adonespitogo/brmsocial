@@ -1,6 +1,6 @@
 <div class="sidebar">
   <div class="user-avatar">
-    <img src="{{ URL::to('customer/images/user-avatar.png') }}">
+    <img ng-src="@{{currentUser.pic}}">
     <ul>
       <li>Credits: $150</li>
       <li>@{{ currentUser.email }}</li>

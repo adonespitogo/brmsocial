@@ -4,13 +4,22 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
+	
+    use Codesleeve\Stapler\Stapler;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+	public function __construct($attributes = array()) {
+		
+		$this->hasAttachedFile('avatar', [
+		  'styles' => [
+		    'medium' => '300x300',
+		    'thumb' => '100x100'
+		  ]
+		]);
+
+		parent::__construct($attributes);
+	}
+	
 	protected $table = 'users';
     protected $softDelete = true;
 
@@ -83,6 +92,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public function toArray()
     {
     	$this->fullname = $this->getFullname();
+    	$this->pic = $this->getProfilePic();
     	if($this->type == 'vendor')
     		$this->load('vendorInfo');
 
@@ -92,6 +102,11 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public function getFullname()
     {
     	return $this->firstname . ' '. $this->lastname;
+    }
+    
+    public function getProfilePic()
+    {
+    	return URL::to($this->avatar->url('medium'));
     }
 
     //vendor

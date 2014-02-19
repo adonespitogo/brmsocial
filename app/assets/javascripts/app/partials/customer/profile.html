@@ -17,22 +17,26 @@
         <div class="basic-info">
           <div class="row">
             <div class="col-lg-2">
-              <img src="customer/images/user-avatar.png">
+              <img ng-src="{{currentUser.pic}}">
             </div>
             <div class="col-lg-10">
-              <form role="form">
+              <form role="form" ng-submit="updateProfile()">
                   <div class="form-group">
-                    <input type="file" id="exampleInputFile">  
+                  <input type="file" ng-file-select="onFileSelect($files)"> 
                   </div>
-                  <div class="form-group">
-                    <input type="input" class="form-control" placeholder="paste image url here">
+                  <div class="form-group dn">
+                    <input type="input" class="form-control" placeholder="paste image url here" ng-model="currentUser.imageUrl">
                     <p class="help-block mt-10">Please choose an image with a resulotion of more than 350x350 px.</p>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Full Name</label>
-                    <input type="input" class="form-control">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input type="input" class="form-control" ng-model="currentUser.firstname">
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input type="input" class="form-control"  ng-model="currentUser.lastname">
+                  </div>
+                  <div class="form-group dn">
                     <label>Birth Date</label>
                     <div class="form-inline">
                       <select class="form-control" style="width:30%">
@@ -54,22 +58,19 @@
                   </div>  
                   <div class="form-group">
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="option1"> Male
+                      <input type="checkbox" ng-click="toggleGender()" ng-checked="currentUser.gender == 1 "> Male
                     </label>
                     <label class="checkbox-inline">
-                      <input type="checkbox" value="option2"> Female
+                      <input type="checkbox" ng-click="toggleGender()" ng-checked="currentUser.gender == 0 "> Female
                     </label>
                   </div>   
                   <div class="form-group">
                     <label for="exampleInputEmail1">City</label>
-                    <input type="input" class="form-control">
+                    <input type="input" class="form-control" ng-model="currentUser.city">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Country</label>
-                    <select class="form-control">
-                      <option>USA</option>
-                      <option>Austriala</option>
-                      <option>Canada</option>
+                    <select class="form-control" ng-model="currentUser.country" ng-options="c for c in countries">
                     </select>
                   </div> 
                   <button type="submit" class="btn btn-blue btn-default">Save Changes</button>
