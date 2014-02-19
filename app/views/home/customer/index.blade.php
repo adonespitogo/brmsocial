@@ -19,7 +19,7 @@
                       @include('home.customer.sidebar')
                   </div>
          
-                  <div class="col-lg-7 col-md-6" ui-view>
+                  <div class="col-lg-7 col-md-6" ui-view autoscroll="false">
                       
                   </div>
          
