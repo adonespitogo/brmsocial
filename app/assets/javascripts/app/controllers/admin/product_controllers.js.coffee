@@ -79,12 +79,6 @@ c.controller 'NewProductCtrl', [
 							data:
 								id: res.id
 							file: file
-						).progress((evt) ->
-							console.log "percent: " + parseInt(100.0 * evt.loaded / evt.total)
-							return
-						).success((data, status, headers, config) ->
-							console.log data
-							return
 						)
 					)
 
@@ -123,12 +117,6 @@ c.controller 'EditProductCtrl', [
 						data:
 							id: res.id
 						file: file
-					).progress((evt) ->
-						console.log "percent: " + parseInt(100.0 * evt.loaded / evt.total)
-						return
-					).success((data, status, headers, config) ->
-						console.log data
-						return
 					)
 				)
 

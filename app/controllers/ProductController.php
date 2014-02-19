@@ -102,9 +102,7 @@
 			$terms = Input::get('terms');
 
 			if(!is_array($terms)){
-				$dTerms = Term::where('product_id','=', $p->id)->get();
-				foreach($dTerms as $di => $dt)
-					$dt->delete();
+				Term::where('product_id','=', $p->id)->delete(); 
 				
 				if(!empty($terms)){
 					$terms = explode(',', $terms);

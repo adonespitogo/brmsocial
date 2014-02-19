@@ -9,11 +9,13 @@
 		}	
 
 		public function show($id){
-			$category = Category::find($id);
-			return $category;
+			if($id=='create')
+				return new Category();
+
+			return Category::find($id);
 		}
 
-		public function save(){
+		public function store(){
 			$cat = new Category();
 			$cat->category = Input::get('category');
 			$cat->save();

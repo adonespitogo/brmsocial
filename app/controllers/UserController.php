@@ -14,7 +14,7 @@
 		public function getAll(){
 			return User::all();
 		}
-		public function getUsers($type){
+		public function getUsers($type='vendor'){
 			return User::where('type','=', $type)->get();
 		}
 		public function create(){
@@ -28,7 +28,17 @@
 			$user->type = Input::get('type');
 			$user->password = Input::get('password');
 			$user->save();
-			return 1;
+			return $user;
+		}
+		public function update($id){
+			$user = User::find($id);
+			$user->firstname = Input::get('firstname');
+			$user->lastname = Input::get('lastname');
+			$user->email = Input::get('email');
+			$user->type = Input::get('type');
+			$user->password = Input::get('password');
+			$user->updateuniques();
+			return $user;
 		}
 		public function destroy($id){
 			$user = User::find($id);
