@@ -5,15 +5,15 @@
                   <div class="col-lg-3 col-md-4">
                     <div class="menu-steps">
                       <ul>
-                        <li><a href="#" class="active">Credentials</a></li>
-                        <li><a href="#">Notifications</a></li>
+                        <li><a ng-class="{'active':tab == 0}" ng-click="changeTab(0)">Credentials</a></li>
+                        <li><a ng-class="{'active':tab == 1}" ng-click="changeTab(1)">Notifications</a></li>
                         <li class="dn"><a href="#">Payments</a></li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-lg-9 col-md-8">
                     <!-- Start Credentials Form -->
-                    <form role="form" name="userForm">
+                    <form role="form" name="userForm" ng-class="{'dn':tab != 0}">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input ng-model="tmpUser.email" type="email" class="form-control" placeholder="jonathan@clickinglabs.com" required name="email">
@@ -37,7 +37,7 @@
                     <!-- End Credentials Form -->
 
                     <!-- Start Notifications Form -->
-                    <form role="form" class="dn">
+                    <form role="form" ng-class="{'dn':tab != 1}">
                       <div class="form-group">
                         <label>Receive weekly newsletter</label>
                         <select class="form-control">

@@ -22,5 +22,9 @@ c = angular.module("AccountControllers", [
 		$scope.currentUser.$promise.then(function(u){
 			$scope.tmpUser = angular.copy(u);
 		});
+		
+		$scope.tab = 0;
+		
+		$scope.changeTab = function(n){$scope.tab = n}
 	}
 ])
