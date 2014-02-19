@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('head')
+    <title>BRM Deals</title>
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/media-queries.css') }}">
