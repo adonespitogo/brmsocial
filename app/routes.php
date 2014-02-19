@@ -40,6 +40,8 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('commissions/my-unpaid-commissions', array('uses' => 'CommissionController@unpaidCommissions'));
 
 	Route::resource('traffic', 'TrafficController');
+	
+	Route::resource('user/subscriptions', 'SubscriptionController');
 
 	Route::resource('categories', 'CategoryController');
 });
