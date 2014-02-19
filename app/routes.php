@@ -32,6 +32,9 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
 
+	Route::get('interests/my-interests', array('uses' => 'InterestController@myInterest'));
+	Route::resource('interests', 'InterestController');
+
 	Route::get('commissions/my-receivable-commissions', array('uses' => 'CommissionController@myReceivableCommission'));
 	Route::get('commissions/my-received-commissions', array('uses' => 'CommissionController@myReceivedCommission'));
 	Route::get('commissions/my-paid-commissions', array('uses' => 'CommissionController@paidCommissions'));

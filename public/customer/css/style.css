@@ -166,6 +166,8 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .more-about input.dribble { background-image:url('../images/ico-dribble.png'); }
 
 /*Preference Page*/
+.email-pref ul li { display:inline-block; width:32%; }
+.email-pref ul li div { margin-top:0; }
 .email-pref label { font-size:15px; font-weight:400; color:#747070; margin-bottom:10px; }
 .email-pref select { font-size:15px; height:40px; }
 .email-pref form button { font-size:17px; font-weight:600; height:40px; width:200px; }

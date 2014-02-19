@@ -82,9 +82,10 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     	'vendorInfo' => array(self::HAS_ONE, 'VendorInfo'),
     	'commissions' => array(self::HAS_MANY, 'Commission'),
     	'sales' => array(self::HAS_MANY, 'Order', 'foreignKey' => 'vendor_id'),
-    	'subscriptions' => array(self::HAS_ONE, 'Subscription')
+    	'subscriptions' => array(self::HAS_ONE, 'Subscription'),
+    	'user_interests' => array(self::HAS_MANY, 'UserInterest'),
+    	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests')
     );
-    
 
     // END RELATIONSHIPS
 
