@@ -177,11 +177,17 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		$s->user_id = $this->id;
 		$s->save();
 	}
+	public function setPassword($p)
+	{
+		$this->rawPassword = $p;
+		$this->password = $p;
+	}
 	
 	public function afterCreate()
 	{
 		if($this->type == 'customer'){
 			$this->createSubscriptionEntry();
+			MailHelper::signupMessage($this->getFullname(), $this->email, $this->rawPassword);
 		}
 	}
 	public function afterSave()

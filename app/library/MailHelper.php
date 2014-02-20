@@ -91,7 +91,7 @@
 			Mail::send('emails.signup', array('email' => $email, 'password' => $password, 'name' => $name), function($message) use($name, $email)
 			{
 			    $message->to($email, $name)->subject('Welcome!');
-			    $message->from('hello@buyrealmarketing.com', 'Buy Real Marketing');
+			    $message->from('hello@brmsocial.com', 'BRM Social');
 			});
 		}
 
