@@ -32,6 +32,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
 
+	Route::post('interests/update-user-interest', array('uses' => 'InterestController@updateUserInterest'));
 	Route::get('interests/my-interests', array('uses' => 'InterestController@myInterest'));
 	Route::resource('interests', 'InterestController');
 

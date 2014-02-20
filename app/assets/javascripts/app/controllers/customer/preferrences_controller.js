@@ -18,7 +18,7 @@ e.config([
 ]);
 
 e.controller('PreferencesCtrl', [
-	'$scope', 'Interests', function($scope, Interests) {
+	'$scope', 'Interests', '$http', function($scope, Interests, $http) {
 
 		$scope.interests = Interests.query();
 		$scope.my_interests = Interests.myInterests();
@@ -35,7 +35,8 @@ e.controller('PreferencesCtrl', [
 
 		$scope.saveInterests = function(i) {
 			console.log(i);
-			$http.post('interests/').success(function() {});
+			//$http.post('interests/update-user-interest').success(function() {});
+			i.$updateUserInterest();
 		}
 
 	}
