@@ -45,34 +45,4 @@ app.directive('ensureUnique', ['$http', function($http) {
     }
   }
 }]);
-
-app.directive("lessThan", function() {
-   return {
-      require: "ngModel",
-      scope: {
-        lessThan: '='
-      },
-      link: function(scope, element, attrs, ctrl) {
-        scope.$watch(function() { 
-            console.log(scope.lessThan, ctrl.$viewValue);
-            ctrl.$setValidity("lessThan", false);
-             return scope.lessThan; 
-
-        }, function(value) {
-            if(value){
-              console.log('changed');
-                 ctrl.$parsers.unshift(function(viewValue) {
-                    var origin = scope.lessThan;
-                    if (viewValue > origin) {
-                        ctrl.$setValidity("lessThan", false);
-                        return undefined;
-                    } else {
-                        ctrl.$setValidity("lessThan", true);
-                        return viewValue;
-                    }
-                });
-            } 
-        });
-     }
-   };
-});
+ 

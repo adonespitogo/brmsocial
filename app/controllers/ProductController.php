@@ -78,12 +78,11 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
-			$user= Input::get('user');
 			$p->max_download = Input::get('max_download');
-			$p->user_id  = $user['id'];
+			$p->user_id  = Input::get('user_id');
 			$p->save();
 
-			if(Input::has('featured') && Input::get('is_featured')){
+			if(Input::get('is_featured')){
 				$f = Input::get('featured');
 				
 				if(isset($f['id']))
