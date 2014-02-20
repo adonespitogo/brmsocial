@@ -22,10 +22,20 @@ e.controller('PreferencesCtrl', [
 
 		$scope.interests = Interests.query();
 		$scope.my_interests = Interests.myInterests();
+
 		$scope.hasInterest = function(i){
 			var has = _.findWhere($scope.my_interests, {id: i.id});
-			console.log(has);
+			
 			return (typeof has == 'undefined') ? false : true;
+		}
+
+		$scope.saveEmailPreferences = function() {
+			console.log(this.interests);
+		}
+
+		$scope.saveInterests = function(i) {
+			console.log(i);
+			$http.post('interests/').success(function() {});
 		}
 
 	}
