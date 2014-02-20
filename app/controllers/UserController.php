@@ -52,7 +52,7 @@
 			return 1;
 		}
 
-		public function postIsUnique(){
+		public function isUnique(){
 			$val = Input::get('value');
 			$field = Input::get('field');
 			$user = User::where($field, '=', $val)->limit(1)->get();

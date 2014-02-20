@@ -171,11 +171,25 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		} 
 	}
 	
-	public function afterCreate()
+	public function createSubscriptionEntry()
 	{
 		$s = new Subscription();
 		$s->user_id = $this->id;
 		$s->save();
+	}
+	
+	public function afterCreate()
+	{
+		if($this->type == 'customer'){
+			$this->createSubscriptionEntry();
+		}
+	}
+	public function afterSave()
+	{
+		if($this->type == 'customer' && is_null($this->subscriptions))
+		{
+			$this->createSubscriptionEntry();
+		}
 	}
 
 	//new user

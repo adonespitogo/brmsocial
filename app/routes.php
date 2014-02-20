@@ -11,7 +11,7 @@ Route::controller('session', 'SessionController');
 Route::group(array('before' => 'auth'), function(){
 	Route::get('users/me', array('uses' => 'UserController@currentUser'));
 	Route::put('users/me', array('uses' => 'RegisterController@updateAccount'));
-	Route::post('users/is-unique', array('uses'=>'UserController@postIsUnique'));
+	Route::post('users/is-unique', array('uses'=>'UserController@isUnique'));
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
 	Route::get('users/vendor', array('uses'=>'UserController@getUsers'));
 	Route::post('users/add-image', array('uses' => 'UserController@addImage'));
