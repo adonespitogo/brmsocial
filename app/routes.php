@@ -1,9 +1,10 @@
 <?php
 
-Route::get('/', array('uses' => 'PublicController@index'));
 
 
 // start public routes
+Route::get('/', array('uses' => 'PublicController@index'));
+Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 Route::controller('session', 'SessionController');
 
 
@@ -19,7 +20,6 @@ Route::group(array('before' => 'auth'), function(){
 	
 	Route::controller('home', 'HomeController');
 
-	Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
 	Route::get('products/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
