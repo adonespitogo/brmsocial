@@ -11,9 +11,10 @@ Route::controller('session', 'SessionController');
 Route::group(array('before' => 'auth'), function(){
 	Route::get('users/me', array('uses' => 'UserController@currentUser'));
 	Route::put('users/me', array('uses' => 'RegisterController@updateAccount'));
-	Route::post('users/is-unique', array('uses'=>'UserController@postIsUnique'));
+	Route::post('users/is-unique', array('uses'=>'UserController@isUnique'));
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
 	Route::get('users/vendor', array('uses'=>'UserController@getUsers'));
+	Route::post('users/add-image', array('uses' => 'UserController@addImage'));
 	Route::resource('users', 'UserController');
 	
 	Route::controller('home', 'HomeController');
@@ -32,6 +33,10 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
+
+	Route::post('interests/update-user-interest', array('uses' => 'InterestController@updateUserInterest'));
+	Route::get('interests/my-interests', array('uses' => 'InterestController@myInterest'));
+	Route::resource('interests', 'InterestController');
 
 	Route::get('commissions/my-receivable-commissions', array('uses' => 'CommissionController@myReceivableCommission'));
 	Route::get('commissions/my-received-commissions', array('uses' => 'CommissionController@myReceivedCommission'));

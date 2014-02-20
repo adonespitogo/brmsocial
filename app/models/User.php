@@ -4,13 +4,22 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use LaravelBook\Ardent\Ardent;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
+	
+    use Codesleeve\Stapler\Stapler;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+	public function __construct($attributes = array()) {
+		
+		$this->hasAttachedFile('avatar', [
+		  'styles' => [
+		    'medium' => '300x300',
+		    'thumb' => '100x100'
+		  ]
+		]);
+
+		parent::__construct($attributes);
+	}
+	
 	protected $table = 'users';
     protected $softDelete = true;
 
@@ -73,9 +82,10 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     	'vendorInfo' => array(self::HAS_ONE, 'VendorInfo'),
     	'commissions' => array(self::HAS_MANY, 'Commission'),
     	'sales' => array(self::HAS_MANY, 'Order', 'foreignKey' => 'vendor_id'),
-    	'subscriptions' => array(self::HAS_ONE, 'Subscription')
+    	'subscriptions' => array(self::HAS_ONE, 'Subscription'),
+    	'user_interests' => array(self::HAS_MANY, 'UserInterest'),
+    	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests')
     );
-    
 
     // END RELATIONSHIPS
 
@@ -83,6 +93,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public function toArray()
     {
     	$this->fullname = $this->getFullname();
+    	$this->pic = $this->getProfilePic();
     	if($this->type == 'vendor')
     		$this->load('vendorInfo');
 
@@ -92,6 +103,11 @@ class User extends Ardent implements UserInterface, RemindableInterface {
     public function getFullname()
     {
     	return $this->firstname . ' '. $this->lastname;
+    }
+    
+    public function getProfilePic()
+    {
+    	return URL::to($this->avatar->url('medium'));
     }
 
     //vendor
@@ -153,6 +169,27 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 		if(is_object($this->created_at) && get_class($this->created_at) == "Carbon\Carbon"){
 			return $this->created_at->toISO8601String();
 		} 
+	}
+	
+	public function createSubscriptionEntry()
+	{
+		$s = new Subscription();
+		$s->user_id = $this->id;
+		$s->save();
+	}
+	
+	public function afterCreate()
+	{
+		if($this->type == 'customer'){
+			$this->createSubscriptionEntry();
+		}
+	}
+	public function afterSave()
+	{
+		if($this->type == 'customer' && is_null($this->subscriptions))
+		{
+			$this->createSubscriptionEntry();
+		}
 	}
 
 	//new user

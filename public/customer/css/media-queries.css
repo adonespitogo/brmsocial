@@ -33,5 +33,5 @@
 
 @media screen and (max-width: 600px) {
 	/*body { border:10px solid pink; }*/
-	
+	.email-pref ul li { width:100%; }
 }

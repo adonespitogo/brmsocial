@@ -1,1 +1,53 @@
-dfas
+<div class="content">
+  <h3 class="mb-30">Email Preferences</h3> 
+    <!-- Start More About -->
+    <div class="email-pref">
+      <form role="form" ng-submit="saveEmailPreferences()">
+        <div class="form-title-border">
+          <label>Interests</label>
+        </div>
+        <div class="row">
+
+          <div class="col-md-12">
+            <ul>
+
+              <li ng-repeat="interest in interests">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-value="{{ interest.id }}" name="interests[]" ng-checked="hasInterest(interest)" ng-click="saveInterests(interest)">
+                    {{ interest.interest }}
+                  </label>
+                </div>                          
+              </li>
+
+            </ul>
+          </div>
+         
+        </div>
+        <div class="form-sep"></div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Receive weekly newsletter</label>
+          <select class="form-control">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select> 
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Receive promos and freebies updates</label>
+          <select class="form-control">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select> 
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Receive updates on products I purchased</label>
+          <select class="form-control">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select> 
+        </div>
+        <button type="submit" class="btn btn-blue btn-default">Save Changes</button>
+    </form>
+    </div>
+    <!-- End More About -->
+</div>
