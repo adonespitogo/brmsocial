@@ -6,6 +6,7 @@ m = angular.module "CustomerApp", [
 	'ProfileControllers',
 	'PurchasesControllers',
 	'PreferencesControllers',
+	'CreditControllers',
 	'mgcrea.ngStrap', 				#angular-strap
 	'FormValidation', 				#custom form validations
 ]
