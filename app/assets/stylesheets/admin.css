@@ -10,5 +10,6 @@
  * but before any files alphabetically greater than 'application.css' 
  *
  *= require_tree ./lib/angular/ng-grid
+ *= require ./lib/wysihtml5/style
  *= require_tree ./lib/angular/ng-quick-date
  */

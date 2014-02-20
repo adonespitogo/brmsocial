@@ -21,6 +21,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
+					@if(isset($featured)&&isset($featured->product)&&isset($featured->product->pictures[0]))
 					<div class="left-col">
 						<h3>Featured Deal</h3>
 						<!-- Start Featured Deal -->
@@ -47,6 +48,7 @@
 						</div>
 						<!-- End Featured Deal -->
 					</div>
+					@endif
 					<div class="left-col">
 						<h3>Most Popular Services</h3>
 						<!-- Start Most Popular Services -->
