@@ -5,6 +5,7 @@
 // start public routes
 Route::get('/', array('uses' => 'PublicController@index'));
 Route::get('product/{slug}', array('uses' => 'PublicController@product'));
+Route::get('category/{slug}', array('uses' => 'CategoryController@productByCategory'));
 Route::controller('session', 'SessionController');
 
 
