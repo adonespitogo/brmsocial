@@ -50,8 +50,9 @@ class FeaturedProduct extends BaseModel{
 						->where('featured_end_date', '>=', $now )
 						->orderBy('created_at', 'DESC')
 						->first();
-						
-		$featured->load('product');
+			
+		if(is_object($featured))			
+			$featured->load('product');
 		return $featured;
 	}
 
