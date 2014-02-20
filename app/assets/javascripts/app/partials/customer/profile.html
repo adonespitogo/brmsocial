@@ -1,0 +1,129 @@
+<div class="content">
+  <h3 class="mb-30">Profile</h3> 
+  <div class="row">
+    <div class="account">
+      <div class="col-lg-3 col-md-4">
+        <div class="menu-steps">
+          <ul>
+            <li><a href="#" class="active">Basic Information</a></li>
+            <li><a ng-click="scrollTo('more-about')">About</a></li>
+            <li><a ng-click="scrollTo('social-network')">Social Networks</a></li>
+            <li><a ng-click="scrollTo('web-preferences')">Web preferences</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-8">
+        <!-- Start Basic Info -->
+        <div class="basic-info">
+          <div class="row">
+            <div class="col-lg-2">
+              <img src="customer/images/user-avatar.png">
+            </div>
+            <div class="col-lg-10">
+              <form role="form">
+                  <div class="form-group">
+                    <input type="file" id="exampleInputFile">  
+                  </div>
+                  <div class="form-group">
+                    <input type="input" class="form-control" placeholder="paste image url here">
+                    <p class="help-block mt-10">Please choose an image with a resulotion of more than 350x350 px.</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Full Name</label>
+                    <input type="input" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Birth Date</label>
+                    <div class="form-inline">
+                      <select class="form-control" style="width:30%">
+                        <option>Month</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </select>
+                      <select class="form-control" style="width:30%">
+                        <option>Day</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </select>
+                      <select class="form-control" style="width:30%">
+                        <option>Year</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </select>
+                    </div>
+                  </div>  
+                  <div class="form-group">
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="option1"> Male
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" value="option2"> Female
+                    </label>
+                  </div>   
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">City</label>
+                    <input type="input" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Country</label>
+                    <select class="form-control">
+                      <option>USA</option>
+                      <option>Austriala</option>
+                      <option>Canada</option>
+                    </select>
+                  </div> 
+                  <button type="submit" class="btn btn-blue btn-default">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- End Basic Info -->
+
+        <!-- Start More About -->
+        <div class="more-about" id="more-about">
+          <form role="form">    
+            <div class="form-group">
+              <label for="exampleInputEmail1">Profession</label>
+              <input type="input" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Bio</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-sep"></div>
+            <div class="form-group" id="social-network">
+              <label for="exampleInputEmail1">facebook</label>
+              <input type="input" class="form-control fb" placeholder="https://www.facebook.com/jonheineken">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Twitter</label>
+              <input type="input" class="form-control twit" placeholder="jonheineken">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Google +</label>
+              <input type="input" class="form-control gplus" placeholder="https://plus.google.com/u/0/105233723765879178661">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Linked in</label>
+              <input type="input" class="form-control in" placeholder="http://www.linkedin.com/profile/view?id=153373276">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Dribbble</label>
+              <input type="input" class="form-control dribble" placeholder="">
+            </div>
+            <div class="form-more"><a >More <i class="fa fa-angle-down"></i></a></div>
+            <div class="form-group mb-30" id="web-preferences">
+              <label for="exampleInputEmail1">Website</label>
+              <div class="form-inline">
+                <input type="input" class="form-control" style="width:35%">
+                <input type="input" class="form-control pull-right" style="width:60%">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-blue btn-default">Save Changes</button>
+        </form>
+        </div>
+        <!-- End More About -->
+      </div>
+    </div>
+  </div>
+</div>

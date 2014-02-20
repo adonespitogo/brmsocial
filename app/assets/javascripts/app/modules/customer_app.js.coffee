@@ -3,10 +3,11 @@ m = angular.module "CustomerApp", [
 	'MainController',
 	'HomeControllers',
 	'AccountControllers',
+	'ProfileControllers',
 	'PurchasesControllers',
-	'PreferencesControllers'
-	'mgcrea.ngStrap', #angular-strap
-	'FormValidation', #custom form validations
+	'PreferencesControllers',
+	'mgcrea.ngStrap', 				#angular-strap
+	'FormValidation', 				#custom form validations
 ]
 
 
