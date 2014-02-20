@@ -5,7 +5,8 @@
 		])
 		.factory('Interests', function($resource) {
 			return $resource('interests/:id', { id: '@id' }, {
-				myInterests: { method: 'GET', params: { id: 'my-interests' }, isArray: true }
+				myInterests: { method: 'GET', params: { id: 'my-interests' }, isArray: true },
+				updateUserInterest: { method: 'POST', params: { id: 'update-user-interest' } }
 			
 			});
 		});
