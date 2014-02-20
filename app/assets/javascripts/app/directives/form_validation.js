@@ -27,7 +27,7 @@ app.directive('ensureUnique', ['$http', function($http) {
       scope.$watch(attrs.ngModel, function() {
         $http({
           method: 'POST',
-          url: '/users/is-unique',
+          url: 'users/is-unique',
           data: {'field': attrs.ensureUnique, value: $(ele).val()}
         }).success(function(data, status, headers, cfg) {
            check2 = scope.oldEmail==$(ele).val().trim(); 
@@ -45,3 +45,4 @@ app.directive('ensureUnique', ['$http', function($http) {
     }
   }
 }]);
+ 

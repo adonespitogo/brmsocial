@@ -21,7 +21,9 @@
 						<div class="left-col">
 							<!-- Start Featured Deal -->
 							<div class="banner-deal-page">
+								@if(isset($product->pictures[0]))
 								<img src='{{URL::to($product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
+								@endif
 							</div>
 							<!-- End Featured Deal -->
 						</div>
@@ -34,35 +36,7 @@
 						<div class="left-col">
 							<!-- Start of Overview and Comments -->
 							<div id="overview">
-								<p class="pt-30">Pinterest is exploding on the scene of not only Social Media but Business marketing online or internet marketing. In this course I want to teach you the basics of Pinterest, how to create niche boards, how to leverage Pinterest for business, tips and techniques to drive free traffice to your business or website, the philosophy behind the social media platform, why people will spread your message and a few advanced secrets as well.</p>
-								<p class="pt-30">In this course we will include everything that you need in order to master Pinterest. This course should take you no longer than a few hours to complete and then a few more hours to work around the site and set things up. In less than 5 hours you can be in a whole new level with Pinterest and you can start to drive free traffic.</p>
-								<p class="pt-30">The course is structured from the beginning basics to the more advanced stuff as we progress but nothing in this course is too advanced. All information is quality but most people can perform it and the advanced will learn a thing or two as well.</p>
-								<p class="pt-30">You will want to take this course if you need tons of free traffic, need to grow a business, want to make extra money or if you just want to learn to master the basics of Pinterest.</p>
-
-								<div class="category-wrapper">
-									<p class="pt-60">
-										<span>Category:</span> 
-										{{$product->category->category}}
-									</p>
-
-									<h4 class="pt-30">What are the requirements?</h4>
-									<ul>
-									  <li>Need to have a basic Pinterest account set up</li>
-									</ul>
-
-									<h4 class="pt-30">What am I going to get from this course?</h4>
-									<ul>
-									  <li>Over 16 lectures and 2.5 hours of content!</li>
-									  <li>Learn how to drive a ton of free traffic to your business</li>
-									  <li>Understand some advanced strategies</li>
-									</ul>
-
-									<h4 class="pt-30">What is the target audience?</h4>
-									<ul>
-									  <li>Anyone interested in learning Pinterest with minimal computer & technical ability (ie:able to do things on Facebook or Pinterest)</li>
-									  <li>People looking to make money with Pinterest</li>
-									</ul>
-								</div>
+								{{$product->overview}}
 							</div>
 							<div id="class_comments">
 								<P>3 Comments</P>
@@ -136,10 +110,9 @@
 								<div class="terms-of-sale">
 									<h4>Terms of Sale</h4>
 									<ul class="fa-ul">
-									  <li><i class="fa-li fa fa-calendar"></i>30 day money back guarantee!</li>
-									  <li><i class="fa-li fa fa-clock-o"></i>Lifetime access! No limits!</li>
-									  <li><i class="fa-li fa fa-mobile-phone"></i>iPhone, iPad and Android Accessibility</li>
-									  <li><i class="fa-li fa fa-trophy"></i>Certificate of completion</li>
+									@foreach($product->terms as $index=>$t)
+										<li><i class="fa-li fa fa-star-o"></i>{{$t->term}}</li> 
+									@endforeach
 									</ul>
 								</div>
 								<div class="question-box">

@@ -33,6 +33,7 @@ class Product extends BaseModel{
 		'terms' => array(self::HAS_MANY, 'Term'),
 		'traffic' => array(self::HAS_MANY, 'Traffic'),
 		'pictures' => array(self::HAS_MANY, 'ProductPicture'),
+		'files' => array(self::HAS_MANY, 'ProductFile'),
 		'featured'=>array(self::HAS_ONE,'FeaturedProduct'),
 	);
 
@@ -42,7 +43,8 @@ class Product extends BaseModel{
 		parent::__construct();
 		$this->sale_start_date = date('Y:m:d H:i:s');
 		$this->sale_end_date = date('Y:m:d H:i:s');
-		$this->product_image = false;
+		$this->product_image = false; 
+		$this->max_download = 1;
 		//$this->category_id = Category::first()->id;
 	}
 	

@@ -8,6 +8,9 @@
 			return $category;
 		}	
 
+		public function create(){
+			return new Category();
+		}
 		public function show($id){
 			if($id=='create')
 				return new Category();

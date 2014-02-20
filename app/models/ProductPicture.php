@@ -9,12 +9,14 @@ class ProductPicture extends Ardent{
 				'medium' => '300x300',
 				'small' =>'100x100'
 			],
+			//'content_type' => 'jpg,png',
         	'default_url' => '/:attachment/:style/missing.jpg',
         	'keep_old_files' => true
 		]);
 
 		parent::__construct($attributes);
 	}
+	// protected $contentType = array('image/jpg','jpg','png');
 
 	public function product(){
 		return $this->belongsTo('Product');

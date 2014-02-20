@@ -63,19 +63,48 @@ c.controller 'NewProductCtrl', [
 
 		$scope.vendors = Users.query id:'vendor'
 
-		$scope.files = []
+		$scope.pics = []
+		$scope.pfiles = []
 
 		$scope.onFileSelect = ($files)->
-			 $scope.files = $files	 	
-		
+			 file_types = new Array('image/jpeg', 'image/gif', 'image/png');
+			 
+			 not_allowed_files= '' 
+			 error = false
+
+			 $.each $files, (i, file)-> 
+			 	if(file_types.indexOf(file.type)!=-1)
+			 		$scope.pics.push(file) 
+			 	else
+			 		error = true
+			 		not_allowed_files +=file.name+", "
+			 		
+			 if error 
+			 	$alert
+			 		type: 'danger'
+			 		title : not_allowed_files+": not allowed files" 
+
+		$scope.onPFileSelect = ($files)->
+			$scope.pfiles = $files
+
 		$scope.createProduct = (p)->
 			
-			p.product_image = true if $scope.files.length> 0
+			p.product_image = true if $scope.pics.length> 0
+			p.product_file = true if $scope.pfiles.length>0
 
 			p.$save (res)->
-				$.each($scope.files, (i,file)->
+				$.each($scope.pics, (i,pic)->
 						$scope.upload = $upload.upload(
 							url: "product/add-image"
+							data:
+								id: res.id
+							file: pic
+						)
+					)
+
+				$.each($scope.pfiles, (i,file)->
+						$scope.upload = $upload.upload(
+							url: "product/add-file"
 							data:
 								id: res.id
 							file: file
@@ -101,30 +130,59 @@ c.controller 'EditProductCtrl', [
 
 		$scope.vendors = Users.query id:'vendor'
 
-		$scope.files = []
-
+		$scope.pics = []
+		$scope.pfiles = []
+		
 		$scope.onFileSelect = ($files)->
-			 $scope.files = $files	
+			 file_types = new Array('image/jpeg', 'image/gif', 'image/png');
+			 
+			 not_allowed_files= '' 
+			 error = false
 
+			 $.each $files, (i, file)-> 
+			 	if(file_types.indexOf(file.type)!=-1)
+			 		$scope.pics.push(file) 
+			 	else
+			 		error = true
+			 		not_allowed_files +=file.name+", "
+			 		
+			 if error 
+			 	$alert
+			 		type: 'danger'
+			 		title : not_allowed_files+": not allowed files" 
+
+		$scope.onPFileSelect = ($files)->
+			$scope.pfiles = $files
+			
 		$scope.updateProduct = (p)->
 
-			p.product_image = if $scope.files.length> 0 then true else false  
-			 
+			p.product_image =$scope.pics.length> 0 ? true : false 
+			p.product_file = $scope.pfiles.length>0 ? true : false
+
 			p.$update (res)->
-				$.each($scope.files, (i,file)->
-					$scope.upload = $upload.upload(
-						url: "product/add-image"
-						data:
-							id: res.id
-						file: file
+				$.each($scope.pics, (i,pic)->
+						$scope.upload = $upload.upload(
+							url: "product/add-image"
+							data:
+								id: res.id
+							file: pic
+						)
 					)
-				)
+
+				$.each($scope.pfiles, (i,file)->
+						$scope.upload = $upload.upload(
+							url: "product/add-file"
+							data:
+								id: res.id
+							file: file
+						)
+					)
 
 				$alert
-					title : "Product has been updated successfully."
+					title : "Product has been created successfully."
 					type: 'success'
-
-				$location.path('/products')
+					
+					$location.path('/products')
 		
 ]
 

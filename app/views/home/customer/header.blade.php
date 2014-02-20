@@ -22,8 +22,8 @@
                 </div>
                 <div class="login-con">
                   <ul class="">
-                      <li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43;"><a href="javascript:void(0)">Signup</a></li>
-                      <li style="padding-left: 15px;"><a href="javascript:void(0)">Login</a></li>
+                      <li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43; display:none"><a href="javascript:void(0)">Signup</a></li>
+                      <li style="padding-left: 15px;"><a href="{{URL::to('session/logout')}}">Logout</a></li>
                         <li>
                           <div class="bg-cart">
                             <span class="cart-dolsign">$</span>

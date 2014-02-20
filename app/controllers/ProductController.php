@@ -30,6 +30,7 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
+			$p->max_download = Input::get('max_download');
 			$p->user_id = Input::get('user');
 			$p->save();
 
@@ -61,7 +62,7 @@
 
 		public function show($id)
 		{	
-			return Product::find($id);
+			return Product::find($id); 
 		}
 
 		public function update($id)
@@ -77,11 +78,11 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
-			$user= Input::get('user');
-			$p->user_id  = $user['id'];
+			$p->max_download = Input::get('max_download');
+			$p->user_id  = Input::get('user_id');
 			$p->save();
 
-			if(Input::has('featured') && Input::get('is_featured')){
+			if(Input::get('is_featured')){
 				$f = Input::get('featured');
 				
 				if(isset($f['id']))
@@ -122,6 +123,10 @@
 			if(Input::has('product_image') && Input::get('product_image')){ 
 				ProductPicture::where('product_id','=', $p->id)->delete();
 			}
+			if(Input::has('product_file') && Input::get('product_file')){ 
+				ProductFile::where('product_id','=', $p->id)->delete();
+			}
+
 			return $p;
 		}
 
@@ -131,6 +136,15 @@
 			$pi->picture = Input::file('file');
 			$pi->product_id = $id;
 			$pi->save();
+			return 1;
+		}
+
+		public function postAddFile(){
+			$id = Input::get('id');
+			$pf = new ProductFile();
+			$pf->file = Input::file('file');
+			$pf->product_id = $id;
+			$pf->save();
 			return 1;
 		}
 
@@ -173,6 +187,25 @@
 			$product->loadProductTraffic();
 			
 			return $product;
+		}
+
+		public function getDownload($orderId, $productId, $productFileIndex){
+			$order = Order::find($orderId);
+			$user = Auth::user();
+
+			if($order->user_id == $user->id && $order->max_download >= $order->download_count){
+				$order->download_count += 1;
+				$order->save();
+
+				$product = $order->product;
+				$productFile = $product->files[$productFileIndex];
+				$filepath = app_path('storage').$productFile->file->url();
+				 
+				return Response::download($filepath);
+				
+			}else{
+				return Response::json(array('status'=>403, 'error'=>'Forbidden'), 403);
+			}
 		}
 
 
