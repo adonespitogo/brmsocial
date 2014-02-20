@@ -42,7 +42,7 @@
 					<div class="form-group">
 						<div class="checkbox">
 							<label>Remember me
-								<input type="checkbox" name="remember">
+								<input type="checkbox" name="remember" checked>
 							</label>
 						</div>
 					</div>

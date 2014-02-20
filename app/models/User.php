@@ -170,6 +170,13 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 			return $this->created_at->toISO8601String();
 		} 
 	}
+	
+	public function afterCreate()
+	{
+		$s = new Subscription();
+		$s->user_id = $this->id;
+		$s->save();
+	}
 
 	//new user
 	// public function beforeSave()
