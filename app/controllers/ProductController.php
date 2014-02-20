@@ -151,6 +151,8 @@
 		public function destroy($id)
 		{
 			Product::where('id', $id)->delete();
+			ProductPicture::where('product_id', $id)->delete();
+			FeaturedProduct::where('product_id', $id)->delete();
 		}
 
 		public function myProducts()
