@@ -35,7 +35,16 @@
 			$cat->delete();
 
 			return 1;
-		} 
+		}
+		public function productByCategory($cat_slug)
+		{
+			$cat = Category::where('slug', $cat_slug)->first();
+			
+			if(is_null($cat))
+				$this->show404();
+			
+			return $cat->products;
+		}
 	}
 
 ?>

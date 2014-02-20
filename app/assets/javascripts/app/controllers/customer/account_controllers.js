@@ -21,7 +21,7 @@ c = angular.module("AccountControllers", [
 	'$scope', 'Users', 'Subscriptions',
 	function($scope, Users, Subscriptions){
 		$scope.valueKey = [
-			{v: "0", k: "No"}, {v: '1', k: 'Yes'}	
+			{v: "0", k: "No"}, {v: '1', k: 'Yes'}
 		];
 		
 		$scope.currentUser.$promise.then(function(u){
