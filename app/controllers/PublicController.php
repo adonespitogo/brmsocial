@@ -11,8 +11,9 @@ class PublicController extends BaseController{
 	}
 
 	public function product($slug)
-	{
+	{	 
 		$product = Product::where('slug', $slug)->first();
+ 
 		if(is_object($product))
 			return View::make('public.product')->with('product', $product);
 		else

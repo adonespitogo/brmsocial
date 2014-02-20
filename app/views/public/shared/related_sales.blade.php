@@ -3,7 +3,9 @@
 	<ul>
 		@foreach(Product::all() as $product)
 			<li>
+				@if(isset($product->pictures[0]))
 				<img src='{{URL::to($product->pictures[0]->picture->url("small"))}}' alt="related deals" title="related deals">
+				@endif
 				<div><a href="{{URL::to('product/'.$product->slug)}}">{{$product->product_name}}</a></div>
 				<div class="price">${{$product->discounted_price}}</div>
 				<ul>
