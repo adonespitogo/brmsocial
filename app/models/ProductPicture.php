@@ -6,7 +6,7 @@ class ProductPicture extends Ardent{
 	public function __construct(array $attributes =  array()){
 		$this->hasAttachedFile('picture', [
 			'styles' => [
-				'medium' => '300x300',
+				'medium' => '220x220',
 				'small' =>'100x100'
 			],
 			//'content_type' => 'jpg,png',

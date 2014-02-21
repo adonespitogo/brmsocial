@@ -53,7 +53,8 @@ c.controller 'ProductListCtrl', [
 c.controller 'NewProductCtrl', [
 	'$scope', 'Products', 'Category', '$alert', '$location','Users','$upload',
 	($scope, Products, Category, $alert, $location, Users, $upload) ->
-				
+		$('textarea#wysihtml5-textarea').wysihtml5()
+
 		Category.query().$promise.then (categories) -> 
 				$scope.categories = categories
 				Products.get({ id:"create" }).$promise.then (d)->
@@ -92,6 +93,7 @@ c.controller 'NewProductCtrl', [
 			p.product_image = true if $scope.pics.length> 0
 			p.product_file = true if $scope.pfiles.length>0
 
+			p.overview = $('#wysihtml5-textarea').val()
 			p.$save (res)->
 				$.each($scope.pics, (i,pic)->
 						$scope.upload = $upload.upload(
@@ -122,10 +124,15 @@ c.controller 'NewProductCtrl', [
 c.controller 'EditProductCtrl', [
 	'$scope', 'Products', '$stateParams', 'Category', '$alert', 'Users','$location','$upload',
 	($scope, Products, $stateParams, Category, $alert, Users, $location,$upload) ->
+		
 		Category.query().$promise.then (categories) ->
 				$scope.categories = categories
 				Products.get({id: $stateParams.id}).$promise.then (d)->
-					$scope.product = d
+					$scope.product = d 
+
+					$('#wysihtml5-textarea').val($scope.product.overview)
+					$('textarea#wysihtml5-textarea').wysihtml5()
+					
 					$scope.product.terms.push('') 
 
 		$scope.vendors = Users.query id:'vendor'
@@ -158,6 +165,8 @@ c.controller 'EditProductCtrl', [
 
 			p.product_image =$scope.pics.length> 0 ? true : false 
 			p.product_file = $scope.pfiles.length>0 ? true : false
+
+			p.overview = $('#wysihtml5-textarea').val()
 
 			p.$update (res)->
 				$.each($scope.pics, (i,pic)->

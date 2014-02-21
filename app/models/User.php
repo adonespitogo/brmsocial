@@ -18,6 +18,10 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		]);
 
 		parent::__construct($attributes);
+		
+		$this->avatar = URL::to("customer/images/default_profile_pic.jpg");
+		$this->city = "";
+		$this->country = "";
 	}
 	
 	protected $table = 'users';
@@ -84,7 +88,9 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     	'sales' => array(self::HAS_MANY, 'Order', 'foreignKey' => 'vendor_id'),
     	'subscriptions' => array(self::HAS_ONE, 'Subscription'),
     	'user_interests' => array(self::HAS_MANY, 'UserInterest'),
-    	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests')
+    	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests'),
+    	'referrals' => array(self::HAS_MANY, 'Referral'),
+    	'transactions' => array(self::HAS_MANY, 'UserTransaction'),
     );
 
     // END RELATIONSHIPS
@@ -94,6 +100,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     {
     	$this->fullname = $this->getFullname();
     	$this->pic = $this->getProfilePic();
+    	$this->credits = number_format($this->getCredits(), 0);
     	if($this->type == 'vendor')
     		$this->load('vendorInfo');
 
@@ -171,17 +178,85 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		} 
 	}
 	
+	public function getTotalReferralEarned()
+	{
+		$earned = $this->transactions()->where('type', 'referral_reward')->sum('amount');
+		if(is_null($earned)) 
+			return 0;
+		return number_format($earned, 0);
+	}
+	
+	public function getTotalReferral()
+	{
+		$total = $this->referrals()->where('joined', true)->count();
+		if(is_null($total)) return 0;
+		return (int)$total;
+	}
+	
+	public function getCredits()
+	{
+		$credits = $this->transactions()->where('is_credit', true)->sum('amount');
+		if(is_null($credits)) return 0;
+		$deductions = $this->transactions()->where('is_credit', false)->sum('amount');
+		if(is_null($deductions)) return $credits;
+		return $credits - $deductions;
+	}
+	
+	public function getSpentCredits()
+	{
+		$spent = $this->transactions()->where('is_credit', false)->sum('amount');
+		if(is_null($spent)) return 0;
+		return number_format($spent, 0);
+	}
+	
 	public function createSubscriptionEntry()
 	{
 		$s = new Subscription();
 		$s->user_id = $this->id;
 		$s->save();
 	}
+
+	public function setPassword($p)
+	{
+		$this->rawPassword = $p;
+		$this->password = $p;
+	}
+	
+	public function checkIfReferred()
+	{
+		$referred = Referral::where('email', $this->email)->first();
+		if(!is_null($referred) && (boolean)$referred->joined == false){
+			$referred->joined = true;
+			$referred->updateUniques();
+			
+			$ut = new UserTransaction();
+			$ut->user_id = $referred->user_id;
+			$ut->amount = 10;
+			$ut->remarks = 'Referral Reward';
+			$ut->type = 'referral_reward';
+			$ut->transaction_id = BRMHelper::genRandomTransactionId();
+			$ut->is_credit = true;
+			$ut->save();
+		}
+	}
+	
+	public function sendReferrals($emails)
+	{
+		foreach ($emails as $e) {
+			$ref = new Referral();
+			$ref->email = $e;
+			$ref->user_id = $this->id;
+			$ref->save();
+		}
+	}
 	
 	public function afterCreate()
 	{
 		if($this->type == 'customer'){
 			$this->createSubscriptionEntry();
+
+			$this->checkIfReferred();
+			MailHelper::signupMessage($this->getFullname(), $this->email, $this->rawPassword);
 		}
 	}
 	public function afterSave()
@@ -192,18 +267,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		}
 	}
 
-	//new user
-	// public function beforeSave()
- //    {
- //    	dd('before save');
- //        $this->rawPassword = $this->password;
- //        // if there's a new password, hash it
- //        if($this->isDirty('password')) {
-        	
- //            $this->password = Hash::make($this->password);
- //        }
-
- //        return true;
- //        //or don't return nothing, since only a boolean false will halt the operation
- //    }
+	public function beforeDelete()
+	{
+		$this->subscriptions->delete();
+	}
 }

@@ -1,1 +1,53 @@
-<strong>welcome Admin</strong>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="alert alert-dismissable alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Welcome! to <a href="#" class="alert-link">BRM Social Admin Dashboard</a></strong>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Users</h3>
+            </div>
+            <div class="panel-body">
+            	<h1 ng-bind="countUsers[0]"></h1>
+            	Users
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Products</h3>
+            </div>
+            <div class="panel-body">
+                <h1 ng-bind="countProducts[0]"></h1>
+                Products
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Categories</h3>
+            </div>
+            <div class="panel-body">
+               <h1 ng-bind="countCategories[0]"></h1> Categories
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Orders</h3>
+            </div>
+            <div class="panel-body">
+                 <h1 ng-bind="countOrders[0]"></h1> Orders
+            </div>
+        </div>
+    </div>
+
+</div>

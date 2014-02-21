@@ -48,6 +48,18 @@
 				])->with('category', $category);
 		}
 
+		public function productByCategory($cat_slug)
+		{
+			$cat = Category::where('slug', $cat_slug)->first();
+			
+			if(is_null($cat))
+				$this->show404();
+			
+			return $cat->products;
+		}
+		public function countCategories(){
+			return Category::count();
+		}
 	}
 
 ?>

@@ -16,6 +16,13 @@ c = angular.module("CreditControllers", [
 	'$scope', 'Referrals'
 	($scope, Referrals) ->
 		
+
+		$scope.currentUser.$promise.then (u) ->
+			$scope.currentUser = u
+			$scope.totalEarned = Referrals.totalEarned user_id: u.id
+			$scope.totalJoined = Referrals.totalJoined user_id: u.id
+			$scope.spentCredits = Referrals.spentCredits user_id: u.id
+		
 		$scope.alerts = 
 			show: false
 			

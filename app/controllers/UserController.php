@@ -69,5 +69,9 @@
 			$user->updateUniques();
 			return $user->getProfilePic();
 		}
+
+		public function countUsers(){
+			return User::count();
+		}
 	}
 ?>

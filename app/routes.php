@@ -1,15 +1,19 @@
 <?php
 
-Route::get('/', array('uses' => 'PublicController@index'));
 
 
 // start public routes
+Route::get('/', array('uses' => 'PublicController@index'));
+Route::get('product/{slug}', array('uses' => 'PublicController@product'));
+Route::get('category/{slug}', array('uses' => 'CategoryController@productByCategory'));
 Route::controller('session', 'SessionController');
+Route::controller('register', 'RegisterController');
 
 
 // start protected routes
 Route::group(array('before' => 'auth'), function(){
 	Route::get('users/me', array('uses' => 'UserController@currentUser'));
+	Route::get('users/count', array('uses' => 'UserController@countUsers'));
 	Route::put('users/me', array('uses' => 'RegisterController@updateAccount'));
 	Route::post('users/is-unique', array('uses'=>'UserController@isUnique'));
 	Route::get('users/all', array('uses'=>'UserController@getAll'));
@@ -21,6 +25,7 @@ Route::group(array('before' => 'auth'), function(){
 
 	Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
+	Route::get('products/count', array('uses' => 'ProductController@countProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
 	Route::get('products/my-active-products-count', array('uses' => 'ProductController@myActiveProductsCount'));
 	Route::get('products/featured-product', array('uses' => 'ProductController@featuredProduct'));
@@ -30,8 +35,10 @@ Route::group(array('before' => 'auth'), function(){
 	Route::resource('products', 'ProductController');
 	
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
+	Route::get('orders/count', array('uses' => 'OrderController@countOrders'));
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
+	Route::get('orders/all', array('uses' => 'OrderController@allOrders'));
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
 
 	Route::post('interests/update-user-interest', array('uses' => 'InterestController@updateUserInterest'));
@@ -47,10 +54,18 @@ Route::group(array('before' => 'auth'), function(){
 	
 	Route::resource('user/subscriptions', 'SubscriptionController');
 
+
 	Route::get('categories/{slug}', array('uses' => 'CategoryController@getProducts'));
 	Route::resource('categories', 'CategoryController');
 
 	Route::get('download/{orderId}/{productId}/{productFileIndex}', array('uses'=>'ProductController@getDownload'));
+
+	Route::get('categories/count', array('uses'=>'CategoryController@countCategories'));
+	Route::resource('categories', 'CategoryController');
+
+	Route::get('download/{orderId}/{productId}/{productFileIndex}', array('uses'=>'ProductController@getDownload'));
+	
+	Route::controller('referrals', 'ReferralController');
 }); 
 
 Route::get('fox', function(){
