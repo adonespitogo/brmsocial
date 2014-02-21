@@ -166,7 +166,9 @@ c.controller 'EditProductCtrl', [
 
 			p.product_image =$scope.pics.length> 0 ? true : false 
 			p.product_file = $scope.pfiles.length>0 ? true : false
+
 			p.overview = $('#wysihtml5-textarea').val()
+
 			p.$update (res)->
 				$.each($scope.pics, (i,pic)->
 						$scope.upload = $upload.upload(

@@ -209,12 +209,24 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return number_format($spent, 0);
 	}
 	
+	public function getFriendsWhoJoined()
+	{
+		$emails = $this->referrals()->select('email')->where('joined', true)->get();
+		if(count($emails->toArray()) == 0) return array();
+		$es = array();
+		foreach ($emails as $e) {
+			$es[] = $e->email;
+		}
+		return User::whereIn('email', $es)->get();
+	}
+	
 	public function createSubscriptionEntry()
 	{
 		$s = new Subscription();
 		$s->user_id = $this->id;
 		$s->save();
 	}
+
 	public function setPassword($p)
 	{
 		$this->rawPassword = $p;
@@ -253,6 +265,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	{
 		if($this->type == 'customer'){
 			$this->createSubscriptionEntry();
+
 			$this->checkIfReferred();
 			MailHelper::signupMessage($this->getFullname(), $this->email, $this->rawPassword);
 		}

@@ -13,7 +13,7 @@
 					        <ul class="dropdown-menu">
 					        	@foreach (Category::all() as $category)
 									<li>
-										<a href="{{URL::to('category/'.$category->slug)}}">
+										<a href="{{URL::to('categories/'.$category->slug)}}">
 											<i class="fa fa-star"></i>
 											{{$category->category}}
 										</a>

@@ -13,14 +13,14 @@
 		}
 
 		public function myOrdersList() {
-			
-			// echo '<pre>';
-			// print_r(Auth::user()->toArray());
-			// echo '</pre>';
 
 			$orders = Auth::user()->orders;
+			
+			foreach ($orders as $o) {
+				$o->loadPicture();
+			}
+
 			return $orders;
-			//return Response::json(array('orders' => $orders));
 		}
 
 		public function mySalesList() {

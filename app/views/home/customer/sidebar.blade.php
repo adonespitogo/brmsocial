@@ -27,13 +27,13 @@
     <div class="heading">Connect</div>
     <ul>
       <li>
-        <a href="#"><img src="{{ URL::to('customer/images/ico-fb.png') }}"></a>
+        <a href="https://www.facebook.com/brmsocial"><img src="{{ URL::to('customer/images/ico-fb.png') }}"></a>
       </li>
       <li>
         <a href="#"><img src="{{ URL::to('customer/images/ico-twit.png') }}"></a>
       </li>
       <li>
-        <a href="#"><img src="{{ URL::to('customer/images/ico-gplus.png') }}"></a>
+        <a href="https://plus.google.com/101263621102960725030/posts"><img src="{{ URL::to('customer/images/ico-gplus.png') }}"></a>
       </li>
       <li>
         <a href="#"><img src="{{ URL::to('customer/images/ico-in.png') }}"></a>

@@ -43,9 +43,8 @@
     </div>
     <div class="friends-joined">
       <label>Friends who joined</label>
-      <img src="customer/images/friend1.jpg"><img src="customer/images/friend1.jpg"><img src="customer/images/friend1.jpg"><img src="customer/images/friend1.jpg">
-      <img src="customer/images/friend1.jpg"><img src="customer/images/friend1.jpg"><img src="customer/images/friend1.jpg"><img src="customer/images/friend1.jpg">
-      <div class="more"><a href="#">10 more</a></div>
+      <img ng-repeat="f in friendsWhoJoined" ng-src="{{f.pic}}">
+      <div class="more dn"><a href="#">10 more</a></div>
     </div>
     <div class="referal">
       <label><span>Share, Refer and Get Discount</span><br>You will get $10 credits on every friend that purchases with us...</label>

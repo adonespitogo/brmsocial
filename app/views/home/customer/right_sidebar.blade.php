@@ -11,7 +11,7 @@
   <div class="best-sellers">
     <ul>
       <li ng-repeat="best_seller_product in best_seller_products">
-        <img src="{{ URL::to('customer/images/img-best-sellers.jpg') }}" alt="related deals" title="related deals">
+        <img src="@{{ best_seller_product.picture }}" style="width: 90px;" alt="related deals" title="related deals">
         <div><a href="#">@{{ best_seller_product.product_name }}</a></div>
         <div class="price">$@{{ best_seller_product.discounted_price }}</div>
         <ul>
