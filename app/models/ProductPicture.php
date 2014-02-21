@@ -21,4 +21,5 @@ class ProductPicture extends Ardent{
 	public function product(){
 		return $this->belongsTo('Product');
 	}
+
 }

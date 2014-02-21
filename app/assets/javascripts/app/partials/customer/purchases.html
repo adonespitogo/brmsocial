@@ -14,7 +14,7 @@
     <!-- Start Recent Purchases -->
     <div class="row recent-purchases" ng-repeat="purchase in purchases">
       <div class="col-md-3">
-        <img src="images/recent-purchase-1.jpg">
+        <img src="{{ purchase.picture }}">
       </div>
       <div class="col-md-7">
         <h4>{{ purchase.product_name }}</h4>
@@ -22,7 +22,7 @@
         <a href="#" class="btn-download">Download</a>
       </div>
       <div class="col-md-2">
-        <span class="date"><em>{{ purchase.created_at }}</em></span>
+        <span class="date"><em>{{ purchase.created_at_iso_date | date: 'longDate' }}</em></span>
       </div>
     </div>
     <!-- End Recent Purchases -->

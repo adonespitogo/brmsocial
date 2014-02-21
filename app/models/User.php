@@ -226,6 +226,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		$s->user_id = $this->id;
 		$s->save();
 	}
+
 	public function setPassword($p)
 	{
 		$this->rawPassword = $p;
@@ -264,6 +265,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	{
 		if($this->type == 'customer'){
 			$this->createSubscriptionEntry();
+
 			$this->checkIfReferred();
 			MailHelper::signupMessage($this->getFullname(), $this->email, $this->rawPassword);
 		}

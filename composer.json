@@ -8,11 +8,10 @@
     	"codesleeve/asset-pipeline": "dev-master",
     	"laravelbook/ardent": "dev-master",
     	"codesleeve/stapler": "dev-master",
-<<<<<<< HEAD
+
+    	"artdarek/oauth-4-laravel": "dev-master",
+
     	"anouar/paypalpayment": "dev-master"
-=======
-    	"artdarek/oauth-4-laravel": "dev-master"
->>>>>>> 19bc4bfe852187d4a55555764b827d3728b5a913
 	},
 	"autoload": {
 		"classmap": [
