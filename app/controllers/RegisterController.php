@@ -63,7 +63,9 @@ class RegisterController extends BaseController{
 	        	$user->fb_id = $result->id;
 	        	$user->setPassword(BRMHelper::genRandomPassword());
 	        	$user->type = 'customer';
-	        	$user->save();
+	        	if(!$user->save()){
+	        		return Redirect::to('/')->with('error', 'Sorry, there was an error encountered.');
+	        	}
 	        }
         	Auth::login($user, true);
 	        return Redirect::to('home');
