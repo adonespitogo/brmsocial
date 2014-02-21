@@ -20,4 +20,8 @@ s.factory "Referrals", ($resource) ->
 			params:
 				endpoint: 'total-joined'
 			isArray: false
+		spentCredits:
+			method: 'GET'
+			params:
+				endpoint: 'spent-credits'
 	}

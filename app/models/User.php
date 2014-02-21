@@ -100,6 +100,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     {
     	$this->fullname = $this->getFullname();
     	$this->pic = $this->getProfilePic();
+    	$this->credits = number_format($this->getCredits(), 0);
     	if($this->type == 'vendor')
     		$this->load('vendorInfo');
 
@@ -192,6 +193,22 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return (int)$total;
 	}
 	
+	public function getCredits()
+	{
+		$credits = $this->transactions()->where('is_credit', true)->sum('amount');
+		if(is_null($credits)) return 0;
+		$deductions = $this->transactions()->where('is_credit', false)->sum('amount');
+		if(is_null($deductions)) return $credits;
+		return $credits - $deductions;
+	}
+	
+	public function getSpentCredits()
+	{
+		$spent = $this->transactions()->where('is_credit', false)->sum('amount');
+		if(is_null($spent)) return 0;
+		return number_format($spent, 0);
+	}
+	
 	public function createSubscriptionEntry()
 	{
 		$s = new Subscription();
@@ -222,6 +239,16 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		}
 	}
 	
+	public function sendReferrals($emails)
+	{
+		foreach ($emails as $e) {
+			$ref = new Referral();
+			$ref->email = $e;
+			$ref->user_id = $this->id;
+			$ref->save();
+		}
+	}
+	
 	public function afterCreate()
 	{
 		if($this->type == 'customer'){
@@ -241,15 +268,5 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	public function beforeDelete()
 	{
 		$this->subscriptions->delete();
-	}
-	
-	public function sendReferrals($emails)
-	{
-		foreach ($emails as $e) {
-			$ref = new Referral();
-			$ref->email = $e;
-			$ref->user_id = $this->id;
-			$ref->save();
-		}
 	}
 }

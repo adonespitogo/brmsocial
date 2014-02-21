@@ -20,4 +20,10 @@ class ReferralController extends BaseController{
 		$user = User::find(Input::get('user_id'));
 		return Response::json(array('count' => $user->getTotalReferral()));
 	}
+	
+	public function getSpentCredits()
+	{
+		$user = User::find(Input::get('user_id'));
+		return Response::json(array('count' => $user->getSpentCredits() ));
+	}
 }
