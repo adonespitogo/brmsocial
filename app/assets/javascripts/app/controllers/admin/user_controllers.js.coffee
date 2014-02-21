@@ -54,6 +54,13 @@ c.controller 'NewUserCtrl',[
 		id = $stateParams.id
 		$scope.user = Users.get {id: 'create'}
 
+		$scope.countries = [
+			'USA', 'Canada', 'Australia', 'UK', 'Germany'
+		]
+		$scope.genders = [
+			{k:'Male', v: '1'}
+			{k:'Female', v: '0'}
+		]
 		$scope.userTypes = ['admin', 'vendor', 'customer']
 
 		$scope.createuser = (u)->
