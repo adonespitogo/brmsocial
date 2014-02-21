@@ -30,6 +30,9 @@
 		public function countOrders(){
 			return Order::count();
 		}
+		public function allOrders(){
+			return Order::all();
+		}
 
 	}
 

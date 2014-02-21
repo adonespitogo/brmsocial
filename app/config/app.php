@@ -108,6 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 		'Codesleeve\Stapler\StaplerServiceProvider',
+		 'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
 	),
 
 	/*
@@ -173,6 +174,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 
 	),
 

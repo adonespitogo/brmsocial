@@ -6,6 +6,7 @@ module = angular.module 'AdminApp', [
 	'HomeControllers',
 	'ProductControllers',
 	'CategoryControllers',
+	'OrderControllers',
 	'UserControllers',
 	'mgcrea.ngStrap', #angular-strapFormValidation
 	'FormValidation', #custom form validations

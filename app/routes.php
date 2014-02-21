@@ -36,6 +36,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/count', array('uses' => 'OrderController@countOrders'));
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
+	Route::get('orders/all', array('uses' => 'OrderController@allOrders'));
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
 
 	Route::post('interests/update-user-interest', array('uses' => 'InterestController@updateUserInterest'));
