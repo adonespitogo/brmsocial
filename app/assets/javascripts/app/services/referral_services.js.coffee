@@ -9,6 +9,7 @@ s.factory "Referrals", ($resource) ->
 			params:
 				endpoint: 'send'
 			isArray: false
+			
 		totalEarned:
 			method: 'GET'
 			params:
@@ -20,8 +21,16 @@ s.factory "Referrals", ($resource) ->
 			params:
 				endpoint: 'total-joined'
 			isArray: false
+			
 		spentCredits:
 			method: 'GET'
 			params:
 				endpoint: 'spent-credits'
+			isArray: false
+				
+		friendsWhoJoined:
+			method: 'GET'
+			params:
+				endpoint: 'friends-who-joined'
+			isArray: true
 	}
