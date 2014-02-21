@@ -7,12 +7,8 @@
 		"laravel/framework": "4.1.*",
     	"codesleeve/asset-pipeline": "dev-master",
     	"laravelbook/ardent": "dev-master",
-    	"codesleeve/stapler": "dev-master",
-<<<<<<< HEAD
-    	"anouar/paypalpayment": "dev-master"
-=======
-    	"artdarek/oauth-4-laravel": "dev-master"
->>>>>>> 19bc4bfe852187d4a55555764b827d3728b5a913
+    	"codesleeve/stapler": "dev-master",  
+    	"artdarek/oauth-4-laravel": "dev-master" 
 	},
 	"autoload": {
 		"classmap": [

@@ -5,6 +5,7 @@ c = angular.module 'ProductControllers', [
 	'CategoryServices',
 	'UserServices',
 	'angularFileUpload',
+	'ngSanitize',
 ]
 
 c.config [
