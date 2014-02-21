@@ -12,7 +12,7 @@
 			</a></h4>
 			<ul>
 				<li>{{$p->getLeftSaleDays()}} days</li>
-				<li><a href="#">{{$p->category->category}}</a></li>
+				<li><a href="{{URL::to('categories/'.$p->category->slug)}}">{{$p->category->category}}</a></li>
 			</ul>
 		</div>
 	@endforeach
