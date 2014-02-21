@@ -64,13 +64,13 @@
 			// self::sendHtmlEmail('support@buyrealmarketing.com', 'Buy Real Marketing - Portal - Feedback',	$feedback, Auth::user()->email);
 		}
 
-		public static function referralMessage($email)
+		public static function referralMessage($email, $sender)
 		{
 
-			Mail::send('emails.referral', array(), function($message) use($email)
+			Mail::send('emails.referral', array(), function($message) use ($email, $sender)
 			{
 			    $message->to($email)->subject('Wicked cool stuff I\'ve tried.');
-			    $message->from('hello@buyrealmarketing.com', 'Buy Real Marketing');
+			    $message->from($sender->email, $sender->getFullname());
 			});
 		}
 
