@@ -27,6 +27,10 @@
 			return Auth::user()->sales;
 		}
 
+		public function countOrders(){
+			return Order::count();
+		}
+
 	}
 
 ?>
