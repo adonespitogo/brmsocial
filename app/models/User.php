@@ -202,18 +202,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		}
 	}
 
-	//new user
-	// public function beforeSave()
- //    {
- //    	dd('before save');
- //        $this->rawPassword = $this->password;
- //        // if there's a new password, hash it
- //        if($this->isDirty('password')) {
-        	
- //            $this->password = Hash::make($this->password);
- //        }
-
- //        return true;
- //        //or don't return nothing, since only a boolean false will halt the operation
- //    }
+	public function beforeDelete()
+	{
+		$this->subscriptions->delete();
+	}
 }

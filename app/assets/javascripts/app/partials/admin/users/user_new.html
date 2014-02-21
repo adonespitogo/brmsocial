@@ -9,17 +9,21 @@
 <div id="alerts-container"></div>
 <form novalidate name="userForm" class="form-horizontal">
 	<div class="form-group">
-		<div class="col-md-4">
+		<div class="col-md-4"
+			ng-class="{'has-error' : userForm.city.$error.required}">
 			<label>City</label>
-			<input type="text" ng-model="user.city" class="form-control">
+			<input name="city" type="text" ng-model="user.city" class="form-control" required>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4"
+			ng-class="{'has-error' : userForm.country.$error.required}">
 			<label>Country</label>
-			<select name="country" ng-model="user.country" ng-options="c for c in countries" class="form-control"></select>
+			<select required name="country" ng-model="user.country" ng-options="c for c in countries" class="form-control"></select>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4"
+			ng-class="{'has-error' : userForm.gender.$error.required}">
 			<label>Gender</label>
-			<select ng-model="user.gender" class="form-control" ng-options="g.v as g.k for g in genders"></select>
+			<select required ng-model="user.gender" class="form-control" ng-options="g.v as g.k for g in genders"
+			name="gender"></select>
 		</div>
 	</div>
 	<div class="form-group ">
