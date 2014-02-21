@@ -35,7 +35,19 @@
 			$cat->delete();
 
 			return 1;
-		} 
+		}
+
+		public function getProducts($slug) {
+
+			$category = Category::where('slug', $slug)->first();
+
+			$products = $category->products;
+
+			return View::make('public.product_list', [
+					'products' => $products
+				])->with('category', $category);
+		}
+
 	}
 
 ?>

@@ -4,7 +4,13 @@
 
 		public function index()
 		{
-			return Product::all();
+			$products = Product::all();
+
+			foreach ($products as $p) {
+				$p->loadPicture();
+			}
+
+			return $products;
 		}
 
 		public function create()
@@ -168,6 +174,11 @@
 
 		public function featuredProduct() {
 			$featuredproduct = FeaturedProduct::getFeaturedProduct();
+
+			foreach($featuredproduct as $f) {
+				$f->loadPicture();
+			}
+
 			return $featuredproduct;
 		}
 

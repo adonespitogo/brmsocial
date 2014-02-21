@@ -24,6 +24,17 @@ class Order extends BaseModel{
 
 	}
 
+	public function getPicture()
+	{
+		$pic = URL::to($this->product->pictures[0]->picture->url());
+		return $pic;
+	}
+
+	public function loadPicture()
+	{
+		$this->picture = $this->getPicture();
+	}
+
 }
 
 ?>
