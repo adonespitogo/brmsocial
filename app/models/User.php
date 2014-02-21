@@ -88,7 +88,9 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     	'sales' => array(self::HAS_MANY, 'Order', 'foreignKey' => 'vendor_id'),
     	'subscriptions' => array(self::HAS_ONE, 'Subscription'),
     	'user_interests' => array(self::HAS_MANY, 'UserInterest'),
-    	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests')
+    	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests'),
+    	'referrals' => array(self::HAS_MANY, 'Referral'),
+    	'transactions' => array(self::HAS_MANY, 'UserTransaction'),
     );
 
     // END RELATIONSHIPS
@@ -175,6 +177,21 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		} 
 	}
 	
+	public function getTotalReferralEarned()
+	{
+		$earned = $this->transactions()->where('type', 'referral_reward')->sum('amount');
+		if(is_null($earned)) 
+			return 0;
+		return number_format($earned, 0);
+	}
+	
+	public function getTotalReferral()
+	{
+		$total = $this->referrals()->where('joined', true)->count();
+		if(is_null($total)) return 0;
+		return (int)$total;
+	}
+	
 	public function createSubscriptionEntry()
 	{
 		$s = new Subscription();
@@ -187,10 +204,29 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		$this->password = $p;
 	}
 	
+	public function checkIfReferred()
+	{
+		$referred = Referral::where('email', $this->email)->first();
+		if(!is_null($referred) && (boolean)$referred->joined == false){
+			$referred->joined = true;
+			$referred->updateUniques();
+			
+			$ut = new UserTransaction();
+			$ut->user_id = $referred->user_id;
+			$ut->amount = 10;
+			$ut->remarks = 'Referral Reward';
+			$ut->type = 'referral_reward';
+			$ut->transaction_id = BRMHelper::genRandomTransactionId();
+			$ut->is_credit = true;
+			$ut->save();
+		}
+	}
+	
 	public function afterCreate()
 	{
 		if($this->type == 'customer'){
 			$this->createSubscriptionEntry();
+			$this->checkIfReferred();
 			MailHelper::signupMessage($this->getFullname(), $this->email, $this->rawPassword);
 		}
 	}
@@ -205,5 +241,15 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	public function beforeDelete()
 	{
 		$this->subscriptions->delete();
+	}
+	
+	public function sendReferrals($emails)
+	{
+		foreach ($emails as $e) {
+			$ref = new Referral();
+			$ref->email = $e;
+			$ref->user_id = $this->id;
+			$ref->save();
+		}
 	}
 }
