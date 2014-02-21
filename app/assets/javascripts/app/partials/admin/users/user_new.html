@@ -8,6 +8,20 @@
 <hr>
 <div id="alerts-container"></div>
 <form novalidate name="userForm" class="form-horizontal">
+	<div class="form-group">
+		<div class="col-md-4">
+			<label>City</label>
+			<input type="text" ng-model="user.city" class="form-control">
+		</div>
+		<div class="col-md-4">
+			<label>Country</label>
+			<select name="country" ng-model="user.country" ng-options="c for c in countries" class="form-control"></select>
+		</div>
+		<div class="col-md-4">
+			<label>Gender</label>
+			<select ng-model="user.gender" class="form-control" ng-options="g.v as g.k for g in genders"></select>
+		</div>
+	</div>
 	<div class="form-group ">
 		<div class="col-md-6"  
 			ng-class="{'has-error' : userForm.firstname.$error.required}">

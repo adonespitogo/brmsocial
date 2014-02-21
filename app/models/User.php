@@ -18,6 +18,10 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		]);
 
 		parent::__construct($attributes);
+		
+		$this->avatar = URL::to("customer/images/default_profile_pic.jpg");
+		$this->city = "";
+		$this->country = "";
 	}
 	
 	protected $table = 'users';
