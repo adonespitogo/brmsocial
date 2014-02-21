@@ -108,7 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 		'Codesleeve\Stapler\StaplerServiceProvider',
-		'Artdarek\OAuth\OAuthServiceProvider',
+		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
+		'Artdarek\OAuth\OAuthServiceProvider', 
 	),
 
 	/*
@@ -174,8 +175,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 		'OAuth' 			=> 'Artdarek\OAuth\Facade\OAuth',
-
 	),
 
 );

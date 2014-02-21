@@ -45,6 +45,9 @@
 			
 			return $cat->products;
 		}
+		public function countCategories(){
+			return Category::count();
+		}
 	}
 
 ?>

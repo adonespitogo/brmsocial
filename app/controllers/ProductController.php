@@ -209,7 +209,10 @@
 				return Response::json(array('status'=>403, 'error'=>'Forbidden'), 403);
 			}
 		}
-
+		public function countProducts(){
+			return Product::count();
+		}
+ 
 
 	}
 

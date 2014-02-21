@@ -11,7 +11,8 @@ main.controller "MainAdminCtrl", [
 		$scope.navs = [
 					   {state:'products', label: 'Products'},
 					   {state: 'categories' ,label: 'Categories'},
-					   {state: 'users', label:'Users'}	
+					   {state: 'users', label:'Users'},
+					   # {state: 'orders', label: 'Orders'}
 					  ]
 						
 

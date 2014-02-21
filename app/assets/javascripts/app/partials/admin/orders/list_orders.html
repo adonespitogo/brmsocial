@@ -1,9 +1,5 @@
 <h3>
-	Product List 
-	<a ui-sref="newProduct" class="btn btn-sm btn-info pull-right">
-		<span class="glyphicon glyphicon-plus"></span> 
-		Add Product 
-	</a>
+	Orders List 
 </h3>
 
 <div id="alerts-container" ></div>
@@ -12,22 +8,19 @@
 	<thead>
 		<tr>
 			<th>Product Name</th>
-			<th>Tagline</th>
-			<th>Category</th>
-			<th>Sale Start</th>
-			<th>Sale End</th>
+			<th>Buyer</th>
 			<th>Vendor</th>
-			<th>Featured</th>
-			<th>Date Created</th>
-			<th></th>
+			<th>Price</th>
+			<th>Amount Commision</th>
+			<th>Date Purchased</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="p in products">
-			<td ng-bind="p.product_name"></td>
-			<td ng-bind-html="p.tagline"></td>
-			<td ng-bind="p.category.category"></td>
-			<td ng-bind="p.sale_start_date_iso_date | date:'fullDate'"></td>
+		<tr ng-repeat="o in orders">
+			<td ng-bind="o.product_name"></td>
+			<td ng-bind="o.user.full_name"></td>
+			<td ng-bind="o.vendor.full_name"></td>
+			<td ng-bind="o."></td>
 			<td ng-bind="p.sale_end_date_iso_date | date:'fullDate'"></td>
 			<td ng-bind="p.user.fullname"></td>
 			<td>{{p.is_featured?'Yes':'No'}}</td>
