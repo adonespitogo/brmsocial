@@ -9,4 +9,19 @@ s.factory "Referrals", ($resource) ->
 			params:
 				endpoint: 'send'
 			isArray: false
+		totalEarned:
+			method: 'GET'
+			params:
+				endpoint: 'total-earned'
+			isArray: false
+			
+		totalJoined:
+			method: 'GET'
+			params:
+				endpoint: 'total-joined'
+			isArray: false
+		spentCredits:
+			method: 'GET'
+			params:
+				endpoint: 'spent-credits'
 	}
