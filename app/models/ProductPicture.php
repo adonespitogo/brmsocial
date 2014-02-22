@@ -6,8 +6,8 @@ class ProductPicture extends Ardent{
 	public function __construct(array $attributes =  array()){
 		$this->hasAttachedFile('picture', [
 			'styles' => [
-				'medium' => '220x220',
-				'small' =>'100x100'
+				'medium' => '245x183#',
+				'small' =>'96x65#'
 			],
 			//'content_type' => 'jpg,png',
         	'default_url' => '/:attachment/:style/missing.jpg',

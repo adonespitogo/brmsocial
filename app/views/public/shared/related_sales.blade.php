@@ -10,7 +10,7 @@
 				<div class="price">${{$product->discounted_price}}</div>
 				<ul>
 					<li>{{$product->getLeftSaleDays()}} days</li>
-					<li><a href="{{URL::to('category/'.$product->category->slug)}}">{{$product->category->category}}</a></li>
+					<li><a href="{{URL::to('categories/'.$product->category->slug)}}">{{$product->category->category}}</a></li>
 				</ul>
 			</li>
 		@endforeach

@@ -87,7 +87,7 @@
 									<h2></h2>
 								</div>
 								<div class="clearfix"><span class="save pull-right">save {{$product->getDiscountPercentage()}}%</span></div>
-								<h4 class="clearfix">By Blue Anatomy, Ltd.</h4>
+								<h4 class="clearfix">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
 								<div class="progress">
 								  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$product->getEndDatePercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$product->getEndDatePercentage()}}%">
 								    <span class="sr-only">
@@ -105,8 +105,6 @@
 								</ul>
 								<h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>{{$product->getLeftSaleDays()}} days</span></h3>
 								<button class="btn-green">BUY NOW</button>
-								<div class="img-or">{{image_tag('img-or.jpg', array('alt' => 'or'))}}</div>
-								<div class="gift-style"><h3 class="text-center second-h3"><i class="fa fa-gift fa fa-large"></i>    Gift this</h3></div>
 								<div class="terms-of-sale">
 									<h4>Terms of Sale</h4>
 									<ul class="fa-ul">
