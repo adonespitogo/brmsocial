@@ -23,7 +23,6 @@ Route::group(array('before' => 'auth'), function(){
 	
 	Route::controller('home', 'HomeController');
 
-	Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/count', array('uses' => 'ProductController@countProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
