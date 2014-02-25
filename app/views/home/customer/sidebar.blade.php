@@ -2,7 +2,7 @@
   <div class="user-avatar">
     <img ng-src="@{{currentUser.pic}}">
     <ul>
-      <li>Credits: $150</li>
+      <li>Credits: $@{{currentUser.credits}}</li>
       <li>@{{ currentUser.email }}</li>
       <li>
         <i class="fa fa-star active"></i>
