@@ -4,7 +4,9 @@
 	@foreach(Product::getMostPopular() as $p)
 		<div class="col-md-4 col-sm-4">
 			@if(isset($p->pictures[0]))
+			<a href="{{URL::to('product/'.$p->slug)}}">
 			<img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+			</a>
 			@endif
 			<h4>
 			<a href="{{URL::to('product/'.$p->slug)}}">

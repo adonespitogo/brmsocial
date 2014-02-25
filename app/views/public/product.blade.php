@@ -15,7 +15,7 @@
 		  <h2 class="fs-24">{{$product->tagline}}</h2>
 		</section>
 
-		<section class="deal-page bg-image-white" ng-controller="ProductCtrl">
+		<section class="deal-page bg-image-white">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8">

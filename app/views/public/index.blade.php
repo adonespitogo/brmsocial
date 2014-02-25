@@ -26,7 +26,9 @@
 						<h3>Featured Deal</h3>
 						<!-- Start Featured Deal -->
 						<div class="banner-deal-page">
+							<a href="{{URL::to('product/'.$featured->product->slug)}}">
 							<img src='{{URL::to($featured->product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
+							</a>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
