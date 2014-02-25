@@ -2,6 +2,7 @@
 @section('head')
 	@parent
 	<title>Products</title>
+	<base href="{{URL::to('/')}}" />
 @stop
 @section('body')
   	@include('public.template.header')
@@ -14,7 +15,7 @@
 		  <h2 class="fs-24">{{$product->tagline}}</h2>
 		</section>
 
-		<section class="deal-page bg-image-white">
+		<section class="deal-page bg-image-white" ng-controller="ProductCtrl">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8">
@@ -80,7 +81,14 @@
 									</li>
 								</ul>
 								<h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>{{$product->getLeftSaleDays()}} days</span></h3>
-								<button class="btn-green">BUY NOW</button>
+								<button class="btn-green add2cart-btn" 
+									data-product-id="{{$product->id}}" 
+									data-product-price="{{$product->discounted_price}}" 
+									data-product-name="{{$product->product_name}}"
+									data-product-description=""
+								>
+									BUY NOW
+								</button>
 								<div class="terms-of-sale">
 									<h4>Terms of Sale</h4>
 									<ul class="fa-ul">
@@ -92,7 +100,7 @@
 								<div class="question-box">
 									<p class="lead"><span>Questions?</span> We'd love to help!<i class="fa fa-umbrella fa-lg"></i></p>
 									<small>Email or chat M-F, 9am-5pm PST;</small>
-									<small><a href="#">support@buyrealmarketing.com</a></small>
+									<small><a href="mailto:support@buyrealmarketing.com">support@buyrealmarketing.com</a></small>
 								</div>
 							</div>
 							<!-- Start Realated Sales -->
@@ -115,4 +123,5 @@
 
 @section('scripts')
 	@parent
+	{{HTML::script("website/js/add-order.js")}}
 @stop

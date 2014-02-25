@@ -169,6 +169,7 @@ img { max-width: 100%; } ul { list-style:none; margin:0; padding:0; }
 .product-right-col .question-box small {font-size:90%; margin-bottom: 0 !important;}
 
 /*Start Navigation*/
+.container-custom {max-width:1660px !important; margin-right: auto; margin-left: auto; padding-left: 15px;padding-right: 15px;}
 .navigation {width:100% !important; background-color: #24272e; color: #fff}
 .nav-con .shop ul li a i { padding: 0 5px 0 15px;}
 .nav-con .shop ul li a{padding: 15px 0;}
@@ -226,8 +227,11 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .cart-dollsign {font-family: 'Open Sans', sans-serif; font-weight: 600; color:#fff; font-size:12px;} 
 .cart-price {font-family: 'Open Sans', sans-serif; font-weight: 600; color:#fff; font-size:14px;} 
 .cart-orders {font-family: 'Open Sans', sans-serif; font-weight: 400; color:#fff; font-size:8px;background-color: #4a7119;padding: 3px 7px 3px 6px;border-radius: 15px; vertical-align: middle;}
-
 /*End Navigation*/
+
+/*Start Mobile Navigation*/
+.mobile-cart .bg-cart {float: right;}
+/*End Mobile Navigation*/
 
 /*Start Header*/
 .header {background:url('assets/img/header-bg.png') repeat; width: 100%; padding: 30px 0; margin-bottom: 30px;}
