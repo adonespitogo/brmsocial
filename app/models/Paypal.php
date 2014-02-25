@@ -55,20 +55,7 @@
 	    }
 
 	    public static function initConfig(){
-	    	 if (getenv('HTTP_CLIENT_IP'))
-	            $ipaddress = getenv('HTTP_CLIENT_IP');
-	         else if(getenv('HTTP_X_FORWARDED_FOR'))
-	             $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-	         else if(getenv('HTTP_X_FORWARDED'))
-	             $ipaddress = getenv('HTTP_X_FORWARDED');
-	         else if(getenv('HTTP_FORWARDED_FOR'))
-	             $ipaddress = getenv('HTTP_FORWARDED_FOR');
-	         else if(getenv('HTTP_FORWARDED'))
-	            $ipaddress = getenv('HTTP_FORWARDED');
-	         else if(getenv('REMOTE_ADDR'))
-	             $ipaddress = getenv('REMOTE_ADDR');
-	         else
-	             $ipaddress = 'UNKNOWN';
+	    	$ipaddress = Location::getIp();
 	 
 
 	        if($ipaddress=='202.78.93.154'||$ipaddress=='122.3.199.205'||strpos($_SERVER['HTTP_HOST'], "localhost")!==false||$ipaddress=='121.96.56.8'||$ipaddress=='121.96.56.9'){
