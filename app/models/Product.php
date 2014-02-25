@@ -100,14 +100,14 @@ class Product extends BaseModel{
 
 	public function getEndDatePercentage()
 	{
-		$sale_start_date = Carbon\Carbon::parse($this->sale_start_date);
-		$sale_end_date = Carbon\Carbon::parse($this->sale_end_date);
+		$sale_start_date = Carbon\Carbon::parse($this->sale_start_date)->startOfDay();
+		$sale_end_date = Carbon\Carbon::parse($this->sale_end_date)->endOfDay();
 
 		$lengthMins = $sale_start_date->diffInMinutes($sale_end_date);
 		$min_now = Carbon\Carbon::now();
 		$leftMins = $min_now->diffInMinutes($sale_end_date);
-
-		$return = number_format($leftMins/$lengthMins * 100, 2);
+		$passedMins = $lengthMins - $leftMins;
+		$return = number_format($passedMins/$lengthMins * 100, 2);
 		if($return > 100) return 100;
 		return $return;
 	}

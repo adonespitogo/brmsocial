@@ -57,8 +57,8 @@ Route::group(array('before' => 'auth'), function(){
 	Route::resource('user/subscriptions', 'SubscriptionController');
 
 
-	Route::get('categories/{slug}', array('uses' => 'CategoryController@getProducts'));
-	Route::resource('categories', 'CategoryController');
+	// Route::get('categories/{slug}', array('uses' => 'CategoryController@getProducts'));
+	// Route::resource('categories', 'CategoryController');
 
 	Route::get('download/{orderId}/{productId}/{productFileIndex}', array('uses'=>'ProductController@getDownload'));
 
