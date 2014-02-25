@@ -3,7 +3,7 @@
 @section('head')
 	@parent
 
-	<title>BRM Social</title>
+	<title>BRM Social</title>	
 @stop
 
 
