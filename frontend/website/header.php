@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div class="navigation hidden-xs">
-		<div class="container nav-con">
+		<div class="container-custom nav-con">
 	    	<div class="row">
 	   			<div class="col-md-12">
 				    <div class="nav-style">
@@ -64,7 +64,19 @@
 	   	<ul>
 		   	<li><a href="#menu" class="mbtn"></a></li>
 		   	<li><a href="#"><img src="images/brmsocial-logo.png" alt="BRM Social" style="margin-left:50px;"></a></li>
-		   	<li></li>
+		   	<li class="pull-right">
+		   		<a href="#" style="text-decoration: none; color:white">
+                 <!-- Start Cart -->
+                      <div class="bg-cart mobile-cart">
+                       <span class="cart-dolsign">$</span>
+                       <span class="cart-price totalPrice">17<!--?php echo $totalPrice?--></span>
+                       <span class="glyphicon glyphicon-shopping-cart" style="vertical-align:top;"></span>
+                       <span class="cart-orders totalItem">2<!--?php echo count($cart)?--></span>
+                      </div>
+                  <!-- End Cart -->
+                </a>
+			</li>
+			
 	    </ul>
         
         <nav id="menu">
