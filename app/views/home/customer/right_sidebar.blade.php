@@ -12,11 +12,11 @@
     <ul>
       <li ng-repeat="best_seller_product in best_seller_products">
         <img src="@{{ best_seller_product.picture }}" style="width: 90px;" alt="related deals" title="related deals">
-        <div><a href="#">@{{ best_seller_product.product_name }}</a></div>
+        <div><a href="product/@{{ best_seller_product.slug }}">@{{ best_seller_product.product_name }}</a></div>
         <div class="price">$@{{ best_seller_product.discounted_price }}</div>
         <ul>
           <li>4 days</li>
-          <li><a href="#">@{{ best_seller_product.category.category }}</a></li>
+          <li><a href="category/@{{best_seller_product.category.slug}}">@{{ best_seller_product.category.category }}</a></li>
         </ul>
       </li>
 

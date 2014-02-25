@@ -37,6 +37,23 @@ class RegisterController extends BaseController{
 		return View::make('register.signup');
 		
 	}
+	public function postIndex()
+	{
+		$user = new User();
+		$user->email = Input::get('email');
+		$user->password = Input::get('password');
+		$user->firstname = Input::get('firstname');
+		$user->lastname = Input::get('lastname');
+		$user->gender = Input::get('gender');
+		$user->type = 'customer';
+		if($user->save()){
+			Auth::login($user, true);
+			return Redirect::to('home');
+		}
+		else{
+			return "error registering";
+		}
+	}
 	public function getFacebook()
 	{
 		
