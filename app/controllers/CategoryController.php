@@ -58,7 +58,9 @@
 			return $cat->products;
 		}
 		public function countCategories(){
-			return Category::count();
+			$return = Category::count();
+			if(is_null($return)) return 0;
+			return $return;
 		}
 	}
 

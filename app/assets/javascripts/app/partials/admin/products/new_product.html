@@ -14,10 +14,16 @@ Back
     <div class="form-group ">
 		<div class="col-md-6" >
 
-			<label class="control-label">Product Files</label>
+			<label class="control-label">Downloadable Files</label>
 			<input type="file" ng-model="product_file" name="product_file" multiple ng-file-select="onPFileSelect($files)" class="btn btn-success">
 			<!-- <span class="text-danger" ng-show="productForm.product_file.$error.required">Required *</span> -->
 		</div> 
+        <div class="col-md-6" ng-class="{'has-error':productForm.product_images.$error.required}">
+            <label class="control-label">Product Image</label>
+            <input type="file" multiple ng-model="product_images" required name="product_images" ng-file-select="onFileSelect($files)" multiple>
+
+            <span class="text-danger" ng-show="productForm.product_images.$error.required">Required *</span>
+        </div>
 	</div>
 
 	<div class="form-group">
@@ -137,12 +143,6 @@ Back
 				ng-options="cate.id as cate.category for cate in categories" >
 			</select>
 			<span class="text-danger" ng-show="productForm.category.$error.required">Required *</span>
-		</div>
-		<div class="col-md-6" ng-class="{'has-error':productForm.product_images.$error.required}">
-			<label class="control-label">Product Image</label>
-			<input type="file" multiple ng-model="product_images" required name="product_images" ng-file-select="onFileSelect($files)" multiple>
-
-			<span class="text-danger" ng-show="productForm.product_images.$error.required">Required *</span>
 		</div>
 	</div>
 	<div class="form-group">

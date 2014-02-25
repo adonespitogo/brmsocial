@@ -1,5 +1,5 @@
 <h3>
-	New Product
+	Edit Product
 	<a ui-sref="products" class="btn btn-default btn-sm pull-right">
 		<span class="glyphicon glyphicon-arrow-left"></span>
 		Back
@@ -12,10 +12,16 @@
 	<div class="form-group ">
 		<div class="col-md-6" >
 
-			<label class="control-label">Product Files</label>
+			<label class="control-label">Downloadable Files</label>
 			<input type="file" ng-model="product_file" name="product_file" multiple ng-file-select="onPFileSelect($files)" class="btn btn-success">
 			<!-- <span class="text-danger" ng-show="productForm.product_file.$error.required">Required *</span> -->
 		</div> 
+		<div class="col-md-6" ng-class="{'has-error':productForm.product_images.$error.required}">
+			<label class="control-label">Product Image</label>
+			<input type="file" multiple ng-model="product_images" name="product_images" ng-file-select="onFileSelect($files)" multiple>
+
+			<span class="text-danger" ng-show="productForm.product_images.$error.required">Required *</span>
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -122,12 +128,6 @@
 				ng-model="product.category.id"
 				ng-options="c.id as c.category for c in categories" >
 			</select>
-		</div>
-		<div class="col-md-6" ng-class="{'has-error':productForm.product_images.$error.required}">
-			<label class="control-label">Product Image</label>
-			<input type="file" multiple ng-model="product_images" name="product_images" ng-file-select="onFileSelect($files)" multiple>
-
-			<span class="text-danger" ng-show="productForm.product_images.$error.required">Required *</span>
 		</div>
 	</div>
 	<div class="form-group">
