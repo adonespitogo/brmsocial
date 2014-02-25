@@ -3,6 +3,7 @@
 @section('head')
 	<title>BRM Social - Sign Up</title>
 	{{HTML::style('bootstrap-3.1/css/bootstrap.cosmo.min.css')}}
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style>
 		.align-center{margin: 0 auto; display: block;}
 	</style>
@@ -43,10 +44,19 @@
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary btn-block" type="submit">Register</button>
+						
+					</div>
+					<div class="form-group">
+						<a href="{{URL::to('register/facebook')}}" class="btn btn-info btn-block">
+							<i class="fa fa-facebook-square"></i>
+							Login with Facebook
+						</a>
 					</div>
 				</form>
+				
 			</div>
 		</div>
+		
 	</div>
 @stop
 
