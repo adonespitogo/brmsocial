@@ -15,10 +15,18 @@
   	<section class="sp2-ordinary-page-title two-lines text-center">
 	  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
 	  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>
+	  <div class="social-header">
+	  	<ul>
+		  	<li><a href="#" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
+		  	<li><span>or</span></li>
+		  	<li><a href="#" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
+	  	</ul>	  	
+	  </div>
+	  <div class="via-email">Sign up via E-Mail</div>
 	</section>
 
 	<section class="deal-page bg-image-white">
-		<div class="container">
+		<div class="container container-narrow">
 			<div class="row">
 				<div class="col-md-8">
 					@if(isset($featured)&&isset($featured->product)&&isset($featured->product->pictures[0]))
