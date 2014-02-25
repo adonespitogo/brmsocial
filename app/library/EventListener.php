@@ -2,7 +2,10 @@
 class EventListener{
 
 	public function __construct(array $attributes =  array()){
-		
+		$this->trafficListener();		
+	}
+
+	public function trafficListener(){
 		Event::listen('product.traffic', function($product){
 			 $ip = Location::getIp();
 			 $pTraffic = Traffic::where('product_id', $product->id)
@@ -11,7 +14,6 @@ class EventListener{
 			 					 ->first(); 
 			if(is_object($pTraffic)){
 				 $hourdiff = round((time() - strtotime($pTraffic->created_at))/3600, 1);
-	 
 				 if($hourdiff > 24){
 				 	 $traffic = new Traffic();
 				 	 $traffic->product_id = $product->id;
