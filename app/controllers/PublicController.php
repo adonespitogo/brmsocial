@@ -16,11 +16,14 @@ class PublicController extends BaseController{
 		$product = Product::where('slug', $slug)->first();
  		
  		//event listener for product traffic		
- 		new EventListener();
-		Event::fire('product.traffic', $product);
+ 		
+		if(is_object($product)){
+	
+			new EventListener();
+			Event::fire('product.traffic', $product);
 
-		if(is_object($product))
 			return View::make('public.product')->with('product', $product);
+		}
 		else
 			return $this->show404();
 	}

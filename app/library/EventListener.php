@@ -9,15 +9,22 @@ class EventListener{
 			 					 ->where('ip', $ip)
 			 					 ->orderBy('created_at', 'DESC')
 			 					 ->first(); 
-			 
-			 $hourdiff = round((time() - strtotime($pTraffic->created_at))/3600, 1);
- 
-			 if(is_object($pTraffic)&&$hourdiff > 24){
-			 	 $traffic = new Traffic();
+			if(is_object($pTraffic)){
+				 $hourdiff = round((time() - strtotime($pTraffic->created_at))/3600, 1);
+	 
+				 if($hourdiff > 24){
+				 	 $traffic = new Traffic();
+				 	 $traffic->product_id = $product->id;
+				 	 $traffic->ip = $ip;
+				 	 $traffic->save();
+				 }
+			}else{
+				$traffic = new Traffic();
 			 	 $traffic->product_id = $product->id;
 			 	 $traffic->ip = $ip;
 			 	 $traffic->save();
-			 }
+			}
+
 		});	
 	}
 }
