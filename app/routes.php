@@ -8,7 +8,10 @@ Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 Route::get('category/{slug}', array('uses' => 'CategoryController@productByCategory'));
 Route::controller('session', 'SessionController');
 Route::controller('register', 'RegisterController');
-
+Event::listen('404', function()
+{
+    return "fox was here";
+});
 
 // start protected routes
 Route::group(array('before' => 'auth'), function(){

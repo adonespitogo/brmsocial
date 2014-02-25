@@ -12,8 +12,13 @@ class PublicController extends BaseController{
 
 	public function product($slug)
 	{	 
+		
 		$product = Product::where('slug', $slug)->first();
- 
+ 		
+ 		//event listener for product traffic		
+ 		new EventListener();
+		Event::fire('product.traffic', $product);
+
 		if(is_object($product))
 			return View::make('public.product')->with('product', $product);
 		else
