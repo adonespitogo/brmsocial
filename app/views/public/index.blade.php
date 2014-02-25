@@ -61,9 +61,20 @@
 						<h4>Sign Up and Get Notified</h4>
 						<!-- Start Search -->
 						<div class="deal-search">
-							<form class="form-inline" role="form">
+							@if(Session::has('error') && Session::get('error'))
+								<div class="alert alert-danger">
+									This email is already subscribed to our newsletter.
+								</div>
+							@endif
+							@if(Session::has('error') && !Session::get('error'))
+								<div class="alert alert-success">
+									You have successfully subscribed to our newsletter.
+								</div>
+							@endif
+							
+							<form class="form-inline" role="form" action="{{URL::to('subscribe')}}" method="POST">
 							  <div class="form-group">
-							    <i class="icon icon-envelope"></i><input type="email" class="form-control no-br" placeholder="your@email.com">
+							    <i class="icon icon-envelope"></i><input name="email" type="email" class="form-control no-br" placeholder="your@email.com">
 							  </div>
 							  <button type="submit" class="btn btn-green btn-default no-br">Submit</button>
 							</form>

@@ -33,4 +33,25 @@ class PublicController extends BaseController{
 		else
 			$this->show404();
 	}
+	public function addSubscriber()
+	{
+		$error = false;
+		$email = Input::get('email');
+		$exist = DB::table('subscribers')->where('email', $email)->get();
+		if($exist){
+			$error = true;
+		}
+		else
+		{
+			DB::table('subscribers')->insert(array(
+				array(
+					'email' => $email,
+					'created_at' => date('Y-m-d H:i:s'),
+					'updated_at' => date('Y-m-d H:i:s'),
+				)
+			));
+		}
+		Session::flash('error', $error);
+		return Redirect::to('/');
+	}
 }
