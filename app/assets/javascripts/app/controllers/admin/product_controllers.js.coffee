@@ -103,6 +103,13 @@ c.controller 'NewProductCtrl', [
 								id: res.id
 							file: pic
 						)
+						.error (data, status)->
+							uploadSuccess = false
+							$alert
+								title : data.error.message
+								type: 'warning'
+						.success ()->
+							uploadSuccess = true
 					)
 
 				$.each($scope.pfiles, (i,file)->
@@ -112,13 +119,20 @@ c.controller 'NewProductCtrl', [
 								id: res.id
 							file: file
 						)
+						.error (data, status)->
+							uploadSuccess = false
+							$alert
+								title : data.error.message
+								type: 'warning'
+						.success ()->
+							uploadSuccess = true
 					)
 
 				$alert
 					title : "Product has been created successfully."
 					type: 'success'
 					
-					$location.path('/products')
+				$location.path('/products')	
 					  
 ]
 
@@ -170,6 +184,9 @@ c.controller 'EditProductCtrl', [
 			p.overview = $('#wysihtml5-textarea').val()
 
 			p.$update (res)->
+
+				uploadSuccess = false
+			
 				$.each($scope.pics, (i,pic)->
 						$scope.upload = $upload.upload(
 							url: "product/add-image"
@@ -177,6 +194,14 @@ c.controller 'EditProductCtrl', [
 								id: res.id
 							file: pic
 						)
+						.error (data, status)->
+							uploadSuccess = false 
+						
+							$alert
+								title : data.error.message
+								type: 'warning'
+						.success ()->
+							uploadSuccess = true
 					)
 
 				$.each($scope.pfiles, (i,file)->
@@ -186,13 +211,22 @@ c.controller 'EditProductCtrl', [
 								id: res.id
 							file: file
 						)
+						.error (data, status)->
+							uploadSuccess = false 
+						
+							$alert
+								title : data.error.message
+								type: 'warning'
+						.success ()->
+							uploadSuccess = true
 					)
 
 				$alert
-					title : "Product has been created successfully."
+					title : "Product has been updated successfully."
 					type: 'success'
-					
-					$location.path('/products')
+				$location.path('/products') 		
+
+				
 		
 ]
 

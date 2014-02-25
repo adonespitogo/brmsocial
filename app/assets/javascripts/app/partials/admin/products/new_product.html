@@ -9,7 +9,9 @@ Back
 <div id="alerts-container"></div>
 <form novalidate name="productForm" class="form-horizontal">
 	
-	<div class="form-group ">
+	
+
+    <div class="form-group ">
 		<div class="col-md-6" >
 
 			<label class="control-label">Product Files</label>
@@ -27,26 +29,6 @@ Back
 			<span class="text-danger" ng-show="productForm.max_download.$error.integer">Must be a number *</span>  
 		</div> 	
 	</div>
-	
-	<div class="form-group ">
-		<div class="col-md-6"  
-			ng-class="{'has-error' : productForm.product_name.$error.required}">
-
-    <div class="form-group ">
-        <div class="col-md-6" >
-            <label class="control-label">Product Files</label>
-            <input type="file" ng-model="product_file" name="product_file" multiple ng-file-select="onPFileSelect($files)" class="btn btn-success">
-            <!-- <span class="text-danger" ng-show="productForm.product_file.$error.required">Required *</span> -->
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-6" ng-class="{'has-error': productForm.max_download.$error.required}">
-            <label class="control-label">Allowed Number of Downloads</label>
-            <input type="text" integer ng-model="product.max_download" name="max_download" required class="input-block form-control">
-            <span class="text-danger" ng-show="productForm.max_download.$error.required">Required *</span>
-            <span class="text-danger" ng-show="productForm.max_download.$error.integer">Must be a number *</span>
-        </div>
-    </div>
 
     <div class="form-group ">
         <div class="col-md-6"
@@ -143,24 +125,7 @@ Back
 			<span class="text-danger" ng-show="productForm.user.$error.required">Required *</span>
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-md-12" ng-class="{'has-error': productForm.overview.$error.required}">
-			<label class="control-label">Overview</label>
-			<span class="text-danger" ng-show="productForm.overview.$error.required">Required *</span>
-			<textarea name="overview" required cols="30" rows="10" class="form-control" ng-model="product.overview"></textarea>
-		</div>
-	</div>
-
-	<div class="form-group terms-con">
-		<div class="col-md-12">
-			<label class="control-label">TERMS of sale</label>
-		</div>	
-		<div class="col-md-12" ng-repeat="t in product.terms">
-			<span class="text-danger" ng-show="productForm.terms.$error.required">Required *</span>
-			<input add-terms type="text" name="terms[]" cols="30" rows="10" class="form-control term" placeholder="" />
-		</div> 
-	</div>
- 
+  
 	<div class="form-group">
 		<div class="col-md-6" ng-class="{'has-error':productForm.category.$error.required}">
 			<label class="control-label">Category</label>
