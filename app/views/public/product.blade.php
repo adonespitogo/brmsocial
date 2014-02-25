@@ -100,7 +100,7 @@
 								<div class="question-box">
 									<p class="lead"><span>Questions?</span> We'd love to help!<i class="fa fa-umbrella fa-lg"></i></p>
 									<small>Email or chat M-F, 9am-5pm PST;</small>
-									<small><a href="#">support@buyrealmarketing.com</a></small>
+									<small><a href="mailto:support@buyrealmarketing.com">support@buyrealmarketing.com</a></small>
 								</div>
 							</div>
 							<!-- Start Realated Sales -->
