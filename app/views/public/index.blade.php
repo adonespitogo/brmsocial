@@ -3,7 +3,7 @@
 @section('head')
 	@parent
 
-	<title>Deals</title>
+	<title>BRM Social</title>
 @stop
 
 
