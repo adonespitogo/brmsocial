@@ -49,7 +49,7 @@
 			}
 			 
 			$terms = Input::get('terms');
-			if(!empty($terms)){
+			if(!empty($terms)&&$terms!==''){
 				$terms = explode(',', $terms);
 				if(count($terms)>0){
 					foreach($terms as $i=>$tx){
@@ -111,7 +111,7 @@
 			if(!is_array($terms)){
 				Term::where('product_id','=', $p->id)->delete(); 
 				
-				if(!empty($terms)){
+				if(!empty($terms)&&$terms!=''){
 					$terms = explode(',', $terms);
 					if(count($terms)>0){
 						foreach($terms as $i=>$tx){

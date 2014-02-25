@@ -1,1 +1,0 @@
-SELECT * FROM orders where is_paid_to_supplier='Yes' AND supplier_id = 10110 AND date_paid_to_supplier> "2014-02-06 00:00:00" AND date_paid_to_supplier < "2014-02-08 00:00:00";

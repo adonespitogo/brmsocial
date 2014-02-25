@@ -138,8 +138,11 @@ class Product extends BaseModel{
 	}
 
 	public function getPicture()
-	{
-		$pic = URL::to($this->pictures[0]->picture->url());
+	{	
+		if(isset($this->pictures[0]))
+			$pic = URL::to($this->pictures[0]->picture->url());
+		else
+			$pic = '';
 		return $pic;
 	}
 

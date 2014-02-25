@@ -15,6 +15,7 @@
 //
 //= require lib/underscore/underscore
 //= require lib/angular-1.2.9/angular
+//= require lib/angular-1.2.9/angular-sanitize
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
 //= require lib/angular-strap/angular-strap
