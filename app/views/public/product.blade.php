@@ -37,7 +37,6 @@
 							<div id="overview">
 								{{$product->overview}}
 							</div>
-							
 							<!-- End of Overview and Comments -->
 						</div>
 						<div class="left-col">

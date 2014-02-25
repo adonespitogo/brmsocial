@@ -12,16 +12,19 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		
 		$this->hasAttachedFile('avatar', [
 		  'styles' => [
-		    'medium' => '300x300',
-		    'thumb' => '100x100'
+		    'medium' => '300x300#',
+		    'thumb' => '100x100#'
 		  ]
 		]);
 
 		parent::__construct($attributes);
 		
 		$this->avatar = URL::to("customer/images/default_profile_pic.jpg");
+		$this->profile_img = "";
 		$this->city = "";
 		$this->country = "";
+		$this->bio = "";
+		$this->profession = "";
 	}
 	
 	protected $table = 'users';
