@@ -128,7 +128,7 @@ class Product extends BaseModel{
 	
 	public static function getMostPopular()
 	{
-		return self::orderBy('created_at')->limit(3)->get();
+		return self::orderBy('created_at')->limit(6)->get();
 	}
 	public function getIsFeaturedAttribute(){
 		if(isset($this->featured->id))
