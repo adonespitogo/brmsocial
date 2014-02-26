@@ -264,6 +264,25 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		}
 	}
 	
+	public function isFacebookUser()
+	{
+		return (isset($this->fb_id) && $this->fb_id != '');
+	}
+	
+	protected function getFBPic()
+	{
+		$data = file_get_contents('http://graph.facebook.com/'.$this->fb_id.'/picture?type=large&redirect=false');
+		$url = json_decode($data)->data->url;
+		return $url;
+	}	
+	
+	public function beforeCreate()
+	{
+		if($this->isFacebookUser()){
+			$this->avatar = $this->getFBPic();
+		}
+	}
+	
 	public function afterCreate()
 	{
 		if($this->type == 'customer'){

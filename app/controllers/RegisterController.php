@@ -68,7 +68,7 @@ class RegisterController extends BaseController{
 	        // Send a request with it
 	        $result = json_decode( $fb->request( '/me' ), true );
 	        $result = json_decode(json_encode($result));
-	        
+	        // return Response::json($result);
 	        $user = User::where('fb_id', $result->id)->first();
 	        //if user is not yet in db, create
 	        if(is_null($user)){
