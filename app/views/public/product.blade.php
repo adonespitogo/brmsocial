@@ -4,9 +4,7 @@
 	<title>Products</title>
 	<base href="{{URL::to('/')}}" />
 @stop
-@section('body')
-  	@include('public.template.header')
-    <div id="wrap">
+@section('content')
 		<section class="sp2-ordinary-page-title two-lines text-center">
 		  <h1 class="fs-36">{{$product->product_name}}</h1>
 		  <h2 class="fs-24">{{$product->tagline}}</h2>
@@ -126,60 +124,7 @@
 					</div>	
 				</div>
 			</div>
-		</section>
-
-	    <section class="checkout">
-	    	<div class="container">
-	    		<div class="row">
-	    			<div class="col-md-12">
-	    				<div class="table-responsive">
-					      <table class="table">
-					        <thead>
-					          <tr>
-					            <th>#</th>
-					            <th>Table heading</th>
-					            <th>Table heading</th>
-					            <th>Table heading</th>
-					            <th>Table heading</th>
-					            <th>Table heading</th>
-					            <th>Table heading</th>
-					          </tr>
-					        </thead>
-					        <tbody>
-					          <tr>
-					            <td>1</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					          </tr>
-					          <tr>
-					            <td>2</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					          </tr>
-					          <tr>
-					            <td>3</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					            <td>Table cell</td>
-					          </tr>
-					        </tbody>
-					      </table>
-					    </div>
-	    			</div>
-	    		</div>
-	    	</div>
-	 </div>
+		</section>	
 
 
 @stop

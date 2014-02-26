@@ -7,20 +7,20 @@
 
 /*@media sizes*/
 @media (min-width: 1200px) { 
-	body { border:10px solid red; }
+	/* body { border:10px solid red; } */
 	.container { max-width:990px; }
 
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-	body { border:10px solid blue; }
+	/* body { border:10px solid blue; } */
 	.container { max-width:990px; }
 
 	
 }
 
 @media (min-width: 768px) and (max-width: 991px) { 
-	body { border:10px solid green; }
+	/* body { border:10px solid green; } */
 	.container-narrow { max-width:100%; }
 
 	/*Course Page*/
@@ -32,13 +32,13 @@
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-	body { border:10px solid yellow; }
+	/* body { border:10px solid yellow; } */
 
 	
 }
 
 @media screen and (max-width: 600px) {
-	body { border:10px solid pink; }
+	/* body { border:10px solid pink; } */
 
 	/*Product Page*/
 	.product-right-col .question-box p:nth-child(1){font-size: 13px !important;}

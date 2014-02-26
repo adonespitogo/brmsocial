@@ -9,7 +9,7 @@
 
 @section('content')
 
-<div id="wrap">
+
 	<section class="sp2-ordinary-page-title two-lines text-center">
 	  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
 	  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>

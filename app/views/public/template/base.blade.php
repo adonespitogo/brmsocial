@@ -20,8 +20,9 @@
 
 
 @section('body')
-	@include('public.template.header')
+	
 	<div id="wrap">
+		@include('public.template.header')
 		@yield('content')
 	</div>
 @include('public.template.footer')
