@@ -32,12 +32,12 @@ class RegisterController extends BaseController{
 		)), 422);
 	}
 	
-	public function getIndex()
+	public function index()
 	{
 		return View::make('register.signup');
 		
 	}
-	public function postIndex()
+	public function create()
 	{
 		$user = new User();
 		$user->email = Input::get('email');
@@ -54,7 +54,7 @@ class RegisterController extends BaseController{
 			return "error registering";
 		}
 	}
-	public function getFacebook()
+	public function registerViaFacebook()
 	{
 		
 		$code = Input::get('code');
@@ -68,20 +68,14 @@ class RegisterController extends BaseController{
 	        // Send a request with it
 	        $result = json_decode( $fb->request( '/me' ), true );
 	        $result = json_decode(json_encode($result));
-	        
+	        // return Response::json($result);
 	        $user = User::where('fb_id', $result->id)->first();
 	        //if user is not yet in db, create
 	        if(is_null($user)){
 	        	$user = new User();
-	        	$user->firstname = $result->first_name;
-	        	$user->lastname = $result->last_name;
-	        	$user->email = $result->email;
-	        	$user->gender = ($result->gender == 'male')? 1 : 0;
-	        	$user->fb_id = $result->id;
-	        	$user->setPassword(BRMHelper::genRandomPassword());
-	        	$user->type = 'customer';
+	        	$user->setFacebookUser($result);
 	        	if(!$user->save()){
-	        		return Redirect::to('/')->with('error', 'Sorry, there was an error encountered.');
+	        		return Redirect::to('register')->with('error', 'Sorry, there was an error encountered.');
 	        	}
 	        }
         	Auth::login($user, true);
@@ -96,6 +90,54 @@ class RegisterController extends BaseController{
 	        // return to facebook login url
 	        return Redirect::to(htmlspecialchars_decode($url));
 	    }
+	}
+	
+	public function registerViaTwitter()
+	{
+		$code = Input::get('code');
+		
+		$twitter = OAuth::consumer( 'Twitter' );
+		
+		if(!empty($code)){
+			$token = $twitter->requestAccessToken( $code );
+			$result = json_decode($twitter->request('account/verify_credentials.json'));
+			dd($result);
+		}
+		else if(!empty($_GET['oauth_token'])){
+		    // $token = $twitter->retrieveAccessToken();
+
+		    // This was a callback request from twitter, get the token
+		    $token = $twitter->getStorage()->retrieveAccessToken('Twitter');
+		    
+		    $twitter->requestAccessToken(
+		        $_GET['oauth_token'],
+		        $_GET['oauth_verifier'],
+		        $token->getRequestTokenSecret()
+		    );
+
+		    // Send a request now that we have access token
+		    $result = json_decode($twitter->request('account/verify_credentials.json'));
+	        $result = json_decode(json_encode($result));
+	        // return Response::json($result);
+	        $user = User::where('twitter_id', $result->id)->first();
+	        //if user is not yet in db, create
+	        if(is_null($user)){
+	        	$user = new User();
+	        	$user->setTwitterUser($result);
+	        	if(!$user->save()){
+	        		return Redirect::to('register')->with('error', 'Sorry, there was an error encountered.');
+	        	}
+	        }
+        	Auth::login($user, true);
+	        return Redirect::to('home');
+
+		}
+		else{
+			$token = $twitter->requestRequestToken();
+			// dd($token);
+	        $url = $twitter->getAuthorizationUri(array('oauth_token' => $token->getRequestToken()));
+	        return Redirect::to(htmlspecialchars_decode($url));
+		}
 	}
 	
 }

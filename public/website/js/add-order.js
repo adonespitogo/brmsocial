@@ -7,7 +7,7 @@ jQuery(document).on('mousedown', '.add2cart-btn', function(e) {
     productId = $(this).data('productId');
     productName = $(this).data('productName');
     productPrice = $(this).data('productPrice');
-    var cart = jQuery('.bg-cart:visible');
+    var cart = jQuery('.bg-cart');
     var obj = jQuery(this);
     if (obj) {
         var objClone = obj.clone();
@@ -46,7 +46,7 @@ jQuery(document).on('mousedown', '.add2cart-btn', function(e) {
         setTimeout(function() {
             jQuery('.order-con').css('font-size', '14px');
             objClone.html('');
-            cart.effect("none", {
+            cart.effect("pulsate", {
                 times: 2
             }, 200);
         }, 1500);

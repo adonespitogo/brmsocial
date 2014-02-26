@@ -264,6 +264,66 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		}
 	}
 	
+	public function isFacebookUser()
+	{
+		return (isset($this->fb_id) && $this->fb_id != '');
+	}
+	
+	public function setFacebookUser($result)
+	{
+    	$this->fb_id = $result->id;
+		$this->avatar = $this->getFBPic();
+    	$this->firstname = $result->first_name;
+    	$this->lastname = $result->last_name;
+    	$this->email = $result->email;
+    	$this->gender = ($result->gender == 'male')? 1 : 0;
+    	$this->setPassword(BRMHelper::genRandomPassword());
+    	$this->type = 'customer';
+	
+	}
+	
+	public function setTwitterUser($result)
+	{
+    	$this->twitter_id = $result->id;
+		$this->avatar = $this->getTwitterPic($result);
+    	$this->firstname = $this->getTwitterFirstname($result);
+    	$this->lastname = $this->getTwitterLastname($result);
+    	$this->email = $result->screen_name.'@twitter.com';
+    	$this->gender = 1; //set to male
+    	$this->setPassword(BRMHelper::genRandomPassword());
+    	$this->type = 'customer';
+	
+	}
+	
+	protected function getTwitterFirstname($result)
+	{
+		$ex = explode(' ', $result->name);
+		return $ex[0];
+	}
+	
+	protected function getTwitterLastname($result)
+	{
+		$ex = explode(' ', $result->name);
+		return $ex[1];
+	}
+	
+	protected function getFBPic()
+	{
+		$data = file_get_contents('http://graph.facebook.com/'.$this->fb_id.'/picture?type=large&redirect=false');
+		$url = json_decode($data)->data->url;
+		return $url;
+	}
+	
+	protected function getTwitterPic($result)
+	{
+		return str_replace('_normal', '_bigger', $result->profile_image_url);
+	}
+	
+	public function isTwitterUser()
+	{
+		return (isset($this->twitter_id) && $this->twitter_id != '');
+	}
+	
 	public function afterCreate()
 	{
 		if($this->type == 'customer'){

@@ -4,6 +4,7 @@ c = angular.module 'ProductControllers', [
 	'ProductServices',
 	'CategoryServices',
 	'UserServices',
+	'ProductTypeServices',
 	'angularFileUpload',
 	'ngSanitize',
 ]
@@ -52,8 +53,8 @@ c.controller 'ProductListCtrl', [
 ]
 
 c.controller 'NewProductCtrl', [
-	'$scope', 'Products', 'Category', '$alert', '$location','Users','$upload',
-	($scope, Products, Category, $alert, $location, Users, $upload) ->
+	'$scope', 'Products', 'Category', '$alert', '$location','Users','$upload','ProductTypes',
+	($scope, Products, Category, $alert, $location, Users, $upload, ProductTypes) ->
 		$('textarea#wysihtml5-textarea').wysihtml5()
 
 		Category.query().$promise.then (categories) -> 
@@ -64,6 +65,7 @@ c.controller 'NewProductCtrl', [
 
 
 		$scope.vendors = Users.query id:'vendor'
+		$scope.produc_types = ProductTypes.query()
 
 		$scope.pics = []
 		$scope.pfiles = []
@@ -106,7 +108,7 @@ c.controller 'NewProductCtrl', [
 						.error (data, status)->
 							uploadSuccess = false
 							$alert
-								title : data.error.message
+								title : "System encounter errors on uploading the product pictures "+data.error.message
 								type: 'warning'
 						.success ()->
 							uploadSuccess = true
@@ -122,7 +124,7 @@ c.controller 'NewProductCtrl', [
 						.error (data, status)->
 							uploadSuccess = false
 							$alert
-								title : data.error.message
+								title : "System encounter errors on uploading the files "+data.error.message
 								type: 'warning'
 						.success ()->
 							uploadSuccess = true
@@ -137,8 +139,8 @@ c.controller 'NewProductCtrl', [
 ]
 
 c.controller 'EditProductCtrl', [
-	'$scope', 'Products', '$stateParams', 'Category', '$alert', 'Users','$location','$upload',
-	($scope, Products, $stateParams, Category, $alert, Users, $location,$upload) ->
+	'$scope', 'Products', '$stateParams', 'Category', '$alert', 'Users','$location','$upload','ProductTypes',
+	($scope, Products, $stateParams, Category, $alert, Users, $location,$upload, ProductTypes) ->
 		
 		Category.query().$promise.then (categories) ->
 				$scope.categories = categories
@@ -150,6 +152,7 @@ c.controller 'EditProductCtrl', [
 					
 					$scope.product.terms.push('') 
 
+		$scope.produc_types = ProductTypes.query()
 		$scope.vendors = Users.query id:'vendor'
 
 		$scope.pics = []
@@ -198,7 +201,7 @@ c.controller 'EditProductCtrl', [
 							uploadSuccess = false 
 						
 							$alert
-								title : data.error.message
+								title : "System encounter errors on uploading the product picture "+data.error.message
 								type: 'warning'
 						.success ()->
 							uploadSuccess = true
@@ -215,7 +218,7 @@ c.controller 'EditProductCtrl', [
 							uploadSuccess = false 
 						
 							$alert
-								title : data.error.message
+								title : "System encounter errors on uploading the files "+data.error.message
 								type: 'warning'
 						.success ()->
 							uploadSuccess = true

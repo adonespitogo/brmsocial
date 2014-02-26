@@ -9,8 +9,24 @@
 <div id="alerts-container"></div>
 <form novalidate name="productForm" ng-submit="updateProduct(product)" class="form-horizontal">
 	
+	<div class="form-group">
+        <div class="col-md-6" ng-class="{'has-error': productForm.type.$error.required}">
+            <label class="control-label">Type</label>
+            <select
+                name="type" 
+                class="form-control"
+                ng-model="product.type"
+                ng-options="pt as pt.type for pt in produc_types" 
+                required
+                ng-selected="string"
+                >
+            </select>
+            <span class="text-danger" ng-show="productForm.type.$error.required">Required *</span>
+        </div>
+    </div>
+    
 	<div class="form-group ">
-		<div class="col-md-6" >
+		<div class="col-md-6" ng-show="product.type.has_file=='1'">
 
 			<label class="control-label">Downloadable Files</label>
 			<input type="file" ng-model="product_file" name="product_file" multiple ng-file-select="onPFileSelect($files)" class="btn btn-success">

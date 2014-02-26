@@ -37,6 +37,10 @@
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
 			$p->max_download = Input::get('max_download');
+
+			$type = Input::get('type');
+			$p->type = $type->id;
+
 			$p->user_id = Input::get('user');
 			$p->save();
 
@@ -84,6 +88,10 @@
 			$p->sale_end_date = Input::get('sale_end_date_iso_date');
 			$p->product_image = Input::get('product_image');
 			$p->overview = Input::get('overview');
+
+			$type = Input::get('type');
+			$p->type = $type['id'];
+			
 			$p->max_download = Input::get('max_download');
 			$p->user_id  = Input::get('user_id');
 			$p->save();
@@ -145,11 +153,10 @@
 			return 1;
 		}
 
-		public function postAddFile(){
-			$id = Input::get('id');
+		public function postAddFile(){ 
 			$pf = new ProductFile();
 			$pf->file = Input::file('file');
-			$pf->product_id = $id;
+			$pf->product_id = Input::get('id');
 			$pf->save();
 			return 1;
 		}

@@ -40,6 +40,7 @@ c.controller 'UserListCtrl', [
 		$scope.deleteUser = (u)->
 							if confirm "Are you sure you want to delete this user?"
 								u.$delete ->
+									$scope.users = Users.query id: 'all'
 									$alert
 										title : "User has been deleted successfully."
 										type: 'success'

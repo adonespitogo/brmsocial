@@ -12,7 +12,7 @@
 			return User::find($id);
 		}
 		public function getAll(){
-			return User::all();
+			return User::where('id', '<>', Auth::user()->id)->get();
 		}
 		public function getUsers($type='vendor'){
 			return User::where('type','=', $type)->get();
