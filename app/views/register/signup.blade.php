@@ -47,7 +47,7 @@
 						
 					</div>
 					<div class="form-group">
-						<a href="{{URL::to('register/facebook')}}" class="btn btn-info btn-block">
+						<a href="{{URL::to('signup/facebook')}}" class="btn btn-info btn-block">
 							<i class="fa fa-facebook-square"></i>
 							Login with Facebook
 						</a>
