@@ -15,9 +15,9 @@
 	  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>
 	  <div class="social-header">
 	  	<ul>
-		  	<li><a href="#" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
+		  	<li><a href="{{URL::to('register/facebook')}}" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
 		  	<li><span>or</span></li>
-		  	<li><a href="#" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
+		  	<li><a href="{{URL::to('register/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
 	  	</ul>	  	
 	  </div>
 	  <div class="via-email">Sign up via E-Mail</div>
