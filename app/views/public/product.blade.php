@@ -7,9 +7,6 @@
 @section('body')
   	@include('public.template.header')
     <div id="wrap">
-      	<!--script>
-		// $('#myTab a[href="#overview"]').tab('show')
-		</script-->
 		<section class="sp2-ordinary-page-title two-lines text-center">
 		  <h1 class="fs-36">{{$product->product_name}}</h1>
 		  <h2 class="fs-24">{{$product->tagline}}</h2>
@@ -65,6 +62,7 @@
 										<li>now only</li>
 										<li>${{(int)$product->discounted_price}}<span>.00</span></li>
 									</ul>
+
 								</div>
 								<div class="reg-price text-right">
 									<span>${{(int)$product->regular_price}}</span><br />
@@ -88,7 +86,14 @@
 									{{date("M d", strtotime($product->sale_end_date))}}
 									</li>
 								</ul>
-								<h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>{{$product->getLeftSaleDays()}} days</span></h3>
+								<h3 class="text-center first-h3">
+									<i class="fa fa-time"></i>
+									@if($product->getLeftSaleDays() > 0)
+										Sale ends in <span>{{$product->getLeftSaleDays()}} days</span>
+									@else
+										Sale ends <span>today</span>
+									@endif
+								</h3>
 								<button class="btn-green add2cart-btn" 
 									data-product-id="{{$product->id}}" 
 									data-product-price="{{$product->discounted_price}}" 
@@ -108,7 +113,7 @@
 								<div class="question-box">
 									<p class="lead"><span>Questions?</span> We'd love to help!<i class="fa fa-umbrella fa-lg"></i></p>
 									<small>Email or chat M-F, 9am-5pm PST;</small>
-									<small><a href="mailto:support@buyrealmarketing.com">support@buyrealmarketing.com</a></small>
+									<small><a href="#">support@buyrealmarketing.com</a></small>
 								</div>
 							</div>
 							<!-- Start Realated Sales -->
@@ -122,63 +127,60 @@
 				</div>
 			</div>
 		</section>
-    </div>
 
-    <section class="checkout">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="table-responsive">
-				      <table class="table">
-				        <thead>
-				          <tr>
-				            <th>#</th>
-				            <th>Table heading</th>
-				            <th>Table heading</th>
-				            <th>Table heading</th>
-				            <th>Table heading</th>
-				            <th>Table heading</th>
-				            <th>Table heading</th>
-				          </tr>
-				        </thead>
-				        <tbody>
-				          <tr>
-				            <td>1</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				          </tr>
-				          <tr>
-				            <td>2</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				          </tr>
-				          <tr>
-				            <td>3</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				            <td>Table cell</td>
-				          </tr>
-				        </tbody>
-				      </table>
-				    </div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+	    <section class="checkout">
+	    	<div class="container">
+	    		<div class="row">
+	    			<div class="col-md-12">
+	    				<div class="table-responsive">
+					      <table class="table">
+					        <thead>
+					          <tr>
+					            <th>#</th>
+					            <th>Table heading</th>
+					            <th>Table heading</th>
+					            <th>Table heading</th>
+					            <th>Table heading</th>
+					            <th>Table heading</th>
+					            <th>Table heading</th>
+					          </tr>
+					        </thead>
+					        <tbody>
+					          <tr>
+					            <td>1</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					          </tr>
+					          <tr>
+					            <td>2</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					          </tr>
+					          <tr>
+					            <td>3</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					            <td>Table cell</td>
+					          </tr>
+					        </tbody>
+					      </table>
+					    </div>
+	    			</div>
+	    		</div>
+	    	</div>
+	 </div>
 
-    <div id="footer">
-    </div>
 
 @stop
 

@@ -20,10 +20,14 @@
 
 
 @section('body')
+	@include('public.template.header')
+	<div id="wrap">
+		@yield('content')
+	</div>
+@include('public.template.footer')
+
 
 @stop
-
-
 
 @section('scripts')
     

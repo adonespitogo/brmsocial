@@ -18,8 +18,7 @@ class PublicController extends BaseController{
  		//event listener for product traffic		
  		
 		if(is_object($product)){
-	
-			new EventListener();
+				
 			Event::fire('product.traffic', $product);
 
 			return View::make('public.product')->with('product', $product);

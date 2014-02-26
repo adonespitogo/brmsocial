@@ -217,6 +217,7 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .header button:hover {color: #fff; background-color: #81bc01;}
 /*End Header*/
 
+
 /* Margin and Padding Clasess*/
 .mb-0 { margin-bottom:0 !important; }
 .mb-10 { margin-bottom:10px !important; }
@@ -248,3 +249,22 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .fs-22 { font-size:22px !important; }
 .fs-24 { font-size:24px !important; }
 .fs-25 { font-size:25px !important; }
+
+/* START FOOTER */
+.bg-footer {background: url("../images/bg-black.jpg") #222221 repeat;position: relative;margin: 0;padding-top: 35px;}
+.footer { color:#7c8594; padding-bottom:20px; text-align: left;}
+.footer li { padding:3px 4px; display:inline-block; }
+.footer li a { color:#7c8594; font-size:13px; }
+.footer li a:hover { color:#8FCCF4; }
+.footer img { margin-bottom:8px; }
+.footer p { color:#7c8594; font-size:12px; }
+.footer  a { color:#7c8594; font-size:12px; }
+.ta-cert {text-align: right;}
+.footer  a:hover { color:#8FCCF4; text-decoration: none;}
+.footer2 {font-size: 12px; color:#7c8594; padding-bottom:20px; text-align: center; border-top:1px solid #353c44; margin:20px 0px 0 0px; padding:20px 0 0 0}
+.footer2  a { color:#7c8594; font-size:12px; }
+.footer2  a:hover { color:#8FCCF4; }
+.footer2  img { vertical-align:top; }
+.footer2 ul li {display: inline-block;}
+/* END FOOTER */
+

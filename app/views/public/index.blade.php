@@ -7,12 +7,10 @@
 @stop
 
 
-@section('body')
-
-@include('public.template.header')
+@section('content')
 
 <div id="wrap">
-  	<section class="sp2-ordinary-page-title two-lines text-center">
+	<section class="sp2-ordinary-page-title two-lines text-center">
 	  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
 	  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>
 	  <div class="social-header">
@@ -34,7 +32,11 @@
 						<h3>Featured Deal</h3>
 						<!-- Start Featured Deal -->
 						<div class="banner-deal-page">
-							<img src='{{URL::to($featured->product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
+
+							<a href="product/{{ $featured->product->slug }}">
+								<img src='{{URL::to($featured->product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
+
+							</a>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
@@ -97,10 +99,7 @@
 			</div>
 		</div>
 	</section>
-</div>
 
-<div id="footer">
-</div>
 
 @stop
 
