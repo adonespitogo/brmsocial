@@ -4,11 +4,11 @@
 <title>Products</title>
 <base href="{{URL::to('/')}}" />
 @stop
-@section('body')
+@section('body') 
 @include('public.template.header')
-<div id="wrap">
+<div id="wrap">                                   
     <!--script>
-    // $('#myTab a[href="#overview"]').tab('show')
+        // $('#myTab a[href="#overview"]').tab('show')
     </script-->
     <section class="sp2-ordinary-page-title two-lines text-center">
         <h1 class="fs-36">{{$product->product_name}}</h1>
@@ -37,26 +37,23 @@
                             <div id="overview" class="tab-pane fade active in">
                                 {{$product->overview}}
                             </div>
-
                             <div id="comments" style="margin-top: 39px;">
                                 <div id="disqus_thread"></div>
                                 <script type="text/javascript">
-                                         var disqus_shortname = 'brmsocial'; 
-                                        /* * * DON'T EDIT BELOW THIS LINE * * */
-                                        (function() {
-                                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                        })();
+                                                                        var disqus_shortname = 'brmsocial';
+                                                                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                                                                        (function() {
+                                                                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                                                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                                                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                                                        })();
                                 </script>
                                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
                             </div>
                             <!-- End of Overview and Comments -->
                         </div>
                     </div>
-
                     <div class="left-col">
                         <h3>Customers also bought</h3>
                         <!-- Start Customers also bought -->
@@ -97,7 +94,14 @@
                                     {{date("M d", strtotime($product->sale_end_date))}}
                                 </li>
                             </ul>
-                            <h3 class="text-center first-h3"><i class="fa fa-time"></i>  Sale ends in <span>{{$product->getLeftSaleDays()}} days</span></h3>
+                            <h3 class="text-center first-h3">
+                            <i class="fa fa-time"></i>
+                            @if($product->getLeftSaleDays() > 0)
+                            Sale ends in <span>{{$product->getLeftSaleDays()}} days</span>
+                            @else
+                            Sale ends <span>today</span>
+                            @endif
+                            </h3>
                             <button class="btn-green add2cart-btn"
                             data-product-id="{{$product->id}}"
                             data-product-price="{{$product->discounted_price}}"
@@ -117,7 +121,7 @@
                             <div class="question-box">
                                 <p class="lead"><span>Questions?</span> We'd love to help!<i class="fa fa-umbrella fa-lg"></i></p>
                                 <small>Email or chat M-F, 9am-5pm PST;</small>
-                                <small><a href="mailto:support@buyrealmarketing.com">support@buyrealmarketing.com</a></small>
+                                <small><a href="#">support@buyrealmarketing.com</a></small>
                             </div>
                         </div>
                         <!-- Start Realated Sales -->
@@ -131,7 +135,58 @@
             </div>
         </div>
     </section>
-</div>
+    <section class="checkout">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
 <div id="footer">
 </div>
 @stop
@@ -139,10 +194,9 @@
 @parent
 {{HTML::script("website/js/add-order.js")}}
 {{HTML::script("website/js/application.js")}}
-    <script type="text/javascript">
+<script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'brmsocial'; // required: replace example with your forum shortname
-
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
         var s = document.createElement('script'); s.async = true;
@@ -150,6 +204,5 @@
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
-    </script>
-
+</script>
 @stop

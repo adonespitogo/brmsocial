@@ -32,7 +32,7 @@
 				           		<div class="bg-cart">
 				            		<span class="cart-dolsign">$</span>
 				            		<span class="cart-price totalPrice">17</span>
-				            		<i class="fa fa-shopping-cart"></i></span>
+				            		<i class="fa fa-shopping-cart"></i>
 				            		<span class="cart-orders totalItem">2</span>
 				           		</div>
 				           	</li>
@@ -58,12 +58,16 @@
 				<li>
 					<a href="javascript:void(0);">Category</a>
 					<ul>
-						<li><a href="#">Applce/Mac</a></li>
-						<li><a href="#">Designer</a></li>
-						<li><a href="#">Developer</a></li>
-						<li><a href="#">Entrepreneur</a></li>
-						<li><a href="#">Gamer</a></li>
-						<li><a href="#">Productivity</a></li>
+
+
+						@foreach (Category::all() as $category)
+							<li>
+								<a href="{{URL::to('category/'.$category->slug)}}">
+									<i class="fa fa-star"></i>
+									{{$category->category}}
+								</a>
+							</li>
+			        	@endforeach
 					</ul>
 				</li>
 				<li><a href="#">Free Stuff</a></li>

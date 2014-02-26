@@ -1,6 +1,7 @@
 /bootstrap/compiled.php
 /vendor
 /public/system
+/public/avatars
 composer.phar
 composer.lock
 .env.local.php
