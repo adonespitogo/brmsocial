@@ -8,7 +8,10 @@ Route::get('/', array('uses' => 'PublicController@index'));
 Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 Route::get('category/{slug}', array('uses' => 'CategoryController@getProducts'));
 Route::controller('session', 'SessionController');
-Route::controller('register', 'RegisterController');
+Route::get('signup', array('uses' => 'RegisterController@index'));
+Route::get('signup/facebook', array('uses' => 'RegisterController@registerViaFacebook'));
+Route::get('signup/twitter', array('uses' => 'RegisterController@registerViaTwitter'));
+Route::post('register', array('uses' => 'RegisterController@create'));
 Route::controller('cart', 'CartController');
 Route::post('subscribe', array('uses' => 'PublicController@addSubscriber'));
 
