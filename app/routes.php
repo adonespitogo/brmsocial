@@ -1,5 +1,8 @@
 <?php
 
+//Intialize Event Listener for Traffic
+new EventListener();
+
 // start public routes
 Route::get('/', array('uses' => 'PublicController@index'));
 Route::get('product/{slug}', array('uses' => 'PublicController@product'));
