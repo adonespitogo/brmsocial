@@ -54,4 +54,4 @@ c = angular.module("AccountControllers", [
 			})
 		}
 	}
-])
+]);
