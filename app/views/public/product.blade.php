@@ -53,6 +53,7 @@
 									<li>now only</li>
 									<li>${{(int)$product->discounted_price}}<span>.00</span></li>
 								</ul>
+
 							</div>
 							<div class="reg-price text-right">
 								<span>${{(int)$product->regular_price}}</span><br />
