@@ -14,16 +14,20 @@
 						<div class="row deal-popular">
 							<h3>Category &rarr; {{ $category->category }}</h3>
 							<div class="row deal-popular">
+
 								@if(count($products) > 0)
 									@foreach($products as $p)
 										<div class="col-md-4 col-sm-4">
 											@if(isset($p->pictures[0]))
-											<img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+												<a href="{{URL::to('product/'.$p->slug)}}">
+													<img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+												</a>
 											@endif
 											<h4>
-											<a href="{{URL::to('product/'.$p->slug)}}">
-											{{$p->product_name}} <span>${{number_format($p->discounted_price, 2)}}</span>
-											</a></h4>
+												<a href="{{URL::to('product/'.$p->slug)}}">
+													{{$p->product_name}} <span>${{number_format($p->discounted_price, 2)}}</span>
+												</a>
+											</h4>
 											<ul>
 												<li>{{$p->getLeftSaleDays()}} days</li>
 												<li><a href="#">{{$p->category->category}}</a></li>
@@ -33,6 +37,7 @@
 								@else
 									<div class="col-md-4 col-sm-4">No product yet.</div>
 								@endif
+
 							</div>
 						</div>
 
