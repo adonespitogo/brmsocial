@@ -9,6 +9,7 @@ Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 Route::get('category/{slug}', array('uses' => 'CategoryController@getProducts'));
 Route::controller('session', 'SessionController');
 Route::controller('register', 'RegisterController');
+Route::controller('cart', 'CartController');
 Route::post('subscribe', array('uses' => 'PublicController@addSubscriber'));
 
 // start protected routes
