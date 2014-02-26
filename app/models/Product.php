@@ -25,6 +25,7 @@ class Product extends BaseModel{
 		'slugFromColumn' => 'product_name'
 	);
 
+	protected $with = array('type');
 	protected $appends = array('is_featured');
 	public static $relationsData = array(
 		'category' => array(self::BELONGS_TO, 'Category'),
@@ -34,7 +35,7 @@ class Product extends BaseModel{
 		'traffic' => array(self::HAS_MANY, 'Traffic'),
 		'pictures' => array(self::HAS_MANY, 'ProductPicture'),
 		'files' => array(self::HAS_MANY, 'ProductFile'),
-		'featured'=>array(self::HAS_ONE,'FeaturedProduct'),
+		'featured'=>array(self::HAS_ONE,'FeaturedProduct'), 
 	);
 
 	//start overrides
@@ -45,11 +46,13 @@ class Product extends BaseModel{
 		$this->sale_end_date = date('Y:m:d H:i:s');
 		$this->product_image = false; 
 		$this->max_download = 1;
+		$this->type = 1;
 		//$this->category_id = Category::first()->id;
 	}
 	
 	public function toArray()
-	{
+	{	
+		//$this->load('product_type'); 
 		$this->load('category');
 		$this->load('terms');
 		$this->load('featured');
@@ -60,7 +63,9 @@ class Product extends BaseModel{
 	}
 	
 	// start custom functions
-
+	public function type(){
+		return $this->belongsTo('ProductType', 'type');
+	}
 	public function loadProductTraffic()
 	{
 		$this->load(array('traffic' => function($query){
