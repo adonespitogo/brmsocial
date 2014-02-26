@@ -13,6 +13,14 @@
 		<section class="sp2-ordinary-page-title two-lines text-center">
 		  <h1 class="fs-36">{{$product->product_name}}</h1>
 		  <h2 class="fs-24">{{$product->tagline}}</h2>
+		  <div class="social-header">
+		  	<ul>
+			  	<li><a href="#" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
+			  	<li><span>or</span></li>
+			  	<li><a href="#" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
+		  	</ul>	  	
+		  </div>
+		  <div class="via-email">Sign up via E-Mail</div>
 		</section>
 
 		<section class="deal-page bg-image-white" ng-controller="ProductCtrl">
@@ -114,6 +122,59 @@
 				</div>
 			</div>
 		</section>
+    </div>
+
+    <section class="checkout">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="table-responsive">
+				      <table class="table">
+				        <thead>
+				          <tr>
+				            <th>#</th>
+				            <th>Table heading</th>
+				            <th>Table heading</th>
+				            <th>Table heading</th>
+				            <th>Table heading</th>
+				            <th>Table heading</th>
+				            <th>Table heading</th>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          <tr>
+				            <td>1</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				          </tr>
+				          <tr>
+				            <td>2</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				          </tr>
+				          <tr>
+				            <td>3</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				            <td>Table cell</td>
+				          </tr>
+				        </tbody>
+				      </table>
+				    </div>
+    			</div>
+    		</div>
+    	</div>
     </div>
 
     <div id="footer">

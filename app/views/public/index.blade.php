@@ -26,7 +26,7 @@
 	</section>
 
 	<section class="deal-page bg-image-white">
-		<div class="container container-narrow">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
 					@if(isset($featured)&&isset($featured->product)&&isset($featured->product->pictures[0]))
