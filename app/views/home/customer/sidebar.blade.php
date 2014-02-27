@@ -42,6 +42,8 @@
         <a href="#"><img src="{{ URL::to('customer/images/ico-earth.png') }}"></a>
       </li>
     </ul>
-    <div class="member">Member since: <span>JUL 10, 2013</span></div>
+    <div class="member">Member since:
+      <span>{{ Carbon\Carbon::parse(Auth::user()->created_at)->toFormattedDateString(); }}</span>
+    </div>
   </div>
 </div>
