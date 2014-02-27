@@ -21,7 +21,7 @@
 					        	@endforeach
 					        </ul>
 					      </li>
-					      <li class="dropdown"><a href="#">Free Stuff</a></li>
+					      <li class="dropdown"><a href="{{URL::to('free-products')}}">Free Stuff</a></li>
 					    </ul>
 				    </div>
 				    <div class="login-con">
@@ -70,7 +70,7 @@
 			        	@endforeach
 					</ul>
 				</li>
-				<li><a href="#">Free Stuff</a></li>
+				<li><a href="{{URL::to('free-products')}}">Free Stuff</a></li>
 				<li><a href="#">Signup</a></li>
 				<li><a href="{{URL::to('session/login')}}">Login</a></li>
 			</ul>	
