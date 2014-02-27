@@ -82,43 +82,39 @@
 
         <!-- Start More About -->
         <div class="more-about" id="more-about">
-          <form role="form">    
+          <form role="form" ng-submit="updateProfile()">    
             <div class="form-group">
               <label for="exampleInputEmail1">Profession</label>
-              <input type="input" class="form-control">
+              <input type="input" class="form-control" ng-model="currentUser.profession">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Bio</label>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea ng-model="currentUser.bio" class="form-control" rows="3"></textarea>
             </div>
             <div class="form-sep"></div>
             <div class="form-group" id="social-network">
               <label for="exampleInputEmail1">facebook</label>
-              <input type="input" class="form-control fb" placeholder="https://www.facebook.com/jonheineken">
+              <input ng-model="currentUser.facebook_url" type="input" class="form-control fb" placeholder="https://www.facebook.com/jonheineken">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Twitter</label>
-              <input type="input" class="form-control twit" placeholder="jonheineken">
+              <input ng-model="currentUser.twitter_url" type="input" class="form-control twit" placeholder="jonheineken">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Google +</label>
-              <input type="input" class="form-control gplus" placeholder="https://plus.google.com/u/0/105233723765879178661">
+              <input ng-model="currentUser.googleplus_url" type="input" class="form-control gplus" placeholder="https://plus.google.com/u/0/105233723765879178661">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Linked in</label>
-              <input type="input" class="form-control in" placeholder="http://www.linkedin.com/profile/view?id=153373276">
+              <input ng-model="currentUser.linkedin_url" type="input" class="form-control in" placeholder="http://www.linkedin.com/profile/view?id=153373276">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Dribbble</label>
-              <input type="input" class="form-control dribble" placeholder="">
+              <input ng-model="currentUser.dribble_url" type="input" class="form-control dribble" placeholder="">
             </div>
-            <div class="form-more"><a >More <i class="fa fa-angle-down"></i></a></div>
-            <div class="form-group mb-30" id="web-preferences">
+            <div class="form-group" id="web-preferences">
               <label for="exampleInputEmail1">Website</label>
-              <div class="form-inline">
-                <input type="input" class="form-control" style="width:35%">
-                <input type="input" class="form-control pull-right" style="width:60%">
-              </div>
+              <input ng-model="currentUser.website_url" type="input" class="form-control">
             </div>
             <button type="submit" class="btn btn-blue btn-default">Save Changes</button>
         </form>
