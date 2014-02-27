@@ -27,7 +27,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::resource('users', 'UserController');
 	
 	Route::controller('home', 'HomeController');
-
+	 
 	Route::get('products/my-products', array('uses' => 'ProductController@myProducts'));
 	Route::get('products/count', array('uses' => 'ProductController@countProducts'));
 	Route::get('products/my-active-products', array('uses' => 'ProductController@myActiveProducts'));
@@ -37,7 +37,8 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('product/add-image', array('uses'=>'ProductController@postAddImage'));
 	Route::post('product/add-file', array('uses'=>'ProductController@postAddFile'));
 	Route::resource('products', 'ProductController');
-	
+	Route::resource('product-types', 'ProductTypeController');
+
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
 	Route::get('orders/count', array('uses' => 'OrderController@countOrders'));
 	Route::get('orders/mysalestoday', array('uses' => 'OrderController@mySalesToday'));

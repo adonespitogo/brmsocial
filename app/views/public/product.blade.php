@@ -4,8 +4,8 @@
 <title>Products</title>
 <base href="{{URL::to('/')}}" />
 @stop
-@section('body') 
-@include('public.template.header')
+
+@section('content') 
 <div id="wrap">                                   
     <!--script>
         // $('#myTab a[href="#overview"]').tab('show')
@@ -135,60 +135,6 @@
             </div>
         </div>
     </section>
-    <section class="checkout">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Table heading</th>
-                                    <th>Table heading</th>
-                                    <th>Table heading</th>
-                                    <th>Table heading</th>
-                                    <th>Table heading</th>
-                                    <th>Table heading</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                    <td>Table cell</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> 
-<div id="footer">
-</div>
 @stop
 @section('scripts')
 @parent
