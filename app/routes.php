@@ -6,6 +6,7 @@ new EventListener();
 // start public routes
 Route::get('/', array('uses' => 'PublicController@index'));
 Route::get('product/{slug}', array('uses' => 'PublicController@product'));
+Route::get('free-products', array('uses' => 'PublicController@free'));
 Route::get('category/{slug}', array('uses' => 'CategoryController@getProducts'));
 Route::controller('session', 'SessionController');
 Route::get('signup', array('uses' => 'RegisterController@index'));

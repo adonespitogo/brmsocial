@@ -56,4 +56,14 @@ class PublicController extends BaseController{
 		Session::flash('error', $error);
 		return Redirect::to('/');
 	}
+
+	public function free(){
+			$products = Product:://where('regular_price', '<=', 0)
+								where('discounted_price', '<=', 0)
+								->get();
+
+			return View::make('public.product_list', [
+					'products' => $products
+				])->with('category', json_decode(json_encode(array('category'=>'Free')), FALSE));
+	}
 }

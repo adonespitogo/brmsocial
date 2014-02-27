@@ -40,7 +40,7 @@ Back
         </div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group" ng-show="product.type.has_file=='1'">
 		<div class="col-md-6" ng-class="{'has-error': productForm.max_download.$error.required}">
 
 			<label class="control-label">Allowed Number of Downloads</label>
