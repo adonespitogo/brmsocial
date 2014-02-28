@@ -7,7 +7,8 @@ var c = angular.module('MainController', [
 
 c.controller('MainCustomerCtrl', [
 
-		'$scope', 'Users', 'Category', 'Products', function($scope, Users, Category, Products) {
+		'$scope', 'Users', 'Category', 'Products', '$http',
+		function($scope, Users, Category, Products, $http) {
 
 			$scope.navs = [
 				{state: "home", text: "Dashboard", icon: "fa-home", active: false},
@@ -30,5 +31,12 @@ c.controller('MainCustomerCtrl', [
 			$scope.currentUser = Users.get( { id: 'me'} );
 			$scope.categories = Category.query();
 			$scope.best_seller_products = Products.query();
+			
+			$scope.referFriend = function(){
+				$http.post('referrals/send', {emails: [$scope.friend_email]}).success(function(){
+					alert("Referral has been sent to " + $scope.friend_email + ".");
+					$scope.friend_email = "";
+				});
+			}
 		}
 	]);

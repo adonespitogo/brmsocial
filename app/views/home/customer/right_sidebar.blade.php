@@ -25,9 +25,9 @@
   <!-- End Best Sellers -->
 
   <div class="refer-friend">
-    <form role="form">
+    <form role="form" ng-submit="referFriend()">
       <div class="form-group">
-        <input type="email" class="form-control border-radius-0" placeholder="Email Address">
+        <input type="email" ng-model="friend_email" class="form-control border-radius-0" placeholder="Email Address">
       </div>
       <button type="submit" class="btn btn-green btn-default">REFER YOUR FRIENDS , GET $10</button>
     </form>
