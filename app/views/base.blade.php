@@ -7,6 +7,8 @@
 		@yield('head')
 		<style>a:hover{cursor: pointer;}</style>
 		<link rel="shortcut icon" href="{{URL::to('favicon.ico')}}" type="image/x-icon" >
+		<base href="{{URL::to('/')}}">
+		<script type="text/javascript">base_url = '{{URL::to("/")}}'</script>
 	</head>
 	<body>
 		@yield('body')
