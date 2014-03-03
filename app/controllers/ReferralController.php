@@ -41,7 +41,9 @@ class ReferralController extends BaseController{
 	public function getUserReferralToken()
 	{
 		$user = User::find(Input::get('user_id'));
-		return Response::json($user->getSocialMediaReferralToken());
+		$token = $user->getSocialMediaReferralToken();
+		$url = URL::to('signup/ref/'.$token->token);
+		return Response::json(array('referral_url' => $url));
 		
 	}
 }

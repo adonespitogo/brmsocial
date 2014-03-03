@@ -36,7 +36,7 @@ c = angular.module("CreditControllers", [
 				Facebook.ui({
 					method: 'feed',
 					name: 'Check out BRM Social, a cool new deals site for online marketers',
-					link: 'http://www.brmsocial.com/signup/ref/' + $scope.referral_token.token,
+					link: $scope.referral_token.referral_url,
 					picture: 'http://brmsocial.com/images/brmsocial-icon.png',
 					caption: 'Save up to 90% on popular online marketing tools and training courses. Get $10 to spend just for signing up!',
 					description: ' '
