@@ -11,6 +11,7 @@
 			<th>Buyer</th>
 			<th>Vendor</th>
 			<th>Price</th>
+			<th>Commission <strong>%</strong></th>
 			<th>Amount Commision</th>
 			<th>Date Purchased</th>
 		</tr>
@@ -21,6 +22,7 @@
 			<td ng-bind="o.buyer.fullname"></td>
 			<td ng-bind="o.product.user.fullname"></td>
 			<td ng-bind="o.price"></td>
+			<td ng-bind="o.percentage_commission + '%'"></td>
 			<td ng-bind="o.amount_commission"></td>
 			<td ng-bind="o.created_at_iso_date | date:'fullDate'"></td>
 		</tr>
