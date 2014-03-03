@@ -65,9 +65,7 @@
                     <div class="left-col">
                         <h3>Customers also bought</h3>
                         <!-- Start Customers also bought -->
-                        <div class="row deal-popular">
-                            @include('public.shared.most_popular')
-                        </div>
+                        @include('public.shared.most_popular')
                         <!-- End Customers also bought -->
                     </div>
                 </div>
@@ -173,6 +171,7 @@
             </div>
         </div>
     </section>
+</div>
 @stop
 @section('scripts')
 @parent

@@ -8,12 +8,12 @@ o = angular.module('OrderControllers', ['ui.router','OrderServices'])
 	'$stateProvider','$urlRouterProvider', 
 	($stateProvider, $urlRouterProvider)->
 		
-		templatePath = 'app/partials/orders/'
+		templatePath = 'app/partials/admin/orders/'
 
 		$stateProvider
 			.state 'orders',
 				url: '/orders',
-				template: templatePath+"list_orders",
+				template: JST[templatePath+"list_orders"],
 				controller: 'OrderCtrl'
 			.state 'orders.new',
 				url: '/new',
@@ -30,5 +30,5 @@ o = angular.module('OrderControllers', ['ui.router','OrderServices'])
 .controller('OrderCtrl',[
 	'$scope','Orders',
 	($scope, Orders)->
-		$scope.orders = Orders.get 
+		$scope.orders = Orders.all()
 ])

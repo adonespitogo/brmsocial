@@ -11,6 +11,7 @@
 			<th>Buyer</th>
 			<th>Vendor</th>
 			<th>Price</th>
+			<th>Commission <strong>%</strong></th>
 			<th>Amount Commision</th>
 			<th>Date Purchased</th>
 		</tr>
@@ -18,20 +19,16 @@
 	<tbody>
 		<tr ng-repeat="o in orders">
 			<td ng-bind="o.product_name"></td>
-			<td ng-bind="o.user.full_name"></td>
-			<td ng-bind="o.vendor.full_name"></td>
-			<td ng-bind="o."></td>
-			<td ng-bind="p.sale_end_date_iso_date | date:'fullDate'"></td>
-			<td ng-bind="p.user.fullname"></td>
-			<td>{{p.is_featured?'Yes':'No'}}</td>
-			<td ng-bind="p.created_at_iso_date | date:'fullDate'"></td>
-			<td style ="width:15%">
-				<a ui-sref="editProduct({id:p.id})" class="btn btn-success btn-small">
-					Edit
-				</a>
-				<a ng-click="deleteProduct(p)" class="btn btn-danger btn-small">
-					Delete
-				</a>
+			<td ng-bind="o.buyer.fullname"></td>
+			<td ng-bind="o.product.user.fullname"></td>
+			<td ng-bind="o.price"></td>
+			<td ng-bind="o.percentage_commission + '%'"></td>
+			<td ng-bind="o.amount_commission"></td>
+			<td ng-bind="o.created_at_iso_date | date:'fullDate'"></td>
+		</tr>
+		<tr ng-show="orders.length == 0">
+			<td colspan="6">
+				No orders yet.
 			</td>
 		</tr>
 	</tbody>
