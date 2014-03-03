@@ -14,6 +14,8 @@
 			<th>Commission <strong>%</strong></th>
 			<th>Amount Commision</th>
 			<th>Date Purchased</th>
+			<th>Date Vendor Paid</th>
+			<th>Status</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,6 +27,17 @@
 			<td ng-bind="o.percentage_commission + '%'"></td>
 			<td ng-bind="o.amount_commission"></td>
 			<td ng-bind="o.created_at_iso_date | date:'fullDate'"></td>
+			<td ng-bind="o.commission.paid_at_iso_date | date:'fullDate'" ng-show="o.commission.is_paid == '1'"></td>
+			<td ng-show="o.commission.is_paid == '0'">Not paid yet.</td>
+			<td>
+				<div ng-show="o.commission.is_paid == '0'">
+					<span class="text-danger">Unpaid</span>
+					<a class="btn btn-sm btn-success" ng-click="markCommissionPaid(o)">Mark Paid</a>
+				</div>
+				<div ng-show="o.commission.is_paid == '1'">
+					<span class="text-success">Paid</span>
+				</div>
+			</td>
 		</tr>
 		<tr ng-show="orders.length == 0">
 			<td colspan="6">

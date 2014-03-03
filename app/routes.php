@@ -56,6 +56,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('commissions/my-received-commissions', array('uses' => 'CommissionController@myReceivedCommission'));
 	Route::get('commissions/my-paid-commissions', array('uses' => 'CommissionController@paidCommissions'));
 	Route::get('commissions/my-unpaid-commissions', array('uses' => 'CommissionController@unpaidCommissions'));
+	Route::put('commissions/{id}', array('uses' => 'CommissionController@markPaid'));
 
 	Route::resource('traffic', 'TrafficController');
 	

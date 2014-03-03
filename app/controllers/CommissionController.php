@@ -23,6 +23,15 @@
 
 			return Response::json(array('commission' => $commission));
 		}
+		
+		public function markPaid($cid)
+		{
+			$c = Commission::find($cid);
+			$c->is_paid = true;
+			$c->paid_at = date('Y-m-d H:i:s');
+			$c->save();
+			return $c;
+		}
 
 	}
 
