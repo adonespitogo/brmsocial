@@ -12,7 +12,7 @@ main.controller "MainAdminCtrl", [
 					   {state:'products', label: 'Products'},
 					   {state: 'categories' ,label: 'Categories'},
 					   {state: 'users', label:'Users'},
-					   # {state: 'orders', label: 'Orders'}
+					   {state: 'orders', label: 'Orders'}
 					  ]
 						
 
