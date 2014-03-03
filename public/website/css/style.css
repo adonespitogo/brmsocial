@@ -108,7 +108,7 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .left-col #overview p, .left-col #overview {font-size: 16px; font-weight: normal;}
 .left-col #overview p span, .left-col #overview span {font-weight: 600; font-size: 16px;}
 .left-col #overview ul {list-style-type: disc; padding-left: 17px !important; }
-.left-col #overview ul li {font-weight: normal; font-size: 16px; color:#565656 !important; padding: 0 0 5px 0; width:inherit;}
+.left-col #overview ul li {font-weight: normal; font-size: 16px; color:#565656 !important; padding: 0 0 5px 0; width:inherit; text-align:left;}
 .left-col #overview ul li a{border-radius: 0 !important;}
 .left-col #overview .category-wrapper {border-bottom: 1px solid #f2f2f2; padding-bottom: 40px;}
 .product-tabs ul {border-bottom: 0 !important;}
