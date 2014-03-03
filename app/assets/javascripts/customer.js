@@ -18,6 +18,7 @@
 //= require lib/angular-strap/angular-strap.tpl
 //= require lib/angular-fileupload/angular-file-upload-shim
 //= require lib/angular-fileupload/angular-file-upload
+//= require lib/facebook/angular-facebook
 //
 //= require app/modules/customer_app
 //= require_tree app/controllers/customer

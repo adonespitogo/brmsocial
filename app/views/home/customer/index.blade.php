@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/media-queries.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/style.css') }}">
-
+    <div id="fb-root"></div>
 @stop
 
 @section('body')
