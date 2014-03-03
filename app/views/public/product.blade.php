@@ -66,12 +66,20 @@
                 <div class="col-md-4">
                     <div class="right-col">
                         <div class="product-right-col clearfix">
-                            
-                            <span class="save">save {{$product->getDiscountPercentage()}}%</span>
+                            @if($product->discounted_price > 0)
+                                <span class="save">save {{$product->getDiscountPercentage()}}%</span>
+                            @else
+                                <span class="save">100% off</span>
+                            @endif
                             <div class="featured-price">
                                 <ul>
-                                    <li>now only</li>
-                                    <li>${{(int)$product->discounted_price}}<span>.00</span></li>
+                                    @if($product->discounted_price > 0)
+                                        <li>now only</li>
+                                        <li>${{(int)$product->discounted_price}}<span>.00</span></li>
+                                    @else
+                                        <li></li>
+                                        <li>$0<span>.00</span></li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="reg-price">

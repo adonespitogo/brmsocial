@@ -13,7 +13,16 @@
 			
 			<h4>
 			<a href="{{URL::to('product/'.$p->slug)}}">
-			{{$p->product_name}} <span>${{number_format($p->discounted_price, 2)}}</span><span class="free">$0.00</span>
+			
+			{{$p->product_name}} <br>
+			
+			@if($p->discounted_price > 0)
+				<span>${{number_format($p->discounted_price, 2)}}</span>
+			@else
+				<span class="free">$0.00</span>
+			@endif
+			
+			
 			</a></h4>
 			<ul>
 				<li><i class="fa fa-clock-o"></i>{{$p->getLeftSaleDays()}} days</li>
