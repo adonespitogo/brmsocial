@@ -118,17 +118,17 @@
                                     <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
                                 </h3>
                                 <ul>
-                                    <li>
+                                    <li class="active">
                                         <i class="fa fa-check-circle pull-right"></i>
                                         <div><strong>Step 1:</strong> Connect with us</div>
-                                        <p>Having trouble? Try repeating step one.</p>
+                                        <p>Having trouble?<br />Try repeating step one.</p>
                                     </li>
                                     <li>
                                         <i class="fa fa-check-circle"></i>
                                         <div><strong>Step 2:</strong> Connect with us</div>
-                                        <p>Having trouble? Try repeating step one.</p>
                                     </li>
                                 </ul>
+                                <button class="btn-disabled" disabled="disabled">COMPLETE THE STEPS ABOVE TO GET IT</button>
                             </div>
 
 

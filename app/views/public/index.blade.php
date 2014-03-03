@@ -83,7 +83,7 @@
 							
 							<form class="form-inline" role="form" action="{{URL::to('subscribe')}}" method="POST">
 							  <div class="form-group">
-							    <i class="icon icon-envelope"></i><input name="email" type="email" class="form-control no-br" placeholder="your@email.com">
+							    <i class="fa fa-envelope"></i><input name="email" type="email" class="form-control no-br" placeholder="your@email.com">
 							  </div>
 							  <button type="submit" class="btn btn-green btn-default no-br">Submit</button>
 							</form>
