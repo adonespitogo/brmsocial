@@ -94,6 +94,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     	'interests' => array(self::BELONGS_TO_MANY, 'Interest', 'table' => 'user_interests'),
     	'referrals' => array(self::HAS_MANY, 'Referral'),
     	'transactions' => array(self::HAS_MANY, 'UserTransaction'),
+    	'friends_joined' => array(self::BELONGS_TO_MANY, 'User', 'table' => 'referrals_friends_joined', 'otherKey' => 'friend_id'),
     );
 
     // END RELATIONSHIPS
@@ -191,7 +192,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	
 	public function getTotalReferral()
 	{
-		$total = $this->referrals()->where('joined', true)->count();
+		$total = $this->friends_joined()->count();
 		if(is_null($total)) return 0;
 		return (int)$total;
 	}
@@ -214,13 +215,14 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	
 	public function getFriendsWhoJoined()
 	{
-		$emails = $this->referrals()->select('email')->where('joined', true)->get();
-		if(count($emails->toArray()) == 0) return array();
-		$es = array();
-		foreach ($emails as $e) {
-			$es[] = $e->email;
+		$friend_ids = DB::table('referrals_friends_joined')->select('friend_id')->where('user_id', $this->id)->get();
+		$ids = array();
+		foreach ($friend_ids as $f) {
+			$ids[] = $f->friend_id;
 		}
-		return User::whereIn('email', $es)->get();
+		$friends = User::whereIn('id', $ids)->get();
+		if(is_null($friends)) return array();
+		return $friends;
 	}
 	
 	public function createSubscriptionEntry()
@@ -236,22 +238,51 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		$this->password = $p;
 	}
 	
-	public function checkIfReferred()
+	private function checkIfReferredViaSocialMedia()
 	{
-		$referred = Referral::where('email', $this->email)->first();
-		if(!is_null($referred) && (boolean)$referred->joined == false){
-			$referred->joined = true;
-			$referred->updateUniques();
-			
-			$ut = new UserTransaction();
-			$ut->user_id = $referred->user_id;
-			$ut->amount = 10;
-			$ut->remarks = 'Referral Reward';
-			$ut->type = 'referral_reward';
-			$ut->transaction_id = BRMHelper::genRandomTransactionId();
-			$ut->is_credit = true;
-			$ut->save();
+		if(Session::has('referral_token')){
+			$referred = DB::table('social_media_referrals')
+						->where('token', Session::get('referral_token'))
+						->first();
+						
+			Session::forget('referral_token');
+						
+			if(!is_null($referred)){
+				$this->grantReferral($referred->user_id);
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
+	}
+	
+	private function checkIfReferred()
+	{
+		if(!$this->checkIfReferredViaSocialMedia()){
+			$referred = Referral::where('email', $this->email)->first();
+			if(!is_null($referred) && (boolean)$referred->joined == false){
+				$referred->joined = true;
+				$referred->updateUniques();
+				
+				$this->grantReferral($referred->user_id);
+			}
+		}
+	}
+	
+	private function grantReferral($user_id)
+	{
+		$ut = new UserTransaction();
+		$ut->user_id = $user_id;
+		$ut->amount = 10;
+		$ut->remarks = 'Referral Reward';
+		$ut->type = 'referral_reward';
+		$ut->transaction_id = BRMHelper::genRandomTransactionId();
+		$ut->is_credit = true;
+		$ut->save();
+		
+		$friend_joined_referral = array('user_id' => $user_id, 'friend_id' => $this->id);
+		DB::table('referrals_friends_joined')->insert(array($friend_joined_referral));
 	}
 	
 	public function sendReferrals($emails)
