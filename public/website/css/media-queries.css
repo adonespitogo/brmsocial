@@ -10,7 +10,7 @@
 	/*body { border:10px solid red; }*/
 	.container { max-width:990px; }
 	.deal-page .right-col .related-deals .l-img { float:left; width:112px; }
-	.deal-page .right-col .related-deals .r-details { float:left; }
+	.deal-page .right-col .related-deals .r-details { float:left; width:150px; }
 
 }
 
