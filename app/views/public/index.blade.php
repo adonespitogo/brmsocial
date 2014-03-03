@@ -38,21 +38,30 @@
 							</a>
 						</div>
 						<div class="row">
-							<div class="col-sm-6">
-								<div class="featured-title">{{$featured->product->product_name}}</div>
+							<div class="col-sm-9">
+								<div class="featured-title">
+									{{$featured->product->product_name}} 
+									<span class="save">save {{$featured->product->getDiscountPercentage()}}%</span>
+								</div>
+								
+							</div>
+							<div class="col-sm-3 text-right">
 								<div class="featured-price">
 									<ul>
-										<li>now only</li>
+										@if($featured->product->price > 0)
+											<li>now only</li>
 										<li>${{number_format($featured->product->discounted_price, 0)}}<span>.00</span></li>
+										@else
+											<li></li>
+											<li>$0<span>.00</span></li>
+										@endif
 									</ul>
 								</div>
-							</div>
-							<div class="col-sm-6 text-right">
 								<div class="reg-price">
-									<span>${{number_format($featured->product->regular_price, 0)}}</span><br />
-									regular price
+									regular price 
+									<span>${{number_format($featured->product->regular_price, 0)}}
+									</span>
 								</div>
-								<span class="save">save {{$featured->product->getDiscountPercentage()}}%</span>
 							</div>
 						</div>
 						<!-- End Featured Deal -->

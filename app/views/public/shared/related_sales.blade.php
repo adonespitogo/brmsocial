@@ -11,7 +11,13 @@
 
 				@endif
 				<div><a href="{{URL::to('product/'.$product->slug)}}">{{$product->product_name}}</a></div>
-				<div class="price">${{$product->discounted_price}}<span class="free">$0.00</span></div>
+				<div class="price">
+					@if($product->discounted_price > 0)
+						${{$product->discounted_price}}
+					@else
+						<span class="free">$0.00</span>
+					@endif
+				</div>
 				<ul>
 					<li><i class="fa fa-clock-o"></i>{{$product->getLeftSaleDays()}} days</li>
 					<li><a href="{{URL::to('category/'.$product->category->slug)}}">{{$product->category->category}}</a></li>
