@@ -12,17 +12,11 @@ class Order extends BaseModel{
 	);
 
 	public static $relationsData = array(
-		'user' => array(self::BELONGS_TO, 'User'),
-		'product' => array(self::BELONGS_TO, 'Product')
+		'vendor' => array(self::BELONGS_TO, 'User', 'foreignKey' =>'vendor_id'),
+		'buyer' => array(self::BELONGS_TO, 'User', 'foreignKey' => 'user_id'),
+		'product' => array(self::BELONGS_TO, 'Product'),
+		'commission' => array(self::HAS_ONE, 'Commission')
 	);
-
-	public function toArray() {
-
-		$this->load('product');
-
-		return parent::toArray();
-
-	}
 
 	public function getPicture()
 	{
