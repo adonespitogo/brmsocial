@@ -48,9 +48,12 @@
 							<div class="col-sm-3 text-right">
 								<div class="featured-price">
 									<ul>
-										@if($featured->product->price > 0)
+										@if($featured->product->discounted_price > 0)
 											<li>now only</li>
-										<li>${{number_format($featured->product->discounted_price, 0)}}<span>.00</span></li>
+											<li>
+												${{number_format($featured->product->discounted_price, 0)}}
+												<span>.00</span>
+											</li>
 										@else
 											<li></li>
 											<li>$0<span>.00</span></li>
