@@ -20,7 +20,7 @@
 		  	<li><a href="{{URL::to('signup/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
 	  	</ul>	  	
 	  </div>
-	  <div class="via-email">Sign up via E-Mail</div>
+	  <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
 	</section>
 
 	<section class="deal-page bg-image-white">
