@@ -66,19 +66,20 @@
                 <div class="col-md-4">
                     <div class="right-col">
                         <div class="product-right-col clearfix">
+                            
+                            <span class="save">save {{$product->getDiscountPercentage()}}%</span>
                             <div class="featured-price">
                                 <ul>
                                     <li>now only</li>
                                     <li>${{(int)$product->discounted_price}}<span>.00</span></li>
                                 </ul>
                             </div>
-                            <div class="reg-price text-right">
+                            <div class="reg-price">
                                 <span>${{(int)$product->regular_price}}</span><br />
                                 regular price
                                 <h2></h2>
-                            </div>
-                            <div class="clearfix"><span class="save pull-right">save {{$product->getDiscountPercentage()}}%</span></div>
-                            <h4 class="clearfix">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
+                            </div>                            
+                            <h4 class="clearfix" style="clear:both">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$product->getEndDatePercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$product->getEndDatePercentage()}}%">
                                     <span class="sr-only">
@@ -109,7 +110,28 @@
                             data-product-description=""
                             >
                             BUY NOW
-                            </button>
+                            </button>     
+                            
+                            
+                            <div class="fb-steps">
+                                <h3 class="text-center first-h3">
+                                    <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
+                                </h3>
+                                <ul>
+                                    <li>
+                                        <i class="fa fa-check-circle pull-right"></i>
+                                        <div><strong>Step 1:</strong> Connect with us</div>
+                                        <p>Having trouble? Try repeating step one.</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check-circle"></i>
+                                        <div><strong>Step 2:</strong> Connect with us</div>
+                                        <p>Having trouble? Try repeating step one.</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                             <div class="terms-of-sale">
                                 <h4>Terms of Sale</h4>
                                 <ul class="fa-ul">

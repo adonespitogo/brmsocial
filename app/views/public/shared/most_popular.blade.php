@@ -13,10 +13,10 @@
 			
 			<h4>
 			<a href="{{URL::to('product/'.$p->slug)}}">
-			{{$p->product_name}} <span>${{number_format($p->discounted_price, 2)}}</span>
+			{{$p->product_name}} <span>${{number_format($p->discounted_price, 2)}}</span><span class="free">$0.00</span>
 			</a></h4>
 			<ul>
-				<li>{{$p->getLeftSaleDays()}} days</li>
+				<li><i class="fa fa-clock-o"></i>{{$p->getLeftSaleDays()}} days</li>
 				<li><a href="{{URL::to('category/'.$p->category->slug)}}">{{$p->category->category}}</a></li>
 			</ul>
 		</div>

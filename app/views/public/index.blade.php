@@ -35,7 +35,6 @@
 
 							<a href="product/{{ $featured->product->slug }}">
 								<img src='{{URL::to($featured->product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
-
 							</a>
 						</div>
 						<div class="row">

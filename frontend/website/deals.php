@@ -17,21 +17,19 @@
 								<img src='images/products/large/socialmediamgt.jpg' alt="featured deal" title="featured deal">
 							</div>
 							<div class="row">
-								<div class="col-sm-6">
-									<div class="featured-title">Making Profits with Pinterest</div>
+								<div class="col-md-9">
+									<div class="featured-title">Making Profits with Pinterest <span class="save">save 23%</span></div>
+								</div>
+								<div class="col-md-3 text-right">
 									<div class="featured-price">
 										<ul>
 											<li>now only</li>
 											<li>$25<span>.00</span></li>
 										</ul>
 									</div>
-								</div>
-								<div class="col-sm-6 text-right">
 									<div class="reg-price">
-										<span>$130</span><br />
-										regular price
+										regular price <span>$130</span>										
 									</div>
-									<span class="save">save 23%</span>
 								</div>
 							</div>
 							<!-- End Featured Deal -->
