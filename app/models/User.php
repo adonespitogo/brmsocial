@@ -264,6 +264,23 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		}
 	}
 	
+	private function setSocialMediaReferralToken()
+	{
+		DB::table('social_media_referrals')->insert(array(
+			array(
+				'user_id' => $this->id,
+				'token' => md5(time()),
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s')
+			)
+		));
+	}
+	
+	public function getSocialMediaReferralToken()
+	{
+		return DB::table('social_media_referrals')->where('user_id', $this->id)->first();
+	}
+	
 	public function isFacebookUser()
 	{
 		return (isset($this->fb_id) && $this->fb_id != '');
@@ -328,6 +345,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	{
 		if($this->type == 'customer'){
 			$this->createSubscriptionEntry();
+			$this->setSocialMediaReferralToken();
 
 			$this->checkIfReferred();
 			MailHelper::signupMessage($this->getFullname(), $this->email, $this->rawPassword);

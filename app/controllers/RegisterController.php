@@ -140,4 +140,10 @@ class RegisterController extends BaseController{
 		}
 	}
 	
+	public function fromSocialMediaReferral($token)
+	{
+		Session::put('referral_token', $token);
+		return Redirect::to('signup');
+	}
+	
 }
