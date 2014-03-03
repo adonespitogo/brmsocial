@@ -33,4 +33,10 @@ s.factory "Referrals", ($resource) ->
 			params:
 				endpoint: 'friends-who-joined'
 			isArray: true
+				
+		referralToken:
+			method: 'GET'
+			params:
+				endpoint: 'user-referral-token'
+			isArray: false
 	}

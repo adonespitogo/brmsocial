@@ -49,7 +49,7 @@
     <div class="referal">
       <label><span>Share, Refer and Get Discount</span><br>You will get $10 credits on every friend that purchases with us...</label>
       <a ng-click="referViaFacebook()" class="fb btn-fb"><img src="customer/images/btn-fb.png"> Refer via Facebook</a>
-      <a href="#" class="twit btn-twit"><img src="customer/images/btn-twit.png"> Refer via Twitter</a>
+      <a ng-href="http://twitter.com/share?url=http://brmsocial.com/signup/ref/{{referral_token.token}}&text=Check out BRM Social, a cool new deals site for online marketers" class="twit btn-twit" target="_blank"><img src="customer/images/btn-twit.png"> Refer via Twitter</a>
     </div>
     <div class="credit-form">
       <form role="form" ng-submit="sendReferrals()">
