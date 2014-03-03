@@ -2,7 +2,7 @@
 #
 # @abstract Description
 #
-o = angular.module('OrderControllers', ['ui.router','OrderServices'])
+o = angular.module('OrderControllers', ['ui.router','OrderServices', 'CommissionServices'])
 
 .config([
 	'$stateProvider','$urlRouterProvider', 
@@ -15,20 +15,16 @@ o = angular.module('OrderControllers', ['ui.router','OrderServices'])
 				url: '/orders',
 				template: JST[templatePath+"list_orders"],
 				controller: 'OrderCtrl'
-			.state 'orders.new',
-				url: '/new',
-				template: templatePath+"new_order",
-				controller: 'NewOrderCtrl'
-			.state 'orders.edit',
-				url: 'edit',
-				template: templatePath+'edit_order',
-				controller: 'EditOrderCtrl'
 
 ])
 	# configuration handler
 
 .controller('OrderCtrl',[
-	'$scope','Orders',
-	($scope, Orders)->
+	'$scope','Orders', 'Commissions'
+	($scope, Orders, Commissions)->
 		$scope.orders = Orders.all()
+		
+		$scope.markCommissionPaid = (order) ->
+			Commissions.markPaid id: order.commission.id, (commission)->
+				order.commission = commission
 ])

@@ -8,4 +8,5 @@ c.factory 'Commissions', ($resource) ->
 		recievedComission: { method: 'GET', params: { id: 'my-received-commissions' }, isArray: false }
 		unpaidCommissions: { method: 'GET', params: { id: 'my-unpaid-commissions' }, isArray: true }
 		paidCommissions: { method: 'GET', params: { id: 'my-paid-commissions' }, isArray: true }
+		markPaid: {method: 'PUT', params:{}, isArray: false}
 	}
