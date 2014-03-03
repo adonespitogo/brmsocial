@@ -13,6 +13,14 @@
     <section class="sp2-ordinary-page-title two-lines text-center">
         <h1 class="fs-36">{{$product->product_name}}</h1>
         <h2 class="fs-24">{{$product->tagline}}</h2>
+        <div class="social-header">
+            <ul>
+                <li><a href="{{URL::to('signup/facebook')}}" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
+                <li><span>or</span></li>
+                <li><a href="{{URL::to('signup/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
+            </ul>       
+        </div>
+        <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
     </section>
     <section class="deal-page bg-image-white">
         <div class="container">

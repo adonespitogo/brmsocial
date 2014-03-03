@@ -103,16 +103,16 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .deal-page .right-col .upcoming-sales ul li dd p { font-size:12px; color:#868686; line-height:11px; margin:2px 0 0 0; }
 
 /*==== New Product Page ====*/
-.left-col #overview p {font-size: 16px; font-weight: normal;}
-.left-col #overview p span {font-weight: 600; font-size: 16px;}
-.left-col #overview h4 {font-weight: 600; font-size: 16px; font-family:'Open Sans', sans-serif !important;}
-.left-col #overview ul {list-style-type: disc; padding-left: 17px !important;}
-.left-col #overview ul li {font-weight: normal; font-size: 16px;padding: 5px 5px;}
+.left-col #overview h3, .left-col #overview h4 { font-weight:600; font-family:'Open Sans', sans-serif !important; }
+.left-col #overview p, .left-col #overview {font-size: 16px; font-weight: normal;}
+.left-col #overview p span, .left-col #overview span {font-weight: 600; font-size: 16px;}
+.left-col #overview ul {list-style-type: disc; padding-left: 17px !important; }
+.left-col #overview ul li {font-weight: normal; font-size: 16px; color:#565656 !important; padding: 0 0 5px 0; width:inherit;}
 .left-col #overview ul li a{border-radius: 0 !important;}
 .left-col #overview .category-wrapper {border-bottom: 1px solid #f2f2f2; padding-bottom: 40px;}
 .product-tabs ul {border-bottom: 0 !important;}
 .product-tabs ul li {width:100px; text-align: center; font-size: 14px; font-weight: normal; color: #000; border: 0 !important;border-radius: 0 !important;}
-.product-tabs ul li a{color: #000; font-weight: 600; margin-right: 0 !important;}
+.product-tabs ul li a {color: #000; font-weight: 600; margin-right: 0 !important;}
 .product-tabs ul li:nth-child(1)>a {cursor:default;}
 .product-tabs ul li:nth-child(1)>a:hover {cursor:default; background: #fff; border: 0 !important;}
 .product-tabs ul li:nth-child(2) {font-weight: normal;font-family:'Open Sans', sans-serif !important;}
