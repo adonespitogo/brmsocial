@@ -29,12 +29,14 @@
 				          	<li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43;"><a href="{{URL::to('signup')}}">Signup</a></li>
 				         	<li style="padding-left: 15px;"><a href="{{URL::to('session/login')}}">Login</a></li>
 				           	<li>
-				           		<div class="bg-cart">
-				            		<span class="cart-dolsign">$</span>
-				            		<span class="cart-price totalPrice">17</span>
-				            		<i class="fa fa-shopping-cart"></i>
-				            		<span class="cart-orders totalItem">2</span>
-				           		</div>
+				           		<a href="{{ URL::to('cart') }}">
+					           		<div class="bg-cart">
+					            		<span class="cart-dolsign">$</span>
+					            		<span class="cart-price totalPrice">17</span>
+					            		<i class="fa fa-shopping-cart"></i>
+					            		<span class="cart-orders totalItem">2</span>
+					           		</div>
+					           	</a>
 				           	</li>
 					    </ul>
 				   </div>
