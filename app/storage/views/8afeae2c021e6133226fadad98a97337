@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li ng-repeat="nav in navs" ng-class="{'active': state.current.name==nav.state}">
-              <a ui-sref="@{{nav.state}}" ng-bind="nav.label"></a>
+              <a ui-sref="{{nav.state}}" ng-bind="nav.label"></a>
             </li>  
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -26,7 +26,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown"><b>Settings <span class="glyphicon glyphicon-cog"></span></b></a>
               <ul class="dropdown-menu" role="menu">
                <li><a ng-click="copyCurrentUser()" href="#account-settings" data-toggle="modal">My Account</a></li>
-                <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
+                <li><a href="<?php echo URL::to('session/logout'); ?>">Logout</a></li>
               </ul>
             </li>
           </ul>

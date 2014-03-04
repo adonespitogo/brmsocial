@@ -5,78 +5,87 @@
 	<base href="{{URL::to('/')}}" />
 @stop
 @section('content')
-<section class="checkout">	
+<section class="checkout" ng-app="Cart">	
 	<div class="container pt-40">
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Account</h3>
-				<div class="co-wrapper">
+				<div class="co-wrapper" ng-controller="cartCtrl">
+					 
 					<table class="table">				        
 				        <tbody>
 							<tr>
 								<td colspan="5">
 									<form role="form">
-								      <div class="form-group">
-								      	<input type="hidden" class="cart_id" {{ isset($_COOKIE['cart_session_id']) ? $_COOKIE['cart_session_id'] : '' }} />
-								        <label for="exampleInputEmail1">Email address</label>
-								        <input type="email" placeholder="ie. yourname@domain.com" class="form-control br-0 buyer_email">
-								      </div>
+									<div class="form-group">
+									  @if(Auth::user())
+								      	<label for="exampleInputEmail1">Email address</label>
+									        <input type="email" placeholder="ie. yourname@domain.com" class="form-control br-0 buyer_email" value="{{Auth::user()->email}}" disabled>
+								      @else
+									      	<label for="exampleInputEmail1">Email address</label>
+									        <input type="email" name="email" placeholder="ie. yourname@domain.com" ng-model="email"  ng-blur="saveEmail(email)" class="form-control br-0 buyer_email" data-original-title >
+									   @endif
+								    </div>
 								    </form>
 								</td>
 							</tr>
-							@foreach($cart_items as $item)
-				          	<tr class="item-{{ $item->id }}">
+							 
+				          	<tr ng-repeat="item in cartItems" ng-class="item-@{{ item.id }}" ng-cloak class='ng-cloak'>  
 					            <td class="co-prod">
-									<img src="{{URL::to($item->product->pictures[0]->picture->url())}}">
-									<h4>{{ $item->product->product_name }}</h4>
-									<i class="fa fa-video-camera"></i><a href="#">video course</a>
+									<img ng-src="@{{item.product_picture}}">
+									<h4 ng-bind="item.product.product_name"></h4>
+									<i class="fa fa-video-camera"></i><a href="#" ng-bind="item.product.type.type"></a>
 					            </td>
 					            <td class="co-rprice">
 									<div class="co-title">Regular Price</div>
-									<span>${{ $item->product->regular_price }}</span>
+									<span ng-bind="'$ '+item.product.regular_price"></span>
 					            </td>
 					            <td class="co-discount">
 									<div class="co-title">Discount</div>
-									<span>{{ $item->product->getDiscountPercentage() }}%</span>
+									<span ng-bind="item.discount_percentage+'%'"></span>
 					            </td>
 					            <td class="co-price">
 									<div class="co-title">Price</div>
-									<span>${{ $item->product->discounted_price }}</span>
+									<span ng-bind="'$'+item.product.discounted_price"></span>
 					            </td>
 					            <td class="co-remove">
-									<a href="javascript:void(0)" onclick="removeItem({{ $item->id }})"><i class="fa fa-times"></i></a>
+									<a href="javascript:void(0)" ng-click="remove(item)"><i class="fa fa-times"></i></a>
 					            </td>
 				          	</tr>
-
-				          	@endforeach
+  
 
 				        </tbody>
 				    </table>
-				</div>
-				<div class="row">
+				     
+				    <div class="alert alert-warning" ng-show="cartItems.length<=0">Your cart is empty</div>
+					 
+				</div>  
+				<div class="row" ng-hide="cartItems.length<=0">
+					 
 					<div class="col-md-12">
 						<div class="co-total clearfix">
 							<ul class="co3-total-row">
 				                <li class="co3-total">
 				                    TOTAL
-				                    <div><span>$</span><span class='cart_total'></span>100.00</div>
+				                    <div><span>$</span><span ng-bind="priceTotal">0</span>.00</div>
 				                </li>
 				                
 				                <li class="pull-right hidden-xs">
-				                    <a href="javascript:void(0)" class="btn-green btn-co3-step2 confirm-checkout-btn"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
+				                    <a href="{{URL::to('payment/go-pay/paypal')}}" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
 				                </li>
 				                <li class="pull-right hidden-xs"><div class="co3-or img-circle">OR</div></li>
 				                <li class="pull-right hidden-xs">
-				                    <a href="javascript:void(0)" class="btn-green btn-co3-step2 confirm-checkout-btn"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
+				                    <a href="{{URL::to('payment/go-pay/credit-card')}}" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
 				                </li>
 				                <li class="pull-right visible-xs btn-paynow">
-				                    <a href="javascript:void(0)" class="btn-green btn-co3-step2 confirm-checkout-btn">
+				                    <a href="{{URL::to('payment/go-pay/paypal')}}" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)">
 				                        <span>Pay Now <img src="http://localhost/brmsocial/public/website/images/img-pay-now.png" alt="paypal" title="paypal"></span>
 				                    </a>
 				                </li>				                
 				            </ul>
 						</div>
 					</div>
+					 
 				</div>
 
 				
@@ -130,6 +139,5 @@
 
 @section('scripts')
 	@parent
-	{{HTML::script("website/js/add-order.js")}}
-	{{HTML::script("website/js/cart.js")}}
+	{{javascript_include_tag('cart')}}
 @stop

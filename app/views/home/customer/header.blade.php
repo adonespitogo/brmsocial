@@ -5,19 +5,19 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="nav-style">
-                  <a><img src="{{ URL::to('customer/images/brmsocial-logo.png') }}" alt="BRM Social" class="logo"></a>
+                  <a href="{{URL::to('/')}}"><img src="{{ URL::to('customer/images/brmsocial-logo.png') }}" alt="BRM Social" class="logo"></a>
                   <ul class="nav nav-pills">
                     <li class="dropdown shop">
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>
                       <ul class="dropdown-menu">
 
                         <li ng-repeat="category in categories">
-                          <a href="{{ URL::to('products/category') }}/@{{ category.slug }}"><i class="fa fa-star"></i>@{{ category.category }}</a>
+                          <a href="{{ URL::to('products/category') }}/@{{ category.slug }}"><i class="fa fa-star"></i ng-cloak class="ng-cloak">@{{ category.category }}</a>
                         </li>
 
                       </ul>
                     </li>
-                    <li class="dropdown"><a href="#">Free Stuff</a></li>
+                    <li class="dropdown"><a href="{{URL::to('free-products')}}">Free Stuff</a></li>
                   </ul>
                 </div>
                 <div class="login-con">

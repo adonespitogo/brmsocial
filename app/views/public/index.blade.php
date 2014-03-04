@@ -13,13 +13,15 @@
 	<section class="sp2-ordinary-page-title two-lines text-center">
 	  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
 	  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>
-	  <div class="social-header">
+	  @if(!Auth::user())
+	  	<div class="social-header">
 	  	<ul>
 		  	<li><a href="{{URL::to('signup/facebook')}}" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
 		  	<li><span>or</span></li>
 		  	<li><a href="{{URL::to('signup/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
 	  	</ul>	  	
 	  </div>
+	  @endif
 	  <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
 	</section>
 
@@ -35,6 +37,7 @@
 
 							<a href="product/{{ $featured->product->slug }}">
 								<img src='{{URL::to($featured->product->pictures[0]->picture->url())}}' alt="featured deal" title="featured deal">
+
 							</a>
 						</div>
 						<div class="row">

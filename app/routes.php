@@ -5,16 +5,20 @@ new EventListener();
 
 // start public routes
 Route::get('/', array('uses' => 'PublicController@index'));
+Route::get('login', array('uses' => 'SessionController@getLogin'));
 Route::get('product/{slug}', array('uses' => 'PublicController@product'));
 Route::get('free-products', array('uses' => 'PublicController@free'));
-Route::get('category/{slug}', array('uses' => 'CategoryController@getProducts'));
+Route::get('products/category/{slug}', array('uses' => 'CategoryController@getProducts'));
 Route::controller('session', 'SessionController');
 Route::get('signup', array('uses' => 'RegisterController@index'));
 Route::get('signup/ref/{token}', array('uses' => 'RegisterController@fromSocialMediaReferral'));
 Route::get('signup/facebook', array('uses' => 'RegisterController@registerViaFacebook'));
 Route::get('signup/twitter', array('uses' => 'RegisterController@registerViaTwitter'));
-Route::post('register', array('uses' => 'RegisterController@create'));
+Route::post('register', array('uses' => 'RegisterController@create')); 
+
+Route::delete('cart/{id}', array('uses'=>'CartController@deleteIndex'));
 Route::controller('cart', 'CartController');
+Route::controller('payment', 'PaymentController');
 Route::post('subscribe', array('uses' => 'PublicController@addSubscriber'));
 
 // start protected routes

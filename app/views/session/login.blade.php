@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-lg-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-lg-offset-4" style="padding-top: 50px;">
-
+				<a href="{{URL::to('')}}"
 				<p class="align-center">
 					{{ 
 						image_tag(
@@ -26,6 +26,7 @@
 						) 
 					}}
 				</p>
+				</a>
 
 				<form action="{{URL::to('session/login')}}" method="POST">
 					<div class="form-group">

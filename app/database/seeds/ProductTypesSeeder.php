@@ -5,8 +5,8 @@ class ProductTypesSeeder extends Seeder{
 	{
 		ProductType::insert(array(
 				array('type'=>'Video Tutorials'),
-				array('type'=>'App'), 
-				array('type'=>'Ebook'),
+				array('type'=>'App','has_file'=>true), 
+				array('type'=>'Ebook','has_file'=>true),
 			));
 	}
 }

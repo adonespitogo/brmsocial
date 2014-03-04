@@ -71,12 +71,13 @@
                 </div>
                 <div class="col-md-4">
                     <div class="right-col">
-                        <div class="product-right-col clearfix">
+                        <div class="product-right-col clearfix"> 
                             @if($product->discounted_price > 0)
                                 <span class="save">save {{$product->getDiscountPercentage()}}%</span>
                             @else
                                 <span class="save">100% off</span>
                             @endif
+ 
                             <div class="featured-price">
                                 <ul>
                                     @if($product->discounted_price > 0)
@@ -88,12 +89,13 @@
                                     @endif
                                 </ul>
                             </div>
-                            <div class="reg-price">
+                            <div class="reg-price text-right">
                                 <span>${{(int)$product->regular_price}}</span><br />
                                 regular price
                                 <h2></h2>
-                            </div>                            
-                            <h4 class="clearfix" style="clear:both">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
+                            </div>
+                            <div class="clearfix"><span class="save pull-right">save {{$product->getDiscountPercentage()}}%</span></div>
+                            <h4 class="clearfix">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$product->getEndDatePercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$product->getEndDatePercentage()}}%">
                                     <span class="sr-only">
@@ -144,8 +146,6 @@
                                 </ul>
                                 <button class="btn-disabled" disabled="disabled">COMPLETE THE STEPS ABOVE TO GET IT</button>
                             </div>
-
-
                             <div class="terms-of-sale">
                                 <h4>Terms of Sale</h4>
                                 <ul class="fa-ul">

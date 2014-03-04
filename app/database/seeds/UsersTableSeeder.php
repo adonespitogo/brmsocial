@@ -36,6 +36,15 @@ class UsersTableSeeder extends Seeder {
 					'firstname' => 'Romnick',
 					'lastname' => 'Revalde',
 					'profile_img' => 'default_vendor.jpg'
+				),
+				array(
+					'id' => 4,
+					'email' => 'arnel.lenteria@gmail.com',
+					'password' => Hash::make('1'),
+					'type' => 'customer',
+					'firstname' => 'Arnel',
+					'lastname' => 'Lenteria',
+					'profile_img' => 'default_vendor.jpg'
 				)
 			)
 		);

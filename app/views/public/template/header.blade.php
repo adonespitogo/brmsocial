@@ -13,7 +13,7 @@
 					        <ul class="dropdown-menu">
 					        	@foreach (Category::all() as $category)
 									<li>
-										<a href="{{URL::to('category/'.$category->slug)}}">
+										<a href="{{URL::to('products/category/'.$category->slug)}}">
 											<i class="fa fa-star"></i>
 											{{$category->category}}
 										</a>
@@ -26,8 +26,40 @@
 				    </div>
 				    <div class="login-con">
 					    <ul class="">
+					    	@if(Auth::user()&&Auth::user()->type=='admin')
+					    		<li style="padding-left: 15px;" class="custom-login-dropdown">
+					              <div class="dropdown">
+					                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" style="font-family: 'Open Sans', sans-serif;font-weight: 400;font-size: 15px;color: #FFF;"> 
+					                {{Auth::user()->firstname}} {{Auth::user()->lastname}}
+					                <span class="caret"></span></a>
+					                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">                  
+					                  <li><a href="{{URL::to('home')}}">Dashboard</a></li>
+					                  <li><a href="{{URL::to('home#/products')}}">Products</a></li>
+					                  <li><a href="{{URL::to('home#/categories')}}">Categories</a></li> 
+					                  <li><a href="{{URL::to('home#/users')}}">Users</a></li>
+					                  <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
+					                </ul>
+					              </div>
+					            </li>
+					        @elseif(Auth::user()&&Auth::user()->type=='customer')
+					        	<li style="padding-left: 15px;" class="custom-login-dropdown">
+					              <div class="dropdown">
+					                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" style="font-family: 'Open Sans', sans-serif;font-weight: 400;font-size: 15px;color: #FFF;"> 
+					                	{{Auth::user()->firstname}} {{Auth::user()->lastname}}
+					                <span class="caret"></span></a>
+					                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">                  
+					                  <li><a href="{{URL::to('home')}}">Dashboard</a></li>
+					                  <li><a href="{{URL::to('home#/account')}}">My Account</a></li>
+					                  <li><a href="{{URL::to('home#/purchases')}}">My Purchases</a></li> 
+					                  <li><a href="{{URL::to('home#/credits')}}">Refer a Friend</a></li>
+					                  <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
+					                </ul>
+					              </div>
+					            </li>
+					    	@else
 				          	<li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43;"><a href="{{URL::to('signup')}}">Signup</a></li>
 				         	<li style="padding-left: 15px;"><a href="{{URL::to('session/login')}}">Login</a></li>
+				         	@endif
 				           	<li>
 				           		<a href="{{ URL::to('cart') }}">
 					           		<div class="bg-cart">
@@ -64,7 +96,7 @@
 
 						@foreach (Category::all() as $category)
 							<li>
-								<a href="{{URL::to('category/'.$category->slug)}}">
+								<a href="{{URL::to('products/category/'.$category->slug)}}">
 									<i class="fa fa-star"></i>
 									{{$category->category}}
 								</a>
