@@ -11,14 +11,13 @@
 	
 	<div class="form-group">
         <div class="col-md-6" ng-class="{'has-error': productForm.type.$error.required}">
-            <label class="control-label">Type</label>
+            <label class="control-label">Type: ({{product.type.type}})</label>
             <select
                 name="type" 
                 class="form-control"
                 ng-model="product.type"
                 ng-options="pt as pt.type for pt in produc_types" 
                 required
-                ng-selected="string"
                 >
             </select>
             <span class="text-danger" ng-show="productForm.type.$error.required">Required *</span>
