@@ -1,6 +1,5 @@
 <div class="row deal-popular">
 
-
 	@foreach(Product::getMostPopular() as $p)
 		<div class="col-md-4 col-sm-4">
 			@if(isset($p->pictures[0]))
@@ -12,8 +11,9 @@
 			@endif
 			
 			<h4>
-			<a href="{{URL::to('product/'.$p->slug)}}"> 
-			{{$p->product_name}} <br>
+			<a href="{{URL::to('product/'.$p->slug)}}">
+			
+			{{$p->product_name}}
 			
 			@if($p->discounted_price > 0)
 				<span>${{number_format($p->discounted_price, 2)}}</span>

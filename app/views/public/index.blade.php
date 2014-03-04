@@ -11,8 +11,8 @@
 
 
 	<section class="sp2-ordinary-page-title two-lines text-center">
-	  <h1 class="fs-36">Build a bigger, more engaged audience with BRM Deals</h1>
-	  <h2 class="fs-24">How Businesses are Pinpointing Profits</h2>
+	  <h1 class="fs-36">Welcome to the new BRM Social Marketplace</h1>
+	  <h2 class="fs-24">Save up to 90% on vetted online marketing tools and training.</h2>
 	  @if(!Auth::user())
 	  	<div class="social-header">
 	  	<ul>
@@ -22,7 +22,7 @@
 	  	</ul>	  	
 	  </div>
 	  @endif
-	  <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
+	  <div class="via-email"><a href="{{URL::to('signup ')}}">Sign up via <span>E-Mail</span></a></div>
 	</section>
 
 	<section class="deal-page bg-image-white">
