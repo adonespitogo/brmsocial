@@ -91,7 +91,7 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .deal-page .right-col .related-deals .price .free { font-size:16px; color:#75c34b; }
 .deal-page .right-col .related-deals ul li { margin-bottom:12px; }
 .deal-page .right-col .related-deals ul li i.fa-clock-o { margin-right:4px; }
-.deal-page .right-col .related-deals ul li li { font-size:11px; color:#8e8e8e; display:inline-block; border-right:1px solid #8e8e8e; padding:0 6px 0 4px; }
+.deal-page .right-col .related-deals ul li li { font-size:11px; color:#8e8e8e; display:inline-block; border-right:1px solid #8e8e8e; margin:0; padding:0 6px 0 4px; }
 .deal-page .right-col .related-deals ul li li a { font-size:11px; color:#8e8e8e; text-decoration:underline; }
 .deal-page .right-col .upcoming-sales { overflow:hidden; }
 .deal-page .right-col .upcoming-sales ul li { margin-bottom:10px; cursor:pointer; clear:left; }
