@@ -13,6 +13,7 @@
     <section class="sp2-ordinary-page-title two-lines text-center">
         <h1 class="fs-36">{{$product->product_name}}</h1>
         <h2 class="fs-24">{{$product->tagline}}</h2>
+        @if(!Auth::user())
         <div class="social-header">
             <ul>
                 <li><a href="{{URL::to('signup/facebook')}}" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
@@ -21,6 +22,7 @@
             </ul>       
         </div>
         <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
+        @endif
     </section>
     <section class="deal-page bg-image-white">
         <div class="container">

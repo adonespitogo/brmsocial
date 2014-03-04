@@ -21,8 +21,8 @@
 		  	<li><a href="{{URL::to('signup/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
 	  	</ul>	  	
 	  </div>
-	  @endif
 	  <div class="via-email"><a href="{{URL::to('signup ')}}">Sign up via <span>E-Mail</span></a></div>
+	  @endif
 	</section>
 
 	<section class="deal-page bg-image-white">

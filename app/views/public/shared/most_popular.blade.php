@@ -1,6 +1,9 @@
-<div class="row deal-popular">
+@foreach(Product::getMostPopular() as $index => $p)
 
-	@foreach(Product::getMostPopular() as $p)
+		@if(($index % 3 + 1) == 1)
+			<div class="row deal-popular">
+		@endif
+		
 		<div class="col-md-4 col-sm-4">
 			@if(isset($p->pictures[0]))
 
