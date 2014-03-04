@@ -159,8 +159,7 @@
                                 regular price
                                 <h2></h2>
                             </div>
-                            <div class="clearfix"><span class="save pull-right">save {{$product->getDiscountPercentage()}}%</span></div>
-                            <h4 class="clearfix">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
+                            <h4 class="clearfix" style="clear:both">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$product->getEndDatePercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$product->getEndDatePercentage()}}%">
                                     <span class="sr-only">
