@@ -22,5 +22,8 @@
         <span class="date"><em ng-cloak class="ng-cloak">{{ purchase.created_at_iso_date | date: 'longDate' }}</em></span>
       </div>
     </div>
+    <p ng-show="purchases.length == 0">
+      No purchases yet.
+    </p>
     <!-- End Recent Purchases -->
   </div>
