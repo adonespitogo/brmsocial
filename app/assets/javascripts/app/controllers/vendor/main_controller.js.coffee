@@ -11,7 +11,7 @@ main.controller "MainVendorCtrl", [
 			# {state: 'vendor', text: 'Dashboard', active: true}
 			{state: 'products', text: 'Products', active: false}
 			{state: 'sales', text: 'Sales', active: false}
-			{state: 'orders', text: 'Purchases', active: false}
+			# {state: 'orders', text: 'Purchases', active: false}
 			{state: 'commisions', text: 'Commissions', active: false}
 		]
 

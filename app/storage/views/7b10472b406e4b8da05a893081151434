@@ -1,0 +1,113 @@
+
+	<div class="navigation hidden-xs">
+		<div class="container nav-con">
+	    	<div class="row">
+	   			<div class="col-md-12">
+				    <div class="nav-style">
+				    	<a href="<?php echo URL::to('/'); ?>">
+				    		<img src='<?php echo URL::to("website/images/brmsocial-logo.png"); ?>' alt="BRM Social" class="logo">
+				    	</a>
+					    <ul class="nav nav-pills">
+					      <li class="dropdown shop">
+					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>
+					        <ul class="dropdown-menu">
+					        	<?php foreach (Category::all() as $category): ?>
+									<li>
+										<a href="<?php echo URL::to('products/category/'.$category->slug); ?>">
+											<i class="fa fa-star"></i>
+											<?php echo $category->category; ?>
+										</a>
+									</li>
+					        	<?php endforeach; ?>
+					        </ul>
+					      </li>
+					      <li class="dropdown"><a href="<?php echo URL::to('free-products'); ?>">Free Stuff</a></li>
+					    </ul>
+				    </div>
+				    <div class="login-con">
+					    <ul class="">
+					    	<?php if(Auth::user()&&Auth::user()->type=='admin'): ?>
+					    		<li style="padding-left: 15px;" class="custom-login-dropdown">
+					              <div class="dropdown">
+					                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" style="font-family: 'Open Sans', sans-serif;font-weight: 400;font-size: 15px;color: #FFF;"> 
+					                <?php echo Auth::user()->firstname; ?> <?php echo Auth::user()->lastname; ?>
+					                <span class="caret"></span></a>
+					                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">                  
+					                  <li><a href="<?php echo URL::to('home'); ?>">Dashboard</a></li>
+					                  <li><a href="<?php echo URL::to('home#/products'); ?>">Products</a></li>
+					                  <li><a href="<?php echo URL::to('home#/categories'); ?>">Categories</a></li> 
+					                  <li><a href="<?php echo URL::to('home#/users'); ?>">Users</a></li>
+					                  <li><a href="<?php echo URL::to('session/logout'); ?>">Logout</a></li>
+					                </ul>
+					              </div>
+					            </li>
+					        <?php elseif(Auth::user()&&Auth::user()->type=='customer'): ?>
+					        	<li style="padding-left: 15px;" class="custom-login-dropdown">
+					              <div class="dropdown">
+					                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" style="font-family: 'Open Sans', sans-serif;font-weight: 400;font-size: 15px;color: #FFF;"> 
+					                	<?php echo Auth::user()->firstname; ?> <?php echo Auth::user()->lastname; ?>
+					                <span class="caret"></span></a>
+					                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">                  
+					                  <li><a href="<?php echo URL::to('home'); ?>">Dashboard</a></li>
+					                  <li><a href="<?php echo URL::to('home#/account'); ?>">My Account</a></li>
+					                  <li><a href="<?php echo URL::to('home#/purchases'); ?>">My Purchases</a></li> 
+					                  <li><a href="<?php echo URL::to('home#/credits'); ?>">Refer a Friend</a></li>
+					                  <li><a href="<?php echo URL::to('session/logout'); ?>">Logout</a></li>
+					                </ul>
+					              </div>
+					            </li>
+					    	<?php else: ?>
+				          	<li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43;"><a href="<?php echo URL::to('signup'); ?>">Signup</a></li>
+				         	<li style="padding-left: 15px;"><a href="<?php echo URL::to('session/login'); ?>">Login</a></li>
+				         	<?php endif; ?>
+				           	<li>
+				           		<a href="<?php echo URL::to('cart'); ?>">
+					           		<div class="bg-cart">
+					            		<span class="cart-dolsign">$</span>
+					            		<span class="cart-price totalPrice">17</span>
+					            		<i class="fa fa-shopping-cart"></i>
+					            		<span class="cart-orders totalItem">2</span>
+					           		</div>
+					           	</a>
+				           	</li>
+					    </ul>
+				   </div>
+    			</div>
+  			</div>
+    	</div>
+	</div>
+
+
+	<!-- Mobile View -->
+	<div id="mobile-nav" class="visible-xs">
+	   	<ul>
+		   	<li><a href="#menu" class="mbtn"></a></li>
+		   	<li><a href="#"><img src="website/images/brmsocial-logo.png" alt="BRM Social" style="margin-left:50px;"></a></li>
+		   	<li></li>
+	    </ul>
+        
+        <nav id="menu">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li>
+					<a href="javascript:void(0);">Category</a>
+					<ul>
+
+
+						<?php foreach (Category::all() as $category): ?>
+							<li>
+								<a href="<?php echo URL::to('products/category/'.$category->slug); ?>">
+									<i class="fa fa-star"></i>
+									<?php echo $category->category; ?>
+								</a>
+							</li>
+			        	<?php endforeach; ?>
+					</ul>
+				</li>
+				<li><a href="<?php echo URL::to('free-products'); ?>">Free Stuff</a></li>
+				<li><a href="#">Signup</a></li>
+				<li><a href="<?php echo URL::to('session/login'); ?>">Login</a></li>
+			</ul>	
+		</nav>
+    </div>
+
