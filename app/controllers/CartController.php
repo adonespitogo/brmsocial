@@ -11,10 +11,9 @@
 
 		}
 
-		public function getItems(){  
-
-			return Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with(array('product'))->get();
- 			
+		public function getItems(){
+			$items = Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with('product')->get();
+ 			return $items;
 		}
 		public function postAdd() {
 			

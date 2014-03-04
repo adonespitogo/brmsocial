@@ -1,10 +1,11 @@
 <?php
 
-	class Cart extends Eloquent {
+	class Cart extends BaseModel {
 
 		protected $table = 'cart';
 
 		protected $appends = array('product_picture','discount_percentage');
+		
 		public function product() {
 			return $this->belongsTo('Product');
 		}
