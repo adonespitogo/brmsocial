@@ -69,12 +69,15 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .deal-page .left-col .deal-popular h4 a { color:#1b1b1b; }
 .deal-page .left-col .deal-popular h4 a:hover,
 .deal-page .left-col .deal-popular h4 span { color:#28b6e7; }
+<<<<<<< HEAD
+.deal-page .left-col .deal-popular ul { margin:0; padding:0; font-size:11px; }
+=======
 .deal-page .left-col .deal-popular h4 a .free { font-size:16px; color:#75c34b; }
 .deal-page .left-col .deal-popular ul { margin:0 0 20px 0; padding:0; font-size:11px; }
+>>>>>>> b6460779f4eca47c7e449d42d32e0dbad1ac6eaf
 .deal-page .left-col .deal-popular ul li { color:#8e8e8e; display:inline-block; border-right:1px solid #8e8e8e; padding:0 6px 0 4px; }
 .deal-page .left-col .deal-popular ul li:last-child,
 .deal-page .right-col .related-deals ul li li:last-child { border:none; }
-.deal-page .left-col .deal-popular ul li i { margin-right:4px; font-size:12px; }
 .deal-page .left-col .deal-popular ul li a { color:#8e8e8e; text-decoration:underline; }
 .deal-page .left-col .deal-popular ul li a:hover,
 .deal-page .right-col .related-deals ul li li a:hover { color:#28b6e7; }
@@ -86,9 +89,13 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .deal-page .right-col .related-deals img { float:left; margin-right:10px; }
 .deal-page .right-col .related-deals a { font-size:16px; }
 .deal-page .right-col .related-deals .price { font-size:16px; color:#f88371; }
-.deal-page .right-col .related-deals .price .free { font-size:16px; color:#75c34b; }
+<<<<<<< HEAD
 .deal-page .right-col .related-deals ul li { margin-bottom:25px; }
+=======
+.deal-page .right-col .related-deals .price .free { font-size:16px; color:#75c34b; }
+.deal-page .right-col .related-deals ul li { margin-bottom:12px; }
 .deal-page .right-col .related-deals ul li i.fa-clock-o { margin-right:4px; }
+>>>>>>> b6460779f4eca47c7e449d42d32e0dbad1ac6eaf
 .deal-page .right-col .related-deals ul li li { font-size:11px; color:#8e8e8e; display:inline-block; border-right:1px solid #8e8e8e; padding:0 6px 0 4px; }
 .deal-page .right-col .related-deals ul li li a { font-size:11px; color:#8e8e8e; text-decoration:underline; }
 .deal-page .right-col .upcoming-sales { overflow:hidden; }
@@ -126,14 +133,14 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .product-tabs .nav-tabs>li.active>a{border: 0 !important; }
 .product-tabs .nav>li>a {margin-top: -5px;}
 .product-right-col {font-family:'Open Sans', sans-serif !important; }
-.product-right-col .featured-price { float:right; font-size:39px; color:#FFF; background-color:#5486eb; margin-bottom:10px; padding:4px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+.product-right-col .featured-price { float:left; font-size:39px; color:#FFF; background-color:#5486eb; padding:4px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .product-right-col .featured-price ul { margin:0; padding:2px 4px 0 4px; }
 .product-right-col .featured-price ul li:first-child { font-size:10px; padding:0 0 4px 4px; }
 .product-right-col .featured-price ul li:last-child { line-height:30px; }
 .product-right-col .featured-price ul li:last-child span { font-size:12px; font-weight:600; position:relative; top:-18px; }
-.product-right-col .reg-price { clear:both; float:right; font-size:12px; color:#b4b4b4; margin-bottom:14px; padding-top:8px; }
+.product-right-col .reg-price { font-size:12px; color:#b4b4b4; margin-bottom:14px; padding-top:8px; }
 .product-right-col .reg-price span { font-size:32px; line-height:20px; text-decoration:line-through; }
-.product-right-col .save { float:left; color:#ff8c8d; border:2px solid #ff8c8d; font-weight:600; font-style:italic; padding:4px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+.product-right-col .save { color:#ff8c8d; border:2px solid #ff8c8d; font-weight:600; font-style:italic; padding:4px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 .product-right-col h4 {color:#7c8594;font-weight: 300; font-family:'Open Sans', sans-serif !important; font-size: 18px; }
 .product-right-col .progress {height: 5px;margin-bottom: 5px;}
 .product-right-col .first-h3 {padding: 15px;color:#9199a5;font-size: 24px; font-weight: 300; font-family:'Open Sans', sans-serif !important;}
@@ -153,7 +160,7 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .product-right-col .fb-steps ul li i { font-size:34px; color:#CCC; position:absolute; right:8px; top:8px; }
 .product-right-col .fb-steps ul li.active { background-color:#eaffdb; }
 .product-right-col .fb-steps ul li.active i { color:#75c34b; position:absolute; }
-.product-right-col .fb-steps p { font-size:12px; color:#7c8594; margin-top:10px; }
+.product-right-col .fb-steps p { font-size:12px; color:#7c8594; margin-top:10px; } 
 .product-right-col .terms-of-sale h4 {font-weight: normal; font-family:'Open Sans', sans-serif !important; font-size: 18px; padding: 12px 0; color: #323437;}
 .product-right-col .terms-of-sale ul li {font-weight: 300; font-family:'Open Sans', sans-serif !important; font-size: 17px; color:#7c8594; padding: 5px 0;}
 .product-right-col .terms-of-sale ul li i {color:#474747; padding: 6px 0;}
@@ -278,7 +285,7 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .login-con .nav-pills a:hover, .login-con .nav-pills a:focus, .login-con .nav-pills a:active {-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; background-color: #24272e;}
 .login-con .nav-pills a .caret {border-top-color: #FFFFFF;border-bottom-color: #FFFFFF;}
 .login-con .nav-pills a:hover .caret {border-top-color: #FFFFFF;border-bottom-color: #FFFFFF;}
-.login-con .dropdown-menu {margin-top: 22px; border-radius: 0; margin-left: 65px; border-top: 0px; }
+.login-con .dropdown-menu {margin-top: 22px;border-radius: 0;margin-left: 0px;border-top: 0px;margin-top: 2px;}
 .login-con .dropdown-menu > li {}
 .login-con .dropdown-menu > li > a {color: #000; background-color: #fff !important; padding: 5px 0 5px 15px; font-size: 14px;}
 .login-con .dropdown-menu > li > a:hover { background-color: #474747 !important; color: #fff; }

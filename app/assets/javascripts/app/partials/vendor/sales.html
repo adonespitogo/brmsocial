@@ -18,12 +18,12 @@
                     </thead>
                     <tbody>
                     	<tr ng-repeat="sale in sales">
-                    		<td>{{ sale.id }}</td>
-                    		<td>{{ sale.product_name }}</td>
-                            <td>${{ sale.price }}</td>
-                            <td>{{ sale.percentage_commission }} %</td>
-                    		<td>${{ sale.amount_commission }}</td>
-                    		<td>{{ sale.created_at_iso_date | date: 'fullDate' }}</td>
+                    		<td ng-cloak class="ng-cloak">{{ sale.id }}</td>
+                    		<td ng-cloak class="ng-cloak">{{ sale.product_name }}</td>
+                            <td ng-cloak class="ng-cloak">${{ sale.price }}</td>
+                            <td ng-cloak class="ng-cloak">{{ sale.percentage_commission }} %</td>
+                    		<td ng-cloak class="ng-cloak">${{ sale.amount_commission }}</td>
+                    		<td ng-cloak class="ng-cloak">{{ sale.created_at_iso_date | date: 'fullDate' }}</td>
                     	</tr>
                         <tr ng-show="sales.length == 0">
                             <td colspan="6">No sales yet.</td>

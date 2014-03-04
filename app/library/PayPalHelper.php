@@ -76,7 +76,7 @@ class PayPalHelper {
 		$details = self::PPHttpPost('GetExpressCheckoutDetails', "TOKEN=".$token);
         if("SUCCESS" == strtoupper($details["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($details["ACK"]))
         {
-            $checkout_details = $details;
+            $checkout_details = $details; 
             $httpParsedResponseAr = PayPalHelper::confirmCheckout($details);
 
             if($httpParsedResponseAr != false)
@@ -116,7 +116,7 @@ class PayPalHelper {
             $nvpStr .= '&L_PAYMENTREQUEST_0_NAME'.$ctr.'='.urldecode($checkoutDetails['L_PAYMENTREQUEST_0_NAME'.$ctr]);
             $nvpStr .= '&L_PAYMENTREQUEST_0_QTY'.$ctr.'=1';
             $nvpStr .= '&L_PAYMENTREQUEST_0_AMT'.$ctr.'='.urldecode($checkoutDetails['L_PAYMENTREQUEST_0_AMT'.$ctr]);
-            $nvpStr .= '&L_PAYMENTREQUEST_0_DESC'.$ctr.'='.urldecode($checkoutDetails['L_PAYMENTREQUEST_0_DESC'.$ctr]);
+            $nvpStr .= '&L_PAYMENTREQUEST_0_DESC'.$ctr.'='.(isset($checkoutDetails['L_PAYMENTREQUEST_0_DESC'.$ctr]) ? urldecode($checkoutDetails['L_PAYMENTREQUEST_0_DESC'.$ctr]) : '' );
             
             $total = $total + urldecode($checkoutDetails['L_PAYMENTREQUEST_0_AMT'.$ctr]);
         }
@@ -167,7 +167,7 @@ class PayPalHelper {
             $order['name'] = urldecode($checkoutDetails['L_PAYMENTREQUEST_0_NAME'.$ctr]);
             $order['quantity'] = urldecode($checkoutDetails['L_PAYMENTREQUEST_0_QTY'.$ctr]);
             $order['amount'] = urldecode($checkoutDetails['L_PAYMENTREQUEST_0_AMT'.$ctr]);
-            $order['description'] = urldecode($checkoutDetails['L_PAYMENTREQUEST_0_DESC'.$ctr]);
+            $order['description'] = isset($checkoutDetails['L_PAYMENTREQUEST_0_DESC'.$ctr]) ? urldecode($checkoutDetails['L_PAYMENTREQUEST_0_DESC'.$ctr]) : '';
             $orders[] = $order;
         }
 

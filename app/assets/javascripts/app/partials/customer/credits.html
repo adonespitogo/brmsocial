@@ -1,7 +1,7 @@
 <div class="content">
   <h3 class="mb-30">Credits</h3> 
   <div class="credits">
-    <div class="alert alert-success alert-dismissable" ng-show="alerts.show">
+    <div class="alert alert-success alert-dismissable" ng-show="alerts.show" ng-cloak class="ng-cloak">
       <button type="button" class="close" ng-click="alerts.show = false">×</button>
       Invitation sent to {{emails.length}} Friends. You will be notified when a friend purcahased with us.
     </div>
@@ -9,7 +9,7 @@
       <div class="row">                  
         <div class="col-md-3">
           <div class="credit-border">
-            <div class="num">
+            <div class="num ng-cloak" ng-cloak >
               <span></span>{{totalJoined.count}}
             </div>
             Friends Joined
@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-3">
           <div class="credit-border">
-            <div class="num">
+            <div class="num ng-cloak" ng-cloak>
               <span>$</span>{{spentCredits.count}}
             </div>
             Credits Used
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-3">
           <div class="credit-border">
-            <div class="num">
+            <div class="num ng-cloak" ng-cloak>
               <span>$</span>{{totalEarned.count}}
             </div>
             Total Earned
@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-3">
           <div class="credit-border">
-            <div class="num">
+            <div class="num ng-cloak" ng-cloak>
               <span>$</span>{{currentUser.credits}}
             </div>
             Available Credits
@@ -49,7 +49,7 @@
     <div class="referal">
       <label><span>Share, Refer and Get Discount</span><br>You will get $10 credits on every friend that purchases with us...</label>
       <a ng-click="referViaFacebook()" class="fb btn-fb"><img src="customer/images/btn-fb.png"> Refer via Facebook</a>
-      <a ng-href="http://twitter.com/share?{{referral_token.referral_url}}&text=Check out BRM Social, a cool new deals site for online marketers" class="twit btn-twit" target="_blank"><img src="customer/images/btn-twit.png"> Refer via Twitter</a>
+      <a href="#" class="twit btn-twit"><img src="customer/images/btn-twit.png"> Refer via Twitter</a>
     </div>
     <div class="credit-form">
       <form role="form" ng-submit="sendReferrals()">
