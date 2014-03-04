@@ -3,16 +3,13 @@
     <div class="form-sort form-inline pull-right">
       <div class="form-group">
         <label>Sort by:</label>
-        <select class="form-control w180">
-          <option>Categories</option>
-          <option>Date</option>
-          <option>Price</option>
+        <select class="form-control w180" ng-model="order" ng-options="o.v as o.k for o in orderOptions">
         </select>
       </div>
     </div>
     <h3 class="mb-30">Recent Purchases</h3>              
     <!-- Start Recent Purchases -->
-    <div class="row recent-purchases" ng-repeat="purchase in purchases">
+    <div class="row recent-purchases" ng-repeat="purchase in purchases | orderBy: order">
       <div class="col-md-3">
         <img src="{{ purchase.picture }}">
       </div>
