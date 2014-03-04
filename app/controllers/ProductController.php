@@ -213,7 +213,7 @@
 			$order = Order::find($orderId);
 			$user = Auth::user();
 
-			if($order->user_id == $user->id && $order->max_download >= $order->download_count){
+			if(is_object($order)&&$order->user_id == $user->id && $order->max_download >= $order->download_count){
 				
 				$product = $order->product;
 				if(!isset($product->files[$productFileIndex]))
