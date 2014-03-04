@@ -82,6 +82,7 @@
 								'price' => $item->product->discounted_price,
 								'txn_id' => $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'],
 								'created_at'=>date('Y-m-d H:i:s'),
+								'max_download'=>$item->product->download_count,
 							); 
 					}
 
