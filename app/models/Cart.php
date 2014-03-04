@@ -20,7 +20,10 @@
 		} 
 
 		public static function getCartSummary(){
-			$cartItems = parent::where('cart_session_id', $_COOKIE['cart_session_id'])->with('product')->get();
+			// dd($_COOKIE['cart_session_id']);
+			if(!isset($_COOKIE['cart_session_id'])) return array('numItem' => 0, 'totalPrice'=> 0);
+			// return array('numItem' => 123, 'totalPrice' => 123);
+			$cartItems = self::where('cart_session_id', $_COOKIE['cart_session_id'])->with('product')->get();
 			$totalPrice = 0;
 			$numItem = 0;
 			foreach ($cartItems as $key => $item) {
