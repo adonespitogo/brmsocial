@@ -1,0 +1,11 @@
+<?php
+	$cartSummary = Cart::getCartSummary();
+?>
+<a href="<?php echo URL::to('cart'); ?>" ng-cloak class="ng-cloak">
+	<div class="bg-cart">
+	<span class="cart-dolsign">$</span>
+	<span class="cart-price totalPrice" ng-bind="totalPrice"><?php echo $cartSummary['totalPrice']; ?></span>
+	<i class="fa fa-shopping-cart"></i>
+	<span class="cart-orders totalItem" ng-bind="numItem"><?php echo $cartSummary['numItem']; ?></span>
+	</div>
+</a>

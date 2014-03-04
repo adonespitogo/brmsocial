@@ -5,7 +5,7 @@
 class Order extends BaseModel{
 
 	protected $table = 'orders';
-	protected $softDelete = true;
+	protected $softDelete = true; 
 
 	protected $isodates = array(
 		'created_at',
@@ -29,6 +29,12 @@ class Order extends BaseModel{
 		$this->picture = $this->getPicture();
 	}
 
+	public static function afterCreate($cartItems, $orderItems){
+ 	
+		MailHelper::afterPurchaseMessage($cartItems, $orderItems);
+		Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->delete();
+		return true;
+	}
 }
 
 ?>

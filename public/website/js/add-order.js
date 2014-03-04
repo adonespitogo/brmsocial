@@ -19,6 +19,7 @@ jQuery(document).on('mousedown', '.add2cart-btn', function(e) {
         addClass(
           $(this).attr('class')
         ).
+        removeClass('add2cart-btn').
         css({
             'opacity': '1', 
             'position': 'absolute',

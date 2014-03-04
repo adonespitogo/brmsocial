@@ -27,59 +27,77 @@
 			if(!Input::has('token'))
 				return Redirect::to('');
 
-			$token = Input::get('token'); 
+			$token = Input::get('token');
 
-			$data = PayPalHelper::confirmOrders($token);
- 			$cartItems = Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with(array('product'))->get();
+			$paypalResp = PayPalHelper::confirmOrders($token);//array('success' => `boolean true||false`, 'payal_info' => `array`)
+ 
+			if($paypalResp['success']){
 
- 			$orderExists = Order::where('txn_id', $data->paypal_info->PAYMENTINFO_0_TRANSACTIONID)->get();
+	 			$cartItems = Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with(array('product','user'))->get();
 
- 			if(is_object($orderExists)&&count($orderExists)>0)
- 				Session::flash('warning','Transaction already exist.');
- 			else{
-				$user_id = '';
-				if(Auth::user()) {
-					$user_id = Auth::user()->id;
-				}					
-				else
-				{	$emailFromOrder = $cartItems[0]->buyer_email;
-					$user = User::where('email',$emailFromOrder)->first();
-					if(!is_object($user)|| count($user)<=0)
+	 			$orderExists = Order::where('txn_id', $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'])->get();
+
+	 			$user = null;
+
+	 			if(is_object($orderExists)&&count($orderExists)>0)
+	 				Session::flash('warning','Transaction already exist.');
+
+	 			else
+	 			{
+					$user_id = '';
+					if(Auth::user()) 
+					{
+						$user = Auth::user();
+					}					
+					else
 					{	
-						$tmp = explode("@", $emailFromOrder);
-						$name = $tmp[0]; 
+						$emailFromOrder = $cartItems[0]->buyer_email;
+						$user = User::where('email',$emailFromOrder)->first();
+						if(!$user)
+						{	
+							$tmp = explode("@", $emailFromOrder);
+							$name = $tmp[0]; 
 
-						$user = new User();
-						$user->firstname = $name; 
-						$user->email = $emailFromOrder;
-						$user->type = 'customer'; 
-						$this->setPassword(BRMHelper::genRandomPassword());
-						$user->save();
+							$user = new User();
+							$user->firstname = $name; 
+							$user->email = $emailFromOrder;
+							$user->type = 'customer'; 
+							$user->setPassword(BRMHelper::genRandomPassword());
+							$user->save();
 
-						print_r($user->validationErros());
-						die();
+							if($user->validationErrors)
+								Session::flash('error',$user->validationErrors); 
+
+						}
+						 
 					}
-					
-					$user_id = $user->id;
-				}
 
-				foreach ($cartItems as $key => $item) {
-						$order = new Order();
- 						$order->user_id = $user->id;
- 						$order->product_id = $item->product_id;
- 						$order->vendor_id = $item->product->user_id; 	
- 						$order->product_name = $item->product->product_name;
- 						$order->price = $item->product->discounted_price;
- 						$order->txn_id = $data->paypal_info->PAYMENTINFO_0_TRANSACTIONID;
- 						$order->save();
+					$orderItems = array();
+					foreach ($cartItems as $key => $item) {
+						$orderItems[] = array(
+								'user_id' =>$user->id,
+								'product_id' => $item->product_id,
+								'vendor_id' => $item->product->user_id, 	
+								'product_name' => $item->product->product_name,
+								'price' => $item->product->discounted_price,
+								'txn_id' => $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'],
+							); 
 					}
-					
-				MailHelper::afterPurchaseMessage($cartItems);
-				Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with(array('product'))->delete();
- 				
- 			} 			
 
+					Order::insert($orderItems);  
+					
+					Order::afterCreate($cartItems, $orderItems);
+
+	 			} 
+			}	
+			else{
+				Session::flash('error', /*(String)*/$paypalResp['paypal_info']['L_SEVERITYCODE0'].". ".$paypalResp['paypal_info']['L_LONGMESSAGE0']);
+			}		
+
+
+			//Thank you page here with these errr messages
  			echo Session::get('warning');
+ 			echo Session::get('error');
  			return "Thank you page here";
 
 

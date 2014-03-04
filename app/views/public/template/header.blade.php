@@ -61,14 +61,7 @@
 				         	<li style="padding-left: 15px;"><a href="{{URL::to('session/login')}}">Login</a></li>
 				         	@endif
 				           	<li>
-				           		<a href="{{ URL::to('cart') }}">
-					           		<div class="bg-cart">
-					            		<span class="cart-dolsign">$</span>
-					            		<span class="cart-price totalPrice">17</span>
-					            		<i class="fa fa-shopping-cart"></i>
-					            		<span class="cart-orders totalItem">2</span>
-					           		</div>
-					           	</a>
+				           		@include('public.shared.cart_btn')
 				           	</li>
 					    </ul>
 				   </div>
