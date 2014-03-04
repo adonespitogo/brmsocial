@@ -14,7 +14,7 @@
 			<h4>
 			<a href="{{URL::to('product/'.$p->slug)}}">
 			
-			{{$p->product_name}} <br>
+			{{$p->product_name}}
 			
 			@if($p->discounted_price > 0)
 				<span>${{number_format($p->discounted_price, 2)}}</span>

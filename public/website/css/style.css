@@ -65,7 +65,7 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .deal-page .left-col .reg-price span { line-height:20px; text-decoration:line-through; }
 .deal-page .left-col .save { color:#ff8c8d; border:2px solid #ff8c8d; font-weight:600; font-style:italic; padding:4px; display:inline-block; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 .deal-page .left-col .deal-popular img { margin-bottom:10px; }
-.deal-page .left-col .deal-popular h4 { font-size:16px; color:#1b1b1b; line-height:22px; margin-bottom:10px; }
+.deal-page .left-col .deal-popular h4 { font-size:16px; color:#1b1b1b; line-height:20px; margin:0 0 4px 0; }
 .deal-page .left-col .deal-popular h4 a { color:#1b1b1b; }
 .deal-page .left-col .deal-popular h4 a:hover,
 .deal-page .left-col .deal-popular h4 span { color:#28b6e7; }
@@ -84,7 +84,7 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .deal-page .right-col .deal-search input { width:136px; height:30px; font-size:13px; border:none; box-shadow:none; padding:0;display: inline-block;}
 .deal-page .right-col .deal-search button { width: 84px; margin-left:-4px; font-size:15px; display: inline-block; border-radius: 0 }
 .deal-page .right-col .related-deals img { float:left; margin-right:10px; }
-.deal-page .right-col .related-deals a { font-size:16px; }
+.deal-page .right-col .related-deals a { font-size:16px; line-height:18px; }
 .deal-page .right-col .related-deals .price { font-size:16px; color:#f88371; }
 .deal-page .right-col .related-deals .price .free { font-size:16px; color:#75c34b; }
 .deal-page .right-col .related-deals ul li { margin-bottom:12px; }
