@@ -17,7 +17,8 @@ class UsersTableSeeder extends Seeder {
 					'type' => 'vendor',
 					'firstname' => 'Adones',
 					'lastname' => 'Pitogo',
-					'profile_img' => 'default_vendor.jpg'
+					'profile_img' => 'default_vendor.jpg',
+					'created_at' => date('Y-m-d H:i:s')
 				),
 				array(
 					'id' => 2,
@@ -26,7 +27,8 @@ class UsersTableSeeder extends Seeder {
 					'type' => 'admin',
 					'firstname' => 'Jonathan',
 					'lastname' => 'Kennedy',
-					'profile_img' => 'default_vendor.jpg'
+					'profile_img' => 'default_vendor.jpg',
+					'created_at' => date('Y-m-d H:i:s')
 				),
 				array(
 					'id' => 3,
@@ -35,7 +37,8 @@ class UsersTableSeeder extends Seeder {
 					'type' => 'customer',
 					'firstname' => 'Romnick',
 					'lastname' => 'Revalde',
-					'profile_img' => 'default_vendor.jpg'
+					'profile_img' => 'default_vendor.jpg',
+					'created_at' => date('Y-m-d H:i:s')
 				),
 				array(
 					'id' => 4,
@@ -44,7 +47,8 @@ class UsersTableSeeder extends Seeder {
 					'type' => 'customer',
 					'firstname' => 'Arnel',
 					'lastname' => 'Lenteria',
-					'profile_img' => 'default_vendor.jpg'
+					'profile_img' => 'default_vendor.jpg',
+					'created_at' => date('Y-m-d H:i:s')
 				)
 			)
 		);
