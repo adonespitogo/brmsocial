@@ -12,7 +12,9 @@
 					<div class="left-col">							
 						<!-- Start Customers also bought -->
 						<div class="row deal-popular">
-							<h3>Category &rarr; {{ $category->category }}</h3>
+							<div class="col-md-12">
+								<h3>Category &rarr; {{ $category->category }}</h3>
+							</div>
 
 								@if(count($products) > 0)
 									@foreach($products as $p)
