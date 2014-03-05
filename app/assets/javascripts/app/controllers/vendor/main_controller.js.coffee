@@ -31,11 +31,6 @@ main.controller "MainVendorCtrl", [
 					alert errors
 				)
 
-		$scope.activateNav = (nav) ->
-			$scope.navs = _.map $scope.navs, (n)->
-				if n.state == nav.state then n.active = true else n.active = false
-				n
-
 
 		$scope.navsOff = ->
 			$scope.navs = _.map $scope.navs, (n)->
