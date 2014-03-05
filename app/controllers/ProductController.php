@@ -236,6 +236,33 @@
 			return Product::count();
 		}
 
+		public function activateFree(){
+			$productId = Input::get('id');
+
+			if(!Session::has('free_steps_completed')){
+				Session::put('free_steps_completed', array($productId));
+				return 1;
+			}
+			else{
+				Session::push('free_steps_completed', $productId);
+				return 1;
+			}
+		}
+
+		public function deactivateFree(){
+			$session = Session::get('free_steps_completed');
+			$productId = Input::get('id');
+			if(Session::has('free_steps_completed') && is_array($session) && in_array($productId, $session)){
+				
+				for ($i = 0, $l = count($session); $i < $l; ++$i) {
+			        if (in_array($productId, $session)) unset($session[$i]);
+			    }				
+
+				Session::put('free_steps_completed', $session);
+
+				return 1;
+			}
+		}
 	}
 
 ?>

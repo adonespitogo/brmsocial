@@ -104,6 +104,28 @@
 
 
 		}
+		public function postPurchaseFree(){
+			$productId = Input::get('id');
+			if(!Session::has('free_steps_completed') || !in_array($productId, Session::get('free_steps_completed')))
+				return Response::json(array('status'=>403, 'error'=>'Forbidden'), 403);
+
+			$product = Product::find($productId);
+
+			$item = array(
+								'user_id' =>Auth::user()->id,
+								'product_id' => $productId,
+								'vendor_id' => $product->user_id, 	
+								'product_name' => $product->product_name,
+								'price' => $product->discounted_price,
+								'txn_id' => "(no transaction ID)",
+								'created_at'=>date('Y-m-d H:i:s'),
+								'max_download'=>$product->download_count,
+							); 
+			Order::insert(array($item));  
+					
+			Order::afterCreate(array($item), json_encode(json_decode(array($item), true)));
+
+		}
 
 	}
 

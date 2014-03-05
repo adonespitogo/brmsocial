@@ -33,7 +33,7 @@ class Order extends BaseModel{
 		$this->download_url = URL::to('download/'.$this->id.'/'.$this->product->id.'/0');
 	}
 
-	public static function afterCreate($cartItems, $orderItems){
+	public static function afterCreate($cartItems=array(), $orderItems=array()){
  	
 		MailHelper::afterPurchaseMessage($cartItems, $orderItems);
 		Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->delete();
