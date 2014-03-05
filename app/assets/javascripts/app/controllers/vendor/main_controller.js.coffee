@@ -8,11 +8,9 @@ main.controller "MainVendorCtrl", [
 		$scope.currentUser = Users.get(id: 'me')
 
 		$scope.navs = [
-			# {state: 'vendor', text: 'Dashboard', active: true}
-			{state: 'products', text: 'Products', active: false}
-			{state: 'sales', text: 'Sales', active: false}
-			# {state: 'orders', text: 'Purchases', active: false}
-			{state: 'commisions', text: 'Commissions', active: false}
+			{state: 'products', text: 'Products'}
+			{state: 'sales', text: 'Sales'}
+			{state: 'commisions', text: 'Commissions'}
 		]
 
 		$scope.copyCurrentUser = ->

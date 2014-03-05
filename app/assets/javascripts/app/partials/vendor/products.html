@@ -48,7 +48,7 @@
 
                         <td ng-cloak class="ng-cloak">{{ product.created_at }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.traffic_today_count }}</td>
-                        <td><a href="#/product/{{ product.id }}/traffic"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
+                        <td><a ui-sref="traffic({id:product.id})"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
                         <td>Copy Product Link</td>                        
                     </tr>
                     <tr ng-show="products.length == 0">
