@@ -24,6 +24,15 @@ c.config([
 c.controller('HomeCtrl', [
 
 		'$scope', 'Orders', 'Products', function($scope, Orders, Products) {
+			
+		$scope.order = 'created_at';
+		$scope.orderOptions = [
+			{v: 'product.category.category', k: 'Category'},
+			{v: 'product_name', k: 'Product Name'},
+			{v: 'created_at', k: 'Date'},
+			{v: 'price', k: 'Price'}
+		];
+			
 			$scope.latest_purchases = Orders.myOrderList();
 			$scope.featured_product = Products.featuredProduct();
 		}
