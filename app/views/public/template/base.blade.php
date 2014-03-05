@@ -32,7 +32,7 @@
 
 @section('scripts')
     
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	{{HTML::script('assets/jquery.min.js')}}
 	{{HTML::script("website/js/bootstrap.min.js")}}
 	{{HTML::script("website/js/jquery.mmenu.min.js")}}
 	<script src='//code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
