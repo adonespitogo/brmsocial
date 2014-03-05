@@ -1,7 +1,7 @@
 <?php
 	$cartSummary = Cart::getCartSummary();
 ?>
-<a href="{{ URL::to('cart') }}" ng-cloak class="ng-cloak">
+<a href="{{ URL::to('cart') }}" ng-cloak class="ng-cloak" style="color: white !important; text-decoration:none">
 	<div class="bg-cart">
 	<span class="cart-dolsign">$</span>
 	<span class="cart-price totalPrice" ng-bind="totalPrice">{{$cartSummary['totalPrice']}}</span>
