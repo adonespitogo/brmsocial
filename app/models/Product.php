@@ -38,6 +38,7 @@ class Product extends BaseModel{
 		'featured'=>array(self::HAS_ONE,'FeaturedProduct'), 
 		'cartItems' => array(self::HAS_MANY, 'Cart'),
 		'commissionPercentage' => array(self::HAS_ONE, 'CommissionPercentage', 'foreignKey' => 'product_id')
+
 	);
 
 	//start overrides
