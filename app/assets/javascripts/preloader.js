@@ -3,6 +3,7 @@
 //= require_self
 
 (function(){
+	
 	var opts = {
 		lines: 9, // The number of lines to draw
 		length: 20, // The length of each line
@@ -22,20 +23,12 @@
 		left: 'auto' // Left position relative to parent in px
 	};
 	
-	$("#preloader").css({
-		position: "fixed",
-		width: "100%",
-		height: "100%",
-		zIndex: "9999999",
-		backgroundColor: "#ddd"
-	});
-	
 	var target = document.getElementById('preloader');
 	var spin = new Spinner(opts).spin(target);
-	
 }).call(this);
 
 
 $(document).ready(function(){
+	$('#wrapper').show();
 	$("#preloader").fadeOut();
 });

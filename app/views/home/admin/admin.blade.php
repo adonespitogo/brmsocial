@@ -9,17 +9,19 @@
 
 @section('body')
 	<div id="preloader"></div>
-	<div ng-app="AdminApp">
-		<div ng-controller="MainAdminCtrl">
-			@include('home.admin.header')
-			
-			<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
+	<div id="wrapper">
+		<div ng-app="AdminApp">
+			<div ng-controller="MainAdminCtrl">
+				@include('home.admin.header')
+				
+				<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
+			</div>
 		</div>
+		<hr>
+		<footer style=" text-align: center; padding-bottom: 10px">
+			BRM Deals &copy; 2014
+		</footer>
 	</div>
-	<hr>
-	<footer style=" text-align: center; padding-bottom: 10px">
-		BRM Deals &copy; 2014
-	</footer>
 @stop
 @section('scripts')
 	{{ javascript_include_tag('preloader') }}
