@@ -25,6 +25,5 @@
 	</div>
 @stop
 @section('scripts')
-	{{ javascript_include_tag('preloader') }}
 	{{ javascript_include_tag('vendor') }}
 @stop
