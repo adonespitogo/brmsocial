@@ -38,6 +38,7 @@
 						<th>Price</th>
 						<th>Commission Percentage</th>
 						<th>Receivable Commission</th>
+						<th>Paid Date</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,6 +47,7 @@
 						<td ng-cloak class="ng-cloak">{{upc.order.price}}</td>
 						<td ng-cloak class="ng-cloak">{{upc.order.percentage_commission}} %</td>
 						<td ng-cloak class="ng-cloak">{{upc.commission}}</td>
+						<td ng-cloak class="ng-cloak">{{upc.paid_at_iso_date | date: "fullDate"}}</td>
 					</tr>
 					<tr>
 						<td colspan="4" ng-show="paidCommissions.length == 0">No Paid Commissions yet.</td>
