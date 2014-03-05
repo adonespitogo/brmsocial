@@ -6,9 +6,9 @@
 	
 	var opts = {
 		lines: 9, // The number of lines to draw
-		length: 20, // The length of each line
-		width: 10, // The line thickness
-		radius: 30, // The radius of the inner circle
+		length: 10, // The length of each line
+		width: 2, // The line thickness
+		radius: 10, // The radius of the inner circle
 		corners: 1, // Corner roundness (0..1)
 		rotate: 0, // The rotation offset
 		direction: 1, // 1: clockwise, -1: counterclockwise
@@ -23,7 +23,7 @@
 		left: 'auto' // Left position relative to parent in px
 	};
 	
-	var target = document.getElementById('preloader');
+	var target = document.getElementById('spinner');
 	var spin = new Spinner(opts).spin(target);
 	$(window).load(function(){
 		$('#wrapper').show();

@@ -8,7 +8,7 @@
 @stop
 
 @section('body')
-	<div id="preloader"></div>
+	@include('home.shared.preloader')
 	<div id="wrapper">
 		<div ng-app="AdminApp">
 			<div ng-controller="MainAdminCtrl">

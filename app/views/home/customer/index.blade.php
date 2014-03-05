@@ -11,7 +11,7 @@
 @stop
 
 @section('body')
-  <div id="preloader"></div>
+  @include('home.shared.preloader')
    <div id="wrapper">
      <div id="wrap" ng-app="CustomerApp">
          <div ng-controller="MainCustomerCtrl">
