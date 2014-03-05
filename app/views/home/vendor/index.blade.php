@@ -8,6 +8,7 @@
 @stop
 
 @section('body')
+	<div id="preloader"></div>
 	<div ng-app="VendorApp">
 		<div ng-controller="MainVendorCtrl">
 			@include('home.vendor.header')
@@ -22,5 +23,6 @@
 	</footer>
 @stop
 @section('scripts')
+	{{ javascript_include_tag('preloader') }}
 	{{ javascript_include_tag('vendor') }}
 @stop

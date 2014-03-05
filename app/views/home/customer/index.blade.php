@@ -10,6 +10,7 @@
 @stop
 
 @section('body')
+  <div id="preloader"></div>
    <div id="wrap" ng-app="CustomerApp">
        <div ng-controller="MainCustomerCtrl">
          @include('home.customer.header')
@@ -39,5 +40,6 @@
        </div>
 @stop
 @section('scripts')
+    {{javascript_include_tag('preloader')}}
     {{javascript_include_tag('customer')}}
 @stop

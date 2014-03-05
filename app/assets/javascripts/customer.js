@@ -26,7 +26,6 @@
 //= require_tree app/partials/customer
 //= require app/directives/form_validation
 //
-//= require jquery
 //= require lib/bootstrap/bootstrap
 //= require lib/underscore/underscore
 //
