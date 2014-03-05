@@ -3,7 +3,6 @@
 @section('head')
 	@parent
 	<title>Products</title>
-	<base href="{{URL::to('/')}}" />
 @stop
 @section('content')
 <section class="checkout">	
