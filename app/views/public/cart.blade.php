@@ -1,16 +1,17 @@
 @extends('public.template.base')
+@section('html_tag_attributes')ng-app="Cart" ng-controller="cartCtrl" @stop
 @section('head')
 	@parent
 	<title>Products</title>
 	<base href="{{URL::to('/')}}" />
 @stop
 @section('content')
-<section class="checkout" ng-app="Cart">	
-	<div class="container pt-40">
+<section class="checkout">	
+	<div class="container pt-40" >
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Account</h3>
-				<div class="co-wrapper" ng-controller="cartCtrl">
+				<div class="co-wrapper ng-cloak" ng-cloak >
 					 
 					<table class="table">				        
 				        <tbody>
@@ -57,28 +58,28 @@
 				        </tbody>
 				    </table>
 				     
-				    <div class="alert alert-warning" ng-show="cartItems.length<=0">Your cart is empty</div>
+				    <div class="alert alert-warning" ng-show="numItem<=0">Your cart is empty</div>
 					 
 				</div>  
-				<div class="row" ng-hide="cartItems.length<=0">
+				<div class="row ng-cloak" ng-cloak ng-show="numItem>0">
 					 
 					<div class="col-md-12">
 						<div class="co-total clearfix">
 							<ul class="co3-total-row">
 				                <li class="co3-total">
 				                    TOTAL
-				                    <div><span>$</span><span ng-bind="priceTotal">0</span>.00</div>
+				                    <div><span>$</span><span ng-bind="totalPrice">0</span>.00</div>
 				                </li>
 				                
 				                <li class="pull-right hidden-xs">
-				                    <a href="{{URL::to('payment/go-pay/paypal')}}" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
+				                    <a href="{{URL::to('payment/go-pay/paypal')}}" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
 				                </li>
-				                <li class="pull-right hidden-xs"><div class="co3-or img-circle">OR</div></li>
+				                <li class="pull-right hidden-xs" ng-hide="!hasValidEmail"><div class="co3-or img-circle">OR</div></li>
 				                <li class="pull-right hidden-xs">
-				                    <a href="{{URL::to('payment/go-pay/credit-card')}}" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
+				                    <a href="{{URL::to('payment/go-pay/credit-card')}}" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
 				                </li>
 				                <li class="pull-right visible-xs btn-paynow">
-				                    <a href="{{URL::to('payment/go-pay/paypal')}}" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)">
+				                    <a href="{{URL::to('payment/go-pay/paypal')}}" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail">
 				                        <span>Pay Now <img src="http://localhost/brmsocial/public/website/images/img-pay-now.png" alt="paypal" title="paypal"></span>
 				                    </a>
 				                </li>				                

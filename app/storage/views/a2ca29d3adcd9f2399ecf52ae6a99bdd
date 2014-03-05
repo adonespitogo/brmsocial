@@ -61,14 +61,7 @@
 				         	<li style="padding-left: 15px;"><a href="<?php echo URL::to('session/login'); ?>">Login</a></li>
 				         	<?php endif; ?>
 				           	<li>
-				           		<a href="<?php echo URL::to('cart'); ?>">
-					           		<div class="bg-cart">
-					            		<span class="cart-dolsign">$</span>
-					            		<span class="cart-price totalPrice">17</span>
-					            		<i class="fa fa-shopping-cart"></i>
-					            		<span class="cart-orders totalItem">2</span>
-					           		</div>
-					           	</a>
+				           		<?php echo $__env->make('public.shared.cart_btn', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 				           	</li>
 					    </ul>
 				   </div>

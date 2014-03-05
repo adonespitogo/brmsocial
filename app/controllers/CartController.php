@@ -54,8 +54,9 @@
 		public function postUpdateBuyerEmail() {
 
 			$email = Input::get('email');
-
-			Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->update(array('buyer_email' => $email));
+			$user = User::where('email', $email)->first();
+			$user_id = $user ? $user->id : 0;
+			Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->update(array('buyer_email' => $email,'user_id'=>$user_id));
 
 		} 
 	}

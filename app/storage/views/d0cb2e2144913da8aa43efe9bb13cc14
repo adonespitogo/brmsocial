@@ -1,0 +1,65 @@
+<?php $__env->startSection('head'); ?>
+	@parent
+	<title>Products</title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<section class="deal-page bg-image-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="left-col">							
+						<!-- Start Customers also bought -->
+						<div class="row deal-popular">
+							<h3>Category &rarr; <?php echo $category->category; ?></h3>
+							<div class="row deal-popular">
+
+								<?php if(count($products) > 0): ?>
+									<?php foreach($products as $p): ?>
+										<div class="col-md-4 col-sm-4">
+											<?php if(isset($p->pictures[0])): ?>
+												<a href="<?php echo URL::to('product/'.$p->slug); ?>">
+													<img src='<?php echo URL::to($p->pictures[0]->picture->url("medium")); ?>' alt="most popular service" title="most popular service">
+												</a>
+											<?php endif; ?>
+											<h4>
+												<a href="<?php echo URL::to('product/'.$p->slug); ?>">
+													<?php echo $p->product_name; ?> <span>$<?php echo number_format($p->discounted_price, 2); ?></span>
+												</a>
+											</h4>
+											<ul>
+												<li><?php echo $p->getLeftSaleDays(); ?> days</li>
+												<li><a href="#"><?php echo $p->category->category; ?></a></li>
+											</ul>
+										</div>
+									<?php endforeach; ?>
+								<?php else: ?>
+									<div class="col-md-4 col-sm-4">No product yet.</div>
+								<?php endif; ?>
+
+							</div>
+						</div>
+
+						<!-- End Customers also bought -->
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="right-col">
+						<!-- Start Realated Sales -->
+						<?php echo $__env->make('public.shared.related_sales', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<!-- End Realated Sales -->
+						<!-- Start Upcoming Sales -->
+						<?php echo $__env->make('public.shared.upcoming_sales', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<!-- End Upcoming Sales -->
+					</div>
+				</div>	
+			</div>
+		</div>
+	</section>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+	@parent
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('public.template.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

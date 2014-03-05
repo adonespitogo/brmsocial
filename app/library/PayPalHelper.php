@@ -79,29 +79,11 @@ class PayPalHelper {
             $checkout_details = $details; 
             $httpParsedResponseAr = PayPalHelper::confirmCheckout($details);
 
-            if($httpParsedResponseAr != false)
-            {
-
-                $paypal_info = self::decodePaypalInfo($httpParsedResponseAr);
-
-                return json_decode(
-                    json_encode(
-                        array(
-                            'orders' => PayPalHelper::getOrderDetails($checkout_details),
-                            'paypal_info' => $paypal_info
-                        )
-                    )
-                );
-
-                // return PayPalHelper::getOrderDetails($checkout_details);
-            }
-            else
-            {
-                return false;
-            }
+            $httpParsedResponseAr['orders'] = PayPalHelper::getOrderDetails($checkout_details);
+            return $httpParsedResponseAr;
         }
         else{
-            return false;
+            return array('success'=>false, 'orders'=>array(), 'paypal_info'=>array());
         }
 	}
 
@@ -129,30 +111,10 @@ class PayPalHelper {
 
         if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"]))
         {
-
-            // $data = array(
-         //        "mc_gross" => urldecode($httpParsedResponseAr["PAYMENTINFO_0_AMT"]),
-         //        "payer_id" => urldecode($checkoutDetails['PAYERID']),
-         //        "tax" => urldecode($httpParsedResponseAr['PAYMENTINFO_0_FEEAMT']),
-         //        "payment_date" => urldecode($httpParsedResponseAr['TIMESTAMP']),
-         //        "mc_shipping" => urldecode($checkoutDetails['SHIPPINGAMT']),
-         //        "first_name" => urldecode($checkoutDetails['FIRSTNAME']),
-         //        "mc_fee" => urldecode($httpParsedResponseAr['PAYMENTINFO_0_FEEAMT']),
-         //        "address_country_code" => urldecode($checkoutDetails['COUNTRYCODE']),
-         //        "custom" => "",
-         //        "payer_email" => urldecode($checkoutDetails['EMAIL']),
-         //        "txn_id" => urldecode($httpParsedResponseAr['PAYMENTINFO_0_TRANSACTIONID']),
-         //        "payment_type" => urldecode($httpParsedResponseAr['PAYMENTINFO_0_PAYMENTTYPE']),
-         //        "last_name" => urldecode($checkoutDetails['LASTNAME']),
-         //        "payment_gross" => urldecode($httpParsedResponseAr["PAYMENTINFO_0_AMT"]),
-         //        "payment_status" => urldecode($httpParsedResponseAr['PAYMENTINFO_0_PAYMENTSTATUS']),
-         //        "pending_reason" => urldecode($httpParsedResponseAr['PAYMENTINFO_0_PENDINGREASON'])
-         //    );
-
-            return $httpParsedResponseAr;
+            return array('success'=>true, 'paypal_info'=>self::decodePaypalInfo($httpParsedResponseAr));
         }
         else{
-            return false;
+            return array('success'=>false, 'paypal_info'=>self::decodePaypalInfo($httpParsedResponseAr));
         }
 
         
