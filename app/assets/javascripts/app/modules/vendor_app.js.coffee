@@ -7,7 +7,8 @@ module = angular.module 'VendorApp', [
 	'ProductControllers',
 	'TrafficControllers',
 	'CommisionControllers',
-	'OrderControllers'
+	'OrderControllers',
+	'directive.loading' #ajax-loading
 ]
 
 module.config [
