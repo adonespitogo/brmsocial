@@ -80,7 +80,7 @@
               <label class="control-label pull-right">Confirm New Password:</label>
             </div>
             <div class="col-md-8">
-              <input required type="password" ng-model="tmpUser.confirm_password" class="form-control">
+              <input type="password" ng-model="tmpUser.confirm_password" class="form-control">
               <span class="text-danger" ng-show="tmpUser.new_password != tmpUser.confirm_password">Passwords do not match.</span>
             </div>
           </div>
