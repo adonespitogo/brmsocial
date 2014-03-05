@@ -3,6 +3,13 @@
 // use LaravelBook\Ardent\Ardent;
 
 class Order extends BaseModel{
+	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->download_count = 0;
+		$this->max_download = 1;
+	}
 
 	protected $table = 'orders';
 	protected $softDelete = true; 
@@ -32,12 +39,16 @@ class Order extends BaseModel{
 	public function loadDownloadUrl(){
 		$this->download_url = URL::to('download/'.$this->id.'/'.$this->product->id.'/0');
 	}
-
-	public static function afterCreate($cartItems=array(), $orderItems=array()){
- 	
-		MailHelper::afterPurchaseMessage($cartItems, $orderItems);
-		Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->delete();
-		return true;
+	
+	public function afterCreate()
+	{
+		//share commission to vendor
+		$c = new Commission();
+		$c->user_id = $this->vendor_id;
+		$c->order_id = $this->id;
+		$c->commission = $this->amount_commission;
+		$c->save();
+		
 	}
 }
 

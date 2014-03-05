@@ -36,7 +36,8 @@ class Product extends BaseModel{
 		'pictures' => array(self::HAS_MANY, 'ProductPicture'),
 		'files' => array(self::HAS_MANY, 'ProductFile'),
 		'featured'=>array(self::HAS_ONE,'FeaturedProduct'), 
-		'cart_items' => array(self::HAS_MANY, 'Cart')
+		'cartItems' => array(self::HAS_MANY, 'Cart'),
+		'commissionPercentage' => array(self::HAS_ONE, 'CommissionPercentage', 'foreignKey' => 'product_id')
 	);
 
 	//start overrides

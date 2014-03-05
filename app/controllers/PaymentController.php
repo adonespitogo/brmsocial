@@ -83,12 +83,24 @@
 								'txn_id' => $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'],
 								'created_at'=>date('Y-m-d H:i:s'),
 								'max_download'=>$item->product->download_count,
-							); 
-					}
-
-					Order::insert($orderItems);  
+							);
+						$order = new Order();
+						$order->user_id 				= $user->id;
+						$order->product_id 				= $item->product_id;
+						$order->vendor_id 				= $item->getVendor()->id;
+						$order->product_name 			= $item->product->product_name;
+						$order->price 					= $item->product->discounted_price;
+						$order->txn_id 					= $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'];
+						$order->created_at 				= date('Y-m-d H:i:s');
+						$order->max_download 			= $item->product->download_count;
+						$order->percentage_commission 	= $item->getCommissionPercentage();
+						$order->amount_commission 		= ((float)$order->price * (floatval($order->percentage_commission)/100));
+						$order->save();
+					} 
+		
+					Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->delete();
 					
-					Order::afterCreate($cartItems, $orderItems);
+					MailHelper::afterPurchaseMessage($cartItems, $orderItems);
 
 	 			} 
 			}	

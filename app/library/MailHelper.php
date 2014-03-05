@@ -15,6 +15,7 @@
 				
 			});
 		}
+		
 
 		public static function afterPurchaseMessage($cartItems, $orderItems)
 		{
