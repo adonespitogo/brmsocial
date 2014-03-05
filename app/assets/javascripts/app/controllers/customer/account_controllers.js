@@ -20,12 +20,13 @@ c = angular.module("AccountControllers", [
 .controller("AccountCtrl", [
 	'$scope', 'Users', 'Subscriptions',
 	function($scope, Users, Subscriptions){
+		
 		$scope.valueKey = [
 			{v: "0", k: "No"}, {v: '1', k: 'Yes'}
 		];
 		
-		$scope.currentUser.$promise.then(function(u){
-			$scope.tmpUser = angular.copy(u);
+		Users.get({id:'me'}, function(u){
+			$scope.tmpUser = u;
 			$scope.subscriptions = Subscriptions.get({userId : u.id});
 		});
 		
@@ -40,11 +41,14 @@ c = angular.module("AccountControllers", [
 					alert("Account has been updated successfully.");
 				},
 				function(res){
-					var errors = "";
-					for (var i = res.data.length - 1; i >= 0; i--) {
-						errors += res.data[i];
-					};
-					alert(errors);
+					if(res.status == 500) alert('Sorry, our server encountered an error. Please contact support now.');
+					else{
+						var errors = "";
+						for (var i = res.data.length - 1; i >= 0; i--) {
+							errors += res.data[i];
+						};
+						alert(errors);
+					}
 				});
 		}
 		
