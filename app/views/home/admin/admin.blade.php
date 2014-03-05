@@ -8,9 +8,11 @@
 @stop
 
 @section('body')
+	<div id="preloader"></div>
 	<div ng-app="AdminApp">
 		<div ng-controller="MainAdminCtrl">
 			@include('home.admin.header')
+			
 			<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
 		</div>
 	</div>
@@ -20,5 +22,6 @@
 	</footer>
 @stop
 @section('scripts')
+	{{ javascript_include_tag('preloader') }}
 	{{ javascript_include_tag('admin') }}
 @stop
