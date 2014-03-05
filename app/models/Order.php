@@ -46,6 +46,7 @@ class Order extends BaseModel{
 		$c = new Commission();
 		$c->user_id = $this->vendor_id;
 		$c->order_id = $this->id;
+		$c->product_id = $this->product_id;
 		$c->commission = $this->amount_commission;
 		$c->save();
 		
