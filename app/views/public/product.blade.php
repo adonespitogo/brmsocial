@@ -13,6 +13,7 @@
     <section class="sp2-ordinary-page-title two-lines text-center">
         <h1 class="fs-36">{{$product->product_name}}</h1>
         <h2 class="fs-24">{{$product->tagline}}</h2>
+        @if(!Auth::user())
         <div class="social-header">
             <ul>
                 <li><a href="{{URL::to('signup/facebook')}}" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
@@ -21,6 +22,7 @@
             </ul>       
         </div>
         <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
+        @endif
     </section>
     <section class="deal-page bg-image-white">
         <div class="container">
@@ -65,7 +67,70 @@
                     <div class="left-col">
                         <h3>Customers also bought</h3>
                         <!-- Start Customers also bought -->
-                        @include('public.shared.most_popular')
+                        <div class="row deal-popular">
+
+                            @foreach(Product::orderBy('created_at', 'DESC')->limit(3)->get() as $p)
+                                <div class="col-md-4 col-sm-4">
+                                    @if(isset($p->pictures[0]))
+
+                                        <a href="{{URL::to('product/'.$p->slug)}}">
+                                            <img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+                                        </a>
+
+                                    @endif
+                                    
+                                    <h4>
+                                    <a href="{{URL::to('product/'.$p->slug)}}">
+                                    
+                                    {{$p->product_name}}
+                                    
+                                    @if($p->discounted_price > 0)
+                                        <span>${{number_format($p->discounted_price, 2)}}</span>
+                                    @else
+                                        <span class="free">$0.00</span>
+                                    @endif
+                                     
+                                    </a></h4>
+                                    <ul>
+                                        <li>{{$p->getLeftSaleDays()}} days</li>
+                                        <li><a href="{{URL::to('products/category/'.$p->category->slug)}}">{{$p->category->category}}</a></li>
+                                    </ul>
+                                </div>
+                            @endforeach
+
+                        </div>
+                        <div class="row deal-popular">
+
+                            @foreach(Product::orderBy('created_at', 'DESC')->skip(3)->take(3)->get() as $p)
+                                <div class="col-md-4 col-sm-4">
+                                    @if(isset($p->pictures[0]))
+
+                                        <a href="{{URL::to('product/'.$p->slug)}}">
+                                            <img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+                                        </a>
+
+                                    @endif
+                                    
+                                    <h4>
+                                    <a href="{{URL::to('product/'.$p->slug)}}">
+                                    
+                                    {{$p->product_name}}
+                                    
+                                    @if($p->discounted_price > 0)
+                                        <span>${{number_format($p->discounted_price, 2)}}</span>
+                                    @else
+                                        <span class="free">$0.00</span>
+                                    @endif
+                                     
+                                    </a></h4>
+                                    <ul>
+                                        <li>{{$p->getLeftSaleDays()}} days</li>
+                                        <li><a href="{{URL::to('products/category/'.$p->category->slug)}}">{{$p->category->category}}</a></li>
+                                    </ul>
+                                </div>
+                            @endforeach
+
+                        </div>
                         <!-- End Customers also bought -->
                     </div>
                 </div>
@@ -94,8 +159,7 @@
                                 regular price
                                 <h2></h2>
                             </div>
-                            <div class="clearfix"><span class="save pull-right">save {{$product->getDiscountPercentage()}}%</span></div>
-                            <h4 class="clearfix">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
+                            <h4 class="clearfix" style="clear:both">{{ is_object($product->user->vendorInfo) ? $product->user->vendorInfo->company_name : $product->user->firstname . ' ' . $product->user->lastname }}</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{$product->getEndDatePercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$product->getEndDatePercentage()}}%">
                                     <span class="sr-only">

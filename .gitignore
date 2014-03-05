@@ -2,6 +2,7 @@
 /vendor
 /public/system
 /public/avatars
+/app/storage
 composer.phar
 composer.lock
 .env.local.php

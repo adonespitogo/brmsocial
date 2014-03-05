@@ -94,6 +94,8 @@
 				Session::flash('error', /*(String)*/$paypalResp['paypal_info']['L_SEVERITYCODE0'].". ".$paypalResp['paypal_info']['L_LONGMESSAGE0']);
 			}		
 
+
+			//Thank you page here with these errr messages
  			echo Session::get('warning');
  			echo Session::get('error');
  			return "Thank you page here";
