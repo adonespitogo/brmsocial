@@ -25,9 +25,11 @@
 	
 	var target = document.getElementById('preloader');
 	var spin = new Spinner(opts).spin(target);
-	$(document).ready(function(){
+	$(window).load(function(){
 		$('#wrapper').show();
-		spin.stop();
-		$("#preloader").remove();
+		$("#preloader").fadeOut(function(){
+			spin.stop();
+			$(this).remove();
+		});
 	});
 }).call(this);
