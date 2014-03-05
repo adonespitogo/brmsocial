@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('head')
+    {{ HTML::style('assets/lib/extras/preloader.css.scss') }}
     <title>BRM Social - Customer Portal</title>
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/font-awesome.min.css') }}">
@@ -35,11 +36,11 @@
            
            <!-- Start testimonials -->
            @include('home.customer.testimonials')
-           </div>
            @include('home.customer.footer')
-            </div>
-         </div>
+          </div>
+       </div>
    </div>
+ </div>
 @stop
 @section('scripts')
     {{javascript_include_tag('preloader')}}
