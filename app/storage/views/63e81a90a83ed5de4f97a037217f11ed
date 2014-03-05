@@ -2,26 +2,28 @@
 	<h4>Related Deals</h4>
 	<ul>
 		<?php foreach(Product::all() as $product): ?>
-			<li>
+			<li class="clearfix">
 				<?php if(isset($product->pictures[0])): ?>
-
+					<div class="l-img">
 					<a href="<?php echo URL::to('product/'.$product->slug); ?>">
 						<img src='<?php echo URL::to($product->pictures[0]->picture->url("small")); ?>' alt="related deals" title="related deals">
 					</a>
-
+					</div>
 				<?php endif; ?>
-				<div><a href="<?php echo URL::to('product/'.$product->slug); ?>"><?php echo $product->product_name; ?></a></div> 
-				<div class="price">
-					<?php if($product->discounted_price > 0): ?>
-						$<?php echo $product->discounted_price; ?>
-					<?php else: ?>
-						<span class="free">$0.00</span>
-					<?php endif; ?>
+				<div class="r-details">
+					<div><a href="<?php echo URL::to('product/'.$product->slug); ?>"><?php echo $product->product_name; ?></a></div>
+					<div class="price">
+						<?php if($product->discounted_price > 0): ?>
+							$<?php echo $product->discounted_price; ?>
+						<?php else: ?>
+							<span class="free">$0.00</span>
+						<?php endif; ?>
+					</div>
+					<ul>
+						<li><i class="fa fa-clock-o"></i><?php echo $product->getLeftSaleDays(); ?> days</li>
+						<li><a href="<?php echo URL::to('category/'.$product->category->slug); ?>"><?php echo $product->category->category; ?></a></li>
+					</ul>
 				</div>
-				<ul>
-					<li><?php echo $product->getLeftSaleDays(); ?> days</li>
-					<li><a href="<?php echo URL::to('products/category/'.$product->category->slug); ?>"><?php echo $product->category->category; ?></a></li>
-				</ul>
 			</li>
 		<?php endforeach; ?>
 	</ul>
