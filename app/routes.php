@@ -10,6 +10,10 @@ Route::get('free-products', array('uses' => 'PublicController@free'));
 Route::get('products/category/{slug}', array('uses' => 'CategoryController@getProducts'));
 Route::controller('session', 'SessionController');
 Route::get('signup', array('uses' => 'RegisterController@index'));
+<<<<<<< HEAD
+=======
+Route::get('signup/ref/{token}', array('uses' => 'RegisterController@fromSocialMediaReferral'));
+>>>>>>> b6460779f4eca47c7e449d42d32e0dbad1ac6eaf
 Route::get('signup/facebook', array('uses' => 'RegisterController@registerViaFacebook'));
 Route::get('signup/twitter', array('uses' => 'RegisterController@registerViaTwitter'));
 Route::post('register', array('uses' => 'RegisterController@create')); 
@@ -58,6 +62,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('commissions/my-received-commissions', array('uses' => 'CommissionController@myReceivedCommission'));
 	Route::get('commissions/my-paid-commissions', array('uses' => 'CommissionController@paidCommissions'));
 	Route::get('commissions/my-unpaid-commissions', array('uses' => 'CommissionController@unpaidCommissions'));
+	Route::put('commissions/{id}', array('uses' => 'CommissionController@markPaid'));
 
 	Route::resource('traffic', 'TrafficController');
 	

@@ -2,33 +2,29 @@
 #
 # @abstract Description
 #
-o = angular.module('OrderControllers', ['ui.router','OrderServices'])
+o = angular.module('OrderControllers', ['ui.router','OrderServices', 'CommissionServices'])
 
 .config([
 	'$stateProvider','$urlRouterProvider', 
 	($stateProvider, $urlRouterProvider)->
 		
-		templatePath = 'app/partials/orders/'
+		templatePath = 'app/partials/admin/orders/'
 
 		$stateProvider
 			.state 'orders',
 				url: '/orders',
-				template: templatePath+"list_orders",
+				template: JST[templatePath+"list_orders"],
 				controller: 'OrderCtrl'
-			.state 'orders.new',
-				url: '/new',
-				template: templatePath+"new_order",
-				controller: 'NewOrderCtrl'
-			.state 'orders.edit',
-				url: 'edit',
-				template: templatePath+'edit_order',
-				controller: 'EditOrderCtrl'
 
 ])
 	# configuration handler
 
 .controller('OrderCtrl',[
-	'$scope','Orders',
-	($scope, Orders)->
-		$scope.orders = Orders.get 
+	'$scope','Orders', 'Commissions'
+	($scope, Orders, Commissions)->
+		$scope.orders = Orders.all()
+		
+		$scope.markCommissionPaid = (order) ->
+			Commissions.markPaid id: order.commission.id, (commission)->
+				order.commission = commission
 ])

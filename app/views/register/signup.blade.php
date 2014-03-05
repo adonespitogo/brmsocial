@@ -15,7 +15,7 @@
 			<div class="col-xs-12 col-lg-6 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-lg-offset-3" style="padding-top: 50px;">
 
 				<p class="text-center">
-					<img src="http://localhost/htdocs/repo.brmsocial.com/public/assets/brmsocial-icon.png">
+					{{image_tag('brmsocial-icon.png')}}
 				</p>
 
 				<form  method="POST" action="{{URL::to('register')}}">

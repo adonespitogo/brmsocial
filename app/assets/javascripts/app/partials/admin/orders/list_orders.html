@@ -11,27 +11,37 @@
 			<th>Buyer</th>
 			<th>Vendor</th>
 			<th>Price</th>
+			<th>Commission <strong>%</strong></th>
 			<th>Amount Commision</th>
 			<th>Date Purchased</th>
+			<th>Date Vendor Paid</th>
+			<th>Status</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="o in orders">
 			<td ng-bind="o.product_name"></td>
-			<td ng-bind="o.user.full_name"></td>
-			<td ng-bind="o.vendor.full_name"></td>
-			<td ng-bind="o."></td>
-			<td ng-bind="p.sale_end_date_iso_date | date:'fullDate'"></td>
-			<td ng-bind="p.user.fullname"></td>
-			<td ng-cloak class="ng-cloak">{{p.is_featured?'Yes':'No'}}</td>
-			<td ng-bind="p.created_at_iso_date | date:'fullDate'"></td>
-			<td style ="width:15%">
-				<a ui-sref="editProduct({id:p.id})" class="btn btn-success btn-small">
-					Edit
-				</a>
-				<a ng-click="deleteProduct(p)" class="btn btn-danger btn-small">
-					Delete
-				</a>
+			<td ng-bind="o.buyer.fullname"></td>
+			<td ng-bind="o.product.user.fullname"></td>
+			<td ng-bind="o.price"></td>
+			<td ng-bind="o.percentage_commission + '%'"></td>
+			<td ng-bind="o.amount_commission"></td>
+			<td ng-bind="o.created_at_iso_date | date:'fullDate'"></td>
+			<td ng-bind="o.commission.paid_at_iso_date | date:'fullDate'" ng-show="o.commission.is_paid == '1'"></td>
+			<td ng-show="o.commission.is_paid == '0'">Not paid yet.</td>
+			<td>
+				<div ng-show="o.commission.is_paid == '0'">
+					<span class="text-danger">Unpaid</span>
+					<a class="btn btn-sm btn-success" ng-click="markCommissionPaid(o)">Mark Paid</a>
+				</div>
+				<div ng-show="o.commission.is_paid == '1'">
+					<span class="text-success">Paid</span>
+				</div>
+			</td>
+		</tr>
+		<tr ng-show="orders.length == 0">
+			<td colspan="6">
+				No orders yet.
 			</td>
 		</tr>
 	</tbody>

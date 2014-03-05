@@ -35,7 +35,7 @@
 			return Order::count();
 		}
 		public function allOrders(){
-			return Order::all();
+			return Order::with('buyer', 'vendor', 'commission')->get();
 		}
 
 	}

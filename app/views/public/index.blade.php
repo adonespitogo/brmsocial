@@ -21,8 +21,8 @@
 		  	<li><a href="{{URL::to('signup/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
 	  	</ul>	  	
 	  </div>
-	  <div class="via-email">Sign up via E-Mail</div>
 	  @endif
+	  <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
 	</section>
 
 	<section class="deal-page bg-image-white">
@@ -98,7 +98,7 @@
 							
 							<form class="form-inline" role="form" action="{{URL::to('subscribe')}}" method="POST">
 							  <div class="form-group">
-							    <i class="icon icon-envelope"></i><input name="email" type="email" class="form-control no-br" placeholder="your@email.com">
+							    <i class="fa fa-envelope"></i><input name="email" type="email" class="form-control no-br" placeholder="your@email.com">
 							  </div>
 							  <button type="submit" class="btn btn-green btn-default no-br">Submit</button>
 							</form>

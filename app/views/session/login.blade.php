@@ -3,6 +3,7 @@
 @section('head')
 	<title>BRM Social - Login</title>
 	<link rel="stylesheet" href="{{ URL::to('bootstrap-3.1/css/bootstrap.cosmo.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('customer/css/font-awesome.min.css') }}">
 	<style type="text/css">
 		.logo-img { width: 80px; display: block; margin: 0px auto;}
 		.align-center { text-align: center; }
@@ -47,8 +48,23 @@
 							</label>
 						</div>
 					</div>
-					<button class="btn btn-primary btn-block" type="submit">Login</button>
+					<div class="form-group">
+						<button class="btn btn-primary btn-block" type="submit">Login</button>
+					</div>
 				</form>
+			</div>
+		</div>
+		<div class="row">
+			
+			<div class="col-md-2 col-md-offset-4">
+				<a href="{{URL::to('signup/facebook')}}" class="btn btn-info">Login w/ <i class="fa fa-facebook-square"></i>
+				Facebook
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a href="{{URL::to('signup/twitter')}}" class="btn btn-info">Login w/ <i class="fa fa-facebook-square"></i>
+				Twitter
+				</a>
 			</div>
 		</div>
 	</div>

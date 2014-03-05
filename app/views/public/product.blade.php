@@ -13,6 +13,14 @@
     <section class="sp2-ordinary-page-title two-lines text-center">
         <h1 class="fs-36">{{$product->product_name}}</h1>
         <h2 class="fs-24">{{$product->tagline}}</h2>
+        <div class="social-header">
+            <ul>
+                <li><a href="{{URL::to('signup/facebook')}}" class="fb"><i class="fa fa-facebook"></i><span>sign up with facebook</span></a></li>
+                <li><span>or</span></li>
+                <li><a href="{{URL::to('signup/twitter')}}" class="twit"><i class="fa fa-twitter"></i><span>sign up with twitter</span></a></li>
+            </ul>       
+        </div>
+        <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
     </section>
     <section class="deal-page bg-image-white">
         <div class="container">
@@ -57,9 +65,7 @@
                     <div class="left-col">
                         <h3>Customers also bought</h3>
                         <!-- Start Customers also bought -->
-                        <div class="row deal-popular">
-                            @include('public.shared.most_popular')
-                        </div>
+                        @include('public.shared.most_popular')
                         <!-- End Customers also bought -->
                     </div>
                 </div>
@@ -120,7 +126,26 @@
                             data-product-description=""
                             >
                             BUY NOW
-                            </button>
+                            </button>     
+                            
+                            
+                            <div class="fb-steps">
+                                <h3 class="text-center first-h3">
+                                    <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
+                                </h3>
+                                <ul>
+                                    <li class="active">
+                                        <i class="fa fa-check-circle pull-right"></i>
+                                        <div><strong>Step 1:</strong> Connect with us</div>
+                                        <p>Having trouble?<br />Try repeating step one.</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check-circle"></i>
+                                        <div><strong>Step 2:</strong> Connect with us</div>
+                                    </li>
+                                </ul>
+                                <button class="btn-disabled" disabled="disabled">COMPLETE THE STEPS ABOVE TO GET IT</button>
+                            </div>
                             <div class="terms-of-sale">
                                 <h4>Terms of Sale</h4>
                                 <ul class="fa-ul">
@@ -146,6 +171,7 @@
             </div>
         </div>
     </section>
+</div>
 @stop
 @section('scripts')
 @parent
