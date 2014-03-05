@@ -13,7 +13,6 @@
 						<!-- Start Customers also bought -->
 						<div class="row deal-popular">
 							<h3>Category &rarr; {{ $category->category }}</h3>
-							<div class="row deal-popular">
 
 								@if(count($products) > 0)
 									@foreach($products as $p)
@@ -37,8 +36,6 @@
 								@else
 									<div class="col-md-4 col-sm-4">No product yet.</div>
 								@endif
-
-							</div>
 						</div>
 
 						<!-- End Customers also bought -->
