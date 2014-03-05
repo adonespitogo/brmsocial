@@ -72,15 +72,15 @@
 				                </li>
 				                
 				                <li class="pull-right hidden-xs">
-				                    <a href="{{URL::to('payment/go-pay/paypal')}}" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
+				                    <a href="{{URL::to('payment/go-pay/paypal')}}" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail"><img src="{{URL::to('website/images/co3-btn-paypal.png')}}" alt="paypal" title="paypal"> Pay with Paypal</a>
 				                </li>
 				                <li class="pull-right hidden-xs" ng-hide="!hasValidEmail"><div class="co3-or img-circle">OR</div></li>
 				                <li class="pull-right hidden-xs">
-				                    <a href="{{URL::to('payment/go-pay/credit-card')}}" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
+				                    <a href="{{URL::to('payment/go-pay/credit-card')}}" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail"><img src="{{URL::to('website/images/co3-btn-other-credit-cards.png')}}" alt="paypal" title="paypal"> Pay with Credit card</a>
 				                </li>
 				                <li class="pull-right visible-xs btn-paynow">
 				                    <a href="{{URL::to('payment/go-pay/paypal')}}" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-hide="!hasValidEmail">
-				                        <span>Pay Now <img src="http://localhost/brmsocial/public/website/images/img-pay-now.png" alt="paypal" title="paypal"></span>
+				                        <span>Pay Now <img src="{{URL::to('website/images/img-pay-now.png')}}" alt="paypal" title="paypal"></span>
 				                    </a>
 				                </li>				                
 				            </ul>
@@ -103,7 +103,7 @@
 			            </div>
 			            <div class="col-md-5 co-paypal">
 			                <p>To complete your order, you will be redirected to PayPal.</p>
-			                <a href="#"><img src="http://localhost/brmsocial/public/website/images/co3-paypal.jpg" alt="paypal" title="paypal"></a>
+			                <a href="#"><img src="{{URL::to('website/images/co3-paypal.jpg')}}" alt="paypal" title="paypal"></a>
 			            </div>
 			        </div>
 
@@ -111,7 +111,7 @@
 						<div class="col-md-12">
 							<div class="co-testimonial">
 								<ul>
-									<li><img src="http://localhost/brmsocial/public/website/images/co-testimonial-avatar1.jpg" alt="paypal" title="paypal"></li>
+									<li><img src="{{URL::to('website/images/co-testimonial-avatar1.jpg')}}" alt="paypal" title="paypal"></li>
 									<li>
 										<p><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star"></i></p>
 										<p>
@@ -119,7 +119,7 @@
 										</p>
 										<p class="co-author">Allan, Graveris</p>
 									</li>
-									<li><img src="http://localhost/brmsocial/public/website/images/co-testimonial-avatar2.jpg" alt="paypal" title="paypal"></li>
+									<li><img src="{{URL::to('website/images/co-testimonial-avatar2.jpg')}}" alt="paypal" title="paypal"></li>
 									<li>
 										<p><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i></p>
 										<p>I really love the quality of the videos, it’s erally clear plus the vendors on your site are experts. I believe you really choosed it wisely. Also, I love the simplicity of the site interms of buying and delivering the services. Everything is great for me. Keep up!</p>
