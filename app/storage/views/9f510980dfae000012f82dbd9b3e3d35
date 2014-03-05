@@ -5,25 +5,25 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="nav-style">
-                  <a href="{{URL::to('/')}}"><img src="{{ URL::to('customer/images/brmsocial-logo.png') }}" alt="BRM Social" class="logo"></a>
+                  <a href="<?php echo URL::to('/'); ?>"><img src="<?php echo URL::to('customer/images/brmsocial-logo.png'); ?>" alt="BRM Social" class="logo"></a>
                   <ul class="nav nav-pills">
                     <li class="dropdown shop">
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>Shop by Category</a>
                       <ul class="dropdown-menu">
 
                         <li ng-repeat="category in categories">
-                          <a href="{{ URL::to('products/category') }}/@{{ category.slug }}"><i class="fa fa-star"></i ng-cloak class="ng-cloak">@{{ category.category }}</a>
+                          <a href="<?php echo URL::to('products/category'); ?>/{{ category.slug }}"><i class="fa fa-star"></i ng-cloak class="ng-cloak">{{ category.category }}</a>
                         </li>
 
                       </ul>
                     </li>
-                    <li class="dropdown"><a href="{{URL::to('free-products')}}">Free Stuff</a></li>
+                    <li class="dropdown"><a href="<?php echo URL::to('free-products'); ?>">Free Stuff</a></li>
                   </ul>
                 </div>
                 <div class="login-con">
                   <ul class="">
                       <li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43; display:none"><a href="javascript:void(0)">Signup</a></li>
-                      <li style="padding-left: 15px;"><a href="{{URL::to('session/logout')}}">Logout</a></li>
+                      <li style="padding-left: 15px;"><a href="<?php echo URL::to('session/logout'); ?>">Logout</a></li>
                         <li>
                           <div class="bg-cart">
                             <span class="cart-dolsign">$</span>
@@ -43,7 +43,7 @@
       <div id="mobile-nav" class="visible-xs">
         <ul>
           <li><a href="#menu" class="mbtn"></a></li>
-          <li><a href="#"><img src="{{ URL::to('customer/images/brmsocial-logo.png') }}" alt="BRM Social" style="margin-left:50px;"></a></li>
+          <li><a href="#"><img src="<?php echo URL::to('customer/images/brmsocial-logo.png'); ?>" alt="BRM Social" style="margin-left:50px;"></a></li>
           <li></li>
         </ul>
           

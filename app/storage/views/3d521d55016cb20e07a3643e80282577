@@ -1,0 +1,43 @@
+
+<?php $__env->startSection('head'); ?>
+    <title>BRM Social - Customer Portal</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('customer/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('customer/css/font-awesome.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('customer/css/media-queries.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('customer/css/style.css'); ?>">
+    <div id="fb-root"></div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('body'); ?>
+   <div id="wrap" ng-app="CustomerApp">
+       <div ng-controller="MainCustomerCtrl">
+         <?php echo $__env->make('home.customer.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+         <div class="container-fluid"><!-- Start Container -->
+              <div class="row">
+                  <div class="col-lg-2 col-md-3">
+                  <!-- Start Sidebar -->
+                      <?php echo $__env->make('home.customer.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                  </div>
+         
+                  <div class="col-lg-7 col-md-6" ui-view autoscroll="false">
+                      
+                  </div>
+         
+                <div class="col-lg-3 col-md-3">
+                <!-- Start Right Column -->
+                  <?php echo $__env->make('home.customer.right_sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+              </div>
+         </div>
+         
+         <!-- Start testimonials -->
+         <?php echo $__env->make('home.customer.testimonials', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+         </div>
+         <?php echo $__env->make('home.customer.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+          </div>
+       </div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <?php echo javascript_include_tag('customer'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

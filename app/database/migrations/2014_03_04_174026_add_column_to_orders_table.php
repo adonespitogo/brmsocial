@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCart extends Migration {
+class AddColumnToOrdersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,9 @@ class CreateTableCart extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('cart', function($table) {
-			$table->increments('id');
-			$table->integer('user_id');
-			$table->string('cart_session_id');
-			$table->integer('product_id');
-			$table->timestamps();
+		Schema::table('orders', function($table){
+			$table->string('txn_id');
+
 		});
 	}
 
@@ -28,7 +25,9 @@ class CreateTableCart extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('cart');
+		Schema::table('orders', function($table){
+			$table->dropColumn('txn_id');
+		});
 	}
 
 }

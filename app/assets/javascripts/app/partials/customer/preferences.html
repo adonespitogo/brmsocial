@@ -14,7 +14,7 @@
               <li ng-repeat="interest in interests">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" ng-value="{{ interest.id }}" name="interests[]" ng-checked="hasInterest(interest)" ng-click="saveInterests(interest)">
+                    <input type="checkbox" ng-value="{{ interest.id }}" name="interests[]" ng-checked="hasInterest(interest)" ng-click="saveInterests(interest)" ng-cloak class="ng-cloak">
                     {{ interest.interest }}
                   </label>
                 </div>                          

@@ -2,8 +2,8 @@
   <div class="user-avatar">
     <img ng-src="@{{currentUser.pic}}">
     <ul>
-      <li>Credits: $@{{currentUser.credits}}</li>
-      <li>@{{ currentUser.email }}</li>
+      <li ng-cloak class="ng-cloak">Credits: $@{{currentUser.credits}}</li>
+      <li ng-cloak class="ng-cloak">@{{ currentUser.email }}</li>
       <li>
         <i class="fa fa-star active"></i>
         <i class="fa fa-star active"></i>
@@ -16,7 +16,7 @@
   <div class="menu">
     <ul>
       <li ng-repeat="nav in navs" ng-class="{'active': nav.active}">
-        <a ui-sref="@{{nav.state}}" ng-click="activateNav(nav)">
+        <a ui-sref="@{{nav.state}}" ng-click="activateNav(nav)" ng-cloak class="ng-cloak">
           <i class="fa @{{nav.icon}}"></i>
           @{{nav.text}}
         </a>
@@ -43,7 +43,7 @@
       </li>
     </ul>
     <div class="member">Member since:
-      <span>{{ Carbon\Carbon::parse(Auth::user()->created_at)->toFormattedDateString(); }}</span>
+      <span >{{ Carbon\Carbon::parse(Auth::user()->created_at)->toFormattedDateString(); }}</span>
     </div>
   </div>
 </div>

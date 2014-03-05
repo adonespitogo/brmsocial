@@ -1,10 +1,9 @@
-@extends('public.template.base')
-@section('head')
+<?php $__env->startSection('head'); ?>
 	@parent
 	<title>Products</title>
-	<base href="{{URL::to('/')}}" />
-@stop
-@section('content')
+	<base href="<?php echo URL::to('/'); ?>" />
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <section class="checkout" ng-app="Cart">	
 	<div class="container pt-40">
 		<div class="row">
@@ -18,21 +17,21 @@
 								<td colspan="5">
 									<form role="form">
 									<div class="form-group">
-									  @if(Auth::user())
+									  <?php if(Auth::user()): ?>
 								      	<label for="exampleInputEmail1">Email address</label>
-									        <input type="email" placeholder="ie. yourname@domain.com" class="form-control br-0 buyer_email" value="{{Auth::user()->email}}" disabled>
-								      @else
+									        <input type="email" placeholder="ie. yourname@domain.com" class="form-control br-0 buyer_email" value="<?php echo Auth::user()->email; ?>" disabled>
+								      <?php else: ?>
 									      	<label for="exampleInputEmail1">Email address</label>
 									        <input type="email" name="email" placeholder="ie. yourname@domain.com" ng-model="email"  ng-blur="saveEmail(email)" class="form-control br-0 buyer_email" data-original-title >
-									   @endif
+									   <?php endif; ?>
 								    </div>
 								    </form>
 								</td>
 							</tr>
 							 
-				          	<tr ng-repeat="item in cartItems" ng-class="item-@{{ item.id }}" ng-cloak class='ng-cloak'>  
+				          	<tr ng-repeat="item in cartItems" ng-class="item-{{ item.id }}" ng-cloak class='ng-cloak'>  
 					            <td class="co-prod">
-									<img ng-src="@{{item.product_picture}}">
+									<img ng-src="{{item.product_picture}}">
 									<h4 ng-bind="item.product.product_name"></h4>
 									<i class="fa fa-video-camera"></i><a href="#" ng-bind="item.product.type.type"></a>
 					            </td>
@@ -71,14 +70,14 @@
 				                </li>
 				                
 				                <li class="pull-right hidden-xs">
-				                    <a href="{{URL::to('payment/go-pay/paypal')}}" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
+				                    <a href="<?php echo URL::to('payment/go-pay/paypal'); ?>" id="payWithPaypal" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="true"><img src="http://localhost/brmsocial/public/website/images/co3-btn-paypal.png" alt="paypal" title="paypal"> Pay with Paypal</a>
 				                </li>
 				                <li class="pull-right hidden-xs"><div class="co3-or img-circle">OR</div></li>
 				                <li class="pull-right hidden-xs">
-				                    <a href="{{URL::to('payment/go-pay/credit-card')}}" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
+				                    <a href="<?php echo URL::to('payment/go-pay/credit-card'); ?>" id="payWithCreditCard" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)"><img src="http://localhost/brmsocial/public/website/images/co3-btn-other-credit-cards.png" alt="paypal" title="paypal"> Pay with Credit card</a>
 				                </li>
 				                <li class="pull-right visible-xs btn-paynow">
-				                    <a href="{{URL::to('payment/go-pay/paypal')}}" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)">
+				                    <a href="<?php echo URL::to('payment/go-pay/paypal'); ?>" class="btn-green btn-co3-step2 confirm-checkout-btn" ng-disabled="!(hasValidEmail)">
 				                        <span>Pay Now <img src="http://localhost/brmsocial/public/website/images/img-pay-now.png" alt="paypal" title="paypal"></span>
 				                    </a>
 				                </li>				                
@@ -135,9 +134,10 @@
 </section> 
 
 
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
 	@parent
-	{{javascript_include_tag('cart')}}
-@stop
+	<?php echo javascript_include_tag('cart'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('public.template.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

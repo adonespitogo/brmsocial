@@ -23,7 +23,7 @@
 			<td ng-bind="o."></td>
 			<td ng-bind="p.sale_end_date_iso_date | date:'fullDate'"></td>
 			<td ng-bind="p.user.fullname"></td>
-			<td>{{p.is_featured?'Yes':'No'}}</td>
+			<td ng-cloak class="ng-cloak">{{p.is_featured?'Yes':'No'}}</td>
 			<td ng-bind="p.created_at_iso_date | date:'fullDate'"></td>
 			<td style ="width:15%">
 				<a ui-sref="editProduct({id:p.id})" class="btn btn-success btn-small">
