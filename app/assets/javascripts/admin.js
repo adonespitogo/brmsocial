@@ -12,7 +12,6 @@
 //
 //= require lib/bootstrap/bootstrap
 //
-//= require lib/underscore/underscore
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-sanitize
 //= require lib/angular-1.2.9/angular-ui-router
@@ -21,9 +20,6 @@
 //= require lib/angular-strap/angular-strap.tpl
 //= require lib/angular-fileupload/angular-file-upload-shim
 //= require lib/angular-fileupload/angular-file-upload
-//= require lib/wysihtml5/parser_rules/advanced
-//= require lib/wysihtml5/dist/wysihtml5-0.3.0
-//= require lib/wysihtml5/dist/bootstrap-wysihtml5
 //
 //= require app/modules/admin_app
 //= require_tree app/controllers/admin
@@ -33,4 +29,7 @@
 //= require_tree app/partials/admin
 //
 //= require lib/underscore/underscore
+//= require lib/wysihtml5/parser_rules/advanced
+//= require lib/wysihtml5/dist/wysihtml5-0.3.0
+//= require lib/wysihtml5/dist/bootstrap-wysihtml5
 //
