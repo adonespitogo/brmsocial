@@ -20,9 +20,21 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="o in orders">
-			<td ng-bind="o.product_name"></td>
-			<td ng-bind="o.buyer.fullname"></td>
-			<td ng-bind="o.vendor.fullname"></td>
+			<td>
+				<a ui-sref="editProduct({id: o.product.id})">
+					{{ o.product_name }}
+				</a>
+			</td>
+			<td>
+				<a ui-sref="editUser({id: o.buyer.id})">
+					{{ o.buyer.fullname }}
+				</a>
+			</td>
+			<td>
+				<a ui-sref="editUser({id: o.vendor.id})">
+					{{ o.vendor.fullname }}
+				</a>
+			</td>
 			<td ng-bind="o.price"></td>
 			<td ng-bind="o.percentage_commission + '%'"></td>
 			<td ng-bind="o.amount_commission"></td>

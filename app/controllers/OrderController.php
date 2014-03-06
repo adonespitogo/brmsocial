@@ -36,7 +36,7 @@
 			return Order::count();
 		}
 		public function allOrders(){
-			return Order::with('buyer', 'vendor', 'commission')->orderBy('created_at', 'DESC')->get();
+			return Order::with('product', 'buyer', 'vendor', 'commission')->orderBy('created_at', 'DESC')->get();
 		}
 
 	}
