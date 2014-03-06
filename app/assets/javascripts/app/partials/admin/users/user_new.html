@@ -60,7 +60,7 @@
 	<div class="form-group"> 
 		<div class="col-md-6" ng-class="{'has-error' : userForm.password.$error.required}">
 			<label class="control-label">Password</label>
-			<input required type="password" name="password" ng-model="user.password" class="form-control">
+			<input type="password" name="password" ng-model="user.password" class="form-control">
 			<span class="text-danger" ng-show="userForm.password.$error.required">Required *</span>
 		</div>
 	</div>
