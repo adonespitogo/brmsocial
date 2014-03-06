@@ -7,6 +7,10 @@ new EventListener();
 Route::get('/', array('uses' => 'PublicController@index'));
 Route::get('login', array('uses' => 'SessionController@getLogin'));
 Route::get('product/{slug}', array('uses' => 'PublicController@product'));
+Route::post('product/add-free', array('uses' => 'ProductController@addFree'));
+Route::post('product/activate-free/{id}', array('uses' => 'ProductController@activateFree'));
+Route::post('product/deactivate-free/{id}', array('uses' => 'ProductController@deactivateFree'));
+
 Route::get('free-products', array('uses' => 'PublicController@free'));
 Route::get('products/category/{slug}', array('uses' => 'CategoryController@getProducts'));
 Route::controller('session', 'SessionController');
@@ -43,7 +47,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('product/add-image', array('uses'=>'ProductController@postAddImage'));
 	Route::post('product/add-file', array('uses'=>'ProductController@postAddFile'));
 	Route::resource('products', 'ProductController');
-	Route::resource('product-types', 'ProductTypeController');
+	Route::resource('product-types', 'ProductTypeController'); 
 
 	Route::get('orders/myordersoldtodaycount', array('uses' => 'OrderController@myOrdersSoldTodayCount'));
 	Route::get('orders/count', array('uses' => 'OrderController@countOrders'));
@@ -51,6 +55,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('orders/my-orders', array('uses' => 'OrderController@myOrdersList'));
 	Route::get('orders/all', array('uses' => 'OrderController@allOrders'));
 	Route::get('sales', array('uses' => 'OrderController@mySalesList'));
+	Route::get('get-free/{id}', array('uses' => 'PaymentController@getPurchaseFree'));
 
 	Route::post('interests/update-user-interest', array('uses' => 'InterestController@updateUserInterest'));
 	Route::get('interests/my-interests', array('uses' => 'InterestController@myInterest'));

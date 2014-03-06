@@ -6,10 +6,7 @@
 	  <div class="form-sort form-inline pull-right">
 	    <div class="form-group">
 	      <label>Sort by:</label>
-	      <select class="form-control w180">
-	        <option>Categories</option>
-	        <option>Date</option>
-	        <option>Price</option>
+	      <select class="form-control w180" ng-model="order" ng-options ="o.v as o.k for o in orderOptions">
 	      </select>
 	    </div>
 	  </div>
@@ -17,14 +14,14 @@
 	  <h3 class="mb-30">Recent Purchases</h3>
 
 	  <!-- Start Recent Purchases -->
-	  <div class="row recent-purchases" ng-repeat="purchase in latest_purchases">
+	  <div class="row recent-purchases" ng-repeat="purchase in latest_purchases | orderBy: order">
 	    <div class="col-md-3">
 	      <img src="{{ purchase.picture }}">
 	    </div>
 	    <div class="col-md-7">
 	      <h4>{{ purchase.product_name }}</h4>
 	      <p><a href="#"><em>By : {{ purchase.product.user.firstname }}</em></a></p>
-	      <a href="#" class="btn-download">Download</a>
+	      <a ng-href="{{purchase.download_url}}" class="btn-download">Download</a>
 	    </div>
 	    <div class="col-md-2">
 	      <span class="date"><em ng-cloak class="ng-cloak">{{ purchase.created_at_iso_date | date:'longDate' }}</em></span>

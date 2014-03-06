@@ -11,6 +11,7 @@ module = angular.module 'AdminApp', [
 	'mgcrea.ngStrap', #angular-strapFormValidation
 	'FormValidation', #custom form validations
 	'EvenListeners',#custom event listeners directive
+	'directive.loading' #ajax-loading
 ]
 
 module.config [

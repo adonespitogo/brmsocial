@@ -36,7 +36,9 @@ class Product extends BaseModel{
 		'pictures' => array(self::HAS_MANY, 'ProductPicture'),
 		'files' => array(self::HAS_MANY, 'ProductFile'),
 		'featured'=>array(self::HAS_ONE,'FeaturedProduct'), 
-		'cart_items' => array(self::HAS_MANY, 'Cart')
+		'cartItems' => array(self::HAS_MANY, 'Cart'),
+		'commissionPercentage' => array(self::HAS_ONE, 'CommissionPercentage', 'foreignKey' => 'product_id')
+
 	);
 
 	//start overrides
@@ -132,10 +134,6 @@ class Product extends BaseModel{
 					->get();
 	}
 	
-	public static function getMostPopular()
-	{
-		return self::orderBy('created_at')->limit(6)->get();
-	}
 	public function getIsFeaturedAttribute(){
 		if(isset($this->featured->id))
 			return true;

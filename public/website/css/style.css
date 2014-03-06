@@ -156,6 +156,13 @@ h3 { font-size:18px; color:#000; margin:0 0 20px 0; padding:0; }
 .product-right-col .fb-steps ul li.active { background-color:#eaffdb; }
 .product-right-col .fb-steps ul li.active i { color:#75c34b; position:absolute; }
 .product-right-col .fb-steps p { font-size:12px; color:#7c8594; margin-top:10px; } 
+ 
+#u_0_6 {display: none !important;}
+ 
+#___plusone_0{position:absolute !important;}
+  
+#twitter-widget-0{margin-left: 44px !important;margin-bottom: -5px !important;}
+ 
 .product-right-col .terms-of-sale h4 {font-weight: normal; font-family:'Open Sans', sans-serif !important; font-size: 18px; padding: 12px 0; color: #323437;}
 .product-right-col .terms-of-sale ul li {font-weight: 300; font-family:'Open Sans', sans-serif !important; font-size: 17px; color:#7c8594; padding: 5px 0;}
 .product-right-col .terms-of-sale ul li i {color:#474747; padding: 6px 0;}
@@ -353,4 +360,4 @@ padding:5px 10px 5px 10px;border-bottom: 1px solid #53951d; border-radius: 2px; 
 .footer2  img { vertical-align:top; }
 .footer2 ul li {display: inline-block;}
 /* END FOOTER */
-
+  

@@ -11,14 +11,13 @@
 	
 	<div class="form-group">
         <div class="col-md-6" ng-class="{'has-error': productForm.type.$error.required}">
-            <label class="control-label">Type</label>
+            <label class="control-label">Type: ({{product.type.type}})</label>
             <select
                 name="type" 
                 class="form-control"
                 ng-model="product.type"
                 ng-options="pt as pt.type for pt in produc_types" 
                 required
-                ng-selected="string"
                 >
             </select>
             <span class="text-danger" ng-show="productForm.type.$error.required">Required *</span>
@@ -114,6 +113,14 @@
 
 			<span class="text-danger" ng-show="productForm.user.$error.required">Required *</span>
 		</div>
+
+		<div class="col-md-6" ng-class="{'has-error': productForm.commission_percentage.$error.required}">
+            <label class="control-label">Commision Percentage(%)</label> 
+            <input class="form-control" name="commission_percentage" ng-model="product.commission_percentage" required integer/>
+            <span class="text-danger" ng-show="productForm.commission_percentage.$error.required">Required *</span>
+            <span class="text-danger" ng-show="productForm.commission_percentage.$error.integer">Must be a number *</span>
+        </div>
+        
 	</div>
 	<div class="form-group">
 

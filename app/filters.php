@@ -13,13 +13,16 @@
 
 App::before(function($request)
 {
-	//
+	
 });
 
 
 App::after(function($request, $response)
 {
-	//
+	if(!isset($_COOKIE['cart_session_id'])){
+		$randomData = sha1($_SERVER['REMOTE_ADDR'].microtime().'cart-cookie');
+		setcookie('cart_session_id', $randomData, time()+60*60*24*31, '/');
+	}
 });
 
 /*

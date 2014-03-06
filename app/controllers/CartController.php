@@ -4,23 +4,6 @@
 
 		protected $paymentTypes = array('paypal','credit-card');
 
-		public function __construct() {	 
- 
-			$this->initCookie();
-			
-		}
-
-		public function initCookie(){
-			
-			if(isset($_COOKIE['cart_session_id'])){ 
-				if(strlen($_COOKIE['cart_session_id'])>10) return;
-			}	
-			
-			$randomData = sha1($_SERVER['REMOTE_ADDR'].microtime().'cart-cookie');
-			return setcookie('cart_session_id', $randomData, time()+60*60*24*31, '/');
-		}
-
-
 
 		public function getIndex() {
 
@@ -28,10 +11,9 @@
 
 		}
 
-		public function getItems(){  
-
-			return Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with(array('product'))->get();
- 			
+		public function getItems(){
+			$items = Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->with('product')->get();
+ 			return $items;
 		}
 		public function postAdd() {
 			
@@ -54,8 +36,9 @@
 		public function postUpdateBuyerEmail() {
 
 			$email = Input::get('email');
-
-			Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->update(array('buyer_email' => $email));
+			$user = User::where('email', $email)->first();
+			$user_id = $user ? $user->id : 0;
+			Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->update(array('buyer_email' => $email,'user_id'=>$user_id));
 
 		} 
 	}

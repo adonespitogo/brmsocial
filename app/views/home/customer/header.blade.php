@@ -22,16 +22,23 @@
                 </div>
                 <div class="login-con">
                   <ul class="">
-                      <li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43; display:none"><a href="javascript:void(0)">Signup</a></li>
-                      <li style="padding-left: 15px;"><a href="{{URL::to('session/logout')}}">Logout</a></li>
-                        <li>
-                          <div class="bg-cart">
-                            <span class="cart-dolsign">$</span>
-                            <span class="cart-price totalPrice">17</span>
-                            <i class="fa fa-shopping-cart"></i></span>
-                            <span class="cart-orders totalItem">2</span>
-                          </div>
-                        </li>
+                      <li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43; display:none"><a href="javascript:void(0)">Signup</a>
+                      </li>
+                      <li style="padding-left: 15px;"><a href="{{URL::to('session/logout')}}">Logout</a>
+                      </li>
+                      <li>
+                          <?php
+                            $cartSummary = Cart::getCartSummary();
+                          ?>
+                          <a href="{{URL::to('cart')}}" style="color: white !important">
+                            <div class="bg-cart">
+                              <span class="cart-dolsign">$</span>
+                              <span class="cart-price totalPrice">{{$cartSummary['totalPrice']}}</span>
+                              <span><i class="fa fa-shopping-cart"></i></span>
+                              <span class="cart-orders totalItem">{{$cartSummary['numItem']}}</span>
+                            </div>
+                          </a>
+                      </li>
                   </ul>
                </div>
               </div>

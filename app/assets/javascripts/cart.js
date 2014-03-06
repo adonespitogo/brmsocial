@@ -12,14 +12,7 @@
 //
 //
 //= require lib/angular-1.2.9/angular
-//= require lib/underscore/underscore
-//= require lib/angular-1.2.9/angular-ui-router
-//= require lib/angular-1.2.9/angular-resource
-//= require lib/angular-strap/angular-strap
-//= require lib/angular-strap/angular-strap.tpl   
-//= require_tree app/services
+//= require lib/angular-1.2.9/angular-resource  
+//= require app/services/cart_services
 //= require_tree app/controllers/cart
-//
-//= require jquery
-//= require lib/bootstrap/bootstrap 
 //

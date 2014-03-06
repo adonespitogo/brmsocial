@@ -5,7 +5,31 @@
 <base href="{{URL::to('/')}}" />
 @stop
 
-@section('content') 
+@section('content')  
+
+<!-- FB SDK-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=641816635878156";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- END FB SDK-->
+
+<!-- TWITTER-->
+<script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+</script>
+<!-- END TWITTER-->
+
 <div id="wrap">                                   
     <!--script>
         // $('#myTab a[href="#overview"]').tab('show')
@@ -24,7 +48,7 @@
         <div class="via-email"><a href="{{URL::to('signup ')}}" style="color:white; text-decoration:none !important">Sign up via E-Mail</a></div>
         @endif
     </section>
-    <section class="deal-page bg-image-white">
+    <section class="deal-page bg-image-white" product-id="{{$product->id}}">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -67,7 +91,70 @@
                     <div class="left-col">
                         <h3>Customers also bought</h3>
                         <!-- Start Customers also bought -->
-                        @include('public.shared.most_popular')
+                        <div class="row deal-popular">
+
+                            @foreach(Product::orderBy('created_at', 'DESC')->limit(3)->get() as $p)
+                                <div class="col-md-4 col-sm-4">
+                                    @if(isset($p->pictures[0]))
+
+                                        <a href="{{URL::to('product/'.$p->slug)}}">
+                                            <img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+                                        </a>
+
+                                    @endif
+                                    
+                                    <h4>
+                                    <a href="{{URL::to('product/'.$p->slug)}}">
+                                    
+                                    {{$p->product_name}}
+                                    
+                                    @if($p->discounted_price > 0)
+                                        <span>${{number_format($p->discounted_price, 2)}}</span>
+                                    @else
+                                        <span class="free">$0.00</span>
+                                    @endif
+                                     
+                                    </a></h4>
+                                    <ul>
+                                        <li>{{$p->getLeftSaleDays()}} days</li>
+                                        <li><a href="{{URL::to('products/category/'.$p->category->slug)}}">{{$p->category->category}}</a></li>
+                                    </ul>
+                                </div>
+                            @endforeach
+
+                        </div>
+                        <div class="row deal-popular">
+
+                            @foreach(Product::orderBy('created_at', 'DESC')->skip(3)->take(3)->get() as $p)
+                                <div class="col-md-4 col-sm-4">
+                                    @if(isset($p->pictures[0]))
+
+                                        <a href="{{URL::to('product/'.$p->slug)}}">
+                                            <img src='{{URL::to($p->pictures[0]->picture->url("medium"))}}' alt="most popular service" title="most popular service">
+                                        </a>
+
+                                    @endif
+                                    
+                                    <h4>
+                                    <a href="{{URL::to('product/'.$p->slug)}}">
+                                    
+                                    {{$p->product_name}}
+                                    
+                                    @if($p->discounted_price > 0)
+                                        <span>${{number_format($p->discounted_price, 2)}}</span>
+                                    @else
+                                        <span class="free">$0.00</span>
+                                    @endif
+                                     
+                                    </a></h4>
+                                    <ul>
+                                        <li>{{$p->getLeftSaleDays()}} days</li>
+                                        <li><a href="{{URL::to('products/category/'.$p->category->slug)}}">{{$p->category->category}}</a></li>
+                                    </ul>
+                                </div>
+                            @endforeach
+
+                        </div>
                         <!-- End Customers also bought -->
                     </div>
                 </div>
@@ -112,41 +199,109 @@
                                     {{date("M d", strtotime($product->sale_end_date))}}
                                 </li>
                             </ul>
-                            <h3 class="text-center first-h3">
-                            <i class="fa fa-time"></i>
-                            @if($product->getLeftSaleDays() > 0)
-                            Sale ends in <span>{{$product->getLeftSaleDays()}} days</span>
-                            @else
-                            Sale ends <span>today</span>
-                            @endif
-                            </h3>
-                            <button class="btn-green add2cart-btn"
-                            data-product-id="{{$product->id}}"
-                            data-product-price="{{$product->discounted_price}}"
-                            data-product-name="{{$product->product_name}}"
-                            data-product-description=""
-                            >
-                            BUY NOW
-                            </button>     
                             
-                            
-                            <div class="fb-steps">
+                            @if($product->discounted_price>0)
                                 <h3 class="text-center first-h3">
-                                    <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
+                                <i class="fa fa-time"></i>
+                                @if($product->getLeftSaleDays() > 0)
+                                Sale ends in <span>{{$product->getLeftSaleDays()}} days</span>
+                                @else
+                                Sale ends <span>today</span>
+                                @endif
                                 </h3>
-                                <ul>
-                                    <li class="active">
-                                        <i class="fa fa-check-circle pull-right"></i>
-                                        <div><strong>Step 1:</strong> Connect with us</div>
-                                        <p>Having trouble?<br />Try repeating step one.</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-check-circle"></i>
-                                        <div><strong>Step 2:</strong> Connect with us</div>
-                                    </li>
-                                </ul>
-                                <button class="btn-disabled" disabled="disabled">COMPLETE THE STEPS ABOVE TO GET IT</button>
-                            </div>
+                                <button class="btn-green add2cart-btn"
+                                data-product-id="{{$product->id}}"
+                                data-product-price="{{$product->discounted_price}}"
+                                data-product-name="{{$product->product_name}}"
+                                data-product-description=""
+                                >
+                                BUY NOW
+                                </button>     
+                            @else 
+                                <div class="fb-steps">
+                                    <h3 class="text-center first-h3">
+                                        <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
+                                    </h3>
+                                    <ul>
+                                        <li id="free_step1"
+                                            @if(Session::has('free_step_1') && in_array($product->id,Session::get('free_step_1')))
+                                                {{'class="active"'}}                                            
+                                            @endif
+                                        >
+                                            <i class="fa fa-check-circle pull-right"></i>
+                                            <div><strong>Step 1:</strong> Connect with us</div>
+                                             
+                                             <div class="fb-like" data-href="http://brmsocial.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+
+                                             <span>&nbsp;or&nbsp;</span>
+                                            
+                                             <div 
+                                                class="g-plusone"
+                                                data-size="tall"
+                                                data-annotation='none' 
+                                                data-callback="gplus_callback" 
+                                                data-count="false" 
+                                                data-expandTo="right" 
+                                                data-href="https://plus.google.com/u/0/+ArnelLenteria"
+                                                data-lang="en-US"
+                                                data-parsetags="onload"
+                                                data-align="right"
+                                                data-recommendations="false"
+                                            >
+                                            </div>
+
+                                            <span>&nbsp;or&nbsp;</span>
+
+                                            <a href="https://twitter.com/revalderc" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow</a>                                            
+
+                                            <p>Having trouble?<br />Try repeating step one.</p>
+                                        </li>
+                                        <li id="free_step2"
+                                            @if(Session::has('free_step_2') && in_array($product->id,Session::get('free_step_2')))
+                                                {{'class="active"'}}                                            
+                                            @endif
+                                        >
+                                            <i class="fa fa-check-circle"></i>
+                                            <div><strong>Step 2:</strong> Spread the word</div>
+
+                                            <div class="fb-share-button" data-href="{{Request::url()}}" data-type="button"></div>
+                                            <span>&nbsp;or&nbsp;</span>
+                                            <div 
+                                                class="g-plus" data-action="share" 
+                                                data-size="tall"
+                                                data-annotation='none'  
+                                                data-count="false" 
+                                                data-expandTo="right" 
+                                                data-href="{{Request::url()}}"
+                                                data-lang="en-US"
+                                                data-parsetags="onload"
+                                                data-align="right"
+                                                data-recommendations="false"
+                                                data-onendinteraction="gplus_callback_share"
+                                            >
+                                            </div>
+                                            <span>&nbsp;or&nbsp;</span>
+
+                                            <a href="https://twitter.com/share" data-url="{{Request::url()}}" class="twitter-share-button" data-lang="en">Tweet</a>
+
+                                        </li>
+                                    </ul>
+                                    <button id="get_free"
+                                        @if(Session::has('free_step_1') &&Session::has('free_step_2') && in_array($product->id,Session::get('free_step_1')) && in_array($product->id,Session::get('free_step_2')))
+                                            {{'class="btn-green"'}} 
+                                            >
+                                            STEPS COMPLETED, GET IT NOW                                 
+                                        @else
+                                            {{'disabled="disabled"'}}
+                                            {{'class="btn-disabled"'}}
+                                            >
+                                             COMPLETE THE STEPS ABOVE TO GET IT 
+                                        @endif
+                                        
+                                    </button>
+                                </div>
+                            @endif
+                                                        
                             <div class="terms-of-sale">
                                 <h4>Terms of Sale</h4>
                                 <ul class="fa-ul">
@@ -189,4 +344,7 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
 @stop

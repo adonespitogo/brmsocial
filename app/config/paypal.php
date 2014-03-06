@@ -7,7 +7,7 @@ if(in_array($ip, $local_ips) || strpos($_SERVER['HTTP_HOST'], "localhost")!==fal
 	return array(
 		'notifyUrl' => 'http://www.buyrealmarketing.com/testipn.php',
 		'returnUrl' => URL::to('payment/buy-from-paypal-ordinary'),
-		'cancelUrl' => URL::to('services'),
+		'cancelUrl' => URL::to('feedback'),
 		'paypalDomain' => 'sandbox.paypal.com',
 		'username' => 'arnel.lenteria_api1.gmail.com',
 		'email' => 'arnel.lenteria@gmail.com',
@@ -17,7 +17,7 @@ if(in_array($ip, $local_ips) || strpos($_SERVER['HTTP_HOST'], "localhost")!==fal
 }else{
 	return array(
 		'returnUrl' => URL::to('payment/buy-from-paypal-ordinary'),
-		'cancelUrl' => URL::to('feedback'),
+		'cancelUrl' => URL::to('/'),
 		'paypalDomain' => 'paypal.com',
 		'username' => 'jonathan_api1.clickinglabs.com',
 		'email' => 'payment@springrank.com',

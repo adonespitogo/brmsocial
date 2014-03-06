@@ -12,7 +12,6 @@
                         <th>#</th>
                         <th>Category</th>
                         <th>Name</th>
-                        <th>Overview</th>
                         <th>Tagline</th>
                         <th>Regular Price</th>
                         <th>Discounted Price</th>
@@ -30,7 +29,6 @@
                         <td ng-cloak class="ng-cloak">{{ product.id }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.category.category }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.product_name }}</td>
-                        <td ng-cloak class="ng-cloak">{{ product.overview }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.tagline }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.regular_price }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.discounted_price }}</td>
@@ -48,8 +46,10 @@
 
                         <td ng-cloak class="ng-cloak">{{ product.created_at }}</td>
                         <td ng-cloak class="ng-cloak">{{ product.traffic_today_count }}</td>
-                        <td><a href="#/product/{{ product.id }}/traffic"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
-                        <td>Copy Product Link</td>                        
+                        <td><a ui-sref="traffic({id:product.id})"><button class="btn btn-primary btn-sm">Lookup</button></a></td>
+                        <td>
+                            <a ng-href="{{ base_url + '/product/' + product.slug }}" target="_blank">link</a>
+                        </td>                        
                     </tr>
                     <tr ng-show="products.length == 0">
                     	<td colspan="9">No products yet.</td>

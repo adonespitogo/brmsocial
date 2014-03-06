@@ -15,12 +15,14 @@
 				
 			});
 		}
+		
 
-		public static function afterPurchaseMessage($order)
+		public static function afterPurchaseMessage($cartItems, $orderItems)
 		{
-			Mail::send('emails.after_purchase', array('order' => $order), function($message) use ($order)
-			{
-			    $message->to($order->user->email)->subject('We have received your Order');
+			Mail::send('emails.after_purchase', array('cartItems' => $cartItems, 'orderItems'=>$orderItems), function($message) use ($cartItems)
+			{   
+				$recepient = Auth::user() ? Auth::user()->email : $cartItems[0]->buyer_email;
+			    $message->to($recepient)->subject('We have received your Order');
 			    $message->from('hello@buyrealmarketing.com', 'Buy Real Marketing');
 			});
 		}

@@ -15,7 +15,7 @@ class CreateTableProductTypes extends Migration {
 		Schema::create('product_types', function($table){
 			$table->increments('id');
 			$table->string('type');
-			$table->string('description');
+			$table->string('description')->nullable();
 			$table->boolean('has_file');
 			$table->softDeletes();
 			$table->timeStamps();

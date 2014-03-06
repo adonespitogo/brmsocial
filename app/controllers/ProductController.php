@@ -20,6 +20,7 @@
 			$p->featured_end_date_iso_date = "2014-02-17T07:46:16+0000";
 			$p->featured_start_date = '2014:02:17 07:19:23';
 			$p->featured_end_date = '2014:02:17 07:19:23'; 
+			$p['commission_percentage'] = 0;
 			return $p;
 		}
 
@@ -43,6 +44,12 @@
 
 			$p->user_id = Input::get('user');
 			$p->save();
+
+			//Commision Percentage
+			$cmp = new CommissionPercentage();
+			$cmp->product_id = $p->id;
+			$cmp->percent = Input::get('commission_percentage');
+			$cmp->save();
 
 			if(Input::has('is_featured') && Input::get('is_featured')){
 				$fp = new FeaturedProduct();
@@ -72,7 +79,11 @@
 
 		public function show($id)
 		{	
-			return Product::find($id); 
+			$product = Product::find($id); 
+			$cmp = CommissionPercentage::where('product_id', $id)->first();
+			$product['commission_percentage'] = is_object($cmp) ? $cmp->percent : 0;
+
+			return $product;
 		}
 
 		public function update($id)
@@ -95,6 +106,13 @@
 			$p->max_download = Input::get('max_download');
 			$p->user_id  = Input::get('user_id');
 			$p->save();
+
+			//Commision Percentage
+			$cmp = CommissionPercentage::where('product_id', $p->id)->first();
+			$cmp = ($cmp) ? $cmp : new CommissionPercentage();
+			$cmp->percent = Input::get('commission_percentage');
+			$cmp->product_id = $p->id;
+			$cmp->save();
 
 			if(Input::get('is_featured')){
 				$f = Input::get('featured');
@@ -213,11 +231,15 @@
 			$order = Order::find($orderId);
 			$user = Auth::user();
 
-			if($order->user_id == $user->id && $order->max_download >= $order->download_count){
+			if(is_object($order)&&$order->user_id == $user->id && $order->max_download >= $order->download_count){
+				
+				$product = $order->product;
+				if(!isset($product->files[$productFileIndex]))
+					return Response::json(array('status'=>404, 'error'=>'file not found'), 404);
+
 				$order->download_count += 1;
 				$order->save();
 
-				$product = $order->product;
 				$productFile = $product->files[$productFileIndex];
 				$filepath = app_path('storage').$productFile->file->url();
 				 
@@ -232,6 +254,56 @@
 			return Product::count();
 		}
 
+		public function activateFree($step=1){
+			$steps = array(1, 2);
+			$productId = Input::get('id');
+
+			if(!in_array($step, $steps))
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+			
+			if($step==2 && !Session::has('free_step_1'))
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+
+			if(!Session::has('free_step_'.$step)){
+				Session::put('free_step_'.$step, array($productId));
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+			}
+			else{
+				Session::push('free_step_'.$step, $productId);
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+			}
+		}
+
+		public function deactivateFree($step=1){
+			$session = Session::get('free_step_'.$step);
+			$productId = Input::get('id');
+			if(Session::has('free_step_'.$step) && is_array($session) && in_array($productId, $session)){
+
+					for ($i = 0, $l = count($session); $i < $l; ++$i) {
+				        if (in_array($productId, $session)) unset($session[$i]);
+				    }				
+
+					Session::put('free_step_'.$step, $session);
+ 				 
+			}
+
+			return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+		}
 	}
 
 ?>

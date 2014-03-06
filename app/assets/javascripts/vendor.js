@@ -14,6 +14,7 @@
 //= require lib/bootstrap/bootstrap
 //
 //= require lib/angular-1.2.9/angular
+//= require lib/angular-1.2.9/angular.directive.loading
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
 //

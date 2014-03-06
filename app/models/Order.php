@@ -3,9 +3,16 @@
 // use LaravelBook\Ardent\Ardent;
 
 class Order extends BaseModel{
+	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->download_count = 0;
+		$this->max_download = 1;
+	}
 
 	protected $table = 'orders';
-	protected $softDelete = true;
+	protected $softDelete = true; 
 
 	protected $isodates = array(
 		'created_at',
@@ -29,6 +36,21 @@ class Order extends BaseModel{
 		$this->picture = $this->getPicture();
 	}
 
+	public function loadDownloadUrl(){
+		$this->download_url = URL::to('download/'.$this->id.'/'.$this->product->id.'/0');
+	}
+	
+	public function afterCreate()
+	{
+		//share commission to vendor
+		$c = new Commission();
+		$c->user_id = $this->vendor_id;
+		$c->order_id = $this->id;
+		$c->product_id = $this->product_id;
+		$c->commission = $this->amount_commission;
+		$c->save();
+		
+	}
 }
 
 ?>

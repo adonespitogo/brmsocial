@@ -8,16 +8,21 @@
 @stop
 
 @section('body')
-	<div ng-app="AdminApp">
-		<div ng-controller="MainAdminCtrl">
-			@include('home.admin.header')
-			<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
+	@include('home.shared.preloader')
+	<div id="wrapper">
+		<div ng-app="AdminApp">
+			<div ng-controller="MainAdminCtrl">
+				@include('home.admin.header')
+				@include('home.shared.ajax_loader')
+				<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
+			</div>
 		</div>
+		<hr>
+		<footer style=" text-align: center; padding-bottom: 10px">
+			BRM Deals &copy; 2014
+		</footer>
 	</div>
-	<hr>
-	<footer style=" text-align: center; padding-bottom: 10px">
-		BRM Deals &copy; 2014
-	</footer>
+	
 @stop
 @section('scripts')
 	{{ javascript_include_tag('admin') }}

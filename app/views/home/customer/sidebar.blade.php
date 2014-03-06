@@ -15,8 +15,8 @@
   </div>
   <div class="menu">
     <ul>
-      <li ng-repeat="nav in navs" ng-class="{'active': nav.active}">
-        <a ui-sref="@{{nav.state}}" ng-click="activateNav(nav)" ng-cloak class="ng-cloak">
+      <li ng-repeat="nav in navs" ui-sref-active='active'>
+        <a ui-sref="@{{nav.state}}">
           <i class="fa @{{nav.icon}}"></i>
           @{{nav.text}}
         </a>
