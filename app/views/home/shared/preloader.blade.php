@@ -1,6 +1,8 @@
 <div id="preloader">
 	<p id="caption">
-		Loading cool stuff...
+		<strong>
+			Loading awesomeness ...
+		</strong>
 	</p>
 	<div id="spinner"></div>
 </div>
