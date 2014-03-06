@@ -28,10 +28,10 @@
 				<td ng-bind="u.type"></td> 
 				<td ng-bind="u.created_at_iso_date | date:'fullDate'"></td>
 				<td style ="width:15%">
-					<a ui-sref="editUser({id:u.id})" class="btn btn-success btn-small">
+					<a ui-sref="editUser({id:u.id})" class="btn btn-success btn-sm">
 						Edit
 					</a>
-					<a ng-click="deleteUser(u)" class="btn btn-danger btn-small">
+					<a ng-click="deleteUser(u)" class="btn btn-danger btn-sm">
 						Delete
 					</a>
 				</td>

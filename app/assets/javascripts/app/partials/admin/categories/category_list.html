@@ -21,8 +21,8 @@
 			<td ng-bind="c.category"></td>
 			<td ng-bind="c.created_at_iso_date | date:'fullDate'"></td> 
 			<td style="width: 15%">
-				<a class="btn btn-success" ui-sref="editCategory({id: c.id})">Edit</a>
-				<a class="btn btn-danger" ng-click="delete(c)">Delete</a>
+				<a class="btn btn-success btn-sm" ui-sref="editCategory({id: c.id})">Edit</a>
+				<a class="btn btn-danger btn-sm" ng-click="delete(c)">Delete</a>
 			</td>
 		</tr>
 	</tbody>
