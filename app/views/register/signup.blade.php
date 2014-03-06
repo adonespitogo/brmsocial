@@ -69,7 +69,3 @@
 		
 	</div>
 @stop
-
-@section('scripts')
-	{{javascript_include_tag('register')}}
-@stop
