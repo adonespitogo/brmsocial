@@ -14,8 +14,8 @@ c.config [
 
 		# // Now set up the states
 		$stateProvider
-		.state('commisions', {
-			url: "/commisions",
+		.state('commissions', {
+			url: "/commissions",
 			template: JST[ templatePath + "vendor/commissions"],
 			controller : 'CommissionMainCtrl'
 		})

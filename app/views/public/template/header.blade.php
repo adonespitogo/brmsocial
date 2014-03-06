@@ -56,6 +56,21 @@
 					                </ul>
 					              </div>
 					            </li>
+					        @elseif(Auth::user()&&Auth::user()->type=='vendor')
+					        	<li style="padding-left: 15px;" class="custom-login-dropdown">
+					              <div class="dropdown">
+					                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" style="font-family: 'Open Sans', sans-serif;font-weight: 400;font-size: 15px;color: #FFF;"> 
+					                	{{Auth::user()->firstname}} {{Auth::user()->lastname}}
+					                <span class="caret"></span></a>
+					                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">                  
+					                  <li><a href="{{URL::to('home')}}">Dashboard</a></li>
+					                  <li><a href="{{URL::to('home/#/products')}}">Products</a></li>
+					                  <li><a href="{{URL::to('home/#/sales')}}">Sales</a></li> 
+					                  <li><a href="{{URL::to('home/#/commissions')}}">Commissions</a></li>
+					                  <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
+					                </ul>
+					              </div>
+					            </li>
 					    	@else
 				          	<li style="padding-left: 15px; padding-right: 15px;border-right: 1px solid #3a3d43;"><a href="{{URL::to('signup')}}">Signup</a></li>
 				         	<li style="padding-left: 15px;"><a href="{{URL::to('session/login')}}">Login</a></li>
