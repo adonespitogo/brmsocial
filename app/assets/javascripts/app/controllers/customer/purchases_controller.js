@@ -22,6 +22,13 @@ p.config([
 
 p.controller('PurchaseCtrl', [
 	'$scope', 'Orders', function($scope, Orders) {
+		$scope.order = 'created_at';
+		$scope.orderOptions = [
+			{v: 'product.category.category', k: 'Category'},
+			{v: 'product_name', k: 'Product Name'},
+			{v: 'created_at', k: 'Date'},
+			{v: 'price', k: 'Price'}
+		]
 		$scope.purchases = Orders.myOrderList();
 	}
 ]);
