@@ -222,7 +222,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	public function getFriendsWhoJoined()
 	{
 		$friend_ids = DB::table('referrals_friends_joined')->select('friend_id')->where('user_id', $this->id)->get();
-		$ids = array();
+		$ids = array(0);
 		foreach ($friend_ids as $f) {
 			$ids[] = $f->friend_id;
 		}
