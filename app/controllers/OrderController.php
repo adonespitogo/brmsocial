@@ -22,6 +22,7 @@
 			
 			foreach ($orders as $o) {
 				$o->loadPicture();
+				$o->loadDownloadUrl();
 			}
 
 			return $orders;

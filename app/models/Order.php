@@ -29,6 +29,10 @@ class Order extends BaseModel{
 		$this->picture = $this->getPicture();
 	}
 
+	public function loadDownloadUrl(){
+		$this->download_url = URL::to('download/'.$this->id.'/'.$this->product->id.'/0');
+	}
+
 	public static function afterCreate($cartItems, $orderItems){
  	
 		MailHelper::afterPurchaseMessage($cartItems, $orderItems);

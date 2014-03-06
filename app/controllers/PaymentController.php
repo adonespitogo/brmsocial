@@ -81,6 +81,7 @@
 								'product_name' => $item->product->product_name,
 								'price' => $item->product->discounted_price,
 								'txn_id' => $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'],
+								'created_at'=>date('Y-m-d H:i:s'),
 							); 
 					}
 
