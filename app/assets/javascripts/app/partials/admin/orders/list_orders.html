@@ -22,7 +22,7 @@
 		<tr ng-repeat="o in orders">
 			<td ng-bind="o.product_name"></td>
 			<td ng-bind="o.buyer.fullname"></td>
-			<td ng-bind="o.product.user.fullname"></td>
+			<td ng-bind="o.vendor.fullname"></td>
 			<td ng-bind="o.price"></td>
 			<td ng-bind="o.percentage_commission + '%'"></td>
 			<td ng-bind="o.amount_commission"></td>
