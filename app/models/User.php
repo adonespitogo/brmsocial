@@ -152,7 +152,10 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		$now = Carbon\Carbon::now();
 		$start = $now->copy()->startOfDay();
 		$end = $now->copy()->endOfDay();
-		$sum = Order::where('created_at', '>=', $start)->where('created_at', '<=', $end)->sum('price');
+		$sum = Order::where('created_at', '>=', $start)
+					->where('created_at', '<=', $end)
+					->where('vendor_id', $this->id)
+					->sum('price');
 		if(is_null($sum)) return 0;
 		return $sum;
 	}
