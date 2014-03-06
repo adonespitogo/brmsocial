@@ -357,13 +357,13 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	protected function getTwitterFirstname($result)
 	{
 		$ex = explode(' ', $result->name);
-		return isset($ex[0]) ? $ex[0] : 'undefined';
+		return isset($ex[0]) ? $ex[0] : '';
 	}
 	
 	protected function getTwitterLastname($result)
 	{
 		$ex = explode(' ', $result->name);
-		return isset($ex[1]) ? $ex[1] : 'undefined';
+		return isset($ex[1]) ? $ex[1] : '';
 	}
 	
 	protected function getFBPic()
