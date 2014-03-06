@@ -14,7 +14,7 @@
 			<div ng-controller="MainAdminCtrl">
 				@include('home.admin.header')
 				@include('home.shared.ajax_loader')
-				<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
+				<div style="margin-left: 15px; margin-right:15px;" ui-view autoscroll='false'></div>
 			</div>
 		</div>
 		<hr>

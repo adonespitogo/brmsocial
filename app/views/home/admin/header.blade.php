@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div style="padding-left: 15px; padding-right: 15px;">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" ui-sref="admin">
-            <span class="glyphicon glyphicon-home"></span>
+            <i class="fa fa-home"></i>
             Dashboard
           </a>
         </div>
@@ -23,7 +23,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"><b>Settings <span class="glyphicon glyphicon-cog"></span></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> Settings</a>
               <ul class="dropdown-menu" role="menu">
                <li><a ng-click="copyCurrentUser()" href="#account-settings" data-toggle="modal">My Account</a></li>
                 <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
@@ -35,7 +35,7 @@
     </nav>
     <div style="height: 60px"></div>
 
-    <div class="modal fade" id="account-settings">
+<div class="modal fade" id="account-settings">
   <div class="modal-dialog">
     <form class="modal-content" novalidate ng-submit="updateCurrentUser(user)" name="accountForm">
       <div class="modal-header">
