@@ -315,7 +315,12 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	
 	public function getSocialMediaReferralToken()
 	{
-		return DB::table('social_media_referrals')->where('user_id', $this->id)->first();
+		$ref = DB::table('social_media_referrals')->where('user_id', $this->id)->first();
+		if(is_null($ref)){
+			$this->setSocialMediaReferralToken();
+			$ref = DB::table('social_media_referrals')->where('user_id', $this->id)->first();
+		}
+		return $ref;
 	}
 	
 	public function isFacebookUser()

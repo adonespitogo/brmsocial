@@ -1,43 +1,11 @@
 c = angular.module("CreditControllers", [
-	'ReferralServices',
-	'facebook'					#used for referral
-])
-
-.config([
-	'$stateProvider','FacebookProvider',
-	($stateProvider, FacebookProvider) ->
-		
-		# define state
-		tpl = 'app/partials/customer/'
-		$stateProvider.state "credits",
-			url: '/credits'
-			template: JST[tpl+'credits']
-			controller: 'CreditCtrl'
-			
-			
-		# configure facebook sdk api-key
-		FacebookProvider.init '641816635878156'
+	'ReferralServices'
 ])
 
 .controller("CreditCtrl", [
-	'$scope', 'Referrals', 'Facebook',
-	($scope, Referrals, Facebook) ->
+	'$scope', 'Referrals',
+	($scope, Referrals) ->
 		
-		#check if facebook is loaded
-		# $scope.$watch ->
-		# 	return Facebook.isReady()
-		# , ->
-		# 	$scope.facebookReady = true
-		
-		$scope.referViaFacebook = ->
-			Facebook.ui({
-				method: 'feed',
-				name: 'Check out BRM Social, a cool new deals site for online marketers',
-				link: 'http://www.brmsocial.com?referralid=',
-				picture: 'http://brmsocial.com/images/brmsocial-icon.png',
-				caption: 'Save up to 90% on popular online marketing tools and training courses. Get $10 to spend just for signing up!',
-				description: ' '
-			}, (res)-> )
 
 
 		$scope.currentUser.$promise.then (u) ->
