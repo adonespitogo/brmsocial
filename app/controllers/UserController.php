@@ -87,7 +87,9 @@
 		}
 
 		public function countUsers(){
-			return User::count();
+			$c = User::count();
+			if(is_null($c)) return Response::json(array('count' => 0));
+			return Response::json(array('count' => $c));
 		}
 	}
 ?>
