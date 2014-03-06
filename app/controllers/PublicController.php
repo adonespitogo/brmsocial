@@ -14,14 +14,16 @@ class PublicController extends BaseController{
 	{	 
 		
 		$product = Product::where('slug', $slug)->first();
- 		
+ 		$order = Order::where('product_id', $product->id)->first();
+
+ 		$orderExist = (is_object($order) && $order->max_download>$order->download_count) ? true : false;
  		//event listener for product traffic		
  		
 		if(is_object($product)){
 				
 			Event::fire('product.traffic', $product);
 
-			return View::make('public.product')->with('product', $product);
+			return View::make('public.product')->with(array('product'=> $product, 'orderExist'=>$orderExist/*boolean*/));
 		}
 		else
 			return $this->show404();

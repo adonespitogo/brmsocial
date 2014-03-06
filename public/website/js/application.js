@@ -46,7 +46,7 @@ function free_steps(action, step){
   $.post(baseUrl+'/product/'+action+'-free/'+step, {id: productId}, function(data){
       $('#free_step1').removeClass('active');
       $('#free_step2').removeClass('active');
-      $('#get_free').removeClass('btn-green').addClass('btn-disabled').prop('disabled', true);
+      $('#get_free').removeClass('btn-green').addClass('btn-disabled').prop('disabled', true).text('COMPLETE THE STEPS ABOVE TO GET IT');
 
       if(data.step1 && data.step2)
       {
@@ -62,9 +62,4 @@ function free_steps(action, step){
       }
   });
 }
-
-$(document).on('click', '#get_free', function(){ 
-  productId = $('[product-id]').attr('product-id');
-  document.location.href=baseUrl+'/get-free/'+productId;
-});
  
