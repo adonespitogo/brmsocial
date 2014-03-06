@@ -214,12 +214,13 @@
 			$user = Auth::user();
 
 			if($order->user_id == $user->id && $order->max_download >= $order->download_count){
-				$order->download_count += 1;
-				$order->save();
-
+				
 				$product = $order->product;
 				if(!isset($product->files[$productFileIndex]))
 					return Response::json(array('status'=>404, 'error'=>'file not found'), 404);
+
+				$order->download_count += 1;
+				$order->save();
 
 				$productFile = $product->files[$productFileIndex];
 				$filepath = app_path('storage').$productFile->file->url();
