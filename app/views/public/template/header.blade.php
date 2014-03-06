@@ -98,8 +98,12 @@
 					</ul>
 				</li>
 				<li><a href="{{URL::to('free-products')}}">Free Stuff</a></li>
-				<li><a href="#">Signup</a></li>
-				<li><a href="{{URL::to('session/login')}}">Login</a></li>
+				@if(!Auth::check())
+					<li><a href="#">Signup</a></li>
+					<li><a href="{{URL::to('session/login')}}">Login</a></li>
+				@else
+					<li><a href="{{URL::to('session/logout')}}">Logout</a></li>
+				@endif
 			</ul>	
 		</nav>
     </div>

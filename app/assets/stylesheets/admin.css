@@ -9,7 +9,7 @@
  * gets included (e.g. say you have require_tree . then the code will appear after all the directories 
  * but before any files alphabetically greater than 'application.css' 
  *
- *= require_tree ./lib/angular/ng-grid
+ *= require ./lib/extras/preloader
  *= require ./lib/wysihtml5/style
  *= require_tree ./lib/angular/ng-quick-date
  */

@@ -8,19 +8,23 @@
 @stop
 
 @section('body')
-	<div ng-app="VendorApp">
-		<div ng-controller="MainVendorCtrl">
-			@include('home.vendor.header')
-			<div style="padding: 10px 15px;" autoscroll='false' ui-view >
-			
+	<div id="preloader"></div>
+	<div id="wrapper">
+		<div ng-app="VendorApp">
+			<div ng-controller="MainVendorCtrl">
+				@include('home.vendor.header')
+				<div style="padding: 10px 15px;" autoscroll='false' ui-view >
+				
+				</div>
 			</div>
 		</div>
+		<hr>
+		<footer style=" text-align: center; padding-bottom: 10px">
+			BRM Deals &copy; 2014
+		</footer>
 	</div>
-	<hr>
-	<footer style=" text-align: center; padding-bottom: 10px">
-		BRM Deals &copy; 2014
-	</footer>
 @stop
 @section('scripts')
+	{{ javascript_include_tag('preloader') }}
 	{{ javascript_include_tag('vendor') }}
 @stop
