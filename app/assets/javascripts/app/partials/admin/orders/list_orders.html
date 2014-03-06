@@ -37,7 +37,7 @@
 			</td>
 			<td ng-bind="o.price"></td>
 			<td ng-bind="o.percentage_commission + '%'"></td>
-			<td ng-bind="o.amount_commission"></td>
+			<td ng-bind="'$ ' + o.amount_commission"></td>
 			<td ng-bind="o.created_at_iso_date | date:'fullDate'"></td>
 			<td ng-bind="o.commission.paid_at_iso_date | date:'fullDate'" ng-show="o.commission.is_paid == '1'"></td>
 			<td ng-show="o.commission.is_paid == '0'"><strong class="text-danger">Not paid yet.</strong></td>

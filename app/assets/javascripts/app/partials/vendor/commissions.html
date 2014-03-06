@@ -17,9 +17,9 @@
 				<tbody>
 					<tr ng-repeat="upc in unpaidCommissions">
 						<td ng-cloak class="ng-cloak">{{upc.product.product_name}}</td>
-						<td ng-cloak class="ng-cloak">{{upc.order.price}}</td>
+						<td ng-cloak class="ng-cloak">${{upc.order.price}}</td>
 						<td ng-cloak class="ng-cloak">{{upc.order.percentage_commission}} %</td>
-						<td ng-cloak class="ng-cloak">{{upc.commission}}</td>
+						<td ng-cloak class="ng-cloak">${{upc.commission}}</td>
 						<td ng-cloak class="ng-cloak">{{upc.order.created_at_iso_date | date:"fullDate"}}</td>
 					</tr>
 					<tr>
@@ -47,9 +47,9 @@
 				<tbody>
 					<tr ng-repeat="upc in paidCommissions">
 						<td ng-cloak class="ng-cloak">{{upc.product.product_name}}</td>
-						<td ng-cloak class="ng-cloak">{{upc.order.price}}</td>
+						<td ng-cloak class="ng-cloak">${{upc.order.price}}</td>
 						<td ng-cloak class="ng-cloak">{{upc.order.percentage_commission}} %</td>
-						<td ng-cloak class="ng-cloak">{{upc.commission}}</td>
+						<td ng-cloak class="ng-cloak">${{upc.commission}}</td>
 						<td ng-cloak class="ng-cloak">{{upc.order.created_at_iso_date | date: "fullDate"}}</td>
 						<td ng-cloak class="ng-cloak">{{upc.paid_at_iso_date | date: "fullDate"}}</td>
 					</tr>

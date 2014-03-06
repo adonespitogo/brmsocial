@@ -21,7 +21,7 @@
                     </thead>
                     <tbody>
                     	<tr ng-repeat="order in orders">
-                    		<td ng-cloak class="ng-cloak">{{ order.id }}</td>
+                    		<td ng-cloak class="ng-cloak">{{ $index }}</td>
                     		<td ng-cloak class="ng-cloak">{{ order.product_name }}</td>
                     		<td ng-cloak class="ng-cloak">${{ order.price }}</td>
                     		<td ng-cloak class="ng-cloak">{{ order.created_at }}</td>
