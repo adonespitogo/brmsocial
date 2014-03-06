@@ -33,9 +33,9 @@ c.controller 'UserListCtrl', [
 	'$scope','$alert', 'Users',
 	($scope, $alert, Users)->
 
-		Users.query({id: 'all'},{},(users)->
-			$scope.users = _.reject users, (user)-> user.id == $scope.currentUser.id || user.type=='admin'
-		) 
+		Users.query id: 'all', (users)->
+			$scope.users = _.reject users, (user)-> user.id == $scope.currentUser.id
+		
 
 		$scope.deleteUser = (u)->
 							if confirm "Are you sure you want to delete this user?"
