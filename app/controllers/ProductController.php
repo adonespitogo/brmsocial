@@ -218,6 +218,9 @@
 				$order->save();
 
 				$product = $order->product;
+				if(!isset($product->files[$productFileIndex]))
+					return Response::json(array('status'=>404, 'error'=>'file not found'), 404);
+
 				$productFile = $product->files[$productFileIndex];
 				$filepath = app_path('storage').$productFile->file->url();
 				 
