@@ -37,7 +37,7 @@
 			$user->linkedin_url = Input::get('linkedin_url');
 			$user->dribble_url = Input::get('dribble_url');
 			$user->website_url = Input::get('website_url');
-			if(Input::has('password')) $user->password = Input::get('password');
+			if(Input::has('password')) $user->setPassword(Input::get('password'));
 			$user->save();
 			return $user;
 		}
