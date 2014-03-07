@@ -146,9 +146,15 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	//vendor
 	public function getMySalesToday() {
-		$id = $this->id;
-		$sales = DB::select(DB::raw("SELECT CASE WHEN SUM(price) IS NOT NULL THEN SUM(price) ELSE 0 END AS sales_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND vendor_id=".$id));
-		return $sales[0]->sales_today;
+		// $id = $this->id;
+		// $sales = DB::select(DB::raw("SELECT CASE WHEN SUM(price) IS NOT NULL THEN SUM(price) ELSE 0 END AS sales_today FROM orders WHERE created_at >= CONCAT(CURDATE(), ' 00:00:00') AND created_at <=  CONCAT(CURDATE(), ' 23:59:59') AND vendor_id=".$id));
+		// return $sales[0]->sales_today;
+		$now = Carbon\Carbon::now();
+		$start = $now->copy()->startOfDay();
+		$end = $now->copy()->endOfDay();
+		$sum = Order::where('created_at', '>=', $start)->where('created_at', '<=', $end)->sum('price');
+		if(is_null($sum)) return 0;
+		return $sum;
 	}
 
 	//vendor
@@ -216,7 +222,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	public function getFriendsWhoJoined()
 	{
 		$friend_ids = DB::table('referrals_friends_joined')->select('friend_id')->where('user_id', $this->id)->get();
-		$ids = array();
+		$ids = array(0);
 		foreach ($friend_ids as $f) {
 			$ids[] = $f->friend_id;
 		}

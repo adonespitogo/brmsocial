@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" ui-sref="vendor" ng-click="navsOff()">
-            <span class="glyphicon glyphicon-home"></span>
+            <i class="fa fa-home"></i>
             Dashboard
           </a>
         </div>
@@ -25,7 +25,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"> <span ng-bind="currentUser.fullname"></span>  <span class="glyphicon glyphicon-cog"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> <span ng-bind="currentUser.fullname"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a ng-click="copyCurrentUser()" href="#account-settings" data-toggle="modal">My Account</a></li>
                 <li><a href="{{URL::to('session/logout')}}">Logout</a></li>
@@ -80,7 +80,7 @@
               <label class="control-label pull-right">Confirm New Password:</label>
             </div>
             <div class="col-md-8">
-              <input required type="password" ng-model="tmpUser.confirm_password" class="form-control">
+              <input type="password" ng-model="tmpUser.confirm_password" class="form-control">
               <span class="text-danger" ng-show="tmpUser.new_password != tmpUser.confirm_password">Passwords do not match.</span>
             </div>
           </div>

@@ -11,22 +11,14 @@ c.controller('MainCustomerCtrl', [
 		function($scope, Users, Category, Products, $http) {
 
 			$scope.navs = [
-				{state: "home", text: "Dashboard", icon: "fa-home", active: false},
-				{state: "account", text: "My Account", icon: "fa-gear", active: false},
-				{state: "profile", text: "My Profile", icon: "fa-user", active: false},
-				{state: "purchases", text: "Purchases", icon: "fa-shopping-cart", active: false},
-				{state: "preferences", text: "Email Preferences", icon: "fa-envelope", active: false},
-				{state: "credits", text: "Earn Credits", icon: "fa-money", active: false}
+				{state: "home", text: "Dashboard", icon: "fa-home"},
+				{state: "account", text: "My Account", icon: "fa-gear"},
+				{state: "profile", text: "My Profile", icon: "fa-user"},
+				{state: "purchases", text: "Purchases", icon: "fa-shopping-cart"},
+				{state: "preferences", text: "Email Preferences", icon: "fa-envelope"},
+				{state: "credits", text: "Earn Credits", icon: "fa-money"}
 			];
 			
-			
-
-			$scope.activateNav = function(nav) {
-				$scope.navs = _.map( $scope.navs, function(n) {
-					n.active = n.state == nav.state; 
-					return n;
-				});	
-			}
 			
 			$scope.currentUser = Users.get( { id: 'me'} );
 			$scope.categories = Category.query();
