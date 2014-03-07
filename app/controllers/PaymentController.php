@@ -82,7 +82,7 @@
 								'price' => $item->product->discounted_price,
 								'txn_id' => $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'],
 								'created_at'=>date('Y-m-d H:i:s'),
-								'max_download'=>$item->product->download_count,
+								'max_download'=>$item->product->max_download,
 							);
 						$order = new Order();
 						$order->user_id 				= $user->id;
@@ -92,7 +92,7 @@
 						$order->price 					= $item->product->discounted_price;
 						$order->txn_id 					= $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'];
 						$order->created_at 				= date('Y-m-d H:i:s');
-						$order->max_download 			= $item->product->download_count;
+						$order->max_download 			= $item->product->max_download;
 						$order->percentage_commission 	= $item->getCommissionPercentage();
 						$order->amount_commission 		= ((float)$order->price * (floatval($order->percentage_commission)/100));
 						$order->save();
@@ -134,7 +134,7 @@
 			$order->price 					= $product->discounted_price;
 			$order->txn_id 					= '(FREE order has no Transaction ID)';
 			$order->created_at 				= date('Y-m-d H:i:s');
-			$order->max_download 			= $product->download_count;
+			$order->max_download 			= $product->max_download;
 			$order->percentage_commission 	= 0;
 			$order->amount_commission 		= 0;
 			$order->save();
