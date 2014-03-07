@@ -37,7 +37,7 @@ class Product extends BaseModel{
 		'files' => array(self::HAS_MANY, 'ProductFile'),
 		'featured'=>array(self::HAS_ONE,'FeaturedProduct'), 
 		'cart_items' => array(self::HAS_MANY, 'Cart'),
-		'commision_percentage' => array(self::HAS_ONE, 'CommissionPercentage')
+		'commisionPercentage' => array(self::HAS_ONE, 'CommissionPercentage')
 	);
 
 	//start overrides
