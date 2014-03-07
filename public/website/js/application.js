@@ -65,6 +65,6 @@ function free_steps(action, step){
 
 $(document).on('click', '#get_free', function(){ 
   productId = $('[product-id]').attr('product-id');
-  document.location.href=baseUrl+'/get-free/'+productId;
+  window.location.href=baseUrl+'/get-free/'+productId;
 });
  

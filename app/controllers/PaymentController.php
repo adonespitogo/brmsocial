@@ -83,12 +83,24 @@
 								'txn_id' => $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'],
 								'created_at'=>date('Y-m-d H:i:s'),
 								'max_download'=>$item->product->download_count,
-							); 
-					}
-
-					Order::insert($orderItems);  
+							);
+						$order = new Order();
+						$order->user_id 				= $user->id;
+						$order->product_id 				= $item->product_id;
+						$order->vendor_id 				= $item->getVendor()->id;
+						$order->product_name 			= $item->product->product_name;
+						$order->price 					= $item->product->discounted_price;
+						$order->txn_id 					= $paypalResp['paypal_info']['PAYMENTINFO_0_TRANSACTIONID'];
+						$order->created_at 				= date('Y-m-d H:i:s');
+						$order->max_download 			= $item->product->download_count;
+						$order->percentage_commission 	= $item->getCommissionPercentage();
+						$order->amount_commission 		= ((float)$order->price * (floatval($order->percentage_commission)/100));
+						$order->save();
+					} 
+		
+					Cart::where('cart_session_id', $_COOKIE['cart_session_id'])->delete();
 					
-					Order::afterCreate($cartItems, $orderItems);
+					MailHelper::afterPurchaseMessage($cartItems, $orderItems);
 
 	 			} 
 			}	
@@ -113,25 +125,21 @@
 
 			if(!is_object($product))
 				return Response::json(array('status'=>404, 'error'=>'Free Product not found'), 404);
-
-			$item = array(
-								'user_id' =>Auth::user()->id,
-								'product_id' => $productId,
-								'vendor_id' => $product->user_id, 	
-								'product_name' => $product->product_name,
-								'price' => $product->discounted_price,
-								'txn_id' => "(no transaction ID)",
-								'created_at'=>date('Y-m-d H:i:s'),
-								'max_download'=>$product->download_count,
-							); 
-			Order::insert(array($item));  
-			
-			$item['product'] = 	'';
-
-			$cartItem = json_decode(json_encode($item));
-			$cartItem->product = $product;
 			 
-			Order::afterCreate(array($cartItem), array($item));
+			$order = new Order();
+			$order->user_id 				= Auth::user()->id;
+			$order->product_id 				= $product->id;
+			$order->vendor_id 				= $product->user_id;
+			$order->product_name 			= $product->product_name;
+			$order->price 					= $product->discounted_price;
+			$order->txn_id 					= '(FREE order has no Transaction ID)';
+			$order->created_at 				= date('Y-m-d H:i:s');
+			$order->max_download 			= $product->download_count;
+			$order->percentage_commission 	= 0;
+			$order->amount_commission 		= 0;
+			$order->save();
+
+			MailHelper::afterPurchaseMessage(array($order), array($order));
 
 			return "thank you page here";
 		}

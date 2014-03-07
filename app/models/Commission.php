@@ -1,6 +1,12 @@
 <?php
 
 	class Commission extends BaseModel {
+		
+		public function __construct()
+		{
+			parent::__construct();
+			$this->is_paid = 0;
+		}
 
 		protected $table = 'commissions';
 

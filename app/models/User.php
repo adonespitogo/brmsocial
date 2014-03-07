@@ -168,12 +168,12 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	//vendor
 	public function unpaidCommissions()
 	{
-		return $this->commissions()->where('is_paid', 0)->get();
+		return $this->commissions()->where('is_paid', 0)->with('product', 'order')->get();
 	}
 	//vendor
 	public function paidCommissions()
 	{
-		return $this->commissions()->where('is_paid', 1)->get();
+		return $this->commissions()->where('is_paid', 1)->with('product', 'order')->get();
 	}
 
 	public function getCreatedAtIsoDateAttribute(){

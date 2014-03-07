@@ -18,7 +18,17 @@
 
 		public function getDiscountPercentageAttribute(){
 			return $this->product->getDiscountPercentage();
-		} 
+		}
+		
+		public function getVendor(){
+			return $this->product->user;
+		}
+		
+		public function getCommissionPercentage()
+		{
+			// dd($this->product->commissionPercentage);
+			return (int)$this->product->commission_percentage->percent;
+		}
 
 		public static function getCartSummary(){
 			// dd($_COOKIE['cart_session_id']);

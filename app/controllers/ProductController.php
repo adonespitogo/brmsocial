@@ -81,7 +81,7 @@
 		{	
 			$product = Product::find($id); 
 			$cmp = CommissionPercentage::where('product_id', $id)->first();
-			$product['commision_percentage'] = is_object($cmp) ? $cmp->percent : 0;
+			$product['commission_percentage'] = is_object($cmp) ? $cmp->percent : 0;
 
 			return $product;
 		}
