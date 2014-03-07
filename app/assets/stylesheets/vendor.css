@@ -10,6 +10,7 @@
  * but before any files alphabetically greater than 'application.css' 
  *
  *= require ./lib/extras/preloader
+ *= require ./lib/extras/ajax-loading
  *= require_tree ./lib/morris
  *= require_tree ./vendor
  */

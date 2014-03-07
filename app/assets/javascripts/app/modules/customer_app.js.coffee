@@ -9,6 +9,7 @@ m = angular.module "CustomerApp", [
 	'CreditControllers',
 	'mgcrea.ngStrap', 				#angular-strap
 	'FormValidation', 				#custom form validations
+	'directive.loading' #ajax-loading
 ]
 
 

@@ -8,11 +8,12 @@
 @stop
 
 @section('body')
-	<div id="preloader"></div>
+	@include('home.shared.preloader')
 	<div id="wrapper">
 		<div ng-app="VendorApp">
 			<div ng-controller="MainVendorCtrl">
 				@include('home.vendor.header')
+				@include('home.shared.ajax_loader')
 				<div style="padding: 10px 15px;" autoscroll='false' ui-view >
 				
 				</div>
@@ -25,6 +26,5 @@
 	</div>
 @stop
 @section('scripts')
-	{{ javascript_include_tag('preloader') }}
 	{{ javascript_include_tag('vendor') }}
 @stop

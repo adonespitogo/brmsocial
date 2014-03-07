@@ -8,12 +8,12 @@
 @stop
 
 @section('body')
-	<div id="preloader"></div>
+	@include('home.shared.preloader')
 	<div id="wrapper">
 		<div ng-app="AdminApp">
 			<div ng-controller="MainAdminCtrl">
 				@include('home.admin.header')
-				
+				@include('home.shared.ajax_loader')
 				<div class="" ui-view autoscroll='false' style="margin:30px;"></div>
 			</div>
 		</div>
@@ -22,8 +22,8 @@
 			BRM Deals &copy; 2014
 		</footer>
 	</div>
+	
 @stop
 @section('scripts')
-	{{ javascript_include_tag('preloader') }}
 	{{ javascript_include_tag('admin') }}
 @stop

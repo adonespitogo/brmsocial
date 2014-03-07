@@ -14,6 +14,7 @@
 //= require lib/angular-1.2.9/angular
 //= require lib/angular-1.2.9/angular-ui-router
 //= require lib/angular-1.2.9/angular-resource
+//= require lib/angular-1.2.9/angular.directive.loading
 //= require lib/angular-strap/angular-strap
 //= require lib/angular-strap/angular-strap.tpl
 //= require lib/angular-fileupload/angular-file-upload-shim
