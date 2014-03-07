@@ -40,7 +40,7 @@
 			$p->max_download = Input::get('max_download');
 
 			$type = Input::get('type');
-			$p->type = $type->id;
+			$p->type = $type['id'];
 
 			$p->user_id = Input::get('user');
 			$p->save();
