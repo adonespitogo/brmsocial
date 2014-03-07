@@ -20,6 +20,7 @@
 			$p->featured_end_date_iso_date = "2014-02-17T07:46:16+0000";
 			$p->featured_start_date = '2014:02:17 07:19:23';
 			$p->featured_end_date = '2014:02:17 07:19:23'; 
+			$p['commission_percentage'] = 0;
 			return $p;
 		}
 
@@ -43,6 +44,12 @@
 
 			$p->user_id = Input::get('user');
 			$p->save();
+
+			//Commision Percentage
+			$cmp = new CommissionPercentage();
+			$cmp->product_id = $p->id;
+			$cmp->percent = Input::get('commission_percentage');
+			$cmp->save();
 
 			if(Input::has('is_featured') && Input::get('is_featured')){
 				$fp = new FeaturedProduct();
@@ -72,7 +79,11 @@
 
 		public function show($id)
 		{	
-			return Product::find($id); 
+			$product = Product::find($id); 
+			$cmp = CommissionPercentage::where('product_id', $id)->first();
+			$product['commision_percentage'] = is_object($cmp) ? $cmp->percent : 0;
+
+			return $product;
 		}
 
 		public function update($id)
@@ -95,6 +106,13 @@
 			$p->max_download = Input::get('max_download');
 			$p->user_id  = Input::get('user_id');
 			$p->save();
+
+			//Commision Percentage
+			$cmp = CommissionPercentage::where('product_id', $p->id)->first();
+			$cmp = ($cmp) ? $cmp : new CommissionPercentage();
+			$cmp->percent = Input::get('commission_percentage');
+			$cmp->product_id = $p->id;
+			$cmp->save();
 
 			if(Input::get('is_featured')){
 				$f = Input::get('featured');
