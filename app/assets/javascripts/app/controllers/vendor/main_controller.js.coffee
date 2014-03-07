@@ -10,7 +10,7 @@ main.controller "MainVendorCtrl", [
 		$scope.navs = [
 			{state: 'products', text: 'Products'}
 			{state: 'sales', text: 'Sales'}
-			{state: 'commisions', text: 'Commissions'}
+			{state: 'commissions', text: 'Commissions'}
 		]
 
 		$scope.copyCurrentUser = ->

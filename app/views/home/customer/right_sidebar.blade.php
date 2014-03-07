@@ -35,10 +35,10 @@
   <div class="social-right">
     <ul>
       <li>
-        <a href="javascript:void(0)" class="fb-btn"><img src="{{ URL::to('customer/images/ico-fb.png') }}"> Share on facebook</a>
+        <a ng-click="referViaFacebook()" class="fb-btn"><img src="{{ URL::to('customer/images/ico-fb.png') }}"> Share on facebook</a>
       </li>
       <li>
-        <a href="https://twitter.com/share?url=http%3A%2F%2Fwww.brmsocial.com%3Freferralid%3D{{ Auth::user()->id }}&text=Check+out+BRMSocial%2C+a+cool+new+deals+site+for+online+marketing+apps%2C+tools+and+training+courses."><img src="{{ URL::to('customer/images/ico-twit.png') }}"> Tweet on Facebook</a>
+        <a ng-href="http://twitter.com/share?url=@{{referral_token.referral_url}}&text=Check out BRM Social, a cool new deals site for online marketers"><img src="{{ URL::to('customer/images/ico-twit.png') }}"> Tweet on Twitter</a>
       </li>
     </ul>
   </div>

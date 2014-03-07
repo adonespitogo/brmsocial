@@ -21,7 +21,7 @@
 					</div>
 					<ul>
 						<li><i class="fa fa-clock-o"></i>{{$product->getLeftSaleDays()}} days</li>
-						<li><a href="{{URL::to('category/'.$product->category->slug)}}">{{$product->category->category}}</a></li>
+						<li><a href="{{URL::to('products/category/'.$product->category->slug)}}">{{$product->category->category}}</a></li>
 					</ul>
 				</div>
 			</li>
