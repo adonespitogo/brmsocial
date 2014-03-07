@@ -200,106 +200,112 @@
                                 </li>
                             </ul>
                             
-                            @if($product->discounted_price>0)
-                                <h3 class="text-center first-h3">
-                                <i class="fa fa-time"></i>
-                                @if($product->getLeftSaleDays() > 0)
-                                Sale ends in <span>{{$product->getLeftSaleDays()}} days</span>
-                                @else
-                                Sale ends <span>today</span>
-                                @endif
-                                </h3>
-                                <button class="btn-green add2cart-btn"
-                                data-product-id="{{$product->id}}"
-                                data-product-price="{{$product->discounted_price}}"
-                                data-product-name="{{$product->product_name}}"
-                                data-product-description=""
-                                >
-                                BUY NOW
-                                </button>     
-                            @else 
-                                <div class="fb-steps">
+                            @if(!$orderExist)
+                                @if($product->discounted_price>0)
                                     <h3 class="text-center first-h3">
-                                        <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
+                                    <i class="fa fa-time"></i>
+                                    @if($product->getLeftSaleDays() > 0)
+                                    Sale ends in <span>{{$product->getLeftSaleDays()}} days</span>
+                                    @else
+                                    Sale ends <span>today</span>
+                                    @endif
                                     </h3>
-                                    <ul>
-                                        <li id="free_step1"
-                                            @if(Session::has('free_step_1') && in_array($product->id,Session::get('free_step_1')))
-                                                {{'class="active"'}}                                            
-                                            @endif
-                                        >
-                                            <i class="fa fa-check-circle pull-right"></i>
-                                            <div><strong>Step 1:</strong> Connect with us</div>
-                                             
-                                             <div class="fb-like" data-href="http://brmsocial.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+                                    <button class="btn-green add2cart-btn"
+                                    data-product-id="{{$product->id}}"
+                                    data-product-price="{{$product->discounted_price}}"
+                                    data-product-name="{{$product->product_name}}"
+                                    data-product-description=""
+                                    >
+                                    BUY NOW
+                                    </button>     
+                                @else 
+                                    <div class="fb-steps">
+                                        <h3 class="text-center first-h3">
+                                            <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
+                                        </h3>
+                                        <ul>
+                                            <li id="free_step1"
+                                                @if(Session::has('free_step_1') && in_array($product->id,Session::get('free_step_1')))
+                                                    {{'class="active"'}}                                            
+                                                @endif
+                                            >
+                                                <i class="fa fa-check-circle pull-right"></i>
+                                                <div><strong>Step 1:</strong> Connect with us</div>
+                                                 
+                                                 <div class="fb-like" data-href="http://brmsocial.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
-                                             <span>&nbsp;or&nbsp;</span>
+                                                 <span>&nbsp;or&nbsp;</span>
+                                                
+                                                 <div 
+                                                    class="g-plusone"
+                                                    data-size="tall"
+                                                    data-annotation='none' 
+                                                    data-callback="gplus_callback" 
+                                                    data-count="false" 
+                                                    data-expandTo="right" 
+                                                    data-href="https://plus.google.com/u/0/+ArnelLenteria"
+                                                    data-lang="en-US"
+                                                    data-parsetags="onload"
+                                                    data-align="right"
+                                                    data-recommendations="false"
+                                                >
+                                                </div>
+
+                                                <span>&nbsp;or&nbsp;</span>
+
+                                                <a href="https://twitter.com/revalderc" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow</a>                                            
+
+                                                <p>Having trouble?<br />Try repeating step one.</p>
+                                            </li>
+                                            <li id="free_step2"
+                                                @if(Session::has('free_step_2') && in_array($product->id,Session::get('free_step_2')))
+                                                    {{'class="active"'}}                                            
+                                                @endif
+                                            >
+                                                <i class="fa fa-check-circle"></i>
+                                                <div><strong>Step 2:</strong> Spread the word</div>
+
+                                                <div class="fb-share-button" data-href="{{Request::url()}}" data-type="button"></div>
+                                                <span>&nbsp;or&nbsp;</span>
+                                                <div 
+                                                    class="g-plus" data-action="share" 
+                                                    data-size="tall"
+                                                    data-annotation='none'  
+                                                    data-count="false" 
+                                                    data-expandTo="right" 
+                                                    data-href="{{Request::url()}}"
+                                                    data-lang="en-US"
+                                                    data-parsetags="onload"
+                                                    data-align="right"
+                                                    data-recommendations="false"
+                                                    data-onendinteraction="gplus_callback_share"
+                                                >
+                                                </div>
+                                                <span>&nbsp;or&nbsp;</span>
+
+                                                <a href="https://twitter.com/share" data-url="{{Request::url()}}" class="twitter-share-button" data-lang="en">Tweet</a>
+
+                                            </li>
+                                        </ul>
+                                        <button id="get_free" onclick="window.location.href='{{URL::to('get-free/'.$product->id)}}'"
+                                            @if(Session::has('free_step_1') &&Session::has('free_step_2') && in_array($product->id,Session::get('free_step_1')) && in_array($product->id,Session::get('free_step_2')))
+                                                {{'class="btn-green"'}} 
+                                                >
+                                                STEPS COMPLETED, GET IT NOW                                 
+                                            @else
+                                                {{'disabled="disabled"'}}
+                                                {{'class="btn-disabled"'}}
+                                                >
+                                                 COMPLETE THE STEPS ABOVE TO GET IT 
+                                            @endif
                                             
-                                             <div 
-                                                class="g-plusone"
-                                                data-size="tall"
-                                                data-annotation='none' 
-                                                data-callback="gplus_callback" 
-                                                data-count="false" 
-                                                data-expandTo="right" 
-                                                data-href="https://plus.google.com/u/0/+ArnelLenteria"
-                                                data-lang="en-US"
-                                                data-parsetags="onload"
-                                                data-align="right"
-                                                data-recommendations="false"
-                                            >
-                                            </div>
+                                        </button>
+                                    </div>
+                                @endif
 
-                                            <span>&nbsp;or&nbsp;</span>
-
-                                            <a href="https://twitter.com/revalderc" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow</a>                                            
-
-                                            <p>Having trouble?<br />Try repeating step one.</p>
-                                        </li>
-                                        <li id="free_step2"
-                                            @if(Session::has('free_step_2') && in_array($product->id,Session::get('free_step_2')))
-                                                {{'class="active"'}}                                            
-                                            @endif
-                                        >
-                                            <i class="fa fa-check-circle"></i>
-                                            <div><strong>Step 2:</strong> Spread the word</div>
-
-                                            <div class="fb-share-button" data-href="{{Request::url()}}" data-type="button"></div>
-                                            <span>&nbsp;or&nbsp;</span>
-                                            <div 
-                                                class="g-plus" data-action="share" 
-                                                data-size="tall"
-                                                data-annotation='none'  
-                                                data-count="false" 
-                                                data-expandTo="right" 
-                                                data-href="{{Request::url()}}"
-                                                data-lang="en-US"
-                                                data-parsetags="onload"
-                                                data-align="right"
-                                                data-recommendations="false"
-                                                data-onendinteraction="gplus_callback_share"
-                                            >
-                                            </div>
-                                            <span>&nbsp;or&nbsp;</span>
-
-                                            <a href="https://twitter.com/share" data-url="{{Request::url()}}" class="twitter-share-button" data-lang="en">Tweet</a>
-
-                                        </li>
-                                    </ul>
-                                    <button id="get_free"
-                                        @if(Session::has('free_step_1') &&Session::has('free_step_2') && in_array($product->id,Session::get('free_step_1')) && in_array($product->id,Session::get('free_step_2')))
-                                            {{'class="btn-green"'}} 
-                                            >
-                                            STEPS COMPLETED, GET IT NOW                                 
-                                        @else
-                                            {{'disabled="disabled"'}}
-                                            {{'class="btn-disabled"'}}
-                                            >
-                                             COMPLETE THE STEPS ABOVE TO GET IT 
-                                        @endif
-                                        
-                                    </button>
-                                </div>
+                            @else 
+                                <br>
+                                <button onclick="window.location.href='{{URL::to('/home#/purchases')}}'" class="btn btn-green" >VIEW YOUR ORDER</button>
                             @endif
                                                         
                             <div class="terms-of-sale">
