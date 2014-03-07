@@ -236,32 +236,55 @@
 			return Product::count();
 		}
 
-		public function activateFree(){
+		public function activateFree($step=1){
+			$steps = array(1, 2);
 			$productId = Input::get('id');
 
-			if(!Session::has('free_steps_completed')){
-				Session::put('free_steps_completed', array($productId));
-				return 1;
+			if(!in_array($step, $steps))
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+			
+			if($step==2 && !Session::has('free_step_1'))
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
+
+			if(!Session::has('free_step_'.$step)){
+				Session::put('free_step_'.$step, array($productId));
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
 			}
 			else{
-				Session::push('free_steps_completed', $productId);
-				return 1;
+				Session::push('free_step_'.$step, $productId);
+				return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
 			}
 		}
 
-		public function deactivateFree(){
-			$session = Session::get('free_steps_completed');
+		public function deactivateFree($step=1){
+			$session = Session::get('free_step_'.$step);
 			$productId = Input::get('id');
-			if(Session::has('free_steps_completed') && is_array($session) && in_array($productId, $session)){
-				
-				for ($i = 0, $l = count($session); $i < $l; ++$i) {
-			        if (in_array($productId, $session)) unset($session[$i]);
-			    }				
+			if(Session::has('free_step_'.$step) && is_array($session) && in_array($productId, $session)){
 
-				Session::put('free_steps_completed', $session);
+					for ($i = 0, $l = count($session); $i < $l; ++$i) {
+				        if (in_array($productId, $session)) unset($session[$i]);
+				    }				
 
-				return 1;
+					Session::put('free_step_'.$step, $session);
+ 				 
 			}
+
+			return array(
+						'step1'=>Session::has('free_step_1')&&in_array($productId, Session::get('free_step_1')) ? true : false,
+						'step2'=>Session::has('free_step_2')&&in_array($productId, Session::get('free_step_2')) ? true : false,
+					);
 		}
 	}
 

@@ -223,13 +223,17 @@
                                         <i class="fa fa-time"></i>Free offer ends in <span>5 days</span>
                                     </h3>
                                     <ul>
-                                        <li class="active">
+                                        <li id="free_step1"
+                                            @if(Session::has('free_step_1') && in_array($product->id,Session::get('free_step_1')))
+                                                {{'class="active"'}}                                            
+                                            @endif
+                                        >
                                             <i class="fa fa-check-circle pull-right"></i>
                                             <div><strong>Step 1:</strong> Connect with us</div>
                                              
                                              <div class="fb-like" data-href="http://brmsocial.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 
-                                             &nbsp;or&nbsp; 
+                                             <span>&nbsp;or&nbsp;</span>
                                             
                                              <div 
                                                 class="g-plusone"
@@ -246,26 +250,54 @@
                                             >
                                             </div>
 
-                                            &nbsp;or&nbsp; 
+                                            <span>&nbsp;or&nbsp;</span>
 
                                             <a href="https://twitter.com/revalderc" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow</a>                                            
 
                                             <p>Having trouble?<br />Try repeating step one.</p>
                                         </li>
-                                        <li>
+                                        <li id="free_step2"
+                                            @if(Session::has('free_step_2') && in_array($product->id,Session::get('free_step_2')))
+                                                {{'class="active"'}}                                            
+                                            @endif
+                                        >
                                             <i class="fa fa-check-circle"></i>
                                             <div><strong>Step 2:</strong> Spread the word</div>
+
+                                            <div class="fb-share-button" data-href="{{Request::url()}}" data-type="button"></div>
+                                            <span>&nbsp;or&nbsp;</span>
+                                            <div 
+                                                class="g-plus" data-action="share" 
+                                                data-size="tall"
+                                                data-annotation='none'  
+                                                data-count="false" 
+                                                data-expandTo="right" 
+                                                data-href="{{Request::url()}}"
+                                                data-lang="en-US"
+                                                data-parsetags="onload"
+                                                data-align="right"
+                                                data-recommendations="false"
+                                                data-onendinteraction="gplus_callback_share"
+                                            >
+                                            </div>
+                                            <span>&nbsp;or&nbsp;</span>
+
+                                            <a href="https://twitter.com/share" data-url="{{Request::url()}}" class="twitter-share-button" data-lang="en">Tweet</a>
+
                                         </li>
                                     </ul>
                                     <button id="get_free"
-                                        @if(Session::has('free_steps_completed') && in_array($product->id,Session::get('free_steps_completed')))
-                                            {{'class="btn-green"'}}                                            
+                                        @if(Session::has('free_step_1') &&Session::has('free_step_2') && in_array($product->id,Session::get('free_step_1')) && in_array($product->id,Session::get('free_step_2')))
+                                            {{'class="btn-green"'}} 
+                                            >
+                                            STEPS COMPLETED, GET IT NOW                                 
                                         @else
                                             {{'disabled="disabled"'}}
-                                            {{'class="btn-disabled"'}} 
+                                            {{'class="btn-disabled"'}}
+                                            >
+                                             COMPLETE THE STEPS ABOVE TO GET IT 
                                         @endif
-                                        >
-                                        COMPLETE THE STEPS ABOVE TO GET IT
+                                        
                                     </button>
                                 </div>
                             @endif

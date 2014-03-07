@@ -6,7 +6,12 @@
 
 @section('body')
  
-<p>Hi @if(is_object($cartItems[0]->user)){{$cartItems[0]->user->firstname}} @else {{$cartItems[0]->buyer_email}} @endif,</p>
+ @if(Auth::user())
+ 	<p>Hi {{Auth::user()->firstname}},</p>
+ @else
+ 	<p>Hi @if(is_object($cartItems[0]->user)){{$cartItems[0]->user->firstname}} @else {{$cartItems[0]->buyer_email}} @endif,</p>
+ @endif
+
 <br>
 <p>Phew! What a relief.</p> 
 <p>

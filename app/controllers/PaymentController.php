@@ -104,12 +104,15 @@
 
 
 		}
-		public function postPurchaseFree(){
-			$productId = Input::get('id');
-			if(!Session::has('free_steps_completed') || !in_array($productId, Session::get('free_steps_completed')))
+		public function getPurchaseFree($productId=0){ 
+
+			if(!Session::has('free_step_1')||!Session::has('free_step_2') || !in_array($productId, Session::get('free_step_1'))|| !in_array($productId, Session::get('free_step_2')))
 				return Response::json(array('status'=>403, 'error'=>'Forbidden'), 403);
 
 			$product = Product::find($productId);
+
+			if(!is_object($product))
+				return Response::json(array('status'=>404, 'error'=>'Free Product not found'), 404);
 
 			$item = array(
 								'user_id' =>Auth::user()->id,
@@ -122,9 +125,15 @@
 								'max_download'=>$product->download_count,
 							); 
 			Order::insert(array($item));  
-					
-			Order::afterCreate(array($item), json_encode(json_decode(array($item), true)));
+			
+			$item['product'] = 	'';
 
+			$cartItem = json_decode(json_encode($item));
+			$cartItem->product = $product;
+			 
+			Order::afterCreate(array($cartItem), array($item));
+
+			return "thank you page here";
 		}
 
 	}
